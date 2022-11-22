@@ -63,7 +63,7 @@ tourney_3 = Tournament.create!(
 
 puts "Creating Jackson!"
 player_1a = Player.create!(
-  name: "Jackson Smyle", rating: 2006, division: 1, crosstables_id: 20032, tournament: tourney_1
+  name: "Jackson Smylie", rating: 2006, division: 1, crosstables_id: 20032, tournament: tourney_1
 )
 puts "Creating some scrubs"
 player_1b = Player.create!(name: "Player B", rating: 1970, division: 1, tournament: tourney_1)
