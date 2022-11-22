@@ -55,10 +55,10 @@ tourney_2 = Tournament.create!(
 )
 tourney_3 = Tournament.create!(
   user: user_b,
-  event: event_2,
-  location: event_2.location,
-  date: event_2.date,
-  rounds: event_2.rounds
+  event: event_3,
+  location: event_3.location,
+  date: event_3.date,
+  rounds: event_3.rounds
 )
 
 puts "Creating Jackson!"
@@ -66,15 +66,9 @@ player_1a = Player.create!(
   name: "Jackson Smyle", rating: 2006, division: 1, crosstables_id: 20032, tournament: tourney_1
 )
 puts "Creating some scrubs"
-player_1b = Player.create!(
-  name: "Player B", rating: 1970, division: 1, tournament: tourney_1
-)
-player_1c = Player.create!(
-  name: "Player C", rating: 1100, division: 2, tournament: tourney_1
-)
-player_1d = Player.create!(
-  name: "Player D", rating: 1250, division: 2, tournament: tourney_1
-)
+player_1b = Player.create!(name: "Player B", rating: 1970, division: 1, tournament: tourney_1)
+player_1c = Player.create!(name: "Player C", rating: 1100, division: 2, tournament: tourney_1)
+player_1d = Player.create!(name: "Player D", rating: 1250, division: 2, tournament: tourney_1)
 
 # These matchups don't follow Swiss pairing. This is just to help test the view
 puts "Creating matchups for tournament 1"
