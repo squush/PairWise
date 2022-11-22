@@ -6,25 +6,29 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# TODO: Figure out how to get this working. Running into an error because of the
-#       matchup/player associations. Probably need a ticket.
-# User.destroy_all
-# Event.destroy_all
+# TODO: Figure out how to get this working with the dependent: :destroy association.
+#       Currently using that causes an error because (I think) the matchups have
+#       two foreign keys to the players table. Probably need a ticket.
+Matchup.destroy_all
+Player.destroy_all
+Tournament.destroy_all
+User.destroy_all
+Event.destroy_all
 
 puts "Creating users"
-if User.first.nil?
+# if User.first.nil?
   user_a = User.create!(email: "a@a.a", password: "123456")
   user_b = User.create!(email: "b@b.b", password: "123456")
   user_c = User.create!(email: "c@c.c", password: "123456")
   user_d = User.create!(email: "d@d.d", password: "123456")
   user_e = User.create!(email: "e@e.e", password: "123456")
-else
-  user_a = User.all[0]
-  user_b = User.all[1]
-  user_c = User.all[2]
-  user_d = User.all[3]
-  user_e = User.all[4]
-end
+# else
+#   user_a = User.all[0]
+#   user_b = User.all[1]
+#   user_c = User.all[2]
+#   user_d = User.all[3]
+#   user_e = User.all[4]
+# end
 
 puts "Creating events"
 event_1 = Event.create!(location: "Mile End, Montreal",  date: "2022-12-04", rounds: 3)
