@@ -4,7 +4,9 @@ class Tournament < ApplicationRecord
   has_many :players, dependent: :destroy
   has_many :matchups, through: :players, dependent: :destroy
 
-  enum status: {
+  validates :rounds, presence: true, numericality: { greater_than: 0 }
+
+  enum pairing_system: {
     swiss: 0,
     round_robin: 1
   }
