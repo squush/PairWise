@@ -7,7 +7,7 @@ class Tournament < ApplicationRecord
   validates :rounds, presence: true, numericality: { greater_than: 0 }
 
   enum pairing_system: {
-    swiss: 0,
-    round_robin: 1
+    swiss: 10,
+    round_robin: 20
   }
 end
