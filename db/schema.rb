@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2022_11_22_201351) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_11_22_192519) do
+>>>>>>> 40e6ce5 (added seed to player model)
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +49,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_201351) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "seed"
+<<<<<<< HEAD
     t.boolean "active", default: true
+=======
+>>>>>>> 40e6ce5 (added seed to player model)
     t.index ["tournament_id"], name: "index_players_on_tournament_id"
   end
 
