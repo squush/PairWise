@@ -4,6 +4,10 @@ class TournamentPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+
+    def index
+      true
+    end
   end
 
   # Everyone should be able to see this.
