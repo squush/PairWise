@@ -32,20 +32,24 @@ class TournamentsController < ApplicationController
           sortable_date = Date.parse("#{year}/#{month_and_day}")
 
           tournament.css('span').children.each do |event|
-            url = "https://www.cross-tables.com#{event.attribute('href').value}"
-            html = URI.open(url)
-            doc = Nokogiri::HTML(html)
-            # This returns a string date, since often the date is a range,
-            # which is not easy to parse into a Date object. See above
-            date = doc.css('p').children[2].text[/\w.*202\d/]
-            xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
-            number_of_players = doc.css('p').children[8].text.to_i
-            number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
-            Event.create!(location: location, rounds: number_of_games, number_of_players: number_of_players, date: sortable_date, xtables_id: xtables_id)
+            create_event(event)
           end
         end
       end
     end
+  end
+
+  def create_event(event)
+    url = "https://www.cross-tables.com#{event.attribute('href').value}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML(html)
+    # This returns a string date, since often the date is a range,
+    # which is not easy to parse into a Date object. See above
+    date = doc.css('p').children[2].text[/\w.*202\d/]
+    xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
+    number_of_players = doc.css('p').children[8].text.to_i
+    number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
+    Event.create!(location: location, rounds: number_of_games, number_of_players: number_of_players, date: sortable_date, xtables_id: xtables_id)
   end
 
 end
