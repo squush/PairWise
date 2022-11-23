@@ -2,5 +2,5 @@
     <%= f.input :pairing_system, collection: ['swiss', 'round_robin', 'KOTH'] %>
     <%= f.input :number_of_winners %>
     <%= f.button :submit %>
-    <%= f.hidden_field :event, value: event %>
+    <%= f.hidden_field :event, value: event.id %>
   <% end %>
