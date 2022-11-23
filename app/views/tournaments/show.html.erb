@@ -1,7 +1,7 @@
 <h1><%= @tournament.location %></h1>
 <h3>Director: <%= @tournament.user.email %></h3>
-<h4>Date: <%= @tournament.date.strftime('%B %e, %Y') %></h4>
-<p>Number of rounds: <%= @tournament.rounds %></p>
+<h4>Date: <%= @tournament.event.date.strftime('%B %e, %Y') %></h4>
+<p>Number of rounds: <%= @tournament.event.rounds %></p>
 <p>Number of winners:
   <%= @tournament.number_of_winners.nil? ? "unknown" : @tournament.number_of_winners %>
 </p>
