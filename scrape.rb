@@ -1,29 +1,34 @@
 require 'nokogiri'
 require 'open-uri'
+require 'date'
 
 url = 'https://www.cross-tables.com'
 html = URI.open(url)
 doc = Nokogiri::HTML(html)
 tournaments = doc.css('#utblock .xtdatatable tr')
 
-tournaments.first(2).each_with_index do |tournament, index|
-  if index.positive?
-    # naspa = tournament.css('span').children.first.attribute('href').value
+tournaments.each_with_index do |tournament, index|
+  if index.positive? && index < tournaments.count - 2
     naspa = tournament.css('img').attribute('src').value == 'i/naspa.png'
-    url = "https://www.cross-tables.com#{tournament.css('span').children.first.attribute('href').value}"
-    # pp tournament
-    city = tournament.css('a').children.text
-    # pp city
-    # tournament.css('span').children.first.attribute('href').value
-    date = tournament.css('td').children.text
-    number_of_players = 0
-    # pp tournament
-    pp date
+    if naspa
+      location = tournament.css('a').children.text
+      # May want to use this date method below to get the tournament's start date
+      # So that we can sort upcoming events by start date
+      # month_and_day = tournament.css('td')[-2].children.text[/^\d*\/\d*/]
+      # year = tournament.css('td')[-2].children.text[/\d\d\d\d/] || Date.today.year
+      # sortable_date = Date.parse("#{year}/#{month_and_day}")
 
+      tournament.css('span').children.each do |event|
+          url = "https://www.cross-tables.com#{event.attribute('href').value}"
+          html = URI.open(url)
+          doc = Nokogiri::HTML(html)
+          # This returns a string date, since often the date is a range,
+          # which is not easy to parse into a Date object. See above
+          date = doc.css('p').children[2].text[/\w.*202\d/]
+          xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
+          number_of_players = doc.css('p').children[8].text.to_i
+          number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
+      end
+    end
   end
 end
-
-#pp tournaments[1].css('span').children.first.attribute('href').value
-
-
-# want: naspa?, city, date, # of players, href
