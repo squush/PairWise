@@ -12,12 +12,32 @@ class TournamentsController < ApplicationController
   end
 
   def new
+    authorize @tournament, policy_class: TournamentPolicy
   end
 
   def create
+    raise
+    @tournament = Tournament.new(tournament_params)
+    @event = params[:tournament][:event]
+    raise
+    @tournament.event = @event
+    @tournament.location = @event.location
+    @tournament.date = @event.date
+    @tournament.rounds = @event.rounds
+    @tournament.user = current_user
+    raise
+    authorize @tournament, policy_class: TournamentPolicy
+  end
+
+  def show
+    @tournament = Tournament.find(params[:id])
   end
 
   private
+
+  def tournament_params
+    params.require(:tournament).permit(:pairing_system, :number_of_winners)
+  end
 
   def all_crosstables_events
     url = 'https://www.cross-tables.com'

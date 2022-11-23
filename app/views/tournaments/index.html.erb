@@ -3,5 +3,5 @@
   <p><%= event.date %></p>
   <p><%= event.rounds %> games</p>
   <p><%= event.number_of_players %> players</p>
-  <%= render "form", tournament: @tournament %>
+  <%= render "form", tournament: @tournament, event: event %>
 <% end %>
