@@ -16,16 +16,13 @@ class TournamentsController < ApplicationController
   end
 
   def create
-    raise
     @tournament = Tournament.new(tournament_params)
     @event = params[:tournament][:event]
-    raise
     @tournament.event = @event
     @tournament.location = @event.location
     @tournament.date = @event.date
     @tournament.rounds = @event.rounds
     @tournament.user = current_user
-    raise
     authorize @tournament, policy_class: TournamentPolicy
   end
 
