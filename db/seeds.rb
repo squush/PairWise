@@ -1,34 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+emails = ["a@a.a", "b@b.b", "c@c.c", "d@d.d", "e@e.e"]
 
-# TODO: Figure out how to get this working with the dependent: :destroy association.
-#       Currently using that causes an error because (I think) the matchups have
-#       two foreign keys to the players table. Probably need a ticket.
-Matchup.destroy_all
-Player.destroy_all
-Tournament.destroy_all
-User.destroy_all
-Event.destroy_all
+# This just destroy the specific test users, not the whole DB
+puts "Destroying test users"
+emails.each do |email|
+  puts " ... #{email}"
+  test_user = User.find_by(email: email)
+  test_user.nil? ? "No users to delete" : test_user.destroy
+end
+
+# This just destroy the specific test events, not the whole DB
+puts "Destroying test events"
+Event.find_by(location: "Mile End, Montreal",  date: "2022-12-04", rounds: 3).destroy
+Event.find_by(location: "Hochelaga, Montreal", date: "2022-12-05", rounds: 2).destroy
+Event.find_by(location: "Ottawa",              date: "2022-12-04", rounds: 2).destroy
+Event.find_by(location: "Mile End, Montreal",  date: "2023-05-01", rounds: 3).destroy
+Event.find_by(location: "Laval",               date: "2022-12-12", rounds: 3).destroy
 
 puts "Creating users"
-# if User.first.nil?
-  user_a = User.create!(email: "a@a.a", password: "123456")
-  user_b = User.create!(email: "b@b.b", password: "123456")
-  user_c = User.create!(email: "c@c.c", password: "123456")
-  user_d = User.create!(email: "d@d.d", password: "123456")
-  user_e = User.create!(email: "e@e.e", password: "123456")
-# else
-#   user_a = User.all[0]
-#   user_b = User.all[1]
-#   user_c = User.all[2]
-#   user_d = User.all[3]
-#   user_e = User.all[4]
-# end
+user_a = User.create!(email: emails[0], password: "123456")
+user_b = User.create!(email: emails[1], password: "123456")
+user_c = User.create!(email: emails[2], password: "123456")
+user_d = User.create!(email: emails[3], password: "123456")
+user_e = User.create!(email: emails[4], password: "123456")
 
 puts "Creating events"
 event_1 = Event.create!(location: "Mile End, Montreal",  date: "2022-12-04", rounds: 3)
