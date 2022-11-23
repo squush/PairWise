@@ -5,7 +5,7 @@ class TournamentsController < ApplicationController
 
   # Starting with scraping cross-tables to build an index page for Events
   def index
-    @doc = all_crosstables_events
+    all_crosstables_events
     @events = Event.all
     # authorize @events
     @tournaments = policy_scope(Tournament)
@@ -40,7 +40,7 @@ class TournamentsController < ApplicationController
             xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
             number_of_players = doc.css('p').children[8].text.to_i
             number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
-            Event.create!(location: location, rounds: number_of_games)
+            Event.create!(location: location, rounds: number_of_games, number_of_players: number_of_players, date: date)
           end
         end
       end
