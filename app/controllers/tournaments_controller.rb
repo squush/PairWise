@@ -18,6 +18,7 @@ class TournamentsController < ApplicationController
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
     tournaments = doc.css('#utblock .xtdatatable tr')
+    Event.destroy_all
 
     tournaments.each_with_index do |tournament, index|
       if index.positive? && index < tournaments.count - 2

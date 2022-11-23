@@ -14,9 +14,9 @@ tournaments.each_with_index do |tournament, index|
       location = tournament.css('a').children.text
       # May want to use this date method below to get the tournament's start date
       # So that we can sort upcoming events by start date
-      # month_and_day = tournament.css('td')[-2].children.text[/^\d*\/\d*/]
-      # year = tournament.css('td')[-2].children.text[/\d\d\d\d/] || Date.today.year
-      # sortable_date = Date.parse("#{year}/#{month_and_day}")
+      month_and_day = tournament.css('td')[-2].children.text[/^\d*\/\d*/]
+      year = tournament.css('td')[-2].children.text[/\d\d\d\d/] || Date.today.year
+      sortable_date = Date.parse("#{year}/#{month_and_day}")
 
       tournament.css('span').children.each do |event|
           url = "https://www.cross-tables.com#{event.attribute('href').value}"
@@ -30,6 +30,7 @@ tournaments.each_with_index do |tournament, index|
           number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
           p date
           p number_of_players
+          p sortable_date
       end
     end
   end
