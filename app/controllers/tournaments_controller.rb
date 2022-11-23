@@ -8,7 +8,6 @@ class TournamentsController < ApplicationController
   def index
     all_crosstables_events
     @events = Event.all
-    # authorize @events
     @tournaments = policy_scope(Tournament)
   end
 
@@ -49,7 +48,7 @@ class TournamentsController < ApplicationController
     doc = Nokogiri::HTML(html)
     # This returns a string date, since often the date is a range,
     # which is not easy to parse into a Date object. See above
-    date = doc.css('p').children[2].text[/\w.*202\d/]
+    date = doc.css('p').children[2].text[/\w.*20\d\d/]
     xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
     number_of_players = doc.css('p').children[8].text.to_i
     number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
