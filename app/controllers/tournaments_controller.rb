@@ -26,9 +26,9 @@ class TournamentsController < ApplicationController
           location = tournament.css('a').children.text
           # May want to use this date method below to get the tournament's start date
           # So that we can sort upcoming events by start date
-          # month_and_day = tournament.css('td')[-2].children.text[/^\d*\/\d*/]
-          # year = tournament.css('td')[-2].children.text[/\d\d\d\d/] || Date.today.year
-          # sortable_date = Date.parse("#{year}/#{month_and_day}")
+          month_and_day = tournament.css('td')[-2].children.text[/^\d*\/\d*/]
+          year = tournament.css('td')[-2].children.text[/\d\d\d\d/] || Date.today.year
+          sortable_date = Date.parse("#{year}/#{month_and_day}")
 
           tournament.css('span').children.each do |event|
             url = "https://www.cross-tables.com#{event.attribute('href').value}"
@@ -40,7 +40,7 @@ class TournamentsController < ApplicationController
             xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
             number_of_players = doc.css('p').children[8].text.to_i
             number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
-            Event.create!(location: location, rounds: number_of_games, number_of_players: number_of_players, date: date)
+            Event.create!(location: location, rounds: number_of_games, number_of_players: number_of_players, date: sortable_date, xtables_id: xtables_id)
           end
         end
       end

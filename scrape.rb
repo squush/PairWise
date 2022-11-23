@@ -28,6 +28,8 @@ tournaments.each_with_index do |tournament, index|
           xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
           number_of_players = doc.css('p').children[8].text.to_i
           number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
+          p date
+          p number_of_players
       end
     end
   end
