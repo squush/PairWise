@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'json'
 
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: %i[show]
@@ -8,20 +9,44 @@ class TournamentsController < ApplicationController
   def index
     all_crosstables_events
     @events = Event.all
+    @tournament = Tournament.new
     @tournaments = policy_scope(Tournament)
   end
 
+  def new
+    authorize @tournament, policy_class: TournamentPolicy
+  end
+
+  def create
+    @tournament = Tournament.new(tournament_params)
+    @event = Event.find(params[:tournament][:event].to_i)
+    @tournament.event = @event
+    @tournament.user = current_user
+
+    if @tournament.save!
+      redirect_to @tournament, notice: "Tournament has been successfully created"
+    else
+      render :new, status: :unprocessable_entity
+    end
+
+    authorize @tournament, policy_class: TournamentPolicy
+  end
+
   def show
+    @tournament = Tournament.find(params[:id])
   end
 
   private
+
+  def tournament_params
+    params.require(:tournament).permit(:pairing_system, :number_of_winners)
+  end
 
   def all_crosstables_events
     url = 'https://www.cross-tables.com'
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
     tournaments = doc.css('#utblock .xtdatatable tr')
-    Event.destroy_all
 
     tournaments.each_with_index do |tournament, index|
       if index.positive? && index < tournaments.count - 2
@@ -52,7 +77,8 @@ class TournamentsController < ApplicationController
     xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
     number_of_players = doc.css('p').children[8].text.to_i
     number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
-    Event.create!(location: @location, rounds: number_of_games, number_of_players: number_of_players, date: @sortable_date, xtables_id: xtables_id)
+
+    Event.create!(location: @location, rounds: number_of_games, number_of_players: number_of_players, date: @sortable_date, xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
   end
 
   def set_tournament
