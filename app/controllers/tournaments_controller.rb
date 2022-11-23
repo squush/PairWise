@@ -10,6 +10,14 @@ class TournamentsController < ApplicationController
     @tournaments = policy_scope(Tournament)
   end
 
+  def new
+    # @tournament = Tournament.new
+    # @event = Event.find(params[:id])
+  end
+
+  def create
+  end
+
   private
 
   def all_crosstables_events
