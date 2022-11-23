@@ -2,13 +2,17 @@ require 'nokogiri'
 require 'open-uri'
 
 class TournamentsController < ApplicationController
+  before_action :set_tournament, only: %i[show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
-  # Starting with scraping cross-tables to build an index page for Events
   def index
     all_crosstables_events
     @events = Event.all
     # authorize @events
     @tournaments = policy_scope(Tournament)
+  end
+
+  def show
   end
 
   private
@@ -47,4 +51,8 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def set_tournament
+    @tournament = Tournament.find(params[:id])
+    authorize(@tournament)
+  end
 end
