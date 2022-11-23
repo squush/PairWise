@@ -20,9 +20,6 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     @event = params[:tournament][:event]
     @tournament.event = @event
-    @tournament.location = @event.location
-    @tournament.date = @event.date
-    @tournament.rounds = @event.rounds
     @tournament.user = current_user
     authorize @tournament, policy_class: TournamentPolicy
   end
