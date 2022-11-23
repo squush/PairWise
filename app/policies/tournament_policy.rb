@@ -9,4 +9,15 @@ class TournamentPolicy < ApplicationPolicy
       true
     end
   end
+
+  # Everyone should be able to see this.
+  def show?
+    true
+  end
+
+  private
+
+  def user_is_owner?
+    user == record.user
+  end
 end
