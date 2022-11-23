@@ -5,6 +5,7 @@ class TournamentPolicy < ApplicationPolicy
       scope.all
     end
 
+    # TODO: Should this be in scope?
     def index
       true
     end
