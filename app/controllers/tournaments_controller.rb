@@ -7,12 +7,11 @@ class TournamentsController < ApplicationController
   def index
     all_crosstables_events
     @events = Event.all
+    @tournament = Tournament.new
     @tournaments = policy_scope(Tournament)
   end
 
   def new
-    # @tournament = Tournament.new
-    # @event = Event.find(params[:id])
   end
 
   def create
