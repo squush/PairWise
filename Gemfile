@@ -31,6 +31,12 @@ gem "jbuilder"
 
 gem "pundit"
 
+gem "sidekiq"
+
+gem "sidekiq-failures", "~> 1.0"
+
+gem 'whenever', require: false
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
