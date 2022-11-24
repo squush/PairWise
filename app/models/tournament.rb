@@ -7,7 +7,7 @@ class Tournament < ApplicationRecord
   # TODO: Possibly need a validation for number_of_winners, but low priority
 
   enum pairing_system: {
-    swiss: 10,
-    round_robin: 20
+    "Swiss" => 10,
+    "round-robin" => 20
   }
 end

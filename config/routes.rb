@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   resources :tournaments, only: %i[index new create show]
 
-  resources :matchups, only: %i[edit update]
+  resources :matchups, only: %i[update]
+  get "/matchups/:id/set_score", to: "matchups#set_score", as: :set_score
 
   get "/contact", to: "pages#contact_us", as: :contact_us
   get "/profile", to: "pages#my_profile", as: :my_profile
