@@ -2,7 +2,7 @@
   <div class="">
 
     <div class="">
-      <h3 class="my-2 text-center border-bottom border-2">Pairwise Tournaments</h3>
+      <h3 class="my-2 text-center border-bottom border-2">Ongoing Tournaments</h3>
       <div class="d-flex flex-wrap">
         <% @pw_tournaments.each do |tournament| %>
           <%= render "tournament", tournament: tournament %>
@@ -11,12 +11,15 @@
     </div>
 
     <div class="">
-      <h3 class="my-2 text-center border-bottom border-2">NASPA Events</h3>
+      <h3 class="my-2 text-center border-bottom border-2">Ongoing Events</h3>
       <div class="d-flex flex-wrap">
         <% @events.each do |event| %>
           <%= render "event", event: event %>
         <% end %>
       </div>
     </div>
+
+    <div class="tournament-card">Breakfast</div>
+    <br>
   </div>
 </div>

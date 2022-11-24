@@ -4,7 +4,9 @@ TODO: Flesh these out. The event-card and tournament-card classes are used on
       page. These currently share most styles, but that can (and probably should
       be) overwritten.
 */
-
+// .container {
+//   background-color: black;
+// }
 // Style shared by all card types
 .tournament-card, .event-card {
   border-radius: 14px;
@@ -26,7 +28,20 @@ TODO: Flesh these out. The event-card and tournament-card classes are used on
   &:hover {
     box-shadow: 0 0 3px 3px $card-text-color;
   }
+  background-size: cover;
+  background-position: center;
+  background-color: $light_gray;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
-
 // Custom styling for event cards
 .event-card { }
