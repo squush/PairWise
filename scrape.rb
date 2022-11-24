@@ -7,11 +7,30 @@ html = URI.open(url)
 doc = Nokogiri::HTML(html)
 
 data = doc.css('tr.headerrow ~ tr')
-# pp data.first(2)
-# p data.first.search('td').text
+division = 1
 
 data.each do |child|
-  p child.search('td').text
+  row = child.search('td').text
+  if row.start_with?("Division")
+    division = row[/\d/].to_i
+  elsif row.start_with?(/\d/)
+    seed = row[/\d+/]
+    name = child.search('td')[1].text.strip[1..-1]
+    rating = child.search('td')[2].text.strip
+    if rating == "---"
+      rating = 0
+    else
+      rating = rating.to_i
+    end
+    Player.create!(rating: rating, seed: seed, name: name, ranking: seed, win_count: 0)
+  end
+end
+
+# @players = Player.all
+# @players.each do |player|
+#   pp player
+# end
+
 #   p child.css()
 #   if child.css == '.titlerow'
 #     p "title row"
@@ -30,7 +49,6 @@ data.each do |child|
   # p child.children.text
   # pp child.children.text[/\d+.  .+  history\n/]
   # pp child.children.text[/^\d+\..*history/]
-end
 
 # url = 'https://www.cross-tables.com'
 # html = URI.open(url)

@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'json'
+require 'date'
 
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: %i[show]
@@ -24,6 +25,7 @@ class TournamentsController < ApplicationController
     @tournament.user = current_user
 
     get_players(@tournament.xtables_id)
+    raise
 
     if @tournament.save!
       redirect_to @tournament, notice: "Tournament has been successfully created"
@@ -48,6 +50,26 @@ class TournamentsController < ApplicationController
     url = "https://www.cross-tables.com/entrants.php?u=#{id}"
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
+
+    data = doc.css('tr.headerrow ~ tr')
+    division = 1
+
+    data.each do |child|
+      row = child.search('td').text
+      if row.start_with?("Division")
+        division = row[/\d/].to_i
+      elsif row.start_with?(/\d/)
+        seed = row[/\d+/]
+        name = child.search('td')[1].text.strip[1..-1]
+        rating = child.search('td')[2].text.strip
+        if rating == "---"
+          rating = 0
+        else
+          rating = rating.to_i
+        end
+        Player.create!(rating: rating, seed: seed, name: name, ranking: seed, win_count: 0)
+      end
+    end
   end
 
   def all_crosstables_events
