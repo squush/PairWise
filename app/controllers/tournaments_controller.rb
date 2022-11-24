@@ -41,6 +41,12 @@ class TournamentsController < ApplicationController
     @player = Player.new
   end
 
+  def scoreboard
+    @tournament = Tournament.find(params[:id])
+    # @event = Event.find(params[:tournament][:event])c
+    authorize @tournament
+  end
+
   def my_tournaments
     @tournaments = Tournament.where(user: current_user)
     authorize @tournaments
