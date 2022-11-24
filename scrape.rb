@@ -7,12 +7,12 @@ html = URI.open(url)
 doc = Nokogiri::HTML(html)
 
 data = doc.css('tr')
-data.children.children.each do |child|
+data.children.each do |child|
 
-  # pp child.text[/Division \d/]
-  # pp child.children.css('a').text
-  # pp child
-  # pp child.text[/^\d+\..*/]
+  # pp child.childrentext[/Division \d/]
+  # pp child.children.children.css('a').text
+  pp child.children.text[/\d+.  .+  history\n/]
+  # pp child.children.text[/^\d+\..*history/]
 end
 
 # url = 'https://www.cross-tables.com'
