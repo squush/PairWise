@@ -1,12 +1,12 @@
 /*
 TODO: Flesh these out. The event-card and tournament-card classes are used on
-      the index page. The my-tournaments-card is used on the My Tournaments
-      page. These all currently share most styles, but that can (and probably
-      should be) overwritten.
+      the index page. The tournaments-card is also used on the My Tournaments
+      page. These currently share most styles, but that can (and probably should
+      be) overwritten.
 */
 
-// Style shared by all three
-.event-card, .tournament-card, .my-tournament-card {
+// Style shared by all card types
+.tournament-card, .event-card {
   border-radius: 14px;
   padding: 8px;
   background-color: white;
@@ -17,8 +17,8 @@ TODO: Flesh these out. The event-card and tournament-card classes are used on
   }
 }
 
-// Style shared by the two Pairwise tournament variations
-.tournament-card, .my-tournament-card {
+// Custom styling for Pairwise tournament cards
+.tournament-card {
   a {
     color: $card-text-color;
   }
@@ -28,11 +28,5 @@ TODO: Flesh these out. The event-card and tournament-card classes are used on
   }
 }
 
-// Custom sstyline tuff for events
+// Custom styling for event cards
 .event-card { }
-
-// Custom styling for tournaments
-.tournament-card { }
-
-// Custom styling for my tournaments
-.my-tournament-card { }
