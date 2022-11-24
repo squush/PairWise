@@ -8,7 +8,7 @@ TODO: Flesh these out. The event-card and tournament-card classes are used on
 // Style shared by all card types
 .tournament-card, .event-card {
   border-radius: 14px;
-  padding: 8px;
+  padding: 6px;
   background-color: white;
   color: $card-text-color;
 
@@ -29,4 +29,32 @@ TODO: Flesh these out. The event-card and tournament-card classes are used on
 }
 
 // Custom styling for event cards
-.event-card { }
+.event-card {
+  // height: 140px;
+  // box-shadow: 3px 3px 2px 2px $gray;
+  border: 1px solid $dark_blue;
+  padding: 20px;
+  font-size: 14px;
+  color: $dark_blue;
+
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 18px;
+  }
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: $royal_blue;
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  a:hover {
+    box-shadow: 0 0 3px 0 $dark_blue;
+    color: $light-gray;
+    background-color: $dark_blue;
+  }
+}
