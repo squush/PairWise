@@ -13,6 +13,7 @@
 }
 
 .scoreboard-player-card {
+  box-shadow: 10px 10px $gray;
   display: flex;
   flex-wrap: wrap;
   // justify-content: space-between;
@@ -45,6 +46,18 @@
 }
 
 .first-row {
+  display: flex;
   border: solid green 3px;
+  flex-direction: row;
+  align-items: stretch;
   justify-content: space-between;
+  // justify-content: space-between;
+}
+
+.second-row {
+  display: flex;
+  width: 115px;
+  height: 115px;
+  justify-content: center;
+
 }
