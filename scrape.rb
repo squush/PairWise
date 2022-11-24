@@ -7,10 +7,24 @@ html = URI.open(url)
 doc = Nokogiri::HTML(html)
 
 data = doc.css('tr.headerrow ~ tr')
+# pp data.first(2)
+# p data.first.search('td').text
 
-data.first(1).each do |child|
-  pp child.search('td').first.text.match(/\d+/)[0].to_i
-  pp child.search('td')[1].text.strip
+data.each do |child|
+  p child.search('td').text
+#   p child.css()
+#   if child.css == '.titlerow'
+#     p "title row"
+#   elsif child.css == 'row1' || child.css == 'row0'
+#     pp child.search('td').first.text.match(/\d+/)[0].to_i
+#     pp child.search('td')[1].text.strip
+#     pp child.search('td')[2].text.strip
+#   end
+
+  # pp child.search('td')[3].text.strip
+  # pp child.search('td')[4].text.strip
+  # pp child.search('td')[5].text.strip
+  # pp child.search('td')[6].text.strip
   # pp child.childrentext[/Division \d/]
   # pp child.children.children.css('a').text
   # p child.children.text
