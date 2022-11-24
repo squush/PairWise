@@ -7,7 +7,7 @@ class TournamentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    all_crosstables_events
+    # all_crosstables_events
     @events = Event.all
     @tournament = Tournament.new
     @tournaments = policy_scope(Tournament)
@@ -34,6 +34,7 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament = Tournament.find(params[:id])
+    raise
   end
 
   private
