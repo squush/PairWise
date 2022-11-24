@@ -1,0 +1,11 @@
+<div class="col-3 p-1">
+  <div class="event-card">
+    <h4 class="text-center"><%= event.location %></h4>
+    <div class="">
+      <p><%= event.date %></p>
+      <p><%= event.rounds %> games</p>
+      <p><%= event.number_of_players || "0" %> players</p>
+      <%= render "form", tournament: @tournament, event: event %>
+    </div>
+  </div>
+</div>
