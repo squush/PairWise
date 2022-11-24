@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :tournaments, only: %i[index new create show]
 
   resources :matchups, only: %i[edit update]
+
+  get "/contact", to: "pages#contact_us", as: :contact_us
 end
