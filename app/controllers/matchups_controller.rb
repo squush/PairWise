@@ -1,7 +1,7 @@
 class MatchupsController < ApplicationController
-  before_action :set_matchup, only: %i[edit update]
+  before_action :set_matchup, only: %i[set_score update]
 
-  def edit
+  def set_score
   end
 
   def update

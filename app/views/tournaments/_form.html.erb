@@ -1,6 +1,6 @@
 <div class="d-flex">
     <%= simple_form_for tournament do |f| %>
-      <%= f.input :pairing_system, collection: ['swiss', 'round_robin', 'KOTH'] %>
+      <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false %>
       <%= f.input :number_of_winners %>
       <%= f.button :submit, class: "btn btn-outline-primary w-100" %>
       <%= f.hidden_field :event, value: event.id %>

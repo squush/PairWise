@@ -6,12 +6,12 @@ class MatchupPolicy < ApplicationPolicy
     # end
   end
 
-  def edit?
-    update?
-  end
-
   def update?
     user_is_owner?
+  end
+
+  def set_score?
+    update?
   end
 
   private
