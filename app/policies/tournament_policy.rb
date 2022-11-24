@@ -23,6 +23,10 @@ class TournamentPolicy < ApplicationPolicy
     true
   end
 
+  def my_tournaments?
+    true
+  end
+
   private
 
   def user_is_owner?

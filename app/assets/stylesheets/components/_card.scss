@@ -1,7 +1,12 @@
-// TODO: Flesh this out. This is used in the partial _tournament.html.erb.
-//       It can be seen on the index page.
+/*
+TODO: Flesh these out. The event-card and tournament-card classes are used on
+      the index page. The my-tournaments-card is used on the My Tournaments
+      page. These all currently share most styles, but that can (and probably
+      should be) overwritten.
+*/
 
-.tournament-card, .event-card {
+// Style shared by all three
+.event-card, .tournament-card, .my-tournament-card {
   border-radius: 14px;
   padding: 8px;
   background-color: white;
@@ -12,7 +17,8 @@
   }
 }
 
-.tournament-card {
+// Style shared by the two Pairwise tournament variations
+.tournament-card, .my-tournament-card {
   a {
     color: $card-text-color;
   }
@@ -22,8 +28,11 @@
   }
 }
 
-// TODO: Flesh this out. This is used in the partial _event.html.erb.
-//       It can be seen on the index page.
-.event-card {
+// Custom sstyline tuff for events
+.event-card { }
 
-}
+// Custom styling for tournaments
+.tournament-card { }
+
+// Custom styling for my tournaments
+.my-tournament-card { }

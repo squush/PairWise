@@ -41,6 +41,11 @@ class TournamentsController < ApplicationController
     # raise
   end
 
+  def my_tournaments
+    @tournaments = Tournament.where(user: current_user)
+    authorize @tournaments
+  end
+
   private
 
   def tournament_params
