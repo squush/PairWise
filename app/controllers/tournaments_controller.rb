@@ -44,8 +44,8 @@ class TournamentsController < ApplicationController
   def scoreboard
     @tournament = Tournament.find(params[:id])
     # @event = Event.find(params[:tournament][:event])
-    # raise
-    authorize @event, policy_class: TournamentPolicy
+    create_event(event)
+    authorize @tournament
   end
 
   def my_tournaments
