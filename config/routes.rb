@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get "/contact", to: "pages#contact_us", as: :contact_us
   get "/profile", to: "pages#my_profile", as: :my_profile
+
+  get "/my_tournaments", to: "tournaments#my_tournaments"
 end
