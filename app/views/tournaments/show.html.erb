@@ -36,17 +36,19 @@
       <% end %>
     </ul>
     <% if @tournament.user == current_user %>
+      <div class="d-none">
       <%# TODO: When making the Add Players route, replace this link %>
-      <p>Add a player:</p>
-      <%= simple_form_for [@tournament, @player] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :rating %>
-        <%= f.input :division %>
-        <%= f.input :seed %>
-        <%= f.input :ranking %>
-        <%= f.input :crosstables_id, label: "Crosstables ID" %>
-        <%= f.submit "Add player", class: "btn btn-sm btn-primary" %>
-      <% end %>
+        <p>Add a player:</p>
+        <%= simple_form_for [@tournament, @player] do |f| %>
+          <%= f.input :name %>
+          <%= f.input :rating %>
+          <%= f.input :division %>
+          <%= f.input :seed %>
+          <%= f.input :ranking %>
+          <%= f.input :crosstables_id, label: "Crosstables ID" %>
+          <%= f.submit "Add player", class: "btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
