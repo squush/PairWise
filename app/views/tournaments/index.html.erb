@@ -1,25 +1,27 @@
-<div class="container">
-  <div class="">
-
+<body class="tournaments">
+  <div class="container">
     <div class="">
-      <h3 class="my-2 text-center border-bottom border-2">Ongoing Tournaments</h3>
-      <div class="d-flex flex-wrap">
-        <% @pw_tournaments.each do |tournament| %>
-          <%= render "tournament", tournament: tournament %>
-        <% end %>
+    <br><br><br>
+      <div class="">
+        <h1 class="my-2 text-center border-2">ONGOING TOURNAMENTS</h1>
+        <div class="d-flex flex-wrap">
+          <% @pw_tournaments.each do |tournament| %>
+            <%= render "tournament", tournament: tournament %>
+          <% end %>
+        </div>
+        <div class="tournament-card">Breakfast</div>
       </div>
-    </div>
-
-    <div class="">
-      <h3 class="my-2 text-center border-bottom border-2">Ongoing Events</h3>
-      <div class="d-flex flex-wrap">
-        <% @events.each do |event| %>
-          <%= render "event", event: event %>
-        <% end %>
+      <br>
+      <div class="">
+        <h1 class="my-2 text-center border-2">UPCOMING EVENTS</h1>
+        <div class="d-flex flex-wrap">
+          <% @events.each do |event| %>
+            <%= render "event", event: event %>
+          <% end %>
+        </div>
       </div>
-    </div>
 
-    <div class="tournament-card">Breakfast</div>
-    <br>
+      <br>
+    </div>
   </div>
-</div>
+</body>

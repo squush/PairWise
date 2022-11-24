@@ -4,9 +4,18 @@ TODO: Flesh these out. The event-card and tournament-card classes are used on
       page. These currently share most styles, but that can (and probably should
       be) overwritten.
 */
-// .container {
-//   background-color: black;
-// }
+h1 {
+  color: white;
+  font-weight: 600;
+  text-shadow: $gray 1px 0 10px;
+}
+
+.tournaments {
+  background-image: url(space-background.jpg);
+  background-repeat: no-repeat;
+  height: auto;
+  }
+
 // Style shared by all card types
 .tournament-card, .event-card {
   border-radius: 14px;
