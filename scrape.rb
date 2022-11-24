@@ -6,12 +6,15 @@ url = "https://www.cross-tables.com/entrants.php?u=15719"
 html = URI.open(url)
 doc = Nokogiri::HTML(html)
 
-data = doc.css('tr')
-data.children.each do |child|
+data = doc.css('tr.headerrow ~ tr')
 
+data.first(1).each do |child|
+  pp child.search('td').first.text.match(/\d+/)[0].to_i
+  pp child.search('td')[1].text.strip
   # pp child.childrentext[/Division \d/]
   # pp child.children.children.css('a').text
-  pp child.children.text[/\d+.  .+  history\n/]
+  # p child.children.text
+  # pp child.children.text[/\d+.  .+  history\n/]
   # pp child.children.text[/^\d+\..*history/]
 end
 
