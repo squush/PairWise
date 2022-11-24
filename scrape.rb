@@ -10,7 +10,8 @@ data = doc.css('tr')
 data.children.children.each do |child|
 
   # pp child.text[/Division \d/]
-  pp child.children.css('a')
+  # pp child.children.css('a').text
+  # pp child
   # pp child.text[/^\d+\..*/]
 end
 
