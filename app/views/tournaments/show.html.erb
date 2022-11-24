@@ -6,7 +6,7 @@
     <p>Date: <%= @tournament.date.strftime('%B %e, %Y') %></p>
     <p>Number of rounds: <%= @tournament.rounds %></p>
     <p>Number of winners:
-      <%= @tournament.number_of_winners.nil? ? "unknown" : @tournament.number_of_winners %>
+      <%= @tournament.number_of_winners || "unknown" %>
     </p>
     <p>Pairing system: <%= @tournament.pairing_system.capitalize %></p>
   </div>
