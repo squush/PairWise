@@ -48,6 +48,11 @@ class TournamentsController < ApplicationController
     authorize @event, policy_class: TournamentPolicy
   end
 
+  def my_tournaments
+    @tournaments = Tournament.where(user: current_user)
+    authorize @tournaments
+  end
+
   private
 
   def tournament_params
