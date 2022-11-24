@@ -4,8 +4,7 @@ emails = ["a@a.a", "b@b.b", "c@c.c", "d@d.d", "e@e.e"]
 puts "Destroying test users"
 emails.each do |email|
   puts " ... #{email}"
-  test_user = User.find_by(email: email)
-  test_user.try(:destroy)
+  User.find_by(email: email).try(:destroy)
 end
 
 # This just destroy the specific test events, not the whole DB
