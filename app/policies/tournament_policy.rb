@@ -23,6 +23,10 @@ class TournamentPolicy < ApplicationPolicy
     true
   end
 
+  def scoreboard?
+    true
+  end
+
   def my_tournaments?
     true
   end
