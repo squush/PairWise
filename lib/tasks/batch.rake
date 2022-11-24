@@ -31,21 +31,21 @@ namespace :batch do
     end
   end
 
-end
+  def create_event(event)
+    p "creating event"
+    new_url = "https://www.cross-tables.com#{event.attribute('href').value}"
+    p new_url
+    html = URI.parse(new_url).read
+    p "URI worked"
+    doc = Nokogiri::HTML(html)
+    # This returns a string date, since often the date is a range,
+    # which is not easy to parse into a Date object. See above
+    date = doc.css('p').children[2].text[/\w.*20\d\d/]
+    xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
+    number_of_players = doc.css('p').children[8].text.to_i
+    number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
 
-def create_event(event)
-  p "creating event"
-  new_url = "https://www.cross-tables.com#{event.attribute('href').value}"
-  p new_url
-  html = URI.open(new_url)
-  p "URI worked"
-  doc = Nokogiri::HTML(html)
-  # This returns a string date, since often the date is a range,
-  # which is not easy to parse into a Date object. See above
-  date = doc.css('p').children[2].text[/\w.*20\d\d/]
-  xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
-  number_of_players = doc.css('p').children[8].text.to_i
-  number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
+    Event.create!(location: @location, rounds: number_of_games, number_of_players: number_of_players, date: @sortable_date, xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
+  end
 
-  Event.create!(location: @location, rounds: number_of_games, number_of_players: number_of_players, date: @sortable_date, xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
 end
