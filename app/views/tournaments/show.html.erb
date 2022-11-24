@@ -6,20 +6,33 @@
     <p>Date: <%= @tournament.event.date.strftime('%B %e, %Y') ||
       @tournament.date.strftime('%B %e, %Y')
     %></p>
-    <p>Number of rounds: <%= @tournament.rounds %></p>
+    <p>Number of rounds: <%= @tournament.rounds || "unknown" %></p>
     <p>Number of winners:
       <%= @tournament.number_of_winners || "unknown" %>
     </p>
-    <p>Pairing system: <%= @tournament.pairing_system.capitalize %></p>
+    <p>Pairing system: <%= @tournament.pairing_system %></p>
   </div>
 
   <div class="mb-3 border-bottom border-3">
     <p>Players</p>
     <ul>
-      <% @tournament.players.each do |player| %>
-        <li><%= player.name %></li>
+      <% if @tournament.players.nil? %>
+        <div>No players added yet in Pairwise</div>
+      <% else %>
+        <% @tournament.players.each do |player| %>
+          <li><%= player.name %></li>
+        <% end %>
       <% end %>
     </ul>
+    <div>
+      <% if @tournament.user == current_user %>
+        <div>
+          <%# TODO: When making the Add Players route, replace this link %>
+          <%= link_to "Add players", "#",
+            class: "btn btn-sm btn-outline-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <%# TODO: Make this into a partial.
@@ -30,24 +43,28 @@
             page, but that might get tricky.
             https://kitt.lewagon.com/knowledge/tutorials/inline_edit
   %>
-  <div class="mb-3 border-bottom border-3">
+  <div class="border">
     <p>Rounds</p>
-    <ul class="mb-3">
+    <ul class="">
       <% @tournament.matchups.each do |matchup| %>
-        <li class="d-flex justify-content-between col-5 border-bottom align-items-center">
-          <div>
-            Round <%= matchup.round_number %>:
-            <div class="px-2">
-              <%= matchup.player1.name %>
-              (<%= matchup.player1_score.nil? ? "0" : matchup.player1_score %>) :
-              <%= matchup.player2.name %>
-              (<%= matchup.player2_score.nil? ? "0" : matchup.player2_score %>)
-            </div>
-          </div>
-          <div>
-            <%= link_to "Set score", edit_matchup_path(matchup),
-              class: "btn btn-sm btn-outline-primary" %>
-          </div>
+        <li class="">
+          Round <%= matchup.round_number %>:
+          <%= matchup.player1.name %>
+          (<%= matchup.player1_score.nil? ? "0" : matchup.player1_score %>) :
+          <%= matchup.player2.name %>
+          (<%= matchup.player2_score.nil? ? "0" : matchup.player2_score %>)
+
+          <% round_not_started = matchup.player1_score.nil? && matchup.player2_score.nil? %>
+          <% if @tournament.user == current_user %>
+            <%= link_to "Set score", set_score_path(matchup),
+              class: "btn btn-sm btn-outline-success" %>
+
+            <%# TODO: When making the Edit Pairing route, replace this link %>
+            <% if round_not_started %>
+              <%= link_to "Edit pairing", "#",
+                class: "btn btn-sm btn-outline-danger" %>
+            <% end %>
+          <% end %>
         </li>
       <% end %>
     </ul>
