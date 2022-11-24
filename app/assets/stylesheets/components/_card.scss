@@ -1,0 +1,29 @@
+// TODO: Flesh this out. This is used in the partial _tournament.html.erb.
+//       It can be seen on the index page.
+
+.tournament-card, .event-card {
+  border-radius: 14px;
+  padding: 8px;
+  background-color: white;
+  color: $card-text-color;
+
+  h4 {
+    color: red;
+  }
+}
+
+.tournament-card {
+  a {
+    color: $card-text-color;
+  }
+
+  &:hover {
+    box-shadow: 0 0 3px 3px $card-text-color;
+  }
+}
+
+// TODO: Flesh this out. This is used in the partial _event.html.erb.
+//       It can be seen on the index page.
+.event-card {
+
+}

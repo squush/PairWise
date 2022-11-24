@@ -1,0 +1,13 @@
+<div class="col-3 p-2">
+  <div class="tournament-card">
+    <%= link_to tournament_path(tournament), class: "text-decoration-none" do %>
+      <h4 class="text-center"><%= tournament.event.location %></h4>
+      <div class="text-center">
+        <p><%= tournament.event.date %></p>
+        <p><%= tournament.event.rounds %> games</p>
+        <p><%= tournament.event.number_of_players || "0" %> players registered</p>
+        <p><%= tournament.players.count %> players in Pairwise</p>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,12 +1,22 @@
-<div class="container d-flex flex-wrap justify-content-around">
-  <% @events.each do |event| %>
-    <%# event-card class does nothing now, but should be created in our CSS %>
-    <div class="col-4 mb-5 event-card">
-      <h4><%= event.location %></h4>
-      <p><%= event.date %></p>
-      <p><%= event.rounds %> games</p>
-      <p><%= event.number_of_players || "0" %> players</p>
-      <%= render "form", tournament: @tournament, event: event %>
+<div class="container">
+  <div class="">
+
+    <div class="">
+      <h3 class="my-2 text-center border-bottom border-2">Pairwise Tournaments</h3>
+      <div class="d-flex flex-wrap">
+        <% @pw_tournaments.each do |tournament| %>
+          <%= render "tournament", tournament: tournament %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+
+    <div class="">
+      <h3 class="my-2 text-center border-bottom border-2">NASPA Events</h3>
+      <div class="d-flex flex-wrap">
+        <% @events.each do |event| %>
+          <%= render "event", event: event %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
