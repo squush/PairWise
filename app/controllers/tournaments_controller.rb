@@ -33,7 +33,7 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    @tournament = Tournament.find(params[:id])
+    # raise
   end
 
   private

@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   resources :tournaments, only: %i[index new create show]
 
-  resources :matchups, only: %i[edit]
+  resources :matchups, only: %i[edit update]
 end
