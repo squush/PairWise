@@ -4,17 +4,16 @@ emails = ["a@a.a", "b@b.b", "c@c.c", "d@d.d", "e@e.e"]
 puts "Destroying test users"
 emails.each do |email|
   puts " ... #{email}"
-  test_user = User.find_by(email: email)
-  test_user.nil? ? "No users to delete" : test_user.destroy
+  User.find_by(email: email).try(:destroy)
 end
 
 # This just destroy the specific test events, not the whole DB
 puts "Destroying test events"
-Event.find_by(location: "Mile End, Montreal",  date: "2022-12-04", rounds: 3).destroy
-Event.find_by(location: "Hochelaga, Montreal", date: "2022-12-05", rounds: 2).destroy
-Event.find_by(location: "Ottawa",              date: "2022-12-04", rounds: 2).destroy
-Event.find_by(location: "Mile End, Montreal",  date: "2023-05-01", rounds: 3).destroy
-Event.find_by(location: "Laval",               date: "2022-12-12", rounds: 3).destroy
+Event.find_by(location: "Mile End, Montreal",  date: "2022-12-04", rounds: 3).try(:destroy)
+Event.find_by(location: "Hochelaga, Montreal", date: "2022-12-05", rounds: 2).try(:destroy)
+Event.find_by(location: "Ottawa",              date: "2022-12-04", rounds: 2).try(:destroy)
+Event.find_by(location: "Mile End, Montreal",  date: "2023-05-01", rounds: 3).try(:destroy)
+Event.find_by(location: "Laval",               date: "2022-12-12", rounds: 3).try(:destroy)
 
 puts "Creating users"
 user_a = User.create!(email: emails[0], password: "123456")
