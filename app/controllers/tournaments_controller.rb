@@ -38,7 +38,7 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    # raise
+    @player = Player.new
   end
 
   def scoreboard
