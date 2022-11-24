@@ -23,6 +23,8 @@ class TournamentsController < ApplicationController
     @tournament.event = @event
     @tournament.user = current_user
 
+    get_players(@tournament.xtables_id)
+
     if @tournament.save!
       redirect_to @tournament, notice: "Tournament has been successfully created"
     else
@@ -40,6 +42,12 @@ class TournamentsController < ApplicationController
 
   def tournament_params
     params.require(:tournament).permit(:pairing_system, :number_of_winners)
+  end
+
+  def get_players(id)
+    url = "https://www.cross-tables.com/entrants.php?u=#{id}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML(html)
   end
 
   def all_crosstables_events
