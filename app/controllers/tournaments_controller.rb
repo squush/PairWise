@@ -47,14 +47,14 @@ class TournamentsController < ApplicationController
   end
 
   def get_players(id)
-    url = "https://www.cross-tables.com/entrants.php?u=#{id}"
+    url = "https://www.cross-tables.com/entrants.php?u=15719"
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
 
     data = doc.css('tr.headerrow ~ tr')
     division = 1
 
-    data.each do |child|
+    data.first(1).each do |child|
       row = child.search('td').text
       if row.start_with?("Division")
         division = row[/\d/].to_i
@@ -62,12 +62,13 @@ class TournamentsController < ApplicationController
         seed = row[/\d+/]
         name = child.search('td')[1].text.strip[1..-1]
         rating = child.search('td')[2].text.strip
+        xtables_id = child.search('td').children.children.css('a').attribute('href').value[/\d{5}/]
         if rating == "---"
           rating = 0
         else
           rating = rating.to_i
         end
-        Player.create!(rating: rating, seed: seed, name: name, ranking: seed, win_count: 0)
+        Player.create!(rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, xtables_id: xtables_id)
       end
     end
   end
