@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'socket'
 
 class ScrapeJob < ApplicationJob
   queue_as :default
@@ -40,7 +41,7 @@ class ScrapeJob < ApplicationJob
     xtables_id = event.attribute('href').value[/\d\d\d\d\d$/].to_i
     number_of_players = doc.css('p').children[8].text.to_i
     number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
-
+    p "working!"
     Event.create!(location: @location, rounds: number_of_games, number_of_players: number_of_players, date: @sortable_date, xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
   end
 end
