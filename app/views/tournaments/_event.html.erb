@@ -1,14 +1,16 @@
-<div class="col-6 p-3">
+<div class="col-6 p-3" data-controller="start-tournament">
   <div class="event-card d-flex justify-content-between align-items-stretch">
     <div class="d-flex flex-column justify-content-around">
       <h3><%= event.location %></h3>
-      <div><a class="event-card"> Start now </a></div>
+      <div><a class="event-card"
+        data-action="click->start-tournament#toggleForm"> Start now </a></div>
     </div>
     <div class="px-3 d-flex flex-column justify-content-between align-self-stretch">
       <p><i class="fa-regular fa-calendar-days px-1"></i> <%= event.date %></p>
       <p><i class="fa-solid fa-user px-1"></i> <%= event.number_of_players || "0" %> players</p>
       <p><i class="fa-solid fa-rotate px-1"></i><%= event.rounds %> games</p>
-      <div class="d-none">
+      <div class="d-none"
+        data-start-tournament-target="form">
         <%= render "form", tournament: @tournament, event: event %>
       </div>
     </div>
