@@ -1,12 +1,19 @@
-<div class="col-3 p-2">
+<div class="col-12 p-2">
   <div class="tournament-card">
-    <%= link_to tournament_path(tournament), class: "text-decoration-none" do %>
-      <h4 class="text-center"><%= tournament.event.location %></h4>
-      <div class="text-center">
-        <p><%= tournament.event.date %></p>
-        <p><%= tournament.event.rounds %> games</p>
-        <p><%= tournament.event.number_of_players || "0" %> players registered</p>
-        <p><%= tournament.players.count %> players in Pairwise</p>
+      <div class="col-lg">
+      <%= link_to tournament_path(tournament), class: "text-decoration-none" do %>
+        <h3 class="tournament-date"><%= tournament.event.date %></h3>
+        <h2 class="tournament-location"><%= tournament.event.location %></h2>
+        <p class="tournament-rated">Rated by <em>NASPA©</em></p>
+        <p class="tournament-powered">Powered by <em>PairWise</em></p>
+      </div>
+      <div class="col-sm players">
+        <h4 class="tournament-head-cat"># PLAYERS</h4>
+        <h1 class="tournament-big-num"><%= tournament.event.number_of_players || "0" %></h1>
+      </div>
+      <div class="col-sm games">
+        <h4 class="tournament-head-cat"># GAMES</h4>
+        <h1 class="tournament-big-num"><%= tournament.event.rounds %></h1>
       </div>
     <% end %>
   </div>

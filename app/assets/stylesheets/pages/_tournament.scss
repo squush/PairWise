@@ -1,20 +1,15 @@
-.tourney-main {
-  color: $royal_blue;
-  text-align: center;
-  // Getting rid
-  text-shadow: 0 0 white;
-  padding: 15px;
+.tournament-card {
+  padding-top: 40px;
+  padding-left: 40px;
+  height: 260px;
+  margin-bottom: 10px;
 }
 
-.tourney-secondary {
-  color: $royal_blue;
-  text-align: center;
-}
 
-.tourney-links {
-  margin: 50px auto;
-  display: flex;
-  justify-content: space-around;
+.tournaments {
+  background-image: url(space-background.jpg);
+  background-repeat: repeat;
+  height: auto;
 }
 
 .tourney-btn {
