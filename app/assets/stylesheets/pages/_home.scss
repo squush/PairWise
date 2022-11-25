@@ -1,1 +1,32 @@
-// Specific CSS for your home-page
+.homepage-banner {
+  background-size: cover;
+  padding: 300px 0;
+  background-image: url(homepage-banner.png);
+  background-repeat: no-repeat;
+  height: auto;
+}
+
+.homepage-container {
+  padding-top: 160px;
+}
+
+.homepage-banner h1 {
+  margin-left: 130px;
+  padding-top: 140px;
+  padding-bottom: 0px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.homepage-banner .homepage-text {
+  margin-left: 50px;
+  font-size: 40px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgb(255, 255, 255);
+  position: absolute;
+  bottom: 25px;
+  left: 80px;
+}
