@@ -1,53 +1,75 @@
-.tourney-main {
-  color: $royal_blue;
-  text-align: center;
-  // Getting rid
-  text-shadow: 0 0 white;
-  padding: 15px;
-}
 
-.tourney-secondary {
-  color: $royal_blue;
-  text-align: center;
-}
+// .col-sm {
+//   margin-top: 25px;
+// }
 
-.tourney-links {
-  margin: 50px auto;
-  display: flex;
-  justify-content: space-around;
-}
+// .col-lg {
+//   float: left;
+//   width: 60%;
+// }
 
-.scoreboard-link {
-  background-color: $dark_blue;
-  color: white;
-  padding: 12px 24px;
-  width: 300px;
-  border-radius: 8px;
-  text-transform: uppercase;
+// .players {
+//   float: left;
+//   margin-right: 80px;
 
-  font-size: 20px;
+// }
 
-  i {
-    font-size: 30px;
-  }
+// .games {
+//   float: left;
 
-  &:hover {
-    background-color: $royal_blue;
-    box-shadow: 0 0 3px 0 $dark_blue;
-  }
-}
+// }
 
-.tourney-info {
-  background-color: rgb(245, 230, 215);
-  display: flex;
-  justify-content: space-around;
-  margin: 30px auto;
-  padding: 20px;
-  border-radius: 8px;
-  color: $royal_blue;
-  width: 50%;
+// .container {
+//   padding-right: 50px;
+// }
 
-  p {
-    text-align: center;
-  }
-}
+// h1 {
+//   color: white;
+//   font-weight: 600;
+//   text-shadow: $gray 1px 0 10px;
+// }
+
+// .tournament-big-num {
+//   font-size: 75px;
+//   color: $dark_blue;
+//   text-align: center;
+// }
+
+
+// p {
+//   margin-bottom: 5px;
+// }
+
+// .tournament-date {
+//   margin-bottom: 20px;
+// }
+
+// .tournament-location {
+//   color: $dark_blue;
+//   font-size: 44px;
+//   font-weight: 800;
+//   margin-bottom: 30px;
+// }
+
+// .tournament-rated {
+//   color: $gray;
+//   font-size: 16px;
+//   font-weight: 400;
+// }
+
+// .tournament-powered {
+//   color: $gray;
+//   font-size: 16px;
+//   font-weight: 400;
+// }
+
+// .tournaments {
+//   background-image: url(space-background.jpg);
+//   background-repeat: no-repeat;
+//   height: auto;
+//   }
+
+// .my-2 {
+//   font-size: 60px;
+//   color: white;
+// }
