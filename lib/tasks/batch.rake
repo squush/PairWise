@@ -8,7 +8,7 @@ def create_event(event)
 
   # This returns a string date, since often the date is a range,
   # which is not easy to parse into a Date object. See above
-  date = doc.css('p').children[2].text[/\w.*20\d\d/]
+  # date = doc.css('p').children[2].text[/\w.*20\d\d/]
   xtables_id = event.attribute('href').value[/\d+$/].to_i
   number_of_players = doc.css('p').children[8].text.to_i
   rounds = doc.css('td').children.text[/games:.\d*/][/\d+/]
