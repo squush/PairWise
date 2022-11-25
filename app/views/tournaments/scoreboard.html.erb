@@ -1,6 +1,8 @@
 <div class="container scoreboard-main">
   <h1 class="text-center">Scoreboard</h1>
   <h4 class="text-center"><%= @tournament.event.location %> Championship</h4>
+
+
   <div class="scoreboard">
      <% @tournament.players.each do |player| %>
         <div class="scoreboard-player-card">
@@ -36,5 +38,12 @@
             </div>
         </div>
       <% end %>
+  </div>
+  <div id="scoreboard-back-button">
+    <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
+      <div class="tourney-btn tourney-btn-sm text-center">
+        <p><i class="fa-solid fa-angle-left"></i>BACK</p>
+      </div>
+    <% end %>
   </div>
 </div>
