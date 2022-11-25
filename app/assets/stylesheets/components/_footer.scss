@@ -23,8 +23,8 @@ ul{
 .footer{
 	background-color: $gray;
   padding: 50px 0px 50px 200px;
-  position: absolute;
-  bottom: 0;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
 }
 .footer-col{

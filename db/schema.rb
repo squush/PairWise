@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_154118) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
     t.string "username"
     t.integer "crosstables_id"
     t.index ["email"], name: "index_users_on_email", unique: true
