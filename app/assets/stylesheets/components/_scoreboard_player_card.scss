@@ -32,12 +32,12 @@
   margin-bottom: 15px;
 }
 
-.ranking {
+#ranking {
   // border: solid red 1px;
   color: $royal_blue;
 }
 
-.rating {
+#rating {
   // border: solid red 1px;
   color: $royal_blue;
 }
@@ -51,7 +51,7 @@
   color: $royal_blue;
 }
 
-.player-avatar {
+#player-avatar {
   display: flex;
   // border: solid red;
   max-width: 270px;

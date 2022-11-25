@@ -5,16 +5,16 @@
      <% @tournament.players.each do |player| %>
         <div class="scoreboard-player-card">
             <div class="first-row">
-              <div class="ranking">
+              <div id="ranking">
                 <p>1st</p>
               </div>
 
-              <div class="rating">
+              <div id="rating">
                 <p>Rating: <%= player.rating %></p>
               </div>
             </div>
 
-            <div class="player-avatar">
+            <div id="player-avatar">
               <%= image_tag "user-astronaut-solid.svg"%>
             </div>
 
@@ -22,7 +22,7 @@
               <p><strong><%= player.name %></strong></p>
             </div>
             <div id="current-ranking">
-              <p>Ranking: <%= player.ranking %></p>
+              <p><%= player.win_count %> wins</p>
             </div>
 
             <%# TODO need to calculate last game logic %>
