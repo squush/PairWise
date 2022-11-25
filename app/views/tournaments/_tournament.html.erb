@@ -1,6 +1,5 @@
 <div class="col-12 p-2">
   <div class="tournament-card">
-    <div class="card-row">
       <div class="col-lg">
       <%= link_to tournament_path(tournament), class: "text-decoration-none" do %>
         <h3 class="tournament-date"><%= tournament.event.date %></h3>
@@ -10,13 +9,12 @@
       </div>
       <div class="col-sm players">
         <h4 class="tournament-head-cat"># PLAYERS</h4>
-        <h1 class="tournament-big-num"><%= tournament.event.number_of_players || "0" %> players registered</h1>
+        <h1 class="tournament-big-num"><%= tournament.event.number_of_players || "0" %></h1>
       </div>
       <div class="col-sm games">
         <h4 class="tournament-head-cat"># GAMES</h4>
         <h1 class="tournament-big-num"><%= tournament.event.rounds %></h1>
       </div>
-    </div>
     <% end %>
   </div>
 </div>

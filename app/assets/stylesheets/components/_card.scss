@@ -11,6 +11,7 @@ be) overwritten.
   padding: 6px;
   background-color: white;
   color: $card-text-color;
+  box-shadow: 3px 3px 2px 2px $gray;
 
   h4 {
     color: $gray;
@@ -21,8 +22,7 @@ be) overwritten.
 // Custom styling for event cards
 .event-card {
   // height: 140px;
-  // box-shadow: 3px 3px 2px 2px $gray;
-  border: 1px solid $dark_blue;
+  // border: 1px solid $dark_blue;
   padding: 20px;
   font-size: 14px;
   color: $dark_blue;
