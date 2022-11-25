@@ -24,7 +24,6 @@ class TournamentsController < ApplicationController
     @tournament.event = @event
     @tournament.user = current_user
     get_players(@tournament)
-    raise
 
     if @tournament.save!
       redirect_to @tournament, notice: "Tournament has been successfully created"
