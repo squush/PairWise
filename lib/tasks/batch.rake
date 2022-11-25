@@ -13,8 +13,6 @@ def create_event(event)
   number_of_players = doc.css('p').children[8].text.to_i
   rounds = doc.css('td').children.text[/games:.\d*/][/\d+/]
 
-  p "event: #{xtables_id}"
-
   Event.create!(
     location: @location,
     rounds: rounds,
