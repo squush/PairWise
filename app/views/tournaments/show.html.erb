@@ -1,13 +1,13 @@
 <div class="container">
 
   <%# <div class="mb-3 border-bottom border-3"> %>
-    <%# <h4>Director: <%= @tournament.user.email</h4> %> %>
+    <%# <h4>Director: <%= @tournament.user.email</h4> %>
     <%# <p>Date: <%= @tournament.event.date.strftime('%B %e, %Y')</p> %>
     <%# <p>Number of rounds: <%= @tournament.event.rounds %></p>
     <%# <p>Number of winners: %>
-      <%# <%= @tournament.number_of_winners.nil? ? "unknown" : @tournament.number_of_winners %> %>
-  <%# <h1 class="mb-3 tourney-main"><%= @tournament.event.location</h1> %> %> %> %>
+    <%# <%= @tournament.number_of_winners.nil? ? "unknown" : @tournament.number_of_winners %>
 
+  <h1 class="mb-3 tourney-main"><%= @tournament.event.location %></h1>
   <div class="tourney-secondary">
     <h3>Round ? of <%= @tournament.event.rounds %></h3>
     <p>
