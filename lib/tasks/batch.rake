@@ -45,7 +45,7 @@ namespace :batch do
     number_of_players = doc.css('p').children[8].text.to_i
     number_of_games = doc.css('td').children.text[/games:.\d*/][/\d+/]
 
-    Event.create!(location: @location, rounds: number_of_games, number_of_players: number_of_players, date: @sortable_date, xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
+    Event.create!(location: @location, rounds: number_of_games, number_of_players: number_of_players, date: @sortable_date, xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
   end
 
 end

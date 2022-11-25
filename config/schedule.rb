@@ -19,6 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
+# runs twice per day automatically
 every 12.hours do
   rake "batch:scrape_xtables"
 end
