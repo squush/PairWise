@@ -11,7 +11,7 @@
 
     <div class="col-6">
       <ul>
-        <% if @tournament.players.nil? %>
+        <% if @tournament.players.nil? || @tournament.players.empty? %>
           <div>No players added yet in Pairwise</div>
         <% else %>
           <% @tournament.players.each do |player| %>
