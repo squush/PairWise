@@ -14,34 +14,27 @@
               </div>
             </div>
 
-            <div class="second-row">
+            <div class="player-avatar">
               <%= image_tag "user-astronaut-solid.svg"%>
             </div>
 
-
-          <div>
-            <p><strong><%= player.name %></strong></p>
-            <p>Ranking: <%= player.ranking %></p>
-          </div>
-        </div>
-      <% end %>
-      <% @tournament.players.each do |player| %>
-        <div class="scoreboard-player-card">
-            <div class="first-row">
-              <div class="ranking">
-                <p>1st</p>
-              </div>
-
-              <div class="rating">
-                <p>Rating: <%= player.rating %></p>
-              </div>
+            <div id="player-name">
+              <p><strong><%= player.name %></strong></p>
             </div>
-          <div>
-            <p><strong><%= player.name %></strong></p>
-            <p>Ranking: <%= player.ranking %></p>
-          </div>
+            <div id="current-ranking">
+              <p>Ranking: <%= player.ranking %></p>
+            </div>
+
+            <%# TODO need to calculate last game logic %>
+            <div id="last-game">
+              <p> Last game loading...</p>
+            </div>
+
+            <%# TODO need to calculate last game logic %>
+            <div id="next-game">
+              <p> Next game loading...</p>
+            </div>
         </div>
       <% end %>
   </div>
-
 </div>
