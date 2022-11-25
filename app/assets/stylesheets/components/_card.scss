@@ -35,7 +35,7 @@ h1 {
   text-shadow: $gray 1px 0 10px;
 }
 
-.big-num {
+.tournament-big-num {
   font-size: 75px;
   color: $dark_blue;
   text-align: center;
@@ -46,24 +46,24 @@ p {
   margin-bottom: 5px;
 }
 
-.date {
+.tournament-date {
   margin-bottom: 20px;
 }
 
-.location {
+.tournament-location {
   color: $dark_blue;
   font-size: 44px;
   font-weight: 800;
   margin-bottom: 30px;
 }
 
-.rated {
+.tournament-rated {
   color: $gray;
   font-size: 16px;
   font-weight: 400;
 }
 
-.powered {
+.tournament-powered {
   color: $gray;
   font-size: 16px;
   font-weight: 400;
