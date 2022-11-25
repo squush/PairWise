@@ -17,13 +17,14 @@ body{
 	flex-wrap: wrap;
   padding-top: 30px;
 }
+
 ul{
 	list-style: none;
 }
 .footer{
 	background-color: $gray;
   padding: 50px 0px 50px 200px;
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   width: 100%;
 }
