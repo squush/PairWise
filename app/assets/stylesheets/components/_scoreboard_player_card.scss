@@ -1,7 +1,4 @@
 .scoreboard-main {
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: space-around;
   max-width: 1300px;
 }
 
@@ -9,14 +6,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  // max-width: 1300px;
 }
 
 .scoreboard-player-card {
-  box-shadow: 10px 10px $gray;
+  box-shadow: 8px 8px $gray;
   display: flex;
   flex-wrap: wrap;
-  // justify-content: space-between;
   display: grid;
   border: solid $royal_blue;
   border-radius: 14px;
@@ -37,27 +32,65 @@
   margin-bottom: 15px;
 }
 
-.ranking {
-  border: solid red 1px;
+#ranking {
+  // border: solid red 1px;
+  color: $royal_blue;
 }
 
-.rating {
-  border: solid red 1px;
+#rating {
+  // border: solid red 1px;
+  color: $royal_blue;
 }
 
 .first-row {
   display: flex;
-  border: solid green 3px;
+  // border: solid green 3px;
   flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
-  // justify-content: space-between;
+  color: $royal_blue;
 }
 
-.second-row {
+#player-avatar {
   display: flex;
-  width: 115px;
+  // border: solid red;
+  max-width: 270px;
   height: 115px;
   justify-content: center;
+}
 
+.player-name-current-ranking {
+  display: flex;
+  // border: solid red;
+  color: $royal_blue;
+}
+
+#player-name {
+  display: flex;
+  // border: solid red;
+  justify-content: center;
+  font-size: 24px;
+}
+
+#current-ranking {
+  display: flex;
+  // border: solid red;
+  justify-content: center;
+  font-size: 18px;
+}
+
+#last-game {
+  display: flex;
+  // border: solid red;
+  justify-content: left;
+  font-size: 12px;
+  color: $royal_blue;
+}
+
+#next-game {
+  display: flex;
+  // border: solid red;
+  justify-content: left;
+  font-size: 12px;
+  color: $royal_blue;
 }
