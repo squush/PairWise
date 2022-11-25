@@ -13,6 +13,15 @@ class MatchupsController < ApplicationController
     end
   end
 
+  def index
+    @this_tournament = Tournament.find(params[:tournament_id])
+    @matchups = @this_tournament.matchups
+
+    @tournament = policy_scope(Matchup)
+    # authorize @tournament, policy_class: MatchupPolicy
+    # authorize @matchups, policy_class: MatchupPolicy
+  end
+
   private
 
   def set_matchup

@@ -10,14 +10,23 @@
 
   <div class="tourney-links">
     <%= link_to event_scoreboard_path, class: "text-decoration-none" do %>
-      <div class="scoreboard-link text-center">
+      <div class="tourney-btn tourney-btn-lg text-center">
         <i class="fa-solid fa-ranking-star"></i>
         <p>Scoreboard</p>
       </div>
     <% end %>
 
+    <%= link_to tournament_matchups_path(@tournament), class: "text-decoration-none" do %>
+      <div class="tourney-btn tourney-btn-lg text-center">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <p>Pairings</p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center">
     <%= link_to "#", class: "text-decoration-none" do %>
-      <div class="scoreboard-link text-center">
+      <div class="tourney-btn tourney-btn-sm text-center">
         <i class="fa-solid fa-gear"></i>
         <p>Manage</p>
       </div>
