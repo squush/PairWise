@@ -1,7 +1,59 @@
-<% @events.each do |event| %>
-  <h3><%= event.location %></h3>
-  <p><%= event.date %></p>
-  <p><%= event.rounds %> games</p>
-  <p><%= event.number_of_players %> players</p>
-  <%= render "form", tournament: @tournament, event: event %>
-<% end %>
+<body class="tournaments">
+  <div class="container">
+    <div class="">
+    <br><br><br>
+      <div class="">
+        <h1 class="my-2 text-center border-2">ONGOING TOURNAMENTS</h1>
+        <div class="d-flex flex-wrap">
+          <% @pw_tournaments.each do |tournament| %>
+            <%= render "tournament", tournament: tournament %>
+          <% end %>
+        </div>
+        <%# <div class="tournament-card">
+          <h3 class="date">25 November, 2022, 12:00 PM</h3>
+          <h2 class="location">Kingston, ON</h2>
+          <p class="rated">Rated by <em>NASPA©</em></p>
+          <p class="powered">Powered by <em>PairWise</em></p>
+        </div>
+        <br> %>
+
+    <%# <div class=""> %>
+      <%# <h3 class="my-2 text-center">Upcoming NASPA Events</h3> %>
+      <%# <div class="d-flex flex-wrap"> %>
+        <%# <% @events.each do |event| %> %>
+          <%# <%= render "event", event: event %> %>
+        <%# <% end %> %>
+        <%# <div class="tournament-card">
+          <div class="card-row">
+            <div class="col-lg">
+               <h3 class="tournament-date">25 November, 2022, 12:00 PM</h3>
+                <h2 class="tournament-location">Kingston, ON</h2>
+                <p class="tournament-rated">Rated by <em>NASPA©</em></p>
+                <p class="tournament-powered">Powered by <em>PairWise</em></p>
+            </div>
+            <div class="col-sm players">
+              <h4 class="tournament-head-cat"># PLAYERS</h4>
+              <h1 class="tournament-big-num">8</h1>
+            </div>
+            <div class="col-sm games">
+              <h4 class="tournament-head-cat"># GAMES</h4>
+              <h1 class="tournament-big-num">14</h1>
+            </div>
+          </div>
+        </div> %>
+
+
+
+        <div class="">
+          <h1 class="my-2 text-center border-2 text-white">UPCOMING EVENTS</h1>
+          <div class="d-flex flex-wrap">
+            <% @events.each do |event| %>
+              <%= render "event", event: event %>
+            <% end %>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>

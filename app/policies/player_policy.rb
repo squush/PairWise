@@ -1,4 +1,4 @@
-class MatchupPolicy < ApplicationPolicy
+class PlayerPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -6,17 +6,13 @@ class MatchupPolicy < ApplicationPolicy
     # end
   end
 
-  def update?
+  def create?
     user_is_owner?
-  end
-
-  def set_score?
-    update?
   end
 
   private
 
   def user_is_owner?
-    user == record.player1.tournament.user
+    user == record.tournament.user
   end
 end
