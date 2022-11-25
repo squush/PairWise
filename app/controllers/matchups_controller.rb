@@ -6,7 +6,7 @@ class MatchupsController < ApplicationController
 
   def update
     if @matchup.update(matchup_params)
-      redirect_to tournament_path(@matchup.player1.tournament),
+      redirect_to tournament_matchups_path(@matchup.player1.tournament),
         notice: "matchup #{@matchup.id} was updated."
     else
       render :edit, status: :unprocessable_entity
