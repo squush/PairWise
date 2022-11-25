@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Manage <%= @tournament.event.location %></h1>
+  <div class="d-flex justify-content-between mb-4">
+    <div class="">
+      <%= simple_form_for @tournament do |f| %>
+        <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false %>
+        <%= f.input :number_of_winners %>
+        <%= f.button :submit, class: "btn btn-outline-primary w-100", input_html: { data: { controller: 'start-tournament' } } %>
+      <% end %>
+    </div>
+
+    <div class="col-6">
+      <ul>
+        <% if @tournament.players.nil? || @tournament.players.empty? %>
+          <div>No players added yet in Pairwise</div>
+        <% else %>
+          <% @tournament.players.each do |player| %>
+            <li><%= player.name %></li>
+          <% end %>
+        <% end %>
+      </ul>
+
+      <%# TODO: Stimulus controller to reveal form %>
+      <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary" %>
+      <div class="col-">
+        <% if @tournament.user == current_user %>
+          <%# TODO: When making the Add Players route, replace this link %>
+          <p>Add a player:</p>
+          <%= simple_form_for [@tournament, @player] do |f| %>
+            <%= f.input :name %>
+            <%= f.input :rating %>
+            <%= f.input :division %>
+            <%= f.input :seed %>
+            <%= f.input :ranking %>
+            <%= f.input :crosstables_id, label: "Crosstables ID" %>
+            <%= f.submit "Add player", class: "btn btn-sm btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to "Back", tournament_path(@tournament), class: "btn btn-lg btn-dark mb-5" %>
+</div>
