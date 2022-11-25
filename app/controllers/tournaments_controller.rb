@@ -11,7 +11,12 @@ class TournamentsController < ApplicationController
     # all_crosstables_events # Commenting this out so it's not called every page load
     @events = Event.all
     @tournament = Tournament.new
+
+    # TODO: Resolve this naming issue. The @tournaments is being taken for the
+    #       Pundit policy scope, so we need a different var name for the
+    #       Tournament.all thing.
     @tournaments = policy_scope(Tournament)
+    @pw_tournaments = Tournament.all
   end
 
   def new
@@ -35,7 +40,18 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    # raise
+    @player = Player.new
+  end
+
+  def scoreboard
+    @tournament = Tournament.find(params[:id])
+    # @event = Event.find(params[:tournament][:event])c
+    authorize @tournament
+  end
+
+  def my_tournaments
+    @tournaments = Tournament.where(user: current_user)
+    authorize @tournaments
   end
 
   private
