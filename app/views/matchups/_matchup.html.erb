@@ -4,13 +4,29 @@
       Matchup <%= tournament.matchups.find_index(matchup) + 1 %>
     </p>
 
-    <div>
-      <span><%= matchup.player1.name %></span>
-      <span>(<%= matchup.player1_score || 0 %>)</span>
+    <div class="mb-2">
+      <div>
+        <span><%= matchup.player1.name %></span>
+        <span>(<%= matchup.player1_score || 0 %>)</span>
+      </div>
+      <div>
+        <span><%= matchup.player2.name %></span>
+        <span>(<%= matchup.player2_score || 0 %>)</span>
+      </div>
     </div>
-    <div>
-      <span><%= matchup.player2.name %></span>
-      <span>(<%= matchup.player2_score || 0 %>)</span>
+
+    <div class="d-flex justify-content-around">
+      <% round_not_started = matchup.player1_score.nil? && matchup.player2_score.nil? %>
+      <% if tournament.user == current_user %>
+        <%= link_to "Set score", set_score_path(matchup),
+          class: "btn btn-sm btn-outline-primary" %>
+
+        <%# TODO: When making the Edit Pairing route, replace this link %>
+        <% if round_not_started %>
+          <%= link_to "Edit pairing", "#",
+            class: "btn btn-sm btn-outline-danger" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
