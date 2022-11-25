@@ -1,0 +1,47 @@
+<div class="container scoreboard-main">
+  <h1 class="text-center">Scoreboard</h1>
+  <h4 class="text-center"><%= @tournament.event.location %> Championship</h4>
+  <div class="scoreboard">
+     <% @tournament.players.each do |player| %>
+        <div class="scoreboard-player-card">
+            <div class="first-row">
+              <div class="ranking">
+                <p>1st</p>
+              </div>
+
+              <div class="rating">
+                <p>Rating: <%= player.rating %></p>
+              </div>
+            </div>
+
+            <div class="second-row">
+              <%= image_tag "user-astronaut-solid.svg"%>
+            </div>
+
+
+          <div>
+            <p><strong><%= player.name %></strong></p>
+            <p>Ranking: <%= player.ranking %></p>
+          </div>
+        </div>
+      <% end %>
+      <% @tournament.players.each do |player| %>
+        <div class="scoreboard-player-card">
+            <div class="first-row">
+              <div class="ranking">
+                <p>1st</p>
+              </div>
+
+              <div class="rating">
+                <p>Rating: <%= player.rating %></p>
+              </div>
+            </div>
+          <div>
+            <p><strong><%= player.name %></strong></p>
+            <p>Ranking: <%= player.ranking %></p>
+          </div>
+        </div>
+      <% end %>
+  </div>
+
+</div>
