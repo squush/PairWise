@@ -9,7 +9,11 @@
       </div>
       <div class="col-sm players">
         <h4 class="tournament-head-cat"># PLAYERS</h4>
-        <h1 class="tournament-big-num"><%= tournament.event.number_of_players || "0" %></h1>
+        <h1 class="tournament-big-num"><%=
+          tournament.players.count ||
+          tournament.event.number_of_players ||
+          "0"
+        %></h1>
       </div>
       <div class="col-sm games">
         <h4 class="tournament-head-cat"># GAMES</h4>
