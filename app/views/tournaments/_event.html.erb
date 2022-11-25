@@ -8,7 +8,7 @@
       <p><i class="fa-regular fa-calendar-days px-1"></i> <%= event.date %></p>
       <p><i class="fa-solid fa-user px-1"></i> <%= event.number_of_players || "0" %> players</p>
       <p><i class="fa-solid fa-rotate px-1"></i><%= event.rounds %> games</p>
-      <div class="d-none">
+      <div class="">
         <%= render "form", tournament: @tournament, event: event %>
       </div>
     </div>

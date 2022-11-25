@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Pairings for <%= @this_tournament.event.location %></h1>
+  <h3><%= @this_tournament.event.date.strftime('%B %e, %Y') %></h3>
+
+  <% @matchups.each do |matchup| %>
+    <div>
+      <div>
+        Matchup <%= @this_tournament.matchups.find_index(matchup) + 1 %>
+      </div>
+
+      <span>
+        <span><%= matchup.player1.name %></span>
+        <span>(<%= matchup.player1_score || 0 %>)</span>
+      </span>
+      <span>
+        <span><%= matchup.player2.name %></span>
+        <span>(<%= matchup.player2_score || 0 %>)</span>
+      </span>
+    </div>
+  <% end %>
+</div>
