@@ -99,18 +99,6 @@
           (<%= matchup.player1_score.nil? ? "0" : matchup.player1_score %>) :
           <%= matchup.player2.name %>
           (<%= matchup.player2_score.nil? ? "0" : matchup.player2_score %>)
-
-          <% round_not_started = matchup.player1_score.nil? && matchup.player2_score.nil? %>
-          <% if @tournament.user == current_user %>
-            <%= link_to "Set score", set_score_path(matchup),
-              class: "btn btn-sm btn-outline-success" %>
-
-            <%# TODO: When making the Edit Pairing route, replace this link %>
-            <% if round_not_started %>
-              <%= link_to "Edit pairing", "#",
-                class: "btn btn-sm btn-outline-danger" %>
-            <% end %>
-          <% end %>
         </li>
       <% end %>
     </ul>
