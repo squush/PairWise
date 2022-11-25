@@ -26,11 +26,13 @@
   font-size: 18px;
 }
 
-.text-center {
-  color: $royal_blue;
-  font-size: 24px;
-  margin-bottom: 15px;
-}
+// TODO: Please don't overwrite existing classes. Write a new class instead if
+//       you have custom CSS.
+// .text-center {
+//   color: $royal_blue;
+//   font-size: 24px;
+//   margin-bottom: 15px;
+// }
 
 #ranking {
   // border: solid red 1px;
