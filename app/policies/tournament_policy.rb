@@ -10,8 +10,6 @@ class TournamentPolicy < ApplicationPolicy
     true
   end
 
-
-
   def create?
     true
   end
@@ -20,9 +18,6 @@ class TournamentPolicy < ApplicationPolicy
   def show?
     true
   end
-
-
-
 
   def update?
     user_is_owner?
