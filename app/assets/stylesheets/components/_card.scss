@@ -27,6 +27,7 @@ be) overwritten.
   font-size: 14px;
   color: $dark_blue;
 
+
   h3 {
     font-size: 16px;
     font-weight: bold;
@@ -47,4 +48,82 @@ be) overwritten.
     color: $light-gray;
     background-color: $dark_blue;
   }
+}
+
+.tournament-card {
+  padding-top: 40px;
+  padding-left: 40px;
+  height: 260px;
+  margin-bottom: 10px;
+}
+
+
+.tournaments {
+  background-image: url(space-background.jpg);
+  background-repeat: repeat;
+  height: auto;
+}
+
+.my-2 {
+  font-size: 60px;
+  color: white;
+  font-weight: 600;
+  text-shadow: $gray 1px 0 10px;
+}
+
+// .container {
+//   padding-right: 50px;
+// }
+
+.col-lg {
+  float: left;
+  width: 60%;
+}
+
+.tournament-date {
+  color: $gray;
+  margin-bottom: 20px;
+}
+
+.tournament-location {
+  color: $dark_blue;
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.tournament-rated {
+  color: $gray;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+// p {
+//   margin-bottom: 5px;
+// }
+
+.tournament-powered {
+  color: $gray;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.col-sm {
+  margin-top: 25px;
+}
+
+.players {
+  float: left;
+  margin-right: 80px;
+}
+
+.tournament-big-num {
+  font-size: 75px;
+  color: $dark_blue;
+  text-align: center;
+  text-shadow: $gray 1px 0 10px;
+}
+
+.games {
+  float: left;
 }
