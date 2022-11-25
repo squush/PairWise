@@ -9,19 +9,45 @@
             <%= render "tournament", tournament: tournament %>
           <% end %>
         </div>
-        <div class="tournament-card">Breakfast</div>
-      </div>
-      <br>
-      <div class="">
-        <h1 class="my-2 text-center border-2">UPCOMING EVENTS</h1>
-        <div class="d-flex flex-wrap">
-          <% @events.each do |event| %>
-            <%= render "event", event: event %>
-          <% end %>
+        <%# <div class="tournament-card">
+          <h3 class="date">25 November, 2022, 12:00 PM</h3>
+          <h2 class="location">Kingston, ON</h2>
+          <p class="rated">Rated by <em>NASPA©</em></p>
+          <p class="powered">Powered by <em>PairWise</em></p>
         </div>
-      </div>
+        <br> %>
 
-      <br>
+        <div class="tournament-card">
+          <div class="card-row">
+            <div class="col-lg">
+               <h3 class="date">25 November, 2022, 12:00 PM</h3>
+                <h2 class="location">Kingston, ON</h2>
+                <p class="rated">Rated by <em>NASPA©</em></p>
+                <p class="powered">Powered by <em>PairWise</em></p>
+            </div>
+            <div class="col-sm players">
+              <h4 class="head-cat"># PLAYERS</h4>
+              <h1 class="big-num">8</h1>
+            </div>
+            <div class="col-sm games">
+              <h4 class="head-cat"># GAMES</h4>
+              <h1 class="big-num">14</h1>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="">
+          <h1 class="my-2 text-center border-2">UPCOMING EVENTS</h1>
+          <div class="d-flex flex-wrap">
+            <% @events.each do |event| %>
+              <%= render "event", event: event %>
+            <% end %>
+          </div>
+        </div>
+        <br>
+      </div>
     </div>
   </div>
 </body>

@@ -13,7 +13,7 @@ body{
   padding-left: 50px;
 }
 .row{
-	display: flex;
+	// display: flex;
 	flex-wrap: wrap;
   padding-top: 30px;
 }
@@ -86,15 +86,15 @@ ul{
   padding-bottom: 120px;
 }
 
-/*responsive*/
-@media(max-width: 767px){
-  .footer-col{
-    width: 50%;
-    margin-bottom: 30px;
-}
-}
-@media(max-width: 574px){
-  .footer-col{
-    width: 100%;
-}
-}
+// /*responsive*/
+// (max-width: 767px){
+//   .footer-col{
+//     width: 50%;
+//     margin-bottom: 30px;
+// }
+// }
+// @media(max-width: 574px){
+//   .footer-col{
+//     width: 100%;
+// }
+// }
