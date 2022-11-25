@@ -24,8 +24,13 @@ ul{
 .footer{
 	background-color: $gray;
   padding: 50px 0px 50px 200px;
+<<<<<<< HEAD
   // position: absolute;
   bottom: 0;
+=======
+  flex-direction: column;
+  height: 100%;
+>>>>>>> master
   width: 100%;
 }
 .footer-col{
