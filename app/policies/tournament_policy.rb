@@ -10,9 +10,7 @@ class TournamentPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    create?
-  end
+
 
   def create?
     true
@@ -21,6 +19,13 @@ class TournamentPolicy < ApplicationPolicy
   # Everyone should be able to see this.
   def show?
     true
+  end
+
+
+
+
+  def update?
+    user_is_owner?
   end
 
   def scoreboard?

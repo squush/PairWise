@@ -6,9 +6,9 @@ class PlayersController < ApplicationController
     @player.tournament = @tournament
 
     if @player.save
-      redirect_to tournament_path(@tournament)
+      redirect_to edit_tournament_path(@tournament)
     else
-      render "tournaments/show", status: :unprocessable_entity
+      render 'tournaments/edit', status: :unprocessable_entity
     end
 
     authorize @player
