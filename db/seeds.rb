@@ -44,6 +44,8 @@ print "Jackson! "
 player_1a = Player.create!(
   name: "Jackson Smylie", rating: 2006, division: 1, crosstables_id: 20032, tournament: tourney_1
 )
+
+player_1a.photo.attach(io: File.open('/assets/images/jack.jpg'), filename: 'jack.jpg', content_type: 'image/jpg')
 puts "Plus some scrubs."
 player_1b = Player.create!(name: "Player B", rating: 1970, division: 1, tournament: tourney_1)
 player_1c = Player.create!(name: "Player C", rating: 1100, division: 2, tournament: tourney_1)
