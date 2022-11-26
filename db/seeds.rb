@@ -1,3 +1,5 @@
+require "open-uri"
+
 emails = ["a@a.a", "b@b.b", "c@c.c", "d@d.d", "e@e.e"]
 
 # This just destroy the specific test users, not the whole DB
@@ -45,7 +47,11 @@ player_1a = Player.create!(
   name: "Jackson Smylie", rating: 2006, division: 1, crosstables_id: 20032, tournament: tourney_1
 )
 
-player_1a.photo.attach(io: File.open('/assets/images/jack.jpg'), filename: 'jack.jpg', content_type: 'image/jpg')
+jackson_photo = URI.open("https://www.cross-tables.com/pix/IMG_1335.jpg")
+player_1a.photo.attach(io: jackson_photo, filename: "jack.jpg", content_type: "image/jpg")
+player_1a.save
+
+# player_1a.photo.attach(io: File.open('app/assets/images/jack.jpg'), filename: 'jack.jpg', content_type: 'image/jpg')
 puts "Plus some scrubs."
 player_1b = Player.create!(name: "Player B", rating: 1970, division: 1, tournament: tourney_1)
 player_1c = Player.create!(name: "Player C", rating: 1100, division: 2, tournament: tourney_1)
