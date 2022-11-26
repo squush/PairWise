@@ -68,7 +68,7 @@
     </ul>
     <% if @tournament.user == current_user %>
       <%# TODO: When making the Add Players route, replace this link %>
-      <p>Add a player:</p>
+      <p class="tourney-categories-2">Add a player:</p>
       <%= simple_form_for [@tournament, @player] do |f| %>
         <%= f.input :name %>
         <%= f.input :rating %>
