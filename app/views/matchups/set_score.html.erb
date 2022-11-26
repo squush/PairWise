@@ -1,3 +1,11 @@
+<%# TODO: When the score is updated, the updated score ends up going to the
+          bottom. That will need to be fixed. Maybe it's desirable to push
+          "already done" scores to the end, but it's unintuitive to the user.
+          The update could also be handled directly from the tournament show
+          page, but that might get tricky.
+          https://kitt.lewagon.com/knowledge/tutorials/inline_edit
+%>
+
 <div class="container justify-content-center col-3">
   <h3><%= @matchup.player1.tournament.event.location %></h3>
   <p><%= @matchup.player1.tournament.event.date.strftime('%B %e, %Y') %></p>
