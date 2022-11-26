@@ -6,10 +6,12 @@ class MatchupsController < ApplicationController
 
   def create
     @matchup = Matchup.new(matchup_params)
+    @tournament = @matchup.player1.tournament
 
     if @matchup.save!
+      redirect_to edit_tournament_path(@tournament)
     else
-      render "tournaments/index", status: :unprocessable_entity
+      render "tournaments/edit", status: :unprocessable_entity
     end
 
     authorize @matchup, policy_class: MatchupPolicy
