@@ -117,6 +117,8 @@ GEM
       sassc (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    graph_matching (0.2.1)
+      rgl (~> 0.5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -152,6 +154,7 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pairing_heap (1.0.0)
     pg (1.4.5)
     public_suffix (5.0.0)
     puma (5.6.5)
@@ -198,6 +201,10 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rgl (0.5.9)
+      pairing_heap (>= 0.3.0)
+      rexml (~> 3.2, >= 3.2.4)
+      stream (~> 0.5.3)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -228,6 +235,9 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.1.1)
       railties (>= 6.0.0)
+    stream (0.5.5)
+    swissper (0.3.0)
+      graph_matching (~> 0.0)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
@@ -283,6 +293,7 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
+  swissper
   turbo-rails
   tzinfo-data
   web-console
