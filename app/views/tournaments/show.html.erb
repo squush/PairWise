@@ -31,14 +31,16 @@
     <% end %>
   </div>
 
-  <div class="d-flex justify-content-center">
-    <%= link_to edit_tournament_path(@tournament), class: "text-decoration-none" do %>
-      <div class="tourney-btn tourney-btn-sm text-center">
-        <i class="fa-solid fa-gear"></i>
-        <p>Manage</p>
-      </div>
-    <% end %>
-  </div>
+  <% if @tournament.user == current_user %>
+    <div class="d-flex justify-content-center">
+      <%= link_to edit_tournament_path(@tournament), class: "text-decoration-none" do %>
+        <div class="tourney-btn tourney-btn-sm text-center">
+          <i class="fa-solid fa-gear"></i>
+          <p>Manage</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="tourney-info">
     <div>
