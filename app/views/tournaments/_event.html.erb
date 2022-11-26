@@ -2,17 +2,22 @@
   <div class="event-card d-flex justify-content-between align-items-stretch">
     <div class="d-flex flex-column justify-content-around">
       <h3><%= event.location %></h3>
-      <div><a class="event-card"
-        data-action="click->start-tournament#toggleForm"> Start now </a></div>
+      <div><a class="event-card" id="modal-btn"
+        data-action="click->start-tournament#showForm"> Start now </a></div>
+      <%# <button id="modal-btn"><a> Start now </a></button> %>
+
+      <div class="modal" data-start-tournament-target="modal">
+        <div class="modal-content">
+          <div class="d-flex justify-content-right"><button class="close-btn d-flex justify-content-center align-items-center" data-action="click->start-tournament#closeForm">&times;</button></div>
+          <div class="d-flex justify-content-center"><%= render "form", tournament: @tournament, event: event %></div>
+        </div>
+      </div>
+
     </div>
     <div class="px-3 d-flex flex-column justify-content-between align-self-stretch">
       <p><i class="fa-regular fa-calendar-days px-1"></i> <%= event.date %></p>
       <p><i class="fa-solid fa-user px-1"></i> <%= event.number_of_players || "0" %> players</p>
       <p><i class="fa-solid fa-rotate px-1"></i><%= event.rounds %> games</p>
-      <div class="d-none"
-        data-start-tournament-target="form">
-        <%= render "form", tournament: @tournament, event: event %>
-      </div>
     </div>
   </div>
 </div>
