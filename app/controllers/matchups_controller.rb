@@ -42,12 +42,15 @@ class MatchupsController < ApplicationController
       # Check if all the scores have been submitted
       # for the round and if so, generate matchups
       # for this division two rounds later
-      # matchups = Matchup.where(tournament: @matchup.tournament).where(division: @matchup.player1.division).where(round_number: @matchup.round_number).where(player1_score: nil)
       this_tournament = Tournament.find(p1.tournament_id)
-      matchups = this_tournament.matchups.where(round_number: @matchup.round_number).where(player1_score: nil).to_a
-      matchups.map { |matchup| matchup.player1.division == p1.division }
+      matchups_without_scores = this_tournament.matchups.where(round_number: @matchup.round_number).where(player1_score: nil).to_a
+      matchups_without_scores.map { |matchup| matchup.player1.division == p1.division }
 
-      # generate matchups...
+      # Find all players in the division and
+      # determine which round to generate pairings for
+      players = p1.tournament.players.select { |player| player.division == p1.division}
+      round_to_generate = @matchup.round_number + 2
+      generate_matchups(round_to_generate, players) if p1.tournament.event.rounds >= round_to_generate && matchups_without_scores.empty?
 
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
                   notice: "matchup #{@matchup.id} was updated."
@@ -66,6 +69,16 @@ class MatchupsController < ApplicationController
   end
 
   private
+
+  def generate_matchups(round, players)
+    # generate pairings
+    pairings = Swissper.pair(players, delta_key: :win_count)
+
+    # create matchups based on the pairings
+    pairings.each do |pairing|
+      Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
+    end
+  end
 
   def set_matchup
     @matchup = Matchup.find(params[:id])
