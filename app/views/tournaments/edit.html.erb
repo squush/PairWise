@@ -1,15 +1,17 @@
 <div class="container">
-  <h1>Manage <%= @tournament.event.location %></h1>
-  <div class="d-flex justify-content-between mb-4">
+  <h4 class="tourney-manage">Manage</h4>
+  <h1 class="tourney-main-manage"><%= @tournament.event.location %></h1>
+  <%# <div class="d-flex justify-content-between mb-4"> %>
     <div class="">
       <%= simple_form_for @tournament do |f| %>
         <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false %>
         <%= f.input :number_of_winners %>
-        <%= f.button :submit, class: "btn btn-outline-primary w-100", input_html: { data: { controller: 'start-tournament' } } %>
+        <%= f.button :submit, class: "btn btn-outline-primary w-100", id: "tourney-btn", input_html: { data: { controller: 'start-tournament' } } %>
       <% end %>
     </div>
 
     <div class="col-6">
+      <p class="tourney-categories">Players</p>
       <ul>
         <% if @tournament.players.nil? || @tournament.players.empty? %>
           <div>No players added yet in Pairwise</div>
@@ -38,7 +40,7 @@
         <% end %>
       </div>
     </div>
-  </div>
+  <%# </div> %>
 
   <%= link_to "Back", tournament_path(@tournament), class: "btn btn-lg btn-dark mb-5" %>
 </div>

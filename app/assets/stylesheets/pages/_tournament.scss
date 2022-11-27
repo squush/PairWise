@@ -1,3 +1,6 @@
+// show + edit shared style
+
+// show
 .tourney-main {
   color: $royal_blue;
   text-align: center;
@@ -72,6 +75,50 @@
   }
 }
 
+// edit
+.tourney-manage {
+  color: $royal_blue;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.tourney-main-manage {
+  color: $royal_blue;
+  text-align: center;
+  // Getting rid
+  text-shadow: 0 0 white;
+  font-size: 48px;
+  font-weight: 600;
+  padding-bottom: 40px;
+}
+
+#edit_tournament_2 {
+    width: 300px;
+    margin-left: 400px;
+  }
+
+  #tournament_pairing_system {
+  border-radius: 8px;
+}
+
+#tournament_number_of_winners {
+  border-radius: 8px;
+}
+
+#tourney-btn {
+  border-radius: 8px;
+  color: $off_white;
+  border-color: $dark_blue;
+  background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
+}
+// #edit_tournament_2 {
+//   display: inline!important;
+// }
+
+// #tourney-update {
+//   display: inline!important;
+// }
 // .tourney-categories {
 //   text-align: center;
 //   font-weight: 550;
