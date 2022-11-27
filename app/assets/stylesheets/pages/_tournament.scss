@@ -4,11 +4,23 @@
   // Getting rid
   text-shadow: 0 0 white;
   padding: 15px;
+  font-size: 48px;
+  font-weight: 600;
 }
+
 .tourney-secondary {
   color: $royal_blue;
   text-align: center;
 }
+
+.tourney-round {
+  font-weight: 600;
+}
+
+.tourney-headings {
+  font-weight: 500;
+}
+
 .tourney-links {
   margin: 50px auto;
   display: flex;
@@ -18,6 +30,8 @@
   background-color: $dark_blue;
   color: white;
   text-transform: uppercase;
+  box-shadow: 3px 3px 2px 2px $gray;
+
   &:hover {
     background-color: $royal_blue;
     box-shadow: 0 0 2px 0 $dark_blue;
@@ -44,15 +58,42 @@
   }
 }
 .tourney-info {
-  background-color: rgb(245, 230, 215);
+  background-color: $off_white;
   display: flex;
   justify-content: space-around;
   margin: 30px auto;
   padding: 20px;
   border-radius: 8px;
   color: $royal_blue;
-  width: 50%;
+  width: 60%;
+
   p {
     text-align: center;
   }
 }
+
+// .tourney-categories {
+//   text-align: center;
+//   font-weight: 550;
+// }
+
+// .tourney-categories-2 {
+//   font-weight: 550;
+// }
+
+// .tourney-players {
+//   overflow-x:hidden;
+//   white-space:nowrap;
+//   height: 2em;
+//   width: 100%;
+//   text-align: center;
+// }
+
+// .tourney-names {
+//   display:inline;
+// 	transition: all 0.5s ease;
+
+//   &:hover {
+//     color: $dark_blue;
+//   }
+// }

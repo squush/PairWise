@@ -4,7 +4,7 @@ require 'json'
 require 'date'
 
 class TournamentsController < ApplicationController
-  before_action :set_tournament, only: %i[show]
+  before_action :set_tournament, only: %i[show edit update]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
@@ -42,6 +42,19 @@ class TournamentsController < ApplicationController
 
   def show
     @player = Player.new
+  end
+
+  def edit
+    @player = Player.new
+  end
+
+  def update
+    # raise
+    if @tournament.update!(tournament_params)
+      redirect_to edit_tournament_path(@tournament), notice: "tournament #{@tournament.event.location} was updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def scoreboard

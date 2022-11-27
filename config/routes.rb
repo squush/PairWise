@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :tournaments, only: %i[index new create show] do
+  resources :tournaments, only: %i[index new create show edit update] do
     resources :players, only: %i[create]
     resources :matchups, only: %i[index]
   end

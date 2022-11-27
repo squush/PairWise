@@ -9,14 +9,14 @@
 
   <h1 class="mb-3 tourney-main"><%= @tournament.event.location %></h1>
   <div class="tourney-secondary">
-    <h3>Round ? of <%= @tournament.event.rounds %></h3>
+    <h3 class="tourney-round">Round ? of <%= @tournament.event.rounds %></h3>
     <p>
       <%= @tournament.event.date.strftime('%B %e, %Y') || @tournament.date.strftime('%B %e, %Y') %>
     </p>
   </div>
 
   <div class="tourney-links">
-    <%= link_to event_scoreboard_path, class: "text-decoration-none" do %>
+    <%= link_to event_scoreboard_path(@tournament), class: "text-decoration-none" do %>
       <div class="tourney-btn tourney-btn-lg text-center">
         <i class="fa-solid fa-ranking-star"></i>
         <p>Scoreboard</p>
@@ -31,80 +31,33 @@
     <% end %>
   </div>
 
-  <div class="d-flex justify-content-center">
-    <%= link_to "#", class: "text-decoration-none" do %>
-      <div class="tourney-btn tourney-btn-sm text-center">
-        <i class="fa-solid fa-gear"></i>
-        <p>Manage</p>
-      </div>
-    <% end %>
-  </div>
+  <% if @tournament.user == current_user %>
+    <div class="d-flex justify-content-center">
+      <%= link_to edit_tournament_path(@tournament), class: "text-decoration-none" do %>
+        <div class="tourney-btn tourney-btn-sm text-center">
+          <i class="fa-solid fa-gear"></i>
+          <p>Manage</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="tourney-info">
     <div>
-      <p>Players</p>
+      <p class="tourney-headings">Players</p>
       <p><%= @tournament.players.count %></p>
     </div>
     <div>
-      <p>Rounds</p>
+      <p class="tourney-headings">Winners</p>
+      <p><%= @tournament.number_of_winners %></p>
+    </div>
+    <div>
+      <p class="tourney-headings">Rounds</p>
       <p><%= @tournament.event.rounds %></p>
     </div>
     <div>
-      <p>Pairing</p>
+      <p class="tourney-headings">Pairing</p>
       <p><%= @tournament.pairing_system %></p>
     </div>
   </div>
-
-  <div class="mb-3 border-bottom border-3">
-    <p>Players</p>
-    <ul>
-      <% if @tournament.players.nil? %>
-        <div>No players added yet in Pairwise</div>
-      <% else %>
-        <% @tournament.players.each do |player| %>
-          <li><%= player.name %></li>
-        <% end %>
-      <% end %>
-    </ul>
-    <% if @tournament.user == current_user %>
-      <%# TODO: When making the Add Players route, replace this link %>
-      <p>Add a player:</p>
-      <%= simple_form_for [@tournament, @player] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :rating %>
-        <%= f.input :division %>
-        <%= f.input :seed %>
-        <%= f.input :ranking %>
-        <%= f.input :crosstables_id, label: "Crosstables ID" %>
-        <%= f.submit "Add player", class: "btn btn-sm btn-primary" %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <%# TODO: Make this into a partial.
-            When the score is updated, the updated score ends up going to the
-            bottom. That will need to be fixed. Maybe it's desirable to push
-            "already done" scores to the end, but it's unintuitive to the user.
-            The update could also be handled directly from the tournament show
-            page, but that might get tricky.
-            https://kitt.lewagon.com/knowledge/tutorials/inline_edit
-  %>
-  <div class="border">
-    <p>Rounds</p>
-    <ul class="">
-      <% @tournament.matchups.each do |matchup| %>
-        <li class="">
-          Round <%= matchup.round_number %>:
-          <%= matchup.player1.name %>
-          (<%= matchup.player1_score.nil? ? "0" : matchup.player1_score %>) :
-          <%= matchup.player2.name %>
-          (<%= matchup.player2_score.nil? ? "0" : matchup.player2_score %>)
-        </li>
-      <% end %>
-    </ul>
-
-  </div>
-
-
-
 </div>
