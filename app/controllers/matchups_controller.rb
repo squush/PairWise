@@ -36,6 +36,7 @@ class MatchupsController < ApplicationController
 
       p1.save!
       p2.save!
+
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
         notice: "matchup #{@matchup.id} was updated."
     else
