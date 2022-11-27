@@ -2,7 +2,7 @@
   <h4 class="tourney-manage">Manage</h4>
   <h1 class="tourney-main-manage"><%= @tournament.event.location %></h1>
   <%# <div class="d-flex justify-content-between mb-4"> %>
-    <div class="">
+    <div class="" id="tourney-page">
       <%= simple_form_for @tournament do |f| %>
         <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false %>
         <%= f.input :number_of_winners %>

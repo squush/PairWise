@@ -76,6 +76,12 @@
 }
 
 // edit
+#tourney-page {
+  align-content: center;
+  width: 300px;
+  margin-left: 400px;
+}
+
 .tourney-manage {
   color: $royal_blue;
   text-align: center;
@@ -91,11 +97,6 @@
   font-weight: 600;
   padding-bottom: 40px;
 }
-
-#edit_tournament_2 {
-    width: 300px;
-    margin-left: 400px;
-  }
 
   #tournament_pairing_system {
   border-radius: 8px;
