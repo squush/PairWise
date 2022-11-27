@@ -19,6 +19,8 @@ class MatchupsController < ApplicationController
 
   def update
     if @matchup.update(matchup_params)
+      # Update the wins and losses of each player
+      # based on the submitted scores
       p1 = @matchup.player1
       p2 = @matchup.player2
       if @matchup.player1_score > @matchup.player2_score
@@ -37,8 +39,18 @@ class MatchupsController < ApplicationController
       p1.save!
       p2.save!
 
+      # Check if all the scores have been submitted
+      # for the round and if so, generate matchups
+      # for this division two rounds later
+      # matchups = Matchup.where(tournament: @matchup.tournament).where(division: @matchup.player1.division).where(round_number: @matchup.round_number).where(player1_score: nil)
+      this_tournament = Tournament.find(p1.tournament_id)
+      matchups = this_tournament.matchups.where(round_number: @matchup.round_number).where(player1_score: nil).to_a
+      matchups.map { |matchup| matchup.player1.division == p1.division }
+
+      # generate matchups...
+
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
-        notice: "matchup #{@matchup.id} was updated."
+                  notice: "matchup #{@matchup.id} was updated."
     else
       render :edit, status: :unprocessable_entity
     end
