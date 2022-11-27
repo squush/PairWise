@@ -9,7 +9,7 @@
 
   <h1 class="mb-3 tourney-main"><%= @tournament.event.location %></h1>
   <div class="tourney-secondary">
-    <h3>Round ? of <%= @tournament.event.rounds %></h3>
+    <h3 class="tourney-round">Round ? of <%= @tournament.event.rounds %></h3>
     <p>
       <%= @tournament.event.date.strftime('%B %e, %Y') || @tournament.date.strftime('%B %e, %Y') %>
     </p>
@@ -44,19 +44,19 @@
 
   <div class="tourney-info">
     <div>
-      <p>Players</p>
+      <p class="tourney-headings">Players</p>
       <p><%= @tournament.players.count %></p>
     </div>
     <div>
-      <p>Winners</p>
+      <p class="tourney-headings">Winners</p>
       <p><%= @tournament.number_of_winners %></p>
     </div>
     <div>
-      <p>Rounds</p>
+      <p class="tourney-headings">Rounds</p>
       <p><%= @tournament.event.rounds %></p>
     </div>
     <div>
-      <p>Pairing</p>
+      <p class="tourney-headings">Pairing</p>
       <p><%= @tournament.pairing_system %></p>
     </div>
   </div>
