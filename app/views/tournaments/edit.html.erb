@@ -10,17 +10,40 @@
       <% end %>
     </div>
 
-    <div class="col-6">
-      <p class="tourney-categories">Players</p>
-      <ul>
-        <% if @tournament.players.nil? || @tournament.players.empty? %>
-          <div>No players added yet in Pairwise</div>
-        <% else %>
-          <% @tournament.players.each do |player| %>
-            <li><%= player.name %></li>
+      <h4 class="tourney-manage-2">Current players</h4>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Rating</th>
+            <th>Name</th>
+            <th>Division</th>
+            <th>Seed</th>
+            <th>Ranking</th>
+            <th>Cross-tables ID</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody><% if @tournament.players.nil? || @tournament.players.empty? %>
+            <div>No players added yet in Pairwise</div>
+          <% else %>
+            <% @tournament.players.each do |player| %>
+              <td><%= player.name %></td>
+              <td><%= player.rating %></td>
+              <td><%= player.division %></td>
+              <td><%= player.seed %></td>
+              <td><%= player.ranking %></td>
+              <td><%= player.crosstables_id %></td>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
       <%# TODO: Stimulus controller to reveal form %>
       <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary" %>
