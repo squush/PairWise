@@ -1,11 +1,12 @@
 <div class="scoreboard-player-card">
   <div class="first-row">
     <div id="ranking">
-      <p>1st</p>
+      <h4>1st<%= player.ranking %></h4>
     </div>
 
     <div id="rating">
-      <p>Rating: <%= player.rating %></p>
+      <p class="scoreboard-p">Rating:</p>
+      <h5><%= player.rating %></h5>
     </div>
   </div>
 
@@ -43,11 +44,11 @@
 
   <%# TODO need to calculate last game logic %>
   <div id="last-game">
-    <p> Last game loading...</p>
+    <p class="scoreboard-p"><strong>Last</strong> game loading...</p>
   </div>
 
   <%# TODO need to calculate last game logic %>
   <div id="next-game">
-    <p> Next game loading...</p>
+    <p><strong>Next</strong> game loading...</p>
   </div>
 </div>
