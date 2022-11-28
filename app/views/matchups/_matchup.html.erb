@@ -18,7 +18,7 @@
     <div class="d-flex justify-content-around">
       <% round_not_started = matchup.player1_score.nil? && matchup.player2_score.nil? %>
       <% if tournament.user == current_user %>
-        <div data-controller="matchups">
+        <div class="d-flex justify-content-around" data-controller="matchups">
           <div>
             <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
             data-action="click->matchups#showForm"> Set score </a>
