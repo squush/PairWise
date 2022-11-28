@@ -95,7 +95,7 @@ class TournamentsController < ApplicationController
         else
           rating = rating.to_i
         end
-        Player.create!(division: division, rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, crosstables_id: xtables_id, tournament: tournament)
+        Player.create!(division: division, rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, loss_count: 0, crosstables_id: xtables_id, tournament: tournament)
       end
     end
   end
