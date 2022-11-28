@@ -30,6 +30,7 @@ class TournamentsController < ApplicationController
     @tournament.user = current_user
 
     get_players(@tournament)
+    generate_two_rounds_matchups(@tournament)
 
     if @tournament.save!
       redirect_to @tournament, notice: "Tournament has been successfully created"
@@ -59,6 +60,17 @@ class TournamentsController < ApplicationController
 
   def scoreboard
     @tournament = Tournament.find(params[:id])
+
+    all_players = Player.where(tournament: @tournament)
+    divisions = all_players.map { |player| player.division }.uniq
+
+    # Create players hash where each key is a division and
+    # each value is an array of the players in that division
+    @players = {}
+    divisions.each do |div|
+      @players[div] = Player.where(tournament: @tournament).where(division: div).order(win_count: :desc, loss_count: :asc).to_a
+    end
+
     # @event = Event.find(params[:tournament][:event])c
     authorize @tournament
   end
@@ -87,7 +99,7 @@ class TournamentsController < ApplicationController
         division = row[/\d/].to_i
       elsif row.start_with?(/\d/)
         seed = row[/\d+/].to_i
-        name = child.search('td')[1].text.strip[1..-1]
+        name = child.search('td')[1].text.gsub('*', '').strip[1..-1]
         rating = child.search('td')[2].text.strip
         xtables_id = child.search('td').children.children.css('a').attribute('href').value[/\d{1,5}/]
         if rating == "---"
@@ -95,7 +107,7 @@ class TournamentsController < ApplicationController
         else
           rating = rating.to_i
         end
-        Player.create!(division: division, rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, crosstables_id: xtables_id, tournament: tournament)
+        Player.create!(division: division, rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, loss_count: 0, crosstables_id: xtables_id, tournament: tournament)
       end
     end
   end
@@ -151,6 +163,41 @@ class TournamentsController < ApplicationController
       number_of_players: number_of_players,
       date: @sortable_date,
       xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
+  end
+
+  def generate_two_rounds_matchups(tournament)
+    # Check how many divisions there are
+    all_players = Player.where(tournament: tournament)
+    divisions = all_players.map { |player| player.division }.uniq
+
+    # Create players hash where each key is a division and
+    # each value is an array of the players in that division
+    players = {}
+    divisions.each do |div|
+      players[div] = Player.where(tournament: tournament).where(division: div).to_a
+    end
+
+    # Generate Swissper pairings for the first two rounds
+    # for each division
+    pairings = {round_1: {}, round_2: {}}
+    divisions.each do |div|
+      pairings[:round_1][div] = Swissper.pair(players[div], delta_key: :win_count)
+      pairings[:round_2][div] = Swissper.pair(players[div], delta_key: :win_count)
+    end
+
+    # Generate matchups for round 1 based on pairings
+    pairings[:round_1].each do |div, pairings|
+      pairings.each do |pairing|
+        Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
+      end
+    end
+
+    # Generate matchups for round 2 based on pairings
+    pairings[:round_2].each do |div, pairings|
+      pairings.each do |pairing|
+        Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
+      end
+    end
   end
 
   def set_tournament

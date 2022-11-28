@@ -4,8 +4,39 @@ class MatchupsController < ApplicationController
   def set_score
   end
 
+  def create
+    @matchup = Matchup.new(matchup_params)
+    @tournament = @matchup.player1.tournament
+
+    if @matchup.save!
+      redirect_to edit_tournament_path(@tournament)
+    else
+      render "tournaments/edit", status: :unprocessable_entity
+    end
+
+    authorize @matchup, policy_class: MatchupPolicy
+  end
+
   def update
     if @matchup.update(matchup_params)
+      p1 = @matchup.player1
+      p2 = @matchup.player2
+      if @matchup.player1_score > @matchup.player2_score
+        p1.win_count += 1
+        p2.loss_count += 1
+      elsif @matchup.player1_score < @matchup.player2_score
+        p1.loss_count += 1
+        p2.win_count += 1
+      else
+        p1.win_count += 0.5
+        p1.loss_count += 0.5
+        p2.win_count += 0.5
+        p2.loss_count += 0.5
+      end
+
+      p1.save!
+      p2.save!
+
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
         notice: "matchup #{@matchup.id} was updated."
     else

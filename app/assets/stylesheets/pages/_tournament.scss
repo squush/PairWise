@@ -1,7 +1,7 @@
+// SHOW.html.erb
 .tourney-main {
   color: $royal_blue;
   text-align: center;
-  // Getting rid
   text-shadow: 0 0 white;
   padding: 15px;
   font-size: 48px;
@@ -72,28 +72,156 @@
   }
 }
 
-// .tourney-categories {
+// EDIT.html.erb
+#tourney-page {
+  align-content: center;
+  width: 300px;
+  margin-left: 400px;
+}
+
+.tourney-manage {
+  color: $royal_blue;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.tourney-main-manage {
+  color: $royal_blue;
+  text-align: center;
+  text-shadow: 0 0 white;
+  font-size: 48px;
+  font-weight: 600;
+  padding-bottom: 40px;
+}
+
+#tournament_pairing_system {
+  border-radius: 8px;
+}
+
+#tournament_number_of_winners {
+  border-radius: 8px;
+}
+
+#tourney-btn {
+  border-radius: 8px;
+  color: $off_white;
+  border-color: $dark_blue;
+  background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
+}
+
+.tourney-manage-2 {
+  color: $royal_blue;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+// table
+table {
+  width:100%;
+  table-layout: fixed;
+}
+
+.tbl-header {
+  background-color: $gray;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.tbl-content {
+  height:auto;
+  overflow-x:auto;
+  margin-top: 0px;
+  background-color: #e6e9ef;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-weight: 400;
+}
+
+.tourney-no-players {
+  text-align: center;
+  margin: 20px 0px;
+}
+
+th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: $off_white;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: $dark_blue;
+  border-bottom: solid 1px #d7dee2;
+}
+
+// add a new player
+#tourney-btn-2 {
+  margin-top: 20px;
+  margin-left: 425px;
+  width: 250px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $off_white;
+  border-color: $dark_blue;
+  background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
+}
+
+// .tourney-player {
 //   text-align: center;
-//   font-weight: 550;
 // }
 
-// .tourney-categories-2 {
-//   font-weight: 550;
-// }
+#new_player {
+  margin-top: 40px;
+  margin-left: 100px;
+}
 
-// .tourney-players {
-//   overflow-x:hidden;
-//   white-space:nowrap;
-//   height: 2em;
-//   width: 100%;
-//   text-align: center;
-// }
+#player_name, #player_rating, #player_division, #player_seed, #player_ranking, #player_crosstables_id {
+  border-radius: 8px;
+  width: 450px;
+}
 
-// .tourney-names {
-//   display:inline;
-// 	transition: all 0.5s ease;
+.simple_form div.tourney-form {
+  float: left;
+  width: 500px;
+  text-align: left;
+  margin-bottom: 10px;
+  display: inline;
+}
 
-//   &:hover {
-//     color: $dark_blue;
-//   }
-// }
+#tourney-btn-3 {
+  margin-left: 325px;
+  width: 250px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $off_white;
+  border-color: $dark_blue;
+  background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
+}
+
+#tourney-btn-4 {
+  margin-top: 60px;
+  margin-bottom: 1px;
+  margin-left: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $off_white;
+  border-color: $dark_blue;
+  background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
+}

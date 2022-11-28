@@ -1,44 +1,68 @@
 <div class="container">
-  <h1>Manage <%= @tournament.event.location %></h1>
-  <div class="d-flex justify-content-between mb-4">
-    <div class="">
+  <h4 class="tourney-manage">Manage</h4>
+  <h1 class="tourney-main-manage"><%= @tournament.event.location %></h1>
+  <%# <div class="d-flex justify-content-between mb-4"> %>
+    <div class="" id="tourney-page">
       <%= simple_form_for @tournament do |f| %>
         <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false %>
         <%= f.input :number_of_winners %>
-        <%= f.button :submit, class: "btn btn-outline-primary w-100", input_html: { data: { controller: 'start-tournament' } } %>
+        <%= f.button :submit, class: "btn btn-outline-primary w-100", id: "tourney-btn", input_html: { data: { controller: 'start-tournament' } } %>
       <% end %>
     </div>
 
-    <div class="col-6">
-      <ul>
-        <% if @tournament.players.nil? || @tournament.players.empty? %>
-          <div>No players added yet in Pairwise</div>
-        <% else %>
-          <% @tournament.players.each do |player| %>
-            <li><%= player.name %></li>
-          <% end %>
-        <% end %>
-      </ul>
+      <h4 class="tourney-manage-2">Current players</h4>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Rating</th>
+            <th>Name</th>
+            <th>Division</th>
+            <th>Seed</th>
+            <th>Ranking</th>
+            <th>Cross-tables ID</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody><% if @tournament.players.nil? || @tournament.players.empty? %>
+            <div class="tourney-no-players">No players added yet in Pairwise</div>
+              <% else %>
+                <% @tournament.players.each do |player| %>
+                <tr>
+                  <td><%= player.name %></td>
+                  <td><%= player.rating %></td>
+                  <td><%= player.division %></td>
+                  <td><%= player.seed %></td>
+                  <td><%= player.ranking %></td>
+                  <td><%= player.crosstables_id %></td>
+                <% end %>
+              <% end %>
+              </tr>
+        </tbody>
+      </table>
+    </div>
 
       <%# TODO: Stimulus controller to reveal form %>
-      <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary" %>
+      <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" %>
       <div class="col-">
         <% if @tournament.user == current_user %>
           <%# TODO: When making the Add Players route, replace this link %>
-          <p>Add a player:</p>
+          <%# <p class="tourney-player">Add a player:</p> %>
           <%= simple_form_for [@tournament, @player] do |f| %>
-            <%= f.input :name %>
-            <%= f.input :rating %>
-            <%= f.input :division %>
-            <%= f.input :seed %>
-            <%= f.input :ranking %>
-            <%= f.input :crosstables_id, label: "Crosstables ID" %>
-            <%= f.submit "Add player", class: "btn btn-sm btn-primary" %>
+              <div class="tourney-form"><%= f.input :name %></div>
+              <div class="tourney-form"><%= f.input :rating %></div>
+              <div class="tourney-form"><%= f.input :division %></div>
+              <div class="tourney-form"><%= f.input :seed %></div>
+              <div class="tourney-form"><%= f.input :ranking %></div>
+              <div class="tourney-form"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
+              <%= f.submit "Save new player", class: "btn btn-sm btn-primary", id: "tourney-btn-3" %>
+            <% end %>
           <% end %>
-        <% end %>
+          </div>
       </div>
-    </div>
-  </div>
-
-  <%= link_to "Back", tournament_path(@tournament), class: "btn btn-lg btn-dark mb-5" %>
+  <%# </div> %>
+      <%= link_to "Back", tournament_path(@tournament), class: "btn btn-lg btn-dark mb-5", id: "tourney-btn-4" %>
 </div>
