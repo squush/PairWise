@@ -27,7 +27,7 @@ class MatchupsController < ApplicationController
       elsif @matchup.player1_score < @matchup.player2_score
         p1.loss_count += 1
         p2.win_count += 1
-      else
+      elsif @matchup.player1_score == @matchup.player2_score
         p1.win_count += 0.5
         p1.loss_count += 0.5
         p2.win_count += 0.5
