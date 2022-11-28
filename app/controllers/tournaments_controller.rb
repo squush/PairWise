@@ -87,7 +87,7 @@ class TournamentsController < ApplicationController
         division = row[/\d/].to_i
       elsif row.start_with?(/\d/)
         seed = row[/\d+/].to_i
-        name = child.search('td')[1].text.strip[1..-1]
+        name = child.search('td')[1].text.gsub('*', '').strip[1..-1]
         rating = child.search('td')[2].text.strip
         xtables_id = child.search('td').children.children.css('a').attribute('href').value[/\d{1,5}/]
         if rating == "---"
