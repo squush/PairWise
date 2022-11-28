@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :matchups, only: %i[index]
   end
 
-  resources :matchups, only: %i[update]
+  resources :matchups, only: %i[update create]
   get "/matchups/:id/set_score", to: "matchups#set_score", as: :set_score
 
   # get "tournaments/:id/matchups", to: "matchups#index", as: :matchups

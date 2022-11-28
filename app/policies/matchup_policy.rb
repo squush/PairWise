@@ -10,6 +10,10 @@ class MatchupPolicy < ApplicationPolicy
   #   true
   # end
 
+  def create?
+    true
+  end
+
   def update?
     user_is_owner?
   end

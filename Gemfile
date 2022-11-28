@@ -37,6 +37,8 @@ gem "sidekiq-failures", "~> 1.0"
 
 gem 'whenever', require: false
 
+gem 'swissper'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
