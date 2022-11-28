@@ -6,6 +6,8 @@
           https://kitt.lewagon.com/knowledge/tutorials/inline_edit
 %>
 
+<%# Using the _input_score partial and the score-modal in the _matchup partial, %>
+<%# this entire route/page is not used %>
 <div class="container justify-content-center col-3">
   <h3><%= @matchup.player1.tournament.event.location %></h3>
   <p><%= @matchup.player1.tournament.event.date.strftime('%B %e, %Y') %></p>
