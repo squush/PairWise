@@ -18,5 +18,7 @@
       <%# </div> %>
     <%# <% end %>
   <%# </div> %>
+  <%= link_to "Back", tournament_path(@tournament),
+    class: "btn btn-lg btn-primary mb-5",
+    id: "scoreboard-btn" %>
 </div>
-  <%= link_to "Back", tournament_path(@tournament), class: "btn btn-lg btn-dark mb-5", id: "scoreboard-btn" %>
