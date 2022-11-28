@@ -58,7 +58,8 @@ class MatchupsController < ApplicationController
 
   def index
     @this_tournament = Tournament.find(params[:tournament_id])
-    @matchups = @this_tournament.matchups
+    # This order keeps the matchups in order when a score is submitted.
+    @matchups = @this_tournament.matchups.order(:round_number, :id)
 
     @tournament = policy_scope(Matchup)
     # authorize @tournament, policy_class: MatchupPolicy
