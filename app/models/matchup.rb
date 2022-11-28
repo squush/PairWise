@@ -4,4 +4,6 @@ class Matchup < ApplicationRecord
 
   validates :player1_id, uniqueness: { scope: :player2_id }
   validates :round_number, presence: true, numericality: { greater_than: 0 }
+  validates :player1_score, presence: true, numericality: { only_integer: true }
+  validates :player2_score, presence: true, numericality: { only_integer: true }
 end
