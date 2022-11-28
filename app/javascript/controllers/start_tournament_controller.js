@@ -2,15 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="start-tournament"
 export default class extends Controller {
-
-  static targets = [ "form" ];
+  static targets = [ "form", "modal", "close" ];
 
   connect() {
     console.log("connecteddd");
   }
 
-  toggleForm(event) {
-    console.log(event);
-    this.formTarget.classList.toggle("d-none");
+  showForm() {
+    this.modalTarget.style.display = "block";
+  }
+
+  closeForm() {
+    this.modalTarget.style.display = "none";
   }
 }
