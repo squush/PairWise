@@ -62,7 +62,8 @@ class MatchupsController < ApplicationController
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
                   notice: "matchup #{@matchup.id} was updated."
     else
-      render :edit, status: :unprocessable_entity
+      # This doesn't work currently
+      render partial: 'input_score', status: :unprocessable_entity, locals: { matchup: @matchup }
     end
   end
 
