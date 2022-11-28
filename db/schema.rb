@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_183825) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_204914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_183825) do
     t.string "name"
     t.integer "rating"
     t.integer "ranking"
-    t.float "win_count"
+    t.float "win_count", default: 0.0
     t.integer "division"
     t.integer "crosstables_id"
     t.bigint "tournament_id", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_183825) do
     t.datetime "updated_at", null: false
     t.integer "seed"
     t.boolean "active", default: true
-    t.float "loss_count"
+    t.float "loss_count", default: 0.0
     t.integer "spread", default: 0
     t.index ["tournament_id"], name: "index_players_on_tournament_id"
   end
@@ -104,9 +104,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_183825) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false, null: false
     t.string "username"
     t.integer "crosstables_id"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -113,8 +113,6 @@ class TournamentsController < ApplicationController
           division: division,
           seed: seed,
           ranking: seed,
-          win_count: 0,
-          loss_count: 0,
           crosstables_id: xtables_id,
           tournament: tournament
         )

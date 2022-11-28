@@ -8,4 +8,6 @@ class Player < ApplicationRecord
   # TODO: Validation for seed?
   validates :name, :rating, :division, presence: true
   validates :spread, presence: true, numericality: { only_integer: true }
+  validates :win_count, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :loss_count, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end
