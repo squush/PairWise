@@ -111,7 +111,19 @@ class MatchupsController < ApplicationController
 
     # create matchups based on the pairings
     pairings.each do |pairing|
-      Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
+      if pairing.include?(Swissper::Bye)
+        # This logic was breaking, and I realize it is easier to not generate a matchup at all
+        # and have a bye be another boolean for a player
+        # real_player_id = 1 - pairing.find_index(Swissper::Bye)
+        # if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
+        #   bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, division: div, win_count: 0)
+        # else
+        #   bye = Player.where(tournament: pairing[real_player_id].tournament, name: "Bye")
+        # end
+        # Matchup.create!(round_number: round, player1: pairing[real_player_id], player2: bye)
+      else
+        Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
+      end
     end
   end
 
