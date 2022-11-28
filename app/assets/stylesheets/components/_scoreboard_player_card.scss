@@ -108,6 +108,7 @@
   // border: solid red;
   justify-content: center;
   font-size: 18px;
+  align-items: center;
 }
 
 #last-game {
@@ -130,4 +131,8 @@
   display: flex;
   justify-content: center;
   padding-right: 25px;
+}
+
+.spread {
+  font-size: 14px;
 }

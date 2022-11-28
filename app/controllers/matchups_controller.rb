@@ -23,14 +23,20 @@ class MatchupsController < ApplicationController
       if @matchup.player1_score > @matchup.player2_score
         player1.win_count += 1
         player2.loss_count += 1
+        player1.spread += (@matchup.player1_score - @matchup.player2_score)
+        player2.spread += (@matchup.player2_score - @matchup.player1_score)
       elsif @matchup.player1_score < @matchup.player2_score
         player1.loss_count += 1
         player2.win_count += 1
+        player1.spread += (@matchup.player1_score - @matchup.player2_score)
+        player2.spread += (@matchup.player2_score - @matchup.player1_score)
       elsif @matchup.player1_score == @matchup.player2_score
         player1.win_count += 0.5
         player1.loss_count += 0.5
         player2.win_count += 0.5
         player2.loss_count += 0.5
+        player1.spread += (@matchup.player1_score - @matchup.player2_score)
+        player2.spread += (@matchup.player2_score - @matchup.player1_score)
       end
 
       player1.save!
