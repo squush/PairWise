@@ -1,3 +1,24 @@
+#scoreboard-title {
+  color: $royal_blue;
+  text-align: center;
+  padding-top: 40px;
+}
+
+#scoreboard-location {
+  color: $royal_blue;
+  text-align: center;
+  text-shadow: 0 0 white;
+  font-size: 48px;
+  font-weight: 600;
+  padding-bottom: 50px;
+}
+
+.scoreboard-division {
+  color: $gray;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .scoreboard-main {
   max-width: 1300px;
 }
@@ -6,23 +27,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-bottom: 40px;
+  color: $dark_blue;
 }
 
+// NOT VERIFIED YET
 .scoreboard-player-card {
   box-shadow: 8px 8px $gray;
   display: flex;
   flex-wrap: wrap;
   display: grid;
-  border: solid $royal_blue;
+  background-color: $lightest_gray;
   border-radius: 14px;
-  padding: 8px;
+  padding: 25px;
   margin-bottom: 20px;
   margin-left: 8px;
   margin-right: 8px;
   width: 270px;
   max-height: 353px;
   padding-bottom: 8px;
-  color: $royal_blue;
   font-size: 18px;
   background-color: white;
 }
@@ -57,9 +80,14 @@
 #player-avatar {
   display: flex;
   // border: solid red;
-  max-width: 270px;
-  height: 115px;
+  max-width: 100px;
+  height: 100px;
   justify-content: center;
+  color: $dark_blue;
+  background-color: white;
+  padding: 15px;
+  border-radius: 50%;
+  margin-left: 60px;
 }
 
 .player-name-current-ranking {
