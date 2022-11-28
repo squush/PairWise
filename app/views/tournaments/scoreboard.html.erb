@@ -5,8 +5,8 @@
   <% @players.each do |div, players| %>
     <h2 class="scoreboard-division">Division <%= div %></h2>
     <div class="scoreboard">
-      <% players.each do |player| %>
-        <%= render 'player_card', player: player %>
+      <% players.each_with_index do |player, index| %>
+        <%= render 'player_card', player: player, ranking: (index + 1).ordinalize %>
       <% end %>
     </div>
   <% end %>
