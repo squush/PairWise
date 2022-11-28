@@ -31,9 +31,9 @@ gem "jbuilder"
 
 gem "pundit"
 
-gem "sidekiq"
+# gem "sidekiq"
 
-gem "sidekiq-failures", "~> 1.0"
+# gem "sidekiq-failures", "~> 1.0"
 
 gem 'whenever', require: false
 
