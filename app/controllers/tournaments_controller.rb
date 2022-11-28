@@ -68,7 +68,7 @@ class TournamentsController < ApplicationController
     # each value is an array of the players in that division
     @players = {}
     divisions.each do |div|
-      @players[div] = Player.where(tournament: @tournament).where(division: div).order(win_count: :desc, loss_count: :asc).to_a
+      @players[div] = Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc).to_a
     end
 
     # @event = Event.find(params[:tournament][:event])c
@@ -107,7 +107,17 @@ class TournamentsController < ApplicationController
         else
           rating = rating.to_i
         end
-        Player.create!(division: division, rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, loss_count: 0, crosstables_id: xtables_id, tournament: tournament)
+        Player.create!(
+          name: name,
+          rating: rating,
+          division: division,
+          seed: seed,
+          ranking: seed,
+          win_count: 0,
+          loss_count: 0,
+          crosstables_id: xtables_id,
+          tournament: tournament
+        )
       end
     end
   end

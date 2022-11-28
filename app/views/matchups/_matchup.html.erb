@@ -16,16 +16,29 @@
     </div>
 
     <div class="d-flex justify-content-around">
-      <% round_not_started = matchup.player1_score.nil? && matchup.player2_score.nil? %>
       <% if tournament.user == current_user %>
-        <%= link_to "Set score", set_score_path(matchup),
-          class: "btn btn-sm btn-outline-primary" %>
+        <div class="d-flex justify-content-around" data-controller="matchups">
+          <div>
+            <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
+            data-action="click->matchups#showForm"> Set score </a>
+          </div>
 
-        <%# TODO: When making the Edit Pairing route, replace this link %>
-        <% if round_not_started %>
-          <%= link_to "Edit pairing", "#",
-            class: "btn btn-sm btn-outline-danger" %>
-        <% end %>
+          <div class="modal" data-matchups-target="modal">
+            <div class="score-modal-content">
+              <div class="d-flex justify-content-right"><button class="score-close-btn d-flex justify-content-center align-items-center"
+                   data-action="click->matchups#closeForm">&times;</button></div>
+              <div class="d-flex justify-content-center"><%= render "input_score", matchup: matchup %></div>
+            </div>
+          </div>
+
+          <%# <%= link_to "Set score", set_score_path(matchup),
+            class: "btn btn-sm btn-outline-primary" %>
+
+          <%# TODO: When making the Edit Pairing route, replace this link %>
+          <% unless matchup.done %>
+            <%= link_to "Edit pairing", "#", class: "btn btn-sm btn-outline-danger" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

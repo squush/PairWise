@@ -1,8 +1,5 @@
 class MatchupsController < ApplicationController
-  before_action :set_matchup, only: %i[set_score update]
-
-  def set_score
-  end
+  before_action :set_matchup, only: %i[update]
 
   def create
     @matchup = Matchup.new(matchup_params)
@@ -18,35 +15,88 @@ class MatchupsController < ApplicationController
   end
 
   def update
+    @matchup.done = true
     if @matchup.update(matchup_params)
-      p1 = @matchup.player1
-      p2 = @matchup.player2
-      if @matchup.player1_score > @matchup.player2_score
-        p1.win_count += 1
-        p2.loss_count += 1
-      elsif @matchup.player1_score < @matchup.player2_score
-        p1.loss_count += 1
-        p2.win_count += 1
-      else
-        p1.win_count += 0.5
-        p1.loss_count += 0.5
-        p2.win_count += 0.5
-        p2.loss_count += 0.5
-      end
+      # Update the wins and losses of each player based on the submitted scores
+      player1 = @matchup.player1
+      player2 = @matchup.player2
 
-      p1.save!
-      p2.save!
+      player1.win_count =
+        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
+        player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
+        ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+
+      player1.loss_count =
+        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+        player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
+        ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+
+      player2.win_count =
+        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
+        player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
+        ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+
+      player2.loss_count =
+        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+        player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
+        ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+
+      # Could keep this logic with an unless @matchup.done statement, but then we would have to
+      # account for subtracting wins/losses when a score is changed retroactively
+      # if @matchup.player1_score > @matchup.player2_score
+      #   player1.win_count += 1
+      #   player2.loss_count += 1
+      # elsif @matchup.player1_score < @matchup.player2_score
+      #   player1.loss_count += 1
+      #   player2.win_count += 1
+      # elsif @matchup.player1_score == @matchup.player2_score
+      #   player1.win_count += 0.5
+      #   player1.loss_count += 0.5
+      #   player2.win_count += 0.5
+      #   player2.loss_count += 0.5
+      # end
+      # raise
+      # Calculate the player spread by adding their spreads as player1 and as player2
+      player1.spread =
+        player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score } +
+        player1.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
+      # raise
+      player2.spread =
+        player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score } +
+        player2.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
+
+      player1.save!
+      player2.save!
+
+      # Check if all the scores have been submitted for the round and if so,
+      # generate matchups for this division two rounds later
+      this_tournament = Tournament.find(player1.tournament_id)
+      matchups_without_scores = this_tournament.matchups.where(round_number: @matchup.round_number, done: false).to_a
+      matchups_without_scores = matchups_without_scores.select { |matchup| matchup.player1.division == player1.division }
+
+
+      # Find all players in the division and determine which round to generate
+      # pairings for
+      players = player1.tournament.players.select { |player| player.division == player1.division}
+      round_to_generate = @matchup.round_number + 2
+      generate_matchups(round_to_generate, players) if player1.tournament.event.rounds >= round_to_generate && matchups_without_scores.empty?
 
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
-        notice: "matchup #{@matchup.id} was updated."
+                  notice: "matchup #{@matchup.id} was updated."
     else
-      render :edit, status: :unprocessable_entity
+      # This doesn't work perfectly. Reloads the page, but at least there's no error
+      render partial: 'input_score', status: :unprocessable_entity, locals: { matchup: @matchup }
     end
   end
 
   def index
     @this_tournament = Tournament.find(params[:tournament_id])
-    @matchups = @this_tournament.matchups
+    # This order keeps the matchups in order when a score is submitted.
+    @matchups = @this_tournament.matchups.order(:round_number, :id)
 
     @tournament = policy_scope(Matchup)
     # authorize @tournament, policy_class: MatchupPolicy
@@ -54,6 +104,16 @@ class MatchupsController < ApplicationController
   end
 
   private
+
+  def generate_matchups(round, players)
+    # generate pairings
+    pairings = Swissper.pair(players, delta_key: :win_count)
+
+    # create matchups based on the pairings
+    pairings.each do |pairing|
+      Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
+    end
+  end
 
   def set_matchup
     @matchup = Matchup.find(params[:id])
