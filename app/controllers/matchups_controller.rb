@@ -21,27 +21,53 @@ class MatchupsController < ApplicationController
       player1 = @matchup.player1
       player2 = @matchup.player2
 
-      if @matchup.player1_score > @matchup.player2_score
-        player1.win_count += 1
-        player2.loss_count += 1
-      elsif @matchup.player1_score < @matchup.player2_score
-        player1.loss_count += 1
-        player2.win_count += 1
-      elsif @matchup.player1_score == @matchup.player2_score
-        player1.win_count += 0.5
-        player1.loss_count += 0.5
-        player2.win_count += 0.5
-        player2.loss_count += 0.5
-      end
+      player1.win_count =
+        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
+        player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
+        ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
 
+      player1.loss_count =
+        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+        player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
+        ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+
+      player2.win_count =
+        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
+        player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
+        ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+
+      player2.loss_count =
+        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+        player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
+        ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+          player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+
+      # Could keep this logic with an unless @matchup.done statement, but then we would have to
+      # account for subtracting wins/losses when a score is changed retroactively
+      # if @matchup.player1_score > @matchup.player2_score
+      #   player1.win_count += 1
+      #   player2.loss_count += 1
+      # elsif @matchup.player1_score < @matchup.player2_score
+      #   player1.loss_count += 1
+      #   player2.win_count += 1
+      # elsif @matchup.player1_score == @matchup.player2_score
+      #   player1.win_count += 0.5
+      #   player1.loss_count += 0.5
+      #   player2.win_count += 0.5
+      #   player2.loss_count += 0.5
+      # end
+      # raise
       # Calculate the player spread by adding their spreads as player1 and as player2
       player1.spread =
-        player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
-        + player1.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
-
+        player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score } +
+        player1.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
+      # raise
       player2.spread =
+        player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score } +
         player2.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
-        + player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
 
       player1.save!
       player2.save!
@@ -62,7 +88,8 @@ class MatchupsController < ApplicationController
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
                   notice: "matchup #{@matchup.id} was updated."
     else
-      render :edit, status: :unprocessable_entity
+      # This doesn't work perfectly. Reloads the page, but at least there's no error
+      render partial: 'input_score', status: :unprocessable_entity, locals: { matchup: @matchup }
     end
   end
 
