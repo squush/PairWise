@@ -198,14 +198,27 @@ class TournamentsController < ApplicationController
     # Generate matchups for round 1 based on pairings
     pairings[:round_1].each do |div, pairings|
       pairings.each do |pairing|
-        Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
+        if pairing.include?(Swissper::Bye)
+          real_player_id = 1 - pairing.find_index(Swissper::Bye)
+          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div)
+          Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
+        else
+          Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
+        end
       end
     end
 
     # Generate matchups for round 2 based on pairings
     pairings[:round_2].each do |div, pairings|
       pairings.each do |pairing|
-        Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
+        if pairing.include?(Swissper::Bye)
+          real_player_id = 1 - pairing.find_index(Swissper::Bye)
+          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div)
+          Matchup.create!(round_number: 2, player1: pairing[real_player_id], player2: bye)
+        else
+          Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
+        end
+
       end
     end
   end
