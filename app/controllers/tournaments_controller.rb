@@ -60,6 +60,17 @@ class TournamentsController < ApplicationController
 
   def scoreboard
     @tournament = Tournament.find(params[:id])
+
+    all_players = Player.where(tournament: @tournament)
+    divisions = all_players.map { |player| player.division }.uniq
+
+    # Create players hash where each key is a division and
+    # each value is an array of the players in that division
+    @players = {}
+    divisions.each do |div|
+      @players[div] = Player.where(tournament: @tournament).where(division: div).order(win_count: :desc, loss_count: :asc).to_a
+    end
+
     # @event = Event.find(params[:tournament][:event])c
     authorize @tournament
   end
