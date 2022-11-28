@@ -1,64 +1,63 @@
 <div class="container scoreboard-main">
-  <h1 class="text-center">Scoreboard</h1>
-  <h4 class="text-center"><%= @tournament.event.location %> Championship</h4>
+  <h4 class="text-center" id="scoreboard-title">Scoreboard</h4>
+  <h1 class="text-center" id="scoreboard-location"><%= @tournament.event.location %></h1>
 
+  <% @players.each do |div, players| %>
+    <h2 class="scoreboard-division">Division <%= div %></h2>
+    <div class="scoreboard">
+      <% players.each do |player| %>
+        <div class="scoreboard-player-card">
+          <div class="first-row">
+            <div id="ranking">
+              <p>1st</p>
+            </div>
 
-<% @players.each do |div, players| %>
-  <h1>Division <%= div %></h1>
-  <div class="scoreboard">
-    <% players.each do |player| %>
-      <div class="scoreboard-player-card">
-        <div class="first-row">
-          <div id="ranking">
-            <p>1st</p>
+            <div id="rating">
+              <p>Rating: <%= player.rating %></p>
+            </div>
           </div>
 
-          <div id="rating">
-            <p>Rating: <%= player.rating %></p>
+          <div id="player-avatar">
+            <%= image_tag "user-astronaut-solid.svg"%>
+          </div>
+
+          <div id="player-name">
+            <p><strong><%= player.name %></strong></p>
+          </div>
+          <div id="current-ranking">
+          <%# Tried a cleaner logic but it didn't work, may want to refactor later %>
+            <p><% if player.win_count == player.win_count.to_i %>
+                <%= player.win_count.round  %>
+              <% else %>
+                <%= player.win_count %>
+              <% end %>
+              -
+              <% if player.loss_count == player.loss_count.to_i %>
+                <%= player.loss_count.round  %>
+              <% else %>
+                <%= player.loss_count %>
+              <% end %>
+            </p>
+          </div>
+
+          <%# TODO need to calculate last game logic %>
+          <div id="last-game">
+            <p> Last game loading...</p>
+          </div>
+
+          <%# TODO need to calculate last game logic %>
+          <div id="next-game">
+            <p> Next game loading...</p>
           </div>
         </div>
-
-        <div id="player-avatar">
-          <%= image_tag "user-astronaut-solid.svg"%>
+      <% end %>
+    </div>
+  <% end %>
+    <div id="scoreboard-back-button">
+      <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
+        <div class="tourney-btn tourney-btn-sm text-center">
+          <p><i class="fa-solid fa-angle-left"></i>BACK</p>
         </div>
-
-        <div id="player-name">
-          <p><strong><%= player.name %></strong></p>
-        </div>
-        <div id="current-ranking">
-        <%# Tried a cleaner logic but it didn't work, may want to refactor later %>
-          <p><% if player.win_count == player.win_count.to_i %>
-              <%= player.win_count.round  %>
-            <% else %>
-              <%= player.win_count %>
-            <% end %>
-            -
-            <% if player.loss_count == player.loss_count.to_i %>
-              <%= player.loss_count.round  %>
-            <% else %>
-              <%= player.loss_count %>
-            <% end %>
-          </p>
-        </div>
-
-        <%# TODO need to calculate last game logic %>
-        <div id="last-game">
-          <p> Last game loading...</p>
-        </div>
-
-        <%# TODO need to calculate last game logic %>
-        <div id="next-game">
-          <p> Next game loading...</p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-  <div id="scoreboard-back-button">
-    <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
-      <div class="tourney-btn tourney-btn-sm text-center">
-        <p><i class="fa-solid fa-angle-left"></i>BACK</p>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 </div>
