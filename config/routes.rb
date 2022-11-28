@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  require "sidekiq/web"
+  # require "sidekiq/web"
   devise_for :users
 
-  authenticate :user, ->(user) { user.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
+  # authenticate :user, ->(user) { user.admin? } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 
   root to: "pages#home"
 
