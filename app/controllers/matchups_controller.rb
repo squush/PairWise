@@ -43,8 +43,9 @@ class MatchupsController < ApplicationController
       # for the round and if so, generate matchups
       # for this division two rounds later
       this_tournament = Tournament.find(p1.tournament_id)
-      matchups_without_scores = this_tournament.matchups.where(round_number: @matchup.round_number).where(player1_score: nil).to_a
-      matchups_without_scores.map { |matchup| matchup.player1.division == p1.division }
+      matchups_without_scores = this_tournament.matchups.where(round_number: @matchup.round_number, player1_score: nil).to_a
+      matchups_without_scores = matchups_without_scores.select { |matchup| matchup.player1.division == p1.division }
+
 
       # Find all players in the division and
       # determine which round to generate pairings for
