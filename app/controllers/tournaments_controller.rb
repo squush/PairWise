@@ -60,6 +60,17 @@ class TournamentsController < ApplicationController
 
   def scoreboard
     @tournament = Tournament.find(params[:id])
+
+    all_players = Player.where(tournament: @tournament)
+    divisions = all_players.map { |player| player.division }.uniq
+
+    # Create players hash where each key is a division and
+    # each value is an array of the players in that division
+    @players = {}
+    divisions.each do |div|
+      @players[div] = Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc).to_a
+    end
+
     # @event = Event.find(params[:tournament][:event])c
     authorize @tournament
   end
@@ -88,7 +99,7 @@ class TournamentsController < ApplicationController
         division = row[/\d/].to_i
       elsif row.start_with?(/\d/)
         seed = row[/\d+/].to_i
-        name = child.search('td')[1].text.strip[1..-1]
+        name = child.search('td')[1].text.gsub('*', '').strip[1..-1]
         rating = child.search('td')[2].text.strip
         xtables_id = child.search('td').children.children.css('a').attribute('href').value[/\d{1,5}/]
         if rating == "---"

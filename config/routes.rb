@@ -14,9 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :matchups, only: %i[update create]
-  get "/matchups/:id/set_score", to: "matchups#set_score", as: :set_score
-
-  # get "tournaments/:id/matchups", to: "matchups#index", as: :matchups
 
   get "/contact", to: "pages#contact_us", as: :contact_us
   get "/profile", to: "pages#my_profile", as: :my_profile

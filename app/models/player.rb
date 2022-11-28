@@ -7,4 +7,5 @@ class Player < ApplicationRecord
   has_one_attached :photo
   # TODO: Validation for seed?
   validates :name, :rating, :division, presence: true
+  validates :spread, presence: true, numericality: { only_integer: true }
 end

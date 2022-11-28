@@ -1,11 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="start-tournament"
+// Connects to data-controller="matchups"
 export default class extends Controller {
-  static targets = [ "form", "modal", "close" ];
+  static targets = [ "modal" ];
 
   connect() {
-    console.log("connecteddd");
+    console.log("connected");
   }
 
   showForm() {

@@ -1,9 +1,15 @@
-<div class="container">
-  <h1>My tournaments</h1>
+<div class="my-tournaments">
+  <div class="container">
+    <br><br><br>
+    <div class="mb-5">
+      <h1 class="mb-2 text-center border-2 text-white">MY TOURNAMENTS</h1>
+      <br>
 
-  <div class="d-flex flex-wrap">
-    <% @tournaments.each do |tournament| %>
-      <%= render "tournament", tournament: tournament %>
-    <% end %>
+      <div class="d-flex flex-wrap">
+        <% @tournaments.each do |tournament| %>
+          <%= render "tournament", tournament: tournament %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
