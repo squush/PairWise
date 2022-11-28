@@ -61,8 +61,14 @@
               <%= f.submit "Save new player", class: "btn btn-sm btn-primary", id: "tourney-btn-3" %>
             <% end %>
           <% end %>
-          </div>
       </div>
-  <%# </div> %>
-      <%= link_to "Back", tournament_path(@tournament), class: "btn btn-lg btn-dark mb-5", id: "tourney-btn-4" %>
+      <div class="d-flex justify-content-evenly">
+        <%= link_to "Back", tournament_path(@tournament),
+          class: "btn btn-lg btn-dark mb-5",
+          id: "tourney-btn-4" %>
+        <%= link_to "Delete", tournament_path(@tournament),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+          class: "btn btn-lg btn-outline-warning mb-5",
+          id: "tourney-btn-red" %>
+      </div>
 </div>

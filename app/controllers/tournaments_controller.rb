@@ -4,7 +4,7 @@ require 'json'
 require 'date'
 
 class TournamentsController < ApplicationController
-  before_action :set_tournament, only: %i[show edit update]
+  before_action :set_tournament, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
@@ -56,6 +56,11 @@ class TournamentsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @tournament.destroy
+    redirect_to my_tournaments_path, notice: "Tournament destroyed!"
   end
 
   def scoreboard
