@@ -68,7 +68,7 @@ class TournamentsController < ApplicationController
     # each value is an array of the players in that division
     @players = {}
     divisions.each do |div|
-      @players[div] = Player.where(tournament: @tournament).where(division: div).order(win_count: :desc, loss_count: :asc).to_a
+      @players[div] = Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc).to_a
     end
 
     # @event = Event.find(params[:tournament][:event])c
