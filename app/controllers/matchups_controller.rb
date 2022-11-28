@@ -1,5 +1,5 @@
 class MatchupsController < ApplicationController
-  before_action :set_matchup, only: %i[set_score update]
+  before_action :set_matchup, only: %i[update]
 
   def create
     @matchup = Matchup.new(matchup_params)
@@ -38,6 +38,10 @@ class MatchupsController < ApplicationController
       player1.spread =
         player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
         + player1.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
+
+      player2.spread =
+        player2.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
+        + player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
 
       player1.save!
       player2.save!
