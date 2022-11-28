@@ -23,3 +23,22 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+/* Colors-map - ... */
+$warning: $burgundy;
+
+$custom-colors: (
+  "royal-blue": $royal_blue,
+  "dark-blue": $dark_blue,
+  "gray": $gray,
+  "light-gray": $light-gray,
+  "lightest-gray": $lightest_gray,
+  "burgundy": $burgundy,
+  "off-white": $off_white
+);
+
+$theme-colors: (
+  "warning": $warning
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
