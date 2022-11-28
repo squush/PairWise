@@ -139,6 +139,11 @@ table {
   font-weight: 400;
 }
 
+.tourney-no-players {
+  text-align: center;
+  margin: 20px 0px;
+}
+
 th {
   padding: 20px 15px;
   text-align: left;
@@ -206,6 +211,17 @@ td {
   box-shadow: 2px 2px 1px 1px $gray;
 }
 
-.mb-5 {
-
+#tourney-btn-4 {
+  margin-top: 60px;
+  margin-bottom: 1px;
+  margin-left: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $off_white;
+  border-color: $dark_blue;
+  background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
 }
