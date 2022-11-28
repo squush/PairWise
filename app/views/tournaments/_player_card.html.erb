@@ -11,7 +11,11 @@
   </div>
 
   <div id="player-avatar">
-    <%= image_tag "user-astronaut-solid.svg"%>
+    <% if player.photo.attached? %>
+      <%= cl_image_tag player.photo.key %>
+    <% else %>
+      <%= image_tag "user-astronaut-solid.svg" %>
+    <% end %>
   </div>
 
   <div id="player-name">
