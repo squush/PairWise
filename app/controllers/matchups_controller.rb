@@ -1,5 +1,5 @@
 class MatchupsController < ApplicationController
-  before_action :set_matchup, only: %i[set_score update]
+  before_action :set_matchup, only: %i[update]
 
   def create
     @matchup = Matchup.new(matchup_params)
@@ -15,6 +15,7 @@ class MatchupsController < ApplicationController
   end
 
   def update
+    @matchup.done = true
     if @matchup.update(matchup_params)
       # Update the wins and losses of each player based on the submitted scores
       player1 = @matchup.player1
@@ -33,13 +34,22 @@ class MatchupsController < ApplicationController
         player2.loss_count += 0.5
       end
 
+      # Calculate the player spread by adding their spreads as player1 and as player2
+      player1.spread =
+        player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
+        + player1.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
+
+      player2.spread =
+        player2.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
+        + player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
+
       player1.save!
       player2.save!
 
       # Check if all the scores have been submitted for the round and if so,
       # generate matchups for this division two rounds later
       this_tournament = Tournament.find(player1.tournament_id)
-      matchups_without_scores = this_tournament.matchups.where(round_number: @matchup.round_number, player1_score: nil).to_a
+      matchups_without_scores = this_tournament.matchups.where(round_number: @matchup.round_number, done: false).to_a
       matchups_without_scores = matchups_without_scores.select { |matchup| matchup.player1.division == player1.division }
 
 
