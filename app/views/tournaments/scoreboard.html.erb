@@ -1,21 +1,20 @@
 <div class="container scoreboard-main">
-  <h1 class="text-center">Scoreboard</h1>
-  <h4 class="text-center"><%= @tournament.event.location %> Championship</h4>
+  <h4 class="text-center" id="scoreboard-title">Scoreboard</h4>
+  <h1 class="text-center" id="scoreboard-location"><%= @tournament.event.location %></h1>
 
-
-<% @players.each do |div, players| %>
-  <h1>Division <%= div %></h1>
-  <div class="scoreboard">
-    <% players.each do |player| %>
-      <%= render 'player_card', player: player %>
-    <% end %>
-  </div>
-<% end %>
-  <div id="scoreboard-back-button">
-    <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
-      <div class="tourney-btn tourney-btn-sm text-center">
-        <p><i class="fa-solid fa-angle-left"></i>BACK</p>
-      </div>
-    <% end %>
-  </div>
+  <% @players.each do |div, players| %>
+    <h2 class="scoreboard-division">Division <%= div %></h2>
+    <div class="scoreboard">
+      <% players.each do |player| %>
+        <%= render 'player_card', player: player %>
+      <% end %>
+    </div>
+  <% end %>
+    <div id="scoreboard-back-button">
+      <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
+        <div class="tourney-btn tourney-btn-sm text-center">
+          <p><i class="fa-solid fa-angle-left"></i>BACK</p>
+        </div>
+      <% end %>
+    </div>
 </div>
