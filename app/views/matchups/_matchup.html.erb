@@ -16,7 +16,6 @@
     </div>
 
     <div class="d-flex justify-content-around">
-      <% round_not_started = matchup.player1_score.nil? && matchup.player2_score.nil? %>
       <% if tournament.user == current_user %>
         <div class="d-flex justify-content-around" data-controller="matchups">
           <div>
@@ -36,9 +35,8 @@
             class: "btn btn-sm btn-outline-primary" %>
 
           <%# TODO: When making the Edit Pairing route, replace this link %>
-          <% if round_not_started %>
-            <%= link_to "Edit pairing", "#",
-              class: "btn btn-sm btn-outline-danger" %>
+          <% unless matchup.done %>
+            <%= link_to "Edit pairing", "#", class: "btn btn-sm btn-outline-danger" %>
           <% end %>
         </div>
       <% end %>

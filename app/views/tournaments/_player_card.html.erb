@@ -18,7 +18,8 @@
   </div>
   <div id="current-ranking">
   <%# Tried a cleaner logic but it didn't work, may want to refactor later %>
-    <p><% if player.win_count == player.win_count.to_i %>
+    <p>
+      <% if player.win_count == player.win_count.to_i %>
         <%= player.win_count.round  %>
       <% else %>
         <%= player.win_count %>
@@ -30,7 +31,15 @@
         <%= player.loss_count %>
       <% end %>
     </p>
+    <div>&nbsp;</div>
+    <p class="spread">(<% if player.spread.positive? %>
+        +<%= player.spread %>
+      <% else %>
+        <%= player.spread %>
+      <% end %>
+    )</p>
   </div>
+
 
   <%# TODO need to calculate last game logic %>
   <div id="last-game">
