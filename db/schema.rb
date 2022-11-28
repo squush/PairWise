@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_26_164018) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_170448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_164018) do
     t.integer "seed"
     t.boolean "active", default: true
     t.float "loss_count"
+    t.integer "spread", default: 0
     t.index ["tournament_id"], name: "index_players_on_tournament_id"
   end
 
