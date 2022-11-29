@@ -7,13 +7,7 @@
     <div id="rating">
       <p class="scoreboard-p">Rating:</p>
       <h5>
-      <%# <%= @player_round %>
-      <% if @tournament.matchups.where(round_number: @player_round) != 0 %>
-      <%  %>
-      <%= player.rating + 10 %>
-
-      <%# <% raise %>
-
+        <%= player.rating %>
       </h5>
     </div>
   </div>
