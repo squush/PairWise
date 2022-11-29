@@ -33,7 +33,6 @@
       -
       <%= player.loss_count == player.loss_count.to_i ? player.loss_count.round : player.loss_count %>
     </p>
-    <div>&nbsp;</div>
     <p class="spread">(<% if player.spread.positive? %>
         +<%= player.spread %>
       <% else %>
