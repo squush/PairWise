@@ -42,19 +42,14 @@
     )</p>
   </div>
 
-
-  <%# TODO need to calculate last game logic %>
   <div id="last-game">
     <p>
      <% player_round = player.win_count + player.loss_count %>
      <% @player_round = player_round.round.to_i %>
 
-      <% player.id %>
-      <% player.name %>
-
       <%# Player's last game score %>
       <% @tournament.matchups.each do |matchup| %>
-          <% if matchup[:round_number] == @player_round-1 %>
+          <% if matchup[:round_number] == @player_round%>
             <% if matchup[:player1_id] == player.id %>
               <strong>Last:</strong>
               <%= matchup[:player1_score] %>
@@ -68,7 +63,7 @@
       <% end %>
 
       <% @tournament.matchups.each do |matchup| %>
-          <% if matchup[:round_number] == @player_round-1 %>
+          <% if matchup[:round_number] == @player_round %>
             <% if matchup[:player1_id] == player.id %>
               <%= matchup[:player2_score] %>
             <% elsif matchup[:player2_id] == player.id %>
@@ -79,7 +74,7 @@
 
       <%# Opponent's last game score%>
       <% @tournament.matchups.each do |matchup| %>
-          <% if matchup[:round_number] == @player_round-1 %>
+          <% if matchup[:round_number] == @player_round %>
             <% if matchup[:player1_id] == player.id %>
               <% @opponent_id = matchup[:player2_id] %>
              vs. <%= Player.find(@opponent_id).name %>
@@ -89,10 +84,8 @@
             <% end %>
           <% end %>
       <% end %>
-
     </p>
   </div>
-
       <%# player's next game opponent%>
   <div id="next-game">
     <p><strong>Next:</strong>
@@ -109,8 +102,6 @@
             <% end %>
           <% end %>
       <% end %>
-
-
     </p>
   </div>
 </div>
