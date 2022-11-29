@@ -43,6 +43,7 @@ gem "dotenv-rails", groups: [:development, :test]
 
 gem "cloudinary"
 
+gem 'coingecko_ruby'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
