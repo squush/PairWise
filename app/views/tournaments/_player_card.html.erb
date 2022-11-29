@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div id="player-avatar">
+    <div class="text-center mb-1">
       <% if player.photo.attached? %>
         <%= cl_image_tag player.photo.key,
           transformation: [
@@ -22,7 +22,7 @@
             {width: 128, crop: "scale"}
           ] %>
       <% else %>
-        <%= image_tag "user-astronaut-solid.svg" %>
+        <%= image_tag "user-astronaut-solid.svg", class: "player-avatar" %>
       <% end %>
     </div>
 
