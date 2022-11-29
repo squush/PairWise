@@ -1,6 +1,12 @@
 <div class="container justify-content-center col-12">
-  <p class="pb-2 mb-4 border-bottom">Round <%= matchup.round_number %></p>
-  <%= simple_form_for matchup do |f| %>
+  <p class="text-center border-bottom border-secondary text-primary py-1">
+    Round <%= matchup.round_number %>
+  </p>
+  <%= simple_form_for matchup, defaults: {
+      wrapper_html: { class: "text-primary d-flex" },
+      label_html: { class: "col-9" },
+      input_html: { class: "text-primary border border-secondary" }
+    } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -9,6 +15,8 @@
       <%= f.input :player2_score, label: "#{matchup.player2.name}:" %>
     </div>
 
-    <%= f.submit "Submit score", class: "btn btn-info modal-button" %>
+    <div class="text-center">
+      <%= f.submit "Submit score", class: "btn btn-info modal-button" %>
+    </div>
   <% end %>
 </div>
