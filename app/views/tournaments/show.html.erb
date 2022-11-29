@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@tournament.location} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @tournament.date %>
+<% content_for :meta_image, "<%= meta_image %>" %>
+
 <div class="container">
 
   <%# <div class="mb-3 border-bottom border-3"> %>
