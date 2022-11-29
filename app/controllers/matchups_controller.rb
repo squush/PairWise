@@ -20,39 +20,47 @@ class MatchupsController < ApplicationController
       player1 = @matchup.player1
       player2 = @matchup.player2
 
+      if @matchup.player1_score > @matchup.player2_score
+        player1.rating += 10
+        player2.rating -= 10
+      elsif @matchup.player2_score > @matchup.player1_score
+        player1.rating -= 10
+        player2.rating += 10
+      end
+
       # Update the wins and losses of each player based on the submitted scores
       player1.win_count =
-        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
-        player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
-        ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
-          player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+      player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
+      player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
+      ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+      player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
 
       player1.loss_count =
-        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
-        player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
-        ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
-          player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+      player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+      player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
+      ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+      player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
 
       player2.win_count =
-        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
-        player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
-        ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
-          player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+      player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score > matchup.player2_score) } +
+      player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score > matchup.player1_score) } +
+      ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+      player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
 
       player2.loss_count =
-        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
-        player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
-        ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
-          player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
+      player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+      player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
+      ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
+      player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
 
       # Calculate the player spread by adding their spreads as player1 and as player2
       player1.spread =
-        player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score } +
-        player1.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
+      player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score } +
+      player1.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score }
 
       player2.spread =
-        player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score } +
-        player2.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
+      player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score } +
+      player2.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
 
       player1.save!
       player2.save!
@@ -71,7 +79,7 @@ class MatchupsController < ApplicationController
       generate_matchups(round_to_generate, players) if player1.tournament.event.rounds >= round_to_generate && matchups_without_scores.empty?
 
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
-                  notice: "matchup #{@matchup.id} was updated."
+      notice: "matchup #{@matchup.id} was updated."
     else
       # This doesn't work perfectly. Reloads the page, but at least there's no error
       render partial: 'input_score', status: :unprocessable_entity, locals: { matchup: @matchup }
