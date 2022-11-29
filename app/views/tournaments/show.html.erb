@@ -11,7 +11,7 @@
   <div class="tourney-secondary">
     <h3 class="tourney-round">Round ? of <%= @tournament.event.rounds %></h3>
     <p>
-      <%= @tournament.event.date.strftime('%B %e, %Y') || @tournament.date.strftime('%B %e, %Y') %>
+      <%= @tournament.event.date.strftime'%A, %B %e, %Y' || @tournament.date.strftime('%A, %B %e, %Y') %>
     </p>
   </div>
 
