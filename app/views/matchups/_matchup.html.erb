@@ -31,10 +31,6 @@
             </div>
           </div>
 
-          <%# <%= link_to "Set score", set_score_path(matchup),
-            class: "btn btn-sm btn-outline-primary" %>
-
-          <%# TODO: When making the Edit Pairing route, replace this link %>
           <% unless matchup.done %>
             <%= link_to "Edit pairing", "#", class: "btn btn-sm btn-outline-danger" %>
           <% end %>

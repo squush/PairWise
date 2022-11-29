@@ -5,16 +5,20 @@
   <% @players.each do |div, players| %>
     <h2 class="scoreboard-division">Division <%= div %></h2>
     <div class="scoreboard">
-      <% players.each do |player| %>
-        <%= render 'player_card', player: player %>
+      <% players.each_with_index do |player, index| %>
+        <%= render 'player_card', player: player, ranking: (index + 1).ordinalize %>
       <% end %>
     </div>
   <% end %>
-    <div id="scoreboard-back-button">
-      <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
-        <div class="tourney-btn tourney-btn-sm text-center">
-          <p><i class="fa-solid fa-angle-left"></i>BACK</p>
-        </div>
-      <% end %>
-    </div>
+
+  <%# <div id="scoreboard-back-button"> %>
+    <%# <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
+      <%# <div class="tourney-btn tourney-btn-sm text-center"> %>
+        <%# <p><i class="fa-solid fa-angle-left"></i>Back</p> %>
+      <%# </div> %>
+    <%# <% end %>
+  <%# </div> %>
+  <%= link_to "Back", tournament_path(@tournament),
+    class: "btn btn-lg btn-primary mb-5",
+    id: "scoreboard-btn" %>
 </div>

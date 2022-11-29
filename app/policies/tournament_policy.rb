@@ -23,6 +23,10 @@ class TournamentPolicy < ApplicationPolicy
     user_is_owner?
   end
 
+  def destroy?
+    user_is_owner?
+  end
+
   def scoreboard?
     true
   end

@@ -31,41 +31,45 @@
   color: $dark_blue;
 }
 
-// NOT VERIFIED YET
 .scoreboard-player-card {
   box-shadow: 8px 8px $gray;
   display: flex;
   flex-wrap: wrap;
   display: grid;
-  background-color: $lightest_gray;
+  background-color: white;
   border-radius: 14px;
   padding: 25px;
   margin-bottom: 20px;
   margin-left: 8px;
   margin-right: 8px;
   width: 270px;
-  max-height: 353px;
+  // max-height: 353px;
   padding-bottom: 8px;
   font-size: 18px;
-  background-color: white;
 }
 
 // TODO: Please don't overwrite existing classes. Write a new class instead if
 //       you have custom CSS.
 // .text-center {
-//   color: $royal_blue;
-//   font-size: 24px;
-//   margin-bottom: 15px;
-// }
+  //   color: $royal_blue;
+  //   font-size: 24px;
+  //   margin-bottom: 15px;
+  // }
 
-#ranking {
-  // border: solid red 1px;
+// NOT VERIFIED YET
+  #ranking {
+    margin-top: 6px;
   color: $royal_blue;
+
 }
 
 #rating {
-  // border: solid red 1px;
   color: $royal_blue;
+}
+
+.scoreboard-p {
+  font-size: 12px;
+  margin-bottom: 1px;
 }
 
 .first-row {
@@ -80,14 +84,14 @@
 #player-avatar {
   display: flex;
   // border: solid red;
-  max-width: 100px;
-  height: 100px;
+  // max-width: 100px;
+  // height: 100px;
   justify-content: center;
   color: $dark_blue;
-  background-color: white;
+  // background-color: white;
   padding: 15px;
-  border-radius: 50%;
-  margin-left: 60px;
+  // border-radius: 50%;
+  // margin-left: 60px;
 }
 
 .player-name-current-ranking {
@@ -105,7 +109,6 @@
 
 #current-ranking {
   display: flex;
-  // border: solid red;
   justify-content: center;
   font-size: 18px;
   align-items: center;
@@ -113,26 +116,40 @@
 
 #last-game {
   display: flex;
-  // border: solid red;
   justify-content: left;
   font-size: 12px;
   color: $royal_blue;
+  margin-bottom: 1px;
 }
 
 #next-game {
   display: flex;
-  // border: solid red;
   justify-content: left;
   font-size: 12px;
   color: $royal_blue;
 }
 
-#scoreboard-back-button {
-  display: flex;
-  justify-content: center;
-  padding-right: 25px;
-}
+// #scoreboard-back-button {
+//   display: flex;
+//   justify-content: center;
+//   padding-right: 25px;
+// }
 
 .spread {
   font-size: 14px;
+}
+
+#scoreboard-btn {
+  margin-top: 60px;
+  margin-bottom: 1px;
+  margin-left: 40px;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  // color: $off_white;
+  // border-color: $dark_blue;
+  // background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
 }

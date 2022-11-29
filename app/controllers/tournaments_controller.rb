@@ -4,7 +4,7 @@ require 'json'
 require 'date'
 
 class TournamentsController < ApplicationController
-  before_action :set_tournament, only: %i[show edit update]
+  before_action :set_tournament, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
@@ -58,6 +58,11 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def destroy
+    @tournament.destroy
+    redirect_to my_tournaments_path, notice: "Tournament destroyed!"
+  end
+
   def scoreboard
     @tournament = Tournament.find(params[:id])
 
@@ -107,19 +112,46 @@ class TournamentsController < ApplicationController
         else
           rating = rating.to_i
         end
-        Player.create!(
+
+        player = Player.create!(
           name: name,
           rating: rating,
           division: division,
           seed: seed,
           ranking: seed,
-          win_count: 0,
-          loss_count: 0,
           crosstables_id: xtables_id,
           tournament: tournament
         )
+
+        # The path by default can be either a full path to a photo, for example
+        # on scrabbleplayers.org, or a relative path if it's stored directly on
+        # cross-tables.
+        photo_path = get_player_photo(xtables_id)
+
+        # The gsub is needed because pics with a space in the filename prevent
+        # the URI from being opened.
+        # TODO: There might be other characters that will break this. Instead of
+        #       gsubbing one by one, there might be a cleaner way to fix this.
+        photo_path.gsub!(" ", "%20")
+
+        # When the path is relative, we need to create a full URL from it
+        if photo_path.start_with?("/")
+          photo_path = "https://www.cross-tables.com#{photo_path}"
+        end
+
+        user_photo = URI.open(photo_path)
+        player.photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
+        player.save
       end
     end
+  end
+
+  # Grabs the source path of the player's pic based on the player's xtables ID
+  def get_player_photo(xtables_id)
+    url = "https://www.cross-tables.com/results.php?p=#{xtables_id}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML(html)
+    photo = doc.css('img.playerpic')[0][:src]
   end
 
   def all_crosstables_events
@@ -198,14 +230,27 @@ class TournamentsController < ApplicationController
     # Generate matchups for round 1 based on pairings
     pairings[:round_1].each do |div, pairings|
       pairings.each do |pairing|
-        Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
+        if pairing.include?(Swissper::Bye)
+          real_player_id = 1 - pairing.find_index(Swissper::Bye)
+          # bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div)
+          # Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
+        else
+          Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
+        end
       end
     end
 
     # Generate matchups for round 2 based on pairings
     pairings[:round_2].each do |div, pairings|
       pairings.each do |pairing|
-        Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
+        if pairing.include?(Swissper::Bye)
+          real_player_id = 1 - pairing.find_index(Swissper::Bye)
+          # bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div, win_count: 0)
+          # Matchup.create!(round_number: 2, player1: pairing[real_player_id], player2: bye)
+        else
+          Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
+        end
+
       end
     end
   end
