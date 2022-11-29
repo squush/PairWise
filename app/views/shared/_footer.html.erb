@@ -11,7 +11,9 @@
     <div class="container">
       <div class="row">
         <div class="footer-col logo">
-        <%= image_tag "PairWise-logo-blue.png", height: 80 %>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "PairWise-logo-blue.png", height: 80 %>
+        <% end %>
         </div>
           <div class="footer-col">
             <ul>
