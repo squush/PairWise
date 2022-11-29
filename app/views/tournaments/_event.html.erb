@@ -2,8 +2,10 @@
   <div class="event-card d-flex justify-content-between align-items-stretch">
     <div class="d-flex flex-column justify-content-around">
       <h3><%= event.location %></h3>
-      <div><a class="event-card" id="modal-btn"
-        data-action="click->start-tournament#showForm"> Start now </a></div>
+      <div>
+        <a class="event-card" id="modal-btn"
+          data-action="click->start-tournament#showForm">Start now</a>
+      </div>
 
       <div class="modal" data-start-tournament-target="modal">
         <div class="modal-content">
