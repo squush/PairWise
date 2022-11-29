@@ -1,16 +1,17 @@
 <div class="container">
-  <div class="mb-5">
+  <div class="pos-rel">
+    <%= link_to "Back", tournament_path(@this_tournament),
+      class: "btn btn-lg btn-primary mb-5 btn-upright back-btn" %>
+  </div>
+  <div class="mb-5 text-primary">
     <h1>Pairings for <%= @this_tournament.event.location %></h1>
     <h3><%= @this_tournament.event.date.strftime('%B %e, %Y') %></h3>
   </div>
+
 
   <div class="d-flex flex-wrap mb-5">
     <% @matchups.each do |matchup| %>
       <%= render 'matchup', matchup: matchup, tournament: @this_tournament  %>
     <% end %>
   </div>
-
-  <%= link_to "Back", tournament_path(@this_tournament),
-    class: "btn btn-lg btn-primary mb-5",
-    id: "scoreboard-btn" %>
 </div>

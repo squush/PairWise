@@ -1,0 +1,16 @@
+.back-btn {
+  padding: 8px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 2px 2px 1px 1px $gray;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.btn-upright {
+  position: absolute;
+  right: 40px;
+  top: 50px;
+}
