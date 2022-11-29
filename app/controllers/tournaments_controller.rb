@@ -66,7 +66,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
 
     all_players = Player.where(tournament: @tournament)
-    divisions = all_players.map { |player| player.division }.uniq
+    divisions = all_players.map { |player| player.division }.uniq.sort
 
     # Create players hash where each key is a division and
     # each value is an array of the players in that division
