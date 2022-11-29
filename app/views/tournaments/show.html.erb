@@ -35,21 +35,25 @@
   <% end %>
 
   <div class="tourney-info">
-    <div>
-      <p class="tourney-headings">Players</p>
-      <p><%= @tournament.players.count %></p>
+    <div class="d-flex justify-content-around mb-3">
+      <div>
+        <p class="tourney-headings">Players</p>
+        <p><%= @tournament.players.count %></p>
+      </div>
+      <div>
+        <p class="tourney-headings">Winners</p>
+        <p><%= @tournament.number_of_winners %></p>
+      </div>
+      <div>
+        <p class="tourney-headings">Rounds</p>
+        <p><%= @tournament.event.rounds %></p>
+      </div>
+      <div>
+        <p class="tourney-headings">Pairing</p>
+        <p><%= @tournament.pairing_system %></p>
+      </div>
     </div>
-    <div>
-      <p class="tourney-headings">Winners</p>
-      <p><%= @tournament.number_of_winners %></p>
-    </div>
-    <div>
-      <p class="tourney-headings">Rounds</p>
-      <p><%= @tournament.event.rounds %></p>
-    </div>
-    <div>
-      <p class="tourney-headings">Pairing</p>
-      <p><%= @tournament.pairing_system %></p>
-    </div>
+    <p class="text-center mb-1 text-secondary">Director: <%= @tournament.user.email %></p>
   </div>
+
 </div>

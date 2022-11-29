@@ -81,17 +81,10 @@
   color: $royal_blue;
 }
 
-#player-avatar {
-  display: flex;
-  // border: solid red;
-  // max-width: 100px;
-  // height: 100px;
-  justify-content: center;
-  color: $dark_blue;
-  // background-color: white;
-  padding: 15px;
-  // border-radius: 50%;
-  // margin-left: 60px;
+.player-avatar {
+  max-width: 128px;
+  height: 128px;
+  border-radius: 50%;
 }
 
 .player-name-current-ranking {
