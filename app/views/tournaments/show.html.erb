@@ -1,7 +1,17 @@
 <div class="container">
   <h1 class="mb-3 tourney-main"><%= @tournament.event.location %></h1>
   <div class="tourney-secondary">
-    <h3 class="tourney-round">Round ? of <%= @tournament.event.rounds %></h3>
+    <h3 class="tourney-round">Round
+
+    <% @start_round = 1 %>
+    <% @tournament.matchups.each do |player| %>
+      <% if player.round_number == @start_round %>
+        <% @a = @tournament.matchups.where(round_number: @start_round) %>
+        <%= @a %>
+      <% end %>
+    <% end %>
+    of
+    <%= @tournament.event.rounds %></h3>
     <p>
       <%= @tournament.event.date.strftime'%A, %B %e, %Y' || @tournament.date.strftime('%A, %B %e, %Y') %>
     </p>
