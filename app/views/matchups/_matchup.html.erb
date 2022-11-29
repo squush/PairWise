@@ -6,24 +6,32 @@
 
     <div class="mb-3">
       <div class="mb-1 d-flex align-items-center gap-2">
-        <div><%= cl_image_tag matchup.player1.photo.key,
-          transformation: [
-            {gravity: "face", height: 48, width: 48, crop: "thumb"},
-            {radius: "max"},
-          ]
-        %></div>
+        <% if matchup.player1.photo.attached? %>
+          <%= cl_image_tag matchup.player1.photo.key,
+            transformation: [
+              {gravity: "face", height: 48, width: 48, crop: "thumb"},
+              {radius: "max"},
+            ]
+          %>
+        <% else %>
+          <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+        <% end %>
         <div class="text-secondary">
           <span><%= matchup.player1.name %></span>
           <span>(<%= matchup.player1_score || 0 %>)</span>
         </div>
       </div>
       <div class="mb-1 d-flex align-items-center gap-2">
-        <div><%= cl_image_tag matchup.player2.photo.key,
-        transformation: [
-          {gravity: "face", height: 48, width: 48},
-          {radius: "max"},
-          {width: 48, crop: "scale"}
-        ] %></div>
+        <% if matchup.player2.photo.attached? %>
+          <%= cl_image_tag matchup.player2.photo.key,
+            transformation: [
+              {gravity: "face", height: 48, width: 48, crop: "thumb"},
+              {radius: "max"},
+            ]
+          %>
+        <% else %>
+          <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+        <% end %>
         <div class="text-secondary">
           <span><%= matchup.player2.name %></span>
           <span>(<%= matchup.player2_score || 0 %>)</span>
