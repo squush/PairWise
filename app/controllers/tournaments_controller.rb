@@ -12,9 +12,8 @@ class TournamentsController < ApplicationController
     @events = Event.all
     @tournament = Tournament.new
 
-    # TODO: Resolve this naming issue. The @tournaments is being taken for the
-    #       Pundit policy scope, so we need a different var name for the
-    #       Tournament.all thing.
+    # TODO: Resolve this naming issue. The @tournaments is being taken for the Pundit
+    #       policy scope, so we need a different var name for the Tournament.all thing.
     @tournaments = policy_scope(Tournament)
     @pw_tournaments = Tournament.all
   end
@@ -33,7 +32,7 @@ class TournamentsController < ApplicationController
     generate_two_rounds_matchups(@tournament)
 
     if @tournament.save
-      redirect_to @tournament, notice: "Tournament has been successfully created"
+      redirect_to tournament_path(@tournament), notice: "Tournament has been successfully created"
     else
       render :new, status: :unprocessable_entity
     end
