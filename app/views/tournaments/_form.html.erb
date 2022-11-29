@@ -1,5 +1,7 @@
 <div class="d-flex">
-    <%= simple_form_for tournament do |f| %>
+    <%= simple_form_for tournament, defaults: {
+      input_html: { class: "text-primary border border-secondary" }
+    } do |f| %>
       <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false %>
       <%= f.input :number_of_winners %>
       <%= f.button :submit,
