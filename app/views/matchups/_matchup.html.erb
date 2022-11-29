@@ -59,7 +59,7 @@
             </div>
           </div>
 
-          <% unless matchup.done %>
+          <% unless matchup.done || 1 == 1 %>
             <%= link_to "Edit pairing", "#", class: "btn btn-sm btn-outline-danger" %>
           <% end %>
         </div>

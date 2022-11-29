@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="pos-rel">
+    <%= link_to "Back", tournament_path(@tournament),
+      class: "btn btn-lg btn-primary mb-5 btn-upright back-btn" %>
+  </div>
   <h4 class="tourney-manage">Manage</h4>
   <h1 class="tourney-main-manage"><%= @tournament.event.location %></h1>
   <%# <div class="d-flex justify-content-between mb-4"> %>
@@ -84,10 +88,7 @@
       <% end %>
   </div>
   <div class="d-flex justify-content-evenly">
-    <%= link_to "Back", tournament_path(@tournament),
-      class: "btn btn-lg btn-primary mb-5",
-      id: "tourney-btn-4" %>
-    <%= link_to "Delete", tournament_path(@tournament),
+    <%= link_to "Delete tournament", tournament_path(@tournament),
       data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
       class: "btn btn-lg btn-danger mb-5",
       id: "tourney-btn-red" %>

@@ -1,6 +1,10 @@
 <div class="container scoreboard-main">
-  <h4 class="text-center" id="scoreboard-title">Scoreboard</h4>
-  <h1 class="text-center" id="scoreboard-location"><%= @tournament.event.location %></h1>
+  <div class="pos-rel">
+    <%= link_to "Back", tournament_path(@tournament),
+      class: "btn btn-lg btn-primary mb-5 btn-upright back-btn" %>
+  </div>
+  <h4 id="scoreboard-title">Scoreboard</h4>
+  <h1 id="scoreboard-location"><%= @tournament.event.location %></h1>
 
   <% @players.each do |div, players| %>
     <h2 class="scoreboard-division">Division <%= div %></h2>
@@ -10,15 +14,4 @@
       <% end %>
     </div>
   <% end %>
-
-  <%# <div id="scoreboard-back-button"> %>
-    <%# <%= link_to tournament_path(@tournament), class: "text-decoration-none" do %>
-      <%# <div class="tourney-btn tourney-btn-sm text-center"> %>
-        <%# <p><i class="fa-solid fa-angle-left"></i>Back</p> %>
-      <%# </div> %>
-    <%# <% end %>
-  <%# </div> %>
-  <%= link_to "Back", tournament_path(@tournament),
-    class: "btn btn-lg btn-primary mb-5",
-    id: "scoreboard-btn" %>
 </div>
