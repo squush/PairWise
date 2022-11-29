@@ -1,5 +1,5 @@
 meta_name: "PairWise"
 meta_title: "PairWise - Scrabble Tournament Organizer"
 meta_description: "PairWise helps Scrabble directors across the world run tournaments worry-free"
-meta_image: "PairWise-logo-blue.png" # should exist in `app/assets/images/`
+meta_image: "meta-banner.png" # should exist in `app/assets/images/`
 # twitter_account: "@your_twitter_account"   # if we need this
