@@ -72,7 +72,7 @@
           <% end %>
       <% end %>
 
-      <%# Opponent's last game score%>
+      <%# Last game opponent's name%>
       <% @tournament.matchups.each do |matchup| %>
           <% if matchup[:round_number] == @player_round %>
             <% if matchup[:player1_id] == player.id %>
@@ -86,7 +86,7 @@
       <% end %>
     </p>
   </div>
-      <%# player's next game opponent%>
+      <%# Player's next game opponent%>
   <div id="next-game">
     <p><strong>Next:</strong>
      <% @tournament.matchups.each do |matchup| %>
