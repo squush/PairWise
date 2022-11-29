@@ -32,7 +32,7 @@ class TournamentsController < ApplicationController
     get_players(@tournament)
     generate_two_rounds_matchups(@tournament)
 
-    if @tournament.save!
+    if @tournament.save
       redirect_to @tournament, notice: "Tournament has been successfully created"
     else
       render :new, status: :unprocessable_entity
