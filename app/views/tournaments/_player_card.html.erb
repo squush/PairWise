@@ -55,7 +55,6 @@
       <%# Player's last game score %>
       <% @tournament.matchups.each do |matchup| %>
           <% if matchup[:round_number] == @player_round-1 %>
-              <% raise %>
             <% if matchup[:player1_id] == player.id %>
               <%= matchup[:player1_score] %>
             <% elsif matchup[:player2_id] == player.id %>
