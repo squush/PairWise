@@ -8,6 +8,8 @@
       <p class="scoreboard-p">Rating:</p>
       <h5>
       <%# <%= @player_round %>
+      <% if @tournament.matchups.where(round_number: @player_round) != 0 %>
+      <%  %>
       <%= player.rating + 10 %>
 
       <%# <% raise %>
@@ -39,6 +41,7 @@
       -
       <%= player.loss_count == player.loss_count.to_i ? player.loss_count.round : player.loss_count %>
     </p>
+    <div>&nbsp;</div>
     <p class="spread">(<% if player.spread.positive? %>
         +<%= player.spread %>
       <% else %>
