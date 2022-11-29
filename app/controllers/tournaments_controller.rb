@@ -112,7 +112,8 @@ class TournamentsController < ApplicationController
         else
           rating = rating.to_i
         end
-        Player.create!(
+
+        player = Player.create!(
           name: name,
           rating: rating,
           division: division,
@@ -121,8 +122,36 @@ class TournamentsController < ApplicationController
           crosstables_id: xtables_id,
           tournament: tournament
         )
+
+        # The path by default can be either a full path to a photo, for example
+        # on scrabbleplayers.org, or a relative path if it's stored directly on
+        # cross-tables.
+        photo_path = get_player_photo(xtables_id)
+
+        # The gsub is needed because pics with a space in the filename prevent
+        # the URI from being opened.
+        # TODO: There might be other characters that will break this. Instead of
+        #       gsubbing one by one, there might be a cleaner way to fix this.
+        photo_path.gsub!(" ", "%20")
+
+        # When the path is relative, we need to create a full URL from it
+        if photo_path.start_with?("/")
+          photo_path = "https://www.cross-tables.com#{photo_path}"
+        end
+
+        user_photo = URI.open(photo_path)
+        player.photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
+        player.save
       end
     end
+  end
+
+  # Grabs the source path of the player's pic based on the player's xtables ID
+  def get_player_photo(xtables_id)
+    url = "https://www.cross-tables.com/results.php?p=#{xtables_id}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML(html)
+    photo = doc.css('img.playerpic')[0][:src]
   end
 
   def all_crosstables_events

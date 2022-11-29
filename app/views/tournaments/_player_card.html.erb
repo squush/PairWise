@@ -12,7 +12,12 @@
 
   <div id="player-avatar">
     <% if player.photo.attached? %>
-      <%= cl_image_tag player.photo.key %>
+      <%= cl_image_tag player.photo.key,
+        transformation: [
+          {gravity: "face", height: 128, width: 128, crop: "crop"},
+          {radius: "max"},
+          {width: 128, crop: "scale"}
+        ] %>
     <% else %>
       <%= image_tag "user-astronaut-solid.svg" %>
     <% end %>
@@ -24,17 +29,9 @@
   <div id="current-ranking">
   <%# Tried a cleaner logic but it didn't work, may want to refactor later %>
     <p>
-      <% if player.win_count == player.win_count.to_i %>
-        <%= player.win_count.round  %>
-      <% else %>
-        <%= player.win_count %>
-      <% end %>
+      <%= player.win_count == player.win_count.to_i ? player.win_count.round : player.win_count %>
       -
-      <% if player.loss_count == player.loss_count.to_i %>
-        <%= player.loss_count.round  %>
-      <% else %>
-        <%= player.loss_count %>
-      <% end %>
+      <%= player.loss_count == player.loss_count.to_i ? player.loss_count.round : player.loss_count %>
     </p>
     <div>&nbsp;</div>
     <p class="spread">(<% if player.spread.positive? %>

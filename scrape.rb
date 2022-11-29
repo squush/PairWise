@@ -2,30 +2,30 @@ require 'nokogiri'
 require 'open-uri'
 require 'date'
 
-url = "https://www.cross-tables.com/entrants.php?u=15719"
-html = URI.open(url)
-doc = Nokogiri::HTML(html)
+# url = "https://www.cross-tables.com/entrants.php?u=15719"
+# html = URI.open(url)
+# doc = Nokogiri::HTML(html)
 
-data = doc.css('tr.headerrow ~ tr')
-division = 1
+# data = doc.css('tr.headerrow ~ tr')
+# division = 1
 
-data.first(1).each do |child|
-  row = child.search('td').text
-  if row.start_with?("Division")
-    division = row[/\d/].to_i
-  elsif row.start_with?(/\d/)
-    seed = row[/\d+/]
-    name = child.search('td')[1].text.strip[1..-1]
-    rating = child.search('td')[2].text.strip
-    xtables_id = child.search('td').children.children.css('a').attribute('href').value[/\d{5}/]
-    if rating == "---"
-      rating = 0
-    else
-      rating = rating.to_i
-    end
-    Player.create!(rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, xtables_id: xtables_id)
-  end
-end
+# data.first(1).each do |child|
+#   row = child.search('td').text
+#   if row.start_with?("Division")
+#     division = row[/\d/].to_i
+#   elsif row.start_with?(/\d/)
+#     seed = row[/\d+/]
+#     name = child.search('td')[1].text.strip[1..-1]
+#     rating = child.search('td')[2].text.strip
+#     xtables_id = child.search('td').children.children.css('a').attribute('href').value[/\d{5}/]
+#     if rating == "---"
+#       rating = 0
+#     else
+#       rating = rating.to_i
+#     end
+#     Player.create!(rating: rating, seed: seed, name: name, ranking: seed, win_count: 0, xtables_id: xtables_id)
+#   end
+# end
 
 # @players = Player.all
 # @players.each do |player|
@@ -84,3 +84,30 @@ end
 #     end
 #   end
 # end
+
+# url = "https://www.cross-tables.com/results.php?p=#{xtables_id}"
+
+
+# Testing for player profile pic scraping
+ids = ['13509', '580', '7264']
+
+ids.each do |id|
+  url = "https://www.cross-tables.com/results.php?p=#{id}"
+  html = URI.open(url)
+  doc = Nokogiri::HTML(html)
+
+  photo = doc.css('img.playerpic')[0][:src]
+
+  print ""
+  pp photo
+
+  if photo.start_with?("/")
+    photo = "https://www.cross-tables.com#{photo}"
+  end
+
+  pp photo
+  pp photo.class
+  puts '---'
+
+  user_photo = URI.open(photo)
+end
