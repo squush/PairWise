@@ -27,7 +27,6 @@ be) overwritten.
   font-size: 14px;
   color: $dark_blue;
 
-
   h3 {
     font-size: 16px;
     font-weight: bold;
@@ -47,6 +46,8 @@ be) overwritten.
     box-shadow: 0 0 3px 0 $dark_blue;
     color: $light-gray;
     background-color: $dark_blue;
+    // Cursor was defaulting to the text cursor
+    cursor: pointer;
   }
 }
 
