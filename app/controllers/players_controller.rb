@@ -5,6 +5,11 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     @player.tournament = @tournament
 
+    unless @player.crosstables_id.nil?
+      user_photo = get_player_photo(@player.crosstables_id)
+      @player.photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
+    end
+
     if @player.save
       redirect_to edit_tournament_path(@tournament)
     else
@@ -24,5 +29,18 @@ class PlayersController < ApplicationController
     params.require(:player).permit(
       :name, :rating, :division, :seed, :ranking, :crosstables_id
     )
+  end
+
+  # Grabs the source path of the player's pic based on the player's xtables ID
+  def get_player_photo(xtables_id)
+    url = "https://www.cross-tables.com/results.php?p=#{xtables_id}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML(html)
+    photo = doc.css('img.playerpic')[0][:src]
+    photo.gsub!(" ", "%20")
+    if photo.start_with?("/")
+      photo = "https://www.cross-tables.com#{photo}"
+    end
+    URI.open(photo)
   end
 end
