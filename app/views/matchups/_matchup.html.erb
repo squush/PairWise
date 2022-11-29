@@ -1,23 +1,47 @@
-<div class="p-1 col-3">
-  <div class="card rounded py-3 px-4 border-light">
-    <p class="text-center border-bottom border-light">
+<div class="p-1 col-12 col-sm-6 col-md-4 col-lg-3">
+  <div class="card matchup border-secondary">
+    <p class="text-center border-bottom border-secondary text-primary py-1">
       Round <%= matchup.round_number %>
     </p>
 
-    <div class="mb-2">
-      <div>
-        <span><%= matchup.player1.name %></span>
-        <span>(<%= matchup.player1_score || 0 %>)</span>
+    <div class="mb-3">
+      <div class="mb-1 d-flex align-items-center gap-2">
+        <% if matchup.player1.photo.attached? %>
+          <%= cl_image_tag matchup.player1.photo.key,
+            transformation: [
+              {gravity: "face", height: 48, width: 48, crop: "thumb"},
+              {radius: "max"},
+            ]
+          %>
+        <% else %>
+          <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+        <% end %>
+        <div class="text-secondary">
+          <span><%= matchup.player1.name %></span>
+          <span>(<%= matchup.player1_score || 0 %>)</span>
+        </div>
       </div>
-      <div>
-        <span><%= matchup.player2.name %></span>
-        <span>(<%= matchup.player2_score || 0 %>)</span>
+      <div class="mb-1 d-flex align-items-center gap-2">
+        <% if matchup.player2.photo.attached? %>
+          <%= cl_image_tag matchup.player2.photo.key,
+            transformation: [
+              {gravity: "face", height: 48, width: 48, crop: "thumb"},
+              {radius: "max"},
+            ]
+          %>
+        <% else %>
+          <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+        <% end %>
+        <div class="text-secondary">
+          <span><%= matchup.player2.name %></span>
+          <span>(<%= matchup.player2_score || 0 %>)</span>
+        </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around pb-1">
       <% if tournament.user == current_user %>
-        <div class="d-flex justify-content-around" data-controller="matchups">
+        <div class="d-flex justify-content-around gap-2" data-controller="matchups">
           <div>
             <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
             data-action="click->matchups#showForm"> Set score </a>
@@ -25,9 +49,13 @@
 
           <div class="modal" data-matchups-target="modal">
             <div class="score-modal-content">
-              <div class="d-flex justify-content-right"><button class="score-close-btn d-flex justify-content-center align-items-center"
-                   data-action="click->matchups#closeForm">&times;</button></div>
-              <div class="d-flex justify-content-center"><%= render "input_score", matchup: matchup %></div>
+              <div class="d-flex justify-content-right">
+                <button class="score-close-btn d-flex justify-content-center align-items-center"
+                  data-action="click->matchups#closeForm">&times;</button>
+                </div>
+              <div class="d-flex justify-content-center">
+                <%= render "input_score", matchup: matchup %>
+              </div>
             </div>
           </div>
 

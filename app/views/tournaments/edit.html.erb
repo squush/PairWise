@@ -2,81 +2,94 @@
   <h4 class="tourney-manage">Manage</h4>
   <h1 class="tourney-main-manage"><%= @tournament.event.location %></h1>
   <%# <div class="d-flex justify-content-between mb-4"> %>
-    <div class="" id="tourney-page">
-      <%= simple_form_for @tournament,
-        defaults: {
-          label_html: {class: "text-primary border"},
-          input_html: {class: "text-secondary border border-secondary"}
-        } do |f| %>
-        <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
-        <%= f.input :number_of_winners %>
-        <%= f.button :submit, class: "btn btn-primary w-100", id: "tourney-btn", input_html: { data: { controller: 'start-tournament' } } %>
-      <% end %>
-    </div>
+  <div class="" id="tourney-page">
+    <%= simple_form_for @tournament,
+      defaults: {
+        label_html: {class: "text-primary border"},
+        input_html: {class: "text-secondary border border-secondary"}
+      } do |f| %>
+      <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
+      <%= f.input :number_of_winners %>
+      <%= f.button :submit, class: "btn btn-primary w-100", id: "tourney-btn", input_html: { data: { controller: 'start-tournament' } } %>
+    <% end %>
+  </div>
 
-      <h4 class="tourney-manage-2">Current players</h4>
-    <div class="tbl-header">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <thead>
-          <tr>
-            <th>Rating</th>
-            <th>Name</th>
-            <th>Division</th>
-            <th>Seed</th>
-            <th>Ranking</th>
-            <th>Cross-tables ID</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <div class="tbl-content">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tbody><% if @tournament.players.nil? || @tournament.players.empty? %>
-            <div class="tourney-no-players">No players added yet in Pairwise</div>
-              <% else %>
-                <% @tournament.players.each do |player| %>
-                <tr>
-                  <td><%= player.name %></td>
-                  <td><%= player.rating %></td>
-                  <td><%= player.division %></td>
-                  <td><%= player.seed %></td>
-                  <td><%= player.ranking %></td>
-                  <td><%= player.crosstables_id %></td>
-                <% end %>
+  <h4 class="tourney-manage-2">Current players</h4>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" class="border-bottom border-warning border-2">
+      <thead>
+        <tr class="bg-primary">
+          <th class="th-left-round">Name</th>
+          <th>Rating</th>
+          <th>Division</th>
+          <th>Seed</th>
+          <th>Ranking</th>
+          <th class="th-right-round">Cross-tables ID</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody><% if @tournament.players.nil? || @tournament.players.empty? %>
+          <div class="tourney-no-players">No players added yet in Pairwise</div>
+            <% else %>
+              <% @tournament.players.each do |player| %>
+              <tr class="text-primary text-center">
+                <td class="d-flex gap-2 align-items-center text-left">
+                  <% if player.photo.attached? %>
+                    <%= cl_image_tag player.photo.key,
+                      transformation: [
+                        {gravity: "face", height: 48, width: 48, crop: "thumb"},
+                        {radius: "max"},
+                        {background: "#e6e9ef"}
+                      ]
+                    %>
+                  <% else %>
+                    <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+                  <% end %>
+                  <%= player.name %>
+                </td>
+                <td><%= player.rating %></td>
+                <td><%= player.division %></td>
+                <td><%= player.seed %></td>
+                <td><%= player.ranking %></td>
+                <td><%= player.crosstables_id %></td>
               <% end %>
-              </tr>
-        </tbody>
-      </table>
-    </div>
-
-      <%# TODO: Stimulus controller to reveal form %>
-      <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" %>
-      <div class="col-">
-        <% if @tournament.user == current_user %>
-          <%# TODO: When making the Add Players route, replace this link %>
-          <%# <p class="tourney-player">Add a player:</p> %>
-          <%= simple_form_for [@tournament, @player],
-        defaults: {
-          label_html: {class: "text-primary border"},
-          input_html: {class: "text-secondary border border-secondary"}
-        } do |f| %>
-              <div class="tourney-form"><%= f.input :name %></div>
-              <div class="tourney-form"><%= f.input :rating %></div>
-              <div class="tourney-form"><%= f.input :division %></div>
-              <div class="tourney-form"><%= f.input :seed %></div>
-              <div class="tourney-form"><%= f.input :ranking %></div>
-              <div class="tourney-form"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
-              <%= f.submit "Save new player", class: "btn btn-sm btn-primary", id: "tourney-btn-3" %>
             <% end %>
-          <% end %>
-      </div>
-      <div class="d-flex justify-content-evenly">
-        <%= link_to "Back", tournament_path(@tournament),
-          class: "btn btn-lg btn-primary mb-5",
-          id: "tourney-btn-4" %>
-        <%= link_to "Delete", tournament_path(@tournament),
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-          class: "btn btn-lg btn-danger mb-5",
-          id: "tourney-btn-red" %>
-      </div>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <%# TODO: Stimulus controller to reveal form %>
+  <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" %>
+  <div class="col-">
+    <% if @tournament.user == current_user %>
+      <%# TODO: When making the Add Players route, replace this link %>
+      <%# <p class="tourney-player">Add a player:</p> %>
+      <%= simple_form_for [@tournament, @player],
+    defaults: {
+      label_html: {class: "text-primary border"},
+      input_html: {class: "text-secondary border border-secondary"}
+    } do |f| %>
+          <div class="tourney-form"><%= f.input :name %></div>
+          <div class="tourney-form"><%= f.input :rating %></div>
+          <div class="tourney-form"><%= f.input :division %></div>
+          <div class="tourney-form"><%= f.input :seed %></div>
+          <div class="tourney-form"><%= f.input :ranking %></div>
+          <div class="tourney-form"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
+          <%= f.submit "Save new player", class: "btn btn-sm btn-primary", id: "tourney-btn-3" %>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="d-flex justify-content-evenly">
+    <%= link_to "Back", tournament_path(@tournament),
+      class: "btn btn-lg btn-primary mb-5",
+      id: "tourney-btn-4" %>
+    <%= link_to "Delete", tournament_path(@tournament),
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+      class: "btn btn-lg btn-danger mb-5",
+      id: "tourney-btn-red" %>
+  </div>
 </div>

@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ "form", "modal", "close" ];
 
   connect() {
-    console.log("connecteddd");
+    // console.log("connecteddd");
   }
 
   showForm() {
