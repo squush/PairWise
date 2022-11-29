@@ -11,21 +11,22 @@
     <div class="container">
       <div class="row">
         <div class="footer-col logo">
-        <%= image_tag "PairWise-logo-blue.png", height: 80 %>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "PairWise-logo-blue.png", height: 80 %>
+        <% end %>
         </div>
           <div class="footer-col">
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Tournaments</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/tournaments">Tournaments</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <div class="social-links d-flex">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.facebook.com/squush"><i class="fab fa-facebook-f"></i></a>
               <a href="https://www.instagram.com/jacksonsmylie/?hl=fr"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="mailto:pw.pairwise@gmail.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
           </div>
       </div>
