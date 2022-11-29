@@ -1,11 +1,11 @@
 <div class="container justify-content-center col-12">
-  <p class="text-center border-bottom border-secondary text-primary py-1">
+  <p class="text-center text-info border-bottom border-info py-1">
     Round <%= matchup.round_number %>
   </p>
   <%= simple_form_for matchup, defaults: {
-      wrapper_html: { class: "text-primary d-flex" },
-      label_html: { class: "col-9" },
-      input_html: { class: "text-primary border border-secondary" }
+      label_html: { class: "col-9 text-info" },
+      input_html: { class: "text-primary" },
+      wrapper_html: { class: "d-flex" },
     } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>

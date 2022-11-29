@@ -24,17 +24,21 @@
   border-radius: 9px;
 }
 .close-btn {
+  background-color: $primary;
   position: relative;
   float: right;
-  border: 1px solid darkgray;
+  border: 1px solid $info;
   width: 30px;
   height: 30px;
-  color: lightgray;
+  color: $info;
   font-size: 24px;
   font-weight: bold;
-}
-.close-btn:hover {
-  color: darkgray;
+  // border-radius: 50%;
+
+  &:hover {
+    color: $gray;
+    border: 1px solid $gray;
+  }
 }
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0}
@@ -49,6 +53,7 @@
   // box-shadow: 3px 3px 0 0 $info;
   border-radius: 8px;
   border: none;
+  padding: 9px 25px;
 
   &:hover {
     // box-shadow: 0 0 3px 1px $info;
