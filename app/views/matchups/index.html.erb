@@ -4,11 +4,16 @@
     <h3><%= @this_tournament.event.date.strftime('%B %e, %Y') %></h3>
   </div>
 
-  <div class="d-flex flex-wrap mb-5">
-    <% @matchups.each do |matchup| %>
-      <%= render 'matchup', matchup: matchup, tournament: @this_tournament  %>
-    <% end %>
-  </div>
+
+  <% @matchups.each do |div, matchups| %>
+    <h2 class="scoreboard-division">Division <%= div %></h2>
+    <div class="d-flex flex-wrap mb-5">
+      <% matchups.each do |matchup| %>
+        <%= render 'matchup', matchup: matchup, tournament: @this_tournament  %>
+      <% end %>
+    </div>
+  <% end %>
+
 
   <%= link_to "Back", tournament_path(@this_tournament),
     class: "btn btn-lg btn-primary mb-5",
