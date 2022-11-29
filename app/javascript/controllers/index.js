@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AlertFadeoutController from "./alert_fadeout_controller"
+application.register("alert-fadeout", AlertFadeoutController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
