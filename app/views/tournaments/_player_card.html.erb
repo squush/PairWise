@@ -47,7 +47,47 @@
 
   <%# TODO need to calculate last game logic %>
   <div id="last-game">
-    <p> Last game loading...</p>
+    <p> Last
+     <% player_round = player.win_count + player.loss_count %>
+     <% player_round = player_round.round.to_i %>
+
+      <% player.id %>
+      <% player.name %>
+
+
+      <% @tournament.matchups.each do |matchup| %>
+          <% if matchup[:round_number] == player_round-1 %>
+            <% if matchup[:player1_id] == player.id %>
+              <%= matchup[:player1_score] %>
+            <% elsif matchup[:player2_id] == player.id %>
+              <%= matchup[:player2_score] %>
+            <% end %>
+          <% end %>
+      <% end %>
+      -
+      <% @tournament.matchups.each do |matchup| %>
+          <% if matchup[:round_number] == player_round-1 %>
+            <% if matchup[:player1_id] == player.id %>
+              <%= matchup[:player2_score] %>
+            <% elsif matchup[:player2_id] == player.id %>
+              <%= matchup[:player1_score] %>
+            <% end %>
+          <% end %>
+      <% end %>
+      vs
+      <% @tournament.matchups.each do |matchup| %>
+          <% if matchup[:round_number] == player_round-1 %>
+            <% if matchup[:player1_id] == player.id %>
+              <% @opponent_id = matchup[:player2_id] %>
+            <% elsif matchup[:player2_id] == player.id %>
+              <% @opponent_id = matchup[:player1_id] %>
+            <% end %>
+          <% end %>
+      <% end %>
+
+      <%= Player.find(@opponent_id).name %>
+
+    </p>
   </div>
 
   <%# TODO need to calculate last game logic %>
