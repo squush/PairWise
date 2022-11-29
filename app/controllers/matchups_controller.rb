@@ -5,7 +5,7 @@ class MatchupsController < ApplicationController
     @matchup = Matchup.new(matchup_params)
     @tournament = @matchup.player1.tournament
 
-    if @matchup.save!
+    if @matchup.save
       redirect_to edit_tournament_path(@tournament)
     else
       render "tournaments/edit", status: :unprocessable_entity
@@ -62,8 +62,8 @@ class MatchupsController < ApplicationController
       player2.matchups_as_player2.sum { |matchup| matchup.player2_score - matchup.player1_score } +
       player2.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score }
 
-      player1.save!
-      player2.save!
+      player1.save
+      player2.save
 
       # Check if all the scores have been submitted for the round and if so,
       # generate matchups for this division two rounds later

@@ -2,7 +2,7 @@
   <div class="tournament-card">
       <div class="col-lg">
       <%= link_to tournament_path(tournament), class: "text-decoration-none" do %>
-        <h3 class="tournament-date"><%= tournament.event.date %></h3>
+        <h3 class="tournament-date"><%= tournament.event.date.strftime('%A, %b %e, %Y') %></h3>
         <h2 class="tournament-location"><%= tournament.event.location %></h2>
         <p class="tournament-rated">Rated by <em>NASPA©</em></p>
         <p class="tournament-powered">Powered by <em>PairWise</em></p>
