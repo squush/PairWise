@@ -104,9 +104,9 @@
 
 #tourney-btn {
   border-radius: 8px;
-  color: $off_white;
-  border-color: $dark_blue;
-  background-color: $dark_blue;
+  // color: $off_white;
+  // border-color: $dark_blue;
+  // background-color: $dark_blue;
   box-shadow: 2px 2px 1px 1px $gray;
 }
 
@@ -171,9 +171,9 @@ td {
   height: 38px;
   border-radius: 8px;
   font-size: 1rem;
-  color: $off_white;
-  border-color: $dark_blue;
-  background-color: $dark_blue;
+  // color: $off_white;
+  // border-color: $dark_blue;
+  // background-color: $dark_blue;
   box-shadow: 2px 2px 1px 1px $gray;
 }
 
@@ -205,13 +205,28 @@ td {
   height: 38px;
   border-radius: 8px;
   font-size: 1rem;
-  color: $off_white;
-  border-color: $dark_blue;
-  background-color: $dark_blue;
+  // color: $off_white;
+  // border-color: $dark_blue;
+  // background-color: $dark_blue;
   box-shadow: 2px 2px 1px 1px $gray;
 }
 
 #tourney-btn-4 {
+  margin-top: 60px;
+  margin-bottom: 1px;
+  margin-left: 40px;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  // color: $off_white;
+  // border-color: $dark_blue;
+  // background-color: $dark_blue;
+  box-shadow: 2px 2px 1px 1px $gray;
+}
+
+#tourney-btn-red {
   margin-top: 60px;
   margin-bottom: 1px;
   margin-left: 20px;
@@ -220,8 +235,8 @@ td {
   height: 38px;
   border-radius: 8px;
   font-size: 1rem;
-  color: $off_white;
-  border-color: $dark_blue;
-  background-color: $dark_blue;
+  // color: $off_white;
+  // border-color: $burgundy;
+  // background-color: $burgundy;
   box-shadow: 2px 2px 1px 1px $gray;
 }

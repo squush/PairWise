@@ -74,7 +74,7 @@ player_2d = Player.create!(name: "Player H", rating: 1700, division: 1, tourname
 
 puts "Creating matchups for tournament 2 (partial round done)"
 matchup7 = Matchup.create!(
-  round_number: 1,
+  round_number: 1, done: true,
   player1: player_2a, player1_score: 300,
   player2: player_2b, player2_score: 250
 )
@@ -90,12 +90,12 @@ player_3d = Player.create!(name: "Player L", rating: 1400, division: 2, tourname
 
 puts "Creating matchups for tournament 3 (one round done)"
 Matchup.create!(
-  round_number: 1,
+  round_number: 1, done: true,
   player1: player_3a, player1_score: 300,
   player2: player_3b, player2_score: 250
 )
 Matchup.create!(
-  round_number: 1,
+  round_number: 1, done: true,
   player1: player_3c, player1_score: 250,
   player2: player_3d, player2_score: 275
 )
@@ -110,22 +110,22 @@ player_4d = Player.create!(name: "Player P", rating: 1400, division: 2, tourname
 
 puts "Creating matchups for tournament 4"
 Matchup.create!(
-  round_number: 1,
+  round_number: 1, done: true,
   player1: player_4a, player1_score: 375,
   player2: player_4b, player2_score: 325
 )
 Matchup.create!(
-  round_number: 1,
+  round_number: 1, done: true,
   player1: player_4c, player1_score: 300,
   player2: player_4d, player2_score: 250
 )
 Matchup.create!(
-  round_number: 2,
+  round_number: 2, done: true,
   player1: player_4b, player1_score: 400,
   player2: player_4a, player2_score: 390
 )
 Matchup.create!(
-  round_number: 2,
+  round_number: 2, done: true,
   player1: player_4d, player1_score: 300,
   player2: player_4c, player2_score: 280
 )

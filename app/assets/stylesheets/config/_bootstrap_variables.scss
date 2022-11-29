@@ -23,3 +23,31 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+/* Colors-map - ... */
+$danger: $burgundy;
+$warning: $burgundy;
+$primary: $dark_blue;
+// secondary = primary / $dark_blue but lighter
+$secondary: hsl(213, 24%, 50%);
+
+$custom-colors: (
+  "royal-blue": $royal_blue,
+  "dark-blue": $dark_blue,
+  "gray": $gray,
+  "light-gray": $light-gray,
+  "lightest-gray": $lightest_gray,
+  "burgundy": $burgundy,
+  "off-white": $off_white
+);
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "danger": $danger,
+  "warning": $warning
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
