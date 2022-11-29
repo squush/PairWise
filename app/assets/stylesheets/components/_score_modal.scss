@@ -11,14 +11,17 @@
 }
 .score-modal-content {
   position: relative;
-  background-color: white;
+  // background-color: white;
+  background-color: $primary;
   padding: 20px 20px 40px 20px;
   margin: auto;
   width: 25%;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  box-shadow: 3px 3px 0 0 $secondary;
+  border-radius: 9px;
 }
 .score-close-btn {
   position: relative;
