@@ -53,10 +53,14 @@
   color: white;
 }
 
-#card-1st #ranking, #card-1st #rating, #card-1st #next-game, #card-1st #last-game {
+#card-1st #ranking, #card-1st #rating, #card-1st #next-game, #card-1st #last-game, #card-2nd #ranking, #card-2nd #rating, #card-2nd #next-game, #card-2nd #last-game{
   color: white;
 }
 
+#card-2nd {
+  background-color: $blue;
+  color: white;
+}
 
 // TODO: Please don't overwrite existing classes. Write a new class instead if
 //       you have custom CSS.
