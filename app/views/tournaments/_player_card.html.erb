@@ -24,7 +24,7 @@
 
     <div class="text-center mb-1">
       <% if player.photo.attached? %>
-        <%= cl_image_tag player.photo.key,
+        <%= cl_image_tag player.photo.key, class: "player-avatar",
           transformation: [
             {gravity: "face", height: 128, width: 128, crop: "crop"},
             {radius: "max"},
