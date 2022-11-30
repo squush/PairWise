@@ -1,6 +1,15 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-3">
-  <div class="scoreboard-player-card">
-    <div class="first-row">
+    <% if ranking == "1st" %>
+      <div class="scoreboard-player-card" id="card-1st">
+    <% elsif ranking == "2nd" %>
+      <div class="scoreboard-player-card" id="card-2nd">
+    <% elsif ranking == "3rd" %>
+      <div class="scoreboard-player-card" id="card-3rd">
+    <% else %>
+      <div class="scoreboard-player-card">
+    <% end %>
+      <div class="first-row">
+
       <div id="ranking">
         <h4><%= ranking %></h4>
       </div>
@@ -15,7 +24,7 @@
 
     <div class="text-center mb-1">
       <% if player.photo.attached? %>
-        <%= cl_image_tag player.photo.key,
+        <%= cl_image_tag player.photo.key, class: "player-avatar",
           transformation: [
             {gravity: "face", height: 128, width: 128, crop: "crop"},
             {radius: "max"},

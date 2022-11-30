@@ -36,7 +36,6 @@
   display: flex;
   flex-wrap: wrap;
   display: grid;
-  background-color: white;
   border-radius: 14px;
   padding: 25px;
   margin-bottom: 20px;
@@ -46,8 +45,28 @@
   // max-height: 353px;
   padding-bottom: 8px;
   font-size: 18px;
+  background-color: white;
 }
 
+#card-1st{
+  background-color: $dark_blue;
+  color: white;
+}
+
+#card-1st #ranking, #card-1st #rating, #card-1st #next-game, #card-1st #last-game, #card-2nd #ranking, #card-2nd #rating, #card-2nd #next-game, #card-2nd #last-game, #card-3rd #ranking, #card-3rd #rating, #card-3rd #next-game, #card-3rd #last-game {
+  color: white;
+}
+
+#card-2nd {
+  background-color: $blue;
+  color: white;
+}
+
+#card-3rd {
+  background-color: $gray;
+  box-shadow: 8px 8px $blue;
+  color: white;
+}
 // TODO: Please don't overwrite existing classes. Write a new class instead if
 //       you have custom CSS.
 // .text-center {
