@@ -6,14 +6,19 @@
   <h4 class="tourney-manage">Manage</h4>
   <h1 class="tourney-main-manage"><%= @tournament.event.location %></h1>
   <%# <div class="d-flex justify-content-between mb-4"> %>
-  <div class="" id="tourney-page">
-    <%= simple_form_for @tournament,
+  <div class="d-flex justify-content-center">
+    <%= simple_form_for @tournament, html: {class: "col-4"},
       defaults: {
         label_html: {class: "text-primary border"},
         input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
       } do |f| %>
       <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
-      <%= f.input :number_of_winners %>
+      <div class="d-flex justify-content-center">
+        <%= f.input :number_of_winners,
+          wrapper_html: {class: "d-flex flex-column align-items-center"},
+          input_html: {class: "num-input input-white"}
+        %>
+      </div>
       <%= f.button :submit, class: "btn btn-primary w-100 btn-rnd-corners", input_html: { data: { controller: 'start-tournament' } } %>
     <% end %>
   </div>
