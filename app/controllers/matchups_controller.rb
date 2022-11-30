@@ -74,7 +74,7 @@ class MatchupsController < ApplicationController
 
       # Find all players in the division and determine which round to generate
       # pairings for
-      players = player1.tournament.players.select { |player| player.division == player1.division}
+      players = player1.tournament.players.select { |player| player.division == player1.division && player.name != "Bye"}
       round_to_generate = @matchup.round_number + 2
       generate_matchups(round_to_generate, players) if player1.tournament.event.rounds >= round_to_generate && matchups_without_scores.empty?
 
