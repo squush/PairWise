@@ -31,18 +31,20 @@
     }
 
     .error-btn {
-    /* margin-top: 60px; */
-    margin-bottom: 1px;
-    /* margin-left: 40px; */
-    padding-left: 25px;
-    padding-right: 25px;
-    height: 38px;
+    padding: 14px 28px;
     border-radius: 8px;
     font-size: 1rem;
     color: #F5F5F5;
-    border-color: #303e4f;
-    background-color: #303e4f;
-    box-shadow: 2px 2px 1px 1px #94a2ac;
+    border: 1px solid hsl(213, 24%, 40%);
+    background-color: hsl(213, 24%, 25%);
+    box-shadow: 2px 2px 0 0  hsl(213, 24%, 65%);
+    text-decoration: none;
+  }
+  .error-btn:hover {
+      /* color: #16202f; */
+      border-color: hsl(213, 24%, 35%);
+      background-color: hsl(213, 24%, 35%);
+      box-shadow: 0 0 6px 2px hsl(213, 24%, 75%);
     }
     </style>
   </head>
@@ -53,6 +55,7 @@
         <p class="error-p">Houston, we have a problem.</p>
         <h1 class="error-h1">500 Server Error</h1>
         <p class="error-p">Looks like the server failed to load your request...</p>
+        <a class="error-btn" href="location.href='http://www.pair-wise.ca'">Back to home</a>
       </div>
   </body>
 </html>
