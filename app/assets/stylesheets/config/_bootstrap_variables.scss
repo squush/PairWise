@@ -28,8 +28,7 @@ $border-radius-sm: 2px;
 $danger: $burgundy;
 $warning: $burgundy;
 $primary: $dark_blue;
-// secondary = primary / $dark_blue but lighter
-$secondary: hsl(213, 24%, 50%);
+$secondary: $faded-blue;
 $info: $off_white;
 
 $custom-colors: (
