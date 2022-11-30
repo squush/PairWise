@@ -73,12 +73,6 @@
 }
 
 // EDIT.html.erb
-#tourney-page {
-  align-content: center;
-  width: 300px;
-  margin-left: 400px;
-}
-
 .tourney-manage {
   color: $royal_blue;
   text-align: center;
@@ -167,4 +161,9 @@ td {
 }
 .th-right-round {
   border-top-right-radius: 5px 5px;
+}
+
+.num-input {
+  width: 75px;
+  text-align: center;
 }
