@@ -16,6 +16,7 @@ class PlayersController < ApplicationController
       if division_size.odd?
         bye = Player.create!(name: "Bye", tournament: @tournament, rating: 0, division: @player.division, win_count: 0)
         Matchup.create!(round_number: current_round, player1: @player, player2: bye)
+        Matchup.create!(round_number: current_round + 1, player1: @player, player2: bye)
       else
         # find which player has a bye
         matchups = @tournament.matchups.select { |matchup| matchup.player2.name == "Bye" && matchup.round_number >= current_round }
