@@ -159,7 +159,12 @@ td {
   padding: 8px 24px;
   border-radius: 8px;
   font-size: 1rem;
-  box-shadow: 2px 2px 1px 1px $gray;
+  // box-shadow: 2px 2px 1px 1px $gray;
+}
+
+.contact-dir:hover {
+  color: $off_white;
+  box-shadow: 0 0 4px 1px hsl(213, 24%, 75%);
 }
 
 .th-left-round {
