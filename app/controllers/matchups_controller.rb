@@ -65,17 +65,22 @@ class MatchupsController < ApplicationController
       player1.save
       player2.save
 
-      # Check if all the scores have been submitted for the round and if so,
-      # generate matchups for this division two rounds later
+      # Check if all the scores have been submitted for the round
       this_tournament = Tournament.find(player1.tournament_id)
       matchups_without_scores = this_tournament.matchups.where(round_number: @matchup.round_number, done: false).to_a
       matchups_without_scores = matchups_without_scores.select { |matchup| matchup.player1.division == player1.division }
 
+      # Confirm that matchups don't exist for this division and round two rounds later
+      matchups_in_two_rounds = this_tournament.matchups.where(round_number: @matchup.round_number + 2).to_a
+      matchups_in_two_rounds = matchups_in_two_rounds.select { |matchup| matchup.player1.division == player1.division }
+      matchups_without_scores = ["Don't generate matchups"] unless matchups_in_two_rounds.empty?
 
       # Find all players in the division and determine which round to generate
       # pairings for
       players = player1.tournament.players.select { |player| player.division == player1.division && player.name != "Bye"}
       round_to_generate = @matchup.round_number + 2
+
+      # Only generate matchups if all the current round's scores have been submitted
       generate_matchups(round_to_generate, players) if player1.tournament.event.rounds >= round_to_generate && matchups_without_scores.empty?
 
       redirect_to tournament_matchups_path(@matchup.player1.tournament),
