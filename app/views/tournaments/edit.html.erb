@@ -20,10 +20,10 @@
 
   <h4 class="tourney-manage-2">Current players</h4>
   <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" class="border-bottom border-warning border-2">
-      <thead>
+    <table cellpadding="0" cellspacing="0">
+      <thead class="border-bottom border-warning border-2">
         <tr class="bg-primary">
-          <th class="th-left-round">Name</th>
+          <th class="th-left-round" style="width: 300px;">Name</th>
           <th>Rating</th>
           <th>Division</th>
           <th>Seed</th>
@@ -31,37 +31,35 @@
           <th class="th-right-round">Cross-tables ID</th>
         </tr>
       </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody><% if @tournament.players.nil? || @tournament.players.empty? %>
+
+      <tbody class="tbl-content">
+        <% if @tournament.players.nil? || @tournament.players.empty? %>
           <div class="tourney-no-players">No players added yet in Pairwise</div>
-            <% else %>
-              <% @tournament.players.each do |player| %>
-              <tr class="text-primary text-center">
-                <td class="d-flex gap-2 align-items-center text-left">
-                  <% if player.photo.attached? %>
-                    <%= cl_image_tag player.photo.key,
-                      transformation: [
-                        {gravity: "face", height: 48, width: 48, crop: "thumb"},
-                        {radius: "max"},
-                        {background: "#e6e9ef"}
-                      ]
-                    %>
-                  <% else %>
-                    <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
-                  <% end %>
-                  <%= player.name %>
-                </td>
-                <td><%= player.rating %></td>
-                <td><%= player.division %></td>
-                <td><%= player.seed %></td>
-                <td><%= player.ranking %></td>
-                <td><%= player.crosstables_id %></td>
-              <% end %>
-            <% end %>
+        <% else %>
+          <% @tournament.players.each do |player| %>
+            <tr class="text-primary table-text">
+              <td class="d-flex gap-2 align-items-center text-left">
+                <% if player.photo.attached? %>
+                  <%= cl_image_tag player.photo.key,
+                    transformation: [
+                      {gravity: "face", height: 48, width: 48, crop: "thumb"},
+                      {radius: "max"},
+                      {background: "#e6e9ef"}
+                    ]
+                  %>
+                <% else %>
+                  <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+                <% end %>
+                <%= player.name %>
+              </td>
+              <td class="text-center"><%= player.rating %></td>
+              <td class="text-center"><%= player.division %></td>
+              <td class="text-center"><%= player.seed %></td>
+              <td class="text-center"><%= player.ranking %></td>
+              <td class="text-center"><%= player.crosstables_id %></td>
             </tr>
+          <% end %>
+        <% end %>
       </tbody>
     </table>
   </div>
