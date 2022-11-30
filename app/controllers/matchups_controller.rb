@@ -52,7 +52,6 @@ class MatchupsController < ApplicationController
       player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
       ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
       player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
-
       # Calculate the player spread by adding their spreads as player1 and as player2
       player1.spread =
       player1.matchups_as_player1.sum { |matchup| matchup.player1_score - matchup.player2_score } +
