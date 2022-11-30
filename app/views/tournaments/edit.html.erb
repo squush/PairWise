@@ -10,11 +10,11 @@
     <%= simple_form_for @tournament,
       defaults: {
         label_html: {class: "text-primary border"},
-        input_html: {class: "text-secondary border border-secondary"}
+        input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
       } do |f| %>
       <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
       <%= f.input :number_of_winners %>
-      <%= f.button :submit, class: "btn btn-primary w-100", id: "tourney-btn", input_html: { data: { controller: 'start-tournament' } } %>
+      <%= f.button :submit, class: "btn btn-primary w-100 btn-rnd-corners", input_html: { data: { controller: 'start-tournament' } } %>
     <% end %>
   </div>
 
@@ -37,27 +37,29 @@
           <div class="tourney-no-players">No players added yet in Pairwise</div>
         <% else %>
           <% @tournament.players.each do |player| %>
-            <tr class="text-primary table-text">
-              <td class="d-flex gap-2 align-items-center text-left">
-                <% if player.photo.attached? %>
-                  <%= cl_image_tag player.photo.key,
-                    transformation: [
-                      {gravity: "face", height: 48, width: 48, crop: "thumb"},
-                      {radius: "max"},
-                      {background: "#e6e9ef"}
-                    ]
-                  %>
-                <% else %>
-                  <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
-                <% end %>
-                <%= player.name %>
-              </td>
-              <td class="text-center"><%= player.rating %></td>
-              <td class="text-center"><%= player.division %></td>
-              <td class="text-center"><%= player.seed %></td>
-              <td class="text-center"><%= player.ranking %></td>
-              <td class="text-center"><%= player.crosstables_id %></td>
-            </tr>
+            <% unless player.name == "Bye" %>
+              <tr class="text-primary table-text">
+                <td class="d-flex gap-2 align-items-center text-left">
+                  <% if player.photo.attached? %>
+                    <%= cl_image_tag player.photo.key,
+                      transformation: [
+                        {gravity: "face", height: 48, width: 48, crop: "thumb"},
+                        {radius: "max"},
+                        {background: "#e6e9ef"}
+                      ]
+                    %>
+                  <% else %>
+                    <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+                  <% end %>
+                  <%= player.name %>
+                </td>
+                <td class="text-center"><%= player.rating %></td>
+                <td class="text-center"><%= player.division %></td>
+                <td class="text-center"><%= player.seed %></td>
+                <td class="text-center"><%= player.ranking %></td>
+                <td class="text-center"><%= player.crosstables_id %></td>
+              </tr>
+            <% end %>
           <% end %>
         <% end %>
       </tbody>
@@ -65,30 +67,39 @@
   </div>
 
   <h4 class="text-center text-primary">Add new player</h4>
-  <%# TODO: Stimulus controller to reveal form %>
-  <%# Hiding the Add Player button for now, until there's a modal form for it %>
-  <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" unless 1 == 1 %>
-  <div class="col-">
-    <% if @tournament.user == current_user %>
-      <%# TODO: When making the Add Players route, replace this link %>
-      <%# <p class="tourney-player">Add a player:</p> %>
-      <%= simple_form_for [@tournament, @player],
-    defaults: {
-      label_html: {class: "text-primary border"},
-      input_html: {class: "text-secondary border border-secondary"}
-    } do |f| %>
-          <div class="tourney-form"><%= f.input :name %></div>
-          <div class="tourney-form"><%= f.input :rating %></div>
-          <div class="tourney-form"><%= f.input :division %></div>
-          <div class="tourney-form"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
-          <%= f.submit "Save new player", class: "btn btn-sm btn-primary", id: "tourney-btn-3" %>
-        <% end %>
-      <% end %>
+  <div class="text-center">
+    <%# TODO: Stimulus controller to reveal form %>
+    <%# "unless 1 == 1" hides the Add Player button for now, until there's a modal form for it %>
+    <%= link_to "Add new player", "#", class: "btn btn-primary btn-rnd-corners" unless 1 == 1 %>
   </div>
-  <div class="d-flex justify-content-evenly">
+  <div class="mb-5">
+    <%# TODO: When making the Add Players route, replace this link %>
+    <%# <p class="tourney-player">Add a player:</p> %>
+    <div class="d-flex justify-content-center">
+      <%= simple_form_for [@tournament, @player],
+        html: {class: "col-6 p-2"},
+        defaults: {
+          label_html: { class: "text-primary border" },
+          input_html: { class: "text-secondary border border-secondary form-rnd-corners input-white" }
+        } do |f|
+        %>
+        <div class="d-flex justify-content-center ">
+          <div class="w-100 justify-content-center"><%= f.input :name %></div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="col-3"><%= f.input :rating %></div>
+          <div class="col-3"><%= f.input :division %></div>
+          <div class="col-3"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Save player", class: "btn btn-primary btn-rnd-corners" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
     <%= link_to "Delete tournament", tournament_path(@tournament),
       data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-      class: "btn btn-lg btn-danger mb-5",
-      id: "tourney-btn-red" %>
+      class: "btn btn-danger mb-5 btn-rnd-corners" %>
   </div>
 </div>

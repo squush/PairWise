@@ -102,14 +102,6 @@
   border-radius: 8px;
 }
 
-#tourney-btn {
-  border-radius: 8px;
-  // color: $off_white;
-  // border-color: $dark_blue;
-  // background-color: $dark_blue;
-  box-shadow: 2px 2px 1px 1px $gray;
-}
-
 .tourney-manage-2 {
   color: $royal_blue;
   text-align: center;
@@ -163,84 +155,12 @@ td {
   border-bottom: solid 1px #d7dee2;
 }
 
-// add a new player
-#tourney-btn-2 {
-  margin-top: 20px;
-  margin-left: 425px;
-  width: 250px;
-  height: 38px;
+.btn-rnd-corners {
+  padding: 8px 24px;
   border-radius: 8px;
   font-size: 1rem;
-  // color: $off_white;
-  // border-color: $dark_blue;
-  // background-color: $dark_blue;
   box-shadow: 2px 2px 1px 1px $gray;
 }
-
-// .tourney-player {
-//   text-align: center;
-// }
-
-#new_player {
-  margin-top: 40px;
-  margin-left: 100px;
-}
-
-#player_name, #player_rating, #player_division, #player_seed, #player_ranking, #player_crosstables_id {
-  border-radius: 8px;
-  width: 450px;
-}
-
-.simple_form div.tourney-form {
-  float: left;
-  width: 500px;
-  text-align: left;
-  margin-bottom: 10px;
-  display: inline;
-}
-
-#tourney-btn-3 {
-  margin-left: 325px;
-  width: 250px;
-  height: 38px;
-  border-radius: 8px;
-  font-size: 1rem;
-  // color: $off_white;
-  // border-color: $dark_blue;
-  // background-color: $dark_blue;
-  box-shadow: 2px 2px 1px 1px $gray;
-}
-
-#tourney-btn-4 {
-  margin-top: 60px;
-  margin-bottom: 1px;
-  margin-left: 40px;
-  padding-left: 25px;
-  padding-right: 25px;
-  height: 38px;
-  border-radius: 8px;
-  font-size: 1rem;
-  // color: $off_white;
-  // border-color: $dark_blue;
-  // background-color: $dark_blue;
-  box-shadow: 2px 2px 1px 1px $gray;
-}
-
-#tourney-btn-red {
-  margin-top: 60px;
-  margin-bottom: 1px;
-  margin-left: 20px;
-  padding-left: 25px;
-  padding-right: 25px;
-  height: 38px;
-  border-radius: 8px;
-  font-size: 1rem;
-  // color: $off_white;
-  // border-color: $burgundy;
-  // background-color: $burgundy;
-  box-shadow: 2px 2px 1px 1px $gray;
-}
-
 
 .th-left-round {
   border-top-left-radius: 5px 5px;
