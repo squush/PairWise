@@ -19,7 +19,7 @@
   </div>
 
   <h4 class="tourney-manage-2">Current players</h4>
-  <div class="tbl-header">
+  <div class="tbl-header mb-4">
     <table cellpadding="0" cellspacing="0">
       <thead class="border-bottom border-warning border-2">
         <tr class="bg-primary">
@@ -64,8 +64,10 @@
     </table>
   </div>
 
+  <h4 class="text-center text-primary">Add new player</h4>
   <%# TODO: Stimulus controller to reveal form %>
-  <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" %>
+  <%# Hiding the Add Player button for now, until there's a modal form for it %>
+  <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" unless 1 == 1 %>
   <div class="col-">
     <% if @tournament.user == current_user %>
       <%# TODO: When making the Add Players route, replace this link %>
@@ -78,8 +80,6 @@
           <div class="tourney-form"><%= f.input :name %></div>
           <div class="tourney-form"><%= f.input :rating %></div>
           <div class="tourney-form"><%= f.input :division %></div>
-          <div class="tourney-form"><%= f.input :seed %></div>
-          <div class="tourney-form"><%= f.input :ranking %></div>
           <div class="tourney-form"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
           <%= f.submit "Save new player", class: "btn btn-sm btn-primary", id: "tourney-btn-3" %>
         <% end %>
