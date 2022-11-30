@@ -24,7 +24,7 @@
   </div>
 
   <h4 class="tourney-manage-2">Current players</h4>
-  <div class="tbl-header">
+  <div class="tbl-header mb-4">
     <table cellpadding="0" cellspacing="0">
       <thead class="border-bottom border-warning border-2">
         <tr class="bg-primary">
@@ -71,9 +71,11 @@
     </table>
   </div>
 
-  <%# TODO: Stimulus controller to reveal form %>
+  <h4 class="text-center text-primary">Add new player</h4>
   <div class="text-center">
-    <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" %>
+    <%# TODO: Stimulus controller to reveal form %>
+    <%# "unless 1 == 1" hides the Add Player button for now, until there's a modal form for it %>
+    <%= link_to "Add new player", "#", class: "btn btn-primary btn-rnd-corners" unless 1 == 1 %>
   </div>
   <div class="mb-5">
     <%# TODO: When making the Add Players route, replace this link %>
