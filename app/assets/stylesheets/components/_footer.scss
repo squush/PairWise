@@ -9,6 +9,7 @@
 }
 .container{
 	max-width: 1170px;
+  flex-grow: 1;
 }
 .row{
 	// display: flex;
@@ -25,6 +26,8 @@ ul{
   flex-direction: column;
   height: 100%;
   width: 100%;
+  position: relative;
+  bottom: 0px;
 }
 .footer-col{
    width: 25%;
