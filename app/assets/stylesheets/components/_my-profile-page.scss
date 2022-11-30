@@ -1,6 +1,7 @@
 .my-profile-page {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  height: 100vh;
+  max-height: 100vh;
   color: $royal_blue;
 }
