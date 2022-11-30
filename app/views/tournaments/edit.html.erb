@@ -14,7 +14,7 @@
       } do |f| %>
       <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
       <%= f.input :number_of_winners %>
-      <%= f.button :submit, class: "btn btn-primary w-100", id: "tourney-btn", input_html: { data: { controller: 'start-tournament' } } %>
+      <%= f.button :submit, class: "btn btn-primary w-100 btn-rnd-corners", input_html: { data: { controller: 'start-tournament' } } %>
     <% end %>
   </div>
 
@@ -67,30 +67,37 @@
   </div>
 
   <%# TODO: Stimulus controller to reveal form %>
-  <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" %>
-  <div class="col-">
-    <% if @tournament.user == current_user %>
-      <%# TODO: When making the Add Players route, replace this link %>
-      <%# <p class="tourney-player">Add a player:</p> %>
-      <%= simple_form_for [@tournament, @player],
-    defaults: {
-      label_html: {class: "text-primary border"},
-      input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
-    } do |f| %>
-          <div class="tourney-form"><%= f.input :name %></div>
-          <div class="tourney-form"><%= f.input :rating %></div>
-          <div class="tourney-form"><%= f.input :division %></div>
-          <div class="tourney-form"><%= f.input :seed %></div>
-          <div class="tourney-form"><%= f.input :ranking %></div>
-          <div class="tourney-form"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
-          <%= f.submit "Save new player", class: "btn btn-sm btn-primary", id: "tourney-btn-3" %>
-        <% end %>
-      <% end %>
+  <div class="text-center">
+    <%= link_to "Add new player", "#", class: "btn btn-sm btn-primary", id: "tourney-btn-2" %>
   </div>
-  <div class="d-flex justify-content-evenly">
+  <div class="mb-5">
+    <%# TODO: When making the Add Players route, replace this link %>
+    <%# <p class="tourney-player">Add a player:</p> %>
+    <div class="d-flex justify-content-center">
+      <%= simple_form_for [@tournament, @player],
+        html: {class: "col-6 p-2"},
+        defaults: {
+          label_html: { class: "text-primary border" },
+          input_html: { class: "text-secondary border border-secondary form-rnd-corners input-white" }
+        } do |f|
+        %>
+        <div class="d-flex justify-content-center ">
+          <div class="w-100 justify-content-center"><%= f.input :name %></div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="col-3"><%= f.input :rating %></div>
+          <div class="col-3"><%= f.input :division %></div>
+          <div class="col-3"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Save player", class: "btn btn-primary btn-rnd-corners" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
     <%= link_to "Delete tournament", tournament_path(@tournament),
       data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-      class: "btn btn-lg btn-danger mb-5",
-      id: "tourney-btn-red" %>
+      class: "btn btn-danger mb-5 btn-rnd-corners" %>
   </div>
 </div>
