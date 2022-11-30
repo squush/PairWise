@@ -42,6 +42,9 @@ class TournamentsController < ApplicationController
 
   def show
     @player = Player.new
+    @tournament = Tournament.find(params[:id])
+    @current_round = @tournament.players.first.win_count.to_i + @tournament.players.first.loss_count.to_i
+    @current_round += 1 if @current_round.zero?
   end
 
   def edit
