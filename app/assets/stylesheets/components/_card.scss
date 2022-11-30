@@ -62,8 +62,9 @@ be) overwritten.
 .tournaments, .my-tournaments {
   background-image: url(space-background.jpg);
   background-repeat: repeat;
-  height: auto;
+  background-size: 1000px;
 }
+
 
 // TODO: This is a bootstrap class. Please define a different class if you need
 //       to use these styles somewhere.
