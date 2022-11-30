@@ -10,7 +10,7 @@
     <%= simple_form_for @tournament,
       defaults: {
         label_html: {class: "text-primary border"},
-        input_html: {class: "text-secondary border border-secondary"}
+        input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
       } do |f| %>
       <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
       <%= f.input :number_of_winners %>
@@ -73,7 +73,7 @@
       <%= simple_form_for [@tournament, @player],
     defaults: {
       label_html: {class: "text-primary border"},
-      input_html: {class: "text-secondary border border-secondary"}
+      input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
     } do |f| %>
           <div class="tourney-form"><%= f.input :name %></div>
           <div class="tourney-form"><%= f.input :rating %></div>
