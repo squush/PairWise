@@ -8,3 +8,36 @@ padding: 10px 20px;
   height: 48px;
   border-radius: 50%;
 }
+
+.matchup-done {
+  background-color: $faded-blue;
+  color: white;
+
+  .border-bottom {
+    border-color: white !important;
+  }
+
+  #score-modal-btn {
+    color: white;
+    border: 1px solid white;
+  }
+  #score-modal-btn:hover {
+    background-color: white;
+    color: $dark_blue;
+    border: 1px solid $dark_blue;
+  }
+
+  .text-primary {
+    color: white !important;
+  }
+
+  .text-secondary {
+    color: white !important;
+  }
+
+  // Prevents the previous lines from affecting the input form if we need to
+  // change the score after submitting.
+  input.text-primary, input.text-secondary {
+    color: $primary !important;
+  }
+}

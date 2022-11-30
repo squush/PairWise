@@ -61,7 +61,10 @@
         <p><%= @tournament.pairing_system %></p>
       </div>
     </div>
-    <p class="text-center mb-1 text-secondary">Director: <%= @tournament.user.email %></p>
+    <p class="text-center mb-1 text-secondary">
+      <%= link_to "Contact the director", "mailto:#{@tournament.user.email}",
+        class: "text-decoration-none btn btn-outline-secondary btn-sm btn-rnd-corners contact-dir" %>
+    </p>
   </div>
 
 </div>

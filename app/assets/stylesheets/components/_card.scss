@@ -62,8 +62,13 @@ be) overwritten.
 .tournaments, .my-tournaments {
   background-image: url(space-background.jpg);
   background-repeat: repeat;
-  // height: auto;
-  min-height: 100vh;
+  // min-width: 100vh;
+  background-size: 1000px;
+}
+
+#bottom-page {
+  margin-bottom: 0rem!important;
+  padding-bottom: 3rem;
 }
 
 // TODO: This is a bootstrap class. Please define a different class if you need
