@@ -42,6 +42,9 @@ class TournamentsController < ApplicationController
 
   def show
     @player = Player.new
+    @tournament = Tournament.find(params[:id])
+    @current_round = @tournament.players.first.win_count.to_i + @tournament.players.first.loss_count.to_i
+    @current_round += 1 if @current_round.zero?
   end
 
   def edit
@@ -66,13 +69,13 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
 
     all_players = Player.where(tournament: @tournament)
-    divisions = all_players.map { |player| player.division }.uniq
+    divisions = all_players.map { |player| player.division }.uniq.sort
 
     # Create players hash where each key is a division and
     # each value is an array of the players in that division
     @players = {}
     divisions.each do |div|
-      @players[div] = Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc, spread: :desc).to_a
+      @players[div] = Player.where(tournament: @tournament, division: div).where.not(name: "Bye").order(win_count: :desc, loss_count: :asc, spread: :desc).to_a
     end
 
     # @event = Event.find(params[:tournament][:event])c
@@ -231,8 +234,8 @@ class TournamentsController < ApplicationController
       pairings.each do |pairing|
         if pairing.include?(Swissper::Bye)
           real_player_id = 1 - pairing.find_index(Swissper::Bye)
-          # bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div)
-          # Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
+          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div)
+          Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
         else
           Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
         end
@@ -244,8 +247,9 @@ class TournamentsController < ApplicationController
       pairings.each do |pairing|
         if pairing.include?(Swissper::Bye)
           real_player_id = 1 - pairing.find_index(Swissper::Bye)
+          bye = Player.find_by(tournament: tournament, name: "Bye")
           # bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div, win_count: 0)
-          # Matchup.create!(round_number: 2, player1: pairing[real_player_id], player2: bye)
+          Matchup.create!(round_number: 2, player1: pairing[real_player_id], player2: bye)
         else
           Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
         end

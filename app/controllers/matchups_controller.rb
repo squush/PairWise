@@ -74,7 +74,7 @@ class MatchupsController < ApplicationController
 
       # Find all players in the division and determine which round to generate
       # pairings for
-      players = player1.tournament.players.select { |player| player.division == player1.division}
+      players = player1.tournament.players.select { |player| player.division == player1.division && player.name != "Bye"}
       round_to_generate = @matchup.round_number + 2
       generate_matchups(round_to_generate, players) if player1.tournament.event.rounds >= round_to_generate && matchups_without_scores.empty?
 
@@ -89,7 +89,17 @@ class MatchupsController < ApplicationController
   def index
     @this_tournament = Tournament.find(params[:tournament_id])
     # This order keeps the matchups in order when a score is submitted.
-    @matchups = @this_tournament.matchups.order(:round_number, :id)
+    @all_matchups = @this_tournament.matchups.order(:round_number, :id)
+
+    all_players = Player.where(tournament: @this_tournament)
+    divisions = all_players.map { |player| player.division }.uniq.sort
+
+    @matchups = {}
+    divisions.each do |div|
+      @matchups[div] = @all_matchups.select { |matchup| matchup.player1.division == div }
+      Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc, spread: :desc).to_a
+    end
+
 
     @tournament = policy_scope(Matchup)
     # authorize @tournament, policy_class: MatchupPolicy
@@ -107,12 +117,12 @@ class MatchupsController < ApplicationController
       if pairing.include?(Swissper::Bye)
 
         real_player_id = 1 - pairing.find_index(Swissper::Bye)
-        # if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
-        #   bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, division: div, win_count: 0)
-        # else
-        #   bye = Player.find_by(tournament: pairing[real_player_id].tournament, name: "Bye")
-        # end
-        # Matchup.create!(round_number: round, player1: pairing[real_player_id], player2: bye)
+        if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
+          bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, division: div, win_count: 0)
+        else
+          bye = Player.find_by(tournament: pairing[real_player_id].tournament, name: "Bye")
+        end
+        Matchup.create!(round_number: round, player1: pairing[real_player_id], player2: bye)
       else
         Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
       end

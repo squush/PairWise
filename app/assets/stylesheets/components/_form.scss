@@ -9,3 +9,31 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.input-white {
+  background-color: white;
+
+  &:focus {
+    background-color: white;
+  }
+}
+
+.form-rnd-corners {
+  border-radius: 6px;
+}
+
+.submit-btn {
+  color: white;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 2px 2px 1px 1px $gray;
+
+  input {
+    color: white;
+  }
+
+  &:hover input {
+    color: $more-faded-blue;
+  }
+}

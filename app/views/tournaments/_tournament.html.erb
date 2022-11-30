@@ -1,7 +1,7 @@
 <div class="col-12 p-2">
-  <div class="tournament-card">
+  <%= link_to tournament_path(tournament), class: "text-decoration-none" do %>
+    <div class="tournament-card">
       <div class="col-lg">
-      <%= link_to tournament_path(tournament), class: "text-decoration-none" do %>
         <h3 class="tournament-date"><%= tournament.event.date.strftime('%A, %b %e, %Y') %></h3>
         <h2 class="tournament-location"><%= tournament.event.location %></h2>
         <p class="tournament-rated">Rated by <em>NASPA©</em></p>
@@ -9,16 +9,16 @@
       </div>
       <div class="col-sm players">
         <h4 class="tournament-head-cat"># PLAYERS</h4>
-        <h1 class="tournament-big-num"><%=
+        <p class="tournament-big-num"><%=
           tournament.players.count ||
           tournament.event.number_of_players ||
           "0"
-        %></h1>
+        %></p>
       </div>
       <div class="col-sm games">
         <h4 class="tournament-head-cat"># GAMES</h4>
-        <h1 class="tournament-big-num"><%= tournament.event.rounds %></h1>
+        <p class="tournament-big-num"><%= tournament.event.rounds %></p>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
