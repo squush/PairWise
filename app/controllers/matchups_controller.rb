@@ -74,7 +74,7 @@ class MatchupsController < ApplicationController
 
       # Find all players in the division and determine which round to generate
       # pairings for
-      players = player1.tournament.players.select { |player| player.division == player1.division}
+      players = player1.tournament.players.select { |player| player.division == player1.division && player.name != "Bye"}
       round_to_generate = @matchup.round_number + 2
       generate_matchups(round_to_generate, players) if player1.tournament.event.rounds >= round_to_generate && matchups_without_scores.empty?
 
@@ -117,12 +117,12 @@ class MatchupsController < ApplicationController
       if pairing.include?(Swissper::Bye)
 
         real_player_id = 1 - pairing.find_index(Swissper::Bye)
-        # if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
-        #   bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, division: div, win_count: 0)
-        # else
-        #   bye = Player.find_by(tournament: pairing[real_player_id].tournament, name: "Bye")
-        # end
-        # Matchup.create!(round_number: round, player1: pairing[real_player_id], player2: bye)
+        if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
+          bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, division: div, win_count: 0)
+        else
+          bye = Player.find_by(tournament: pairing[real_player_id].tournament, name: "Bye")
+        end
+        Matchup.create!(round_number: round, player1: pairing[real_player_id], player2: bye)
       else
         Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
       end

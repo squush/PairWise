@@ -37,27 +37,29 @@
           <div class="tourney-no-players">No players added yet in Pairwise</div>
         <% else %>
           <% @tournament.players.each do |player| %>
-            <tr class="text-primary table-text">
-              <td class="d-flex gap-2 align-items-center text-left">
-                <% if player.photo.attached? %>
-                  <%= cl_image_tag player.photo.key,
-                    transformation: [
-                      {gravity: "face", height: 48, width: 48, crop: "thumb"},
-                      {radius: "max"},
-                      {background: "#e6e9ef"}
-                    ]
-                  %>
-                <% else %>
-                  <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
-                <% end %>
-                <%= player.name %>
-              </td>
-              <td class="text-center"><%= player.rating %></td>
-              <td class="text-center"><%= player.division %></td>
-              <td class="text-center"><%= player.seed %></td>
-              <td class="text-center"><%= player.ranking %></td>
-              <td class="text-center"><%= player.crosstables_id %></td>
-            </tr>
+            <% unless player.name == "Bye" %>
+              <tr class="text-primary table-text">
+                <td class="d-flex gap-2 align-items-center text-left">
+                  <% if player.photo.attached? %>
+                    <%= cl_image_tag player.photo.key,
+                      transformation: [
+                        {gravity: "face", height: 48, width: 48, crop: "thumb"},
+                        {radius: "max"},
+                        {background: "#e6e9ef"}
+                      ]
+                    %>
+                  <% else %>
+                    <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
+                  <% end %>
+                  <%= player.name %>
+                </td>
+                <td class="text-center"><%= player.rating %></td>
+                <td class="text-center"><%= player.division %></td>
+                <td class="text-center"><%= player.seed %></td>
+                <td class="text-center"><%= player.ranking %></td>
+                <td class="text-center"><%= player.crosstables_id %></td>
+              </tr>
+            <% end %>
           <% end %>
         <% end %>
       </tbody>
