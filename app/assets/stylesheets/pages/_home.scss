@@ -77,7 +77,7 @@
 }
 
 
-.first-icon {
+.three-icons {
   display: flex;
   min-width: 300px;
   flex-direction: column;
@@ -87,39 +87,7 @@
   text-align: center;
 }
 
-.second-icon {
-  display: flex;
-  min-width: 300px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5vh;
-  text-align: center;
-}
-
-.third-icon {
-  display: flex;
-  min-width: 300px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5vh;
-  text-align: center;
-}
-
-.easy-icon {
-  width: 125px;
-  height: 125px;
-  font-weight: 5vh;
-  transition: 1s;
-}
-
-.powerful-icon {
-  width: 125px;
-  height: 125px;
-}
-
-.aesthetic-icon {
+.small-icons {
   width: 125px;
   height: 125px;
 }
