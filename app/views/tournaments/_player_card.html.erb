@@ -37,7 +37,7 @@
 
 
     <div id="player-name">
-      <p class="player-p"><strong><%= player.name %></strong></p>
+      <p><strong><%= player.name %></strong></p>
     </div>
 
     <div class="player-bottom-half-info">
@@ -63,14 +63,13 @@
         <% @player_round = player_round.round.to_i %>
 
           <%# Player's last game score %>
+          <strong>Last:</strong>
           <% @tournament.matchups.each do |matchup| %>
               <% if matchup[:round_number] == @player_round%>
                 <% if matchup[:player1_id] == player.id %>
-                  <strong>Last:</strong>
                   <%= matchup[:player1_score] %>
                   -
                 <% elsif matchup[:player2_id] == player.id %>
-                  <strong>Last:</strong>
                   <%= matchup[:player2_score] %>
                   -
                 <% end %>
