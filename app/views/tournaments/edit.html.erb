@@ -48,7 +48,7 @@
         <% if @tournament.players.nil? || @tournament.players.empty? %>
           <div class="tourney-no-players">No players added yet in Pairwise</div>
         <% else %>
-          <% @tournament.players.each do |player| %>
+          <% @tournament.players.order(rating: :desc).each do |player| %>
             <% unless player.name == "Bye" %>
               <tr class="text-primary table-text">
                 <td class="d-flex gap-2 align-items-center text-left">
