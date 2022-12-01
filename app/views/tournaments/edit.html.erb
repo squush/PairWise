@@ -3,8 +3,13 @@
     <%= link_to "Back", tournament_path(@tournament),
       class: "btn btn-lg btn-primary mb-5 btn-upright back-btn" %>
   </div>
-  <h4 class="tourney-manage">Manage</h4>
-  <h1 class="tourney-main-manage"><%= @tournament.event.location %></h1>
+
+  <br><br>
+    <h4 id="manage-h4">Manage</h4>
+    <h1 id="manage-h1"><%= @tournament.event.location %></h1>
+    <h4 id="manage-h4"><%= @tournament.event.date.strftime('%B %e, %Y') %></h4>
+
+  <br><br>
   <%# <div class="d-flex justify-content-between mb-4"> %>
   <div class="d-flex justify-content-center">
     <%= simple_form_for @tournament, html: {class: "col-4"},

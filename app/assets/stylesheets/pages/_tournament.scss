@@ -73,19 +73,16 @@
 }
 
 // EDIT.html.erb
-.tourney-manage {
+#manage-h4 {
   color: $royal_blue;
   text-align: center;
-  padding-top: 40px;
 }
-
-.tourney-main-manage {
+#manage-h1  {
   color: $royal_blue;
   text-align: center;
   text-shadow: 0 0 white;
   font-size: 48px;
   font-weight: 600;
-  padding-bottom: 40px;
 }
 
 #tournament_pairing_system {
