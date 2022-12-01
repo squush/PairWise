@@ -73,6 +73,12 @@
   // margin-bottom: 1px;
 }
 
+.first-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .player-avatar {
   max-width: 128px;
   height: 128px;
