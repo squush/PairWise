@@ -1,5 +1,6 @@
 class MatchupsController < ApplicationController
   before_action :set_matchup, only: %i[update]
+  skip_before_action :authenticate_user!, only: %i[index]
 
   def create
     @matchup = Matchup.new(matchup_params)
