@@ -29,15 +29,16 @@
   background-color: white;
 }
 
-.ranking {
-  margin-top: 6px;
+.next-last {
+  display: flex;
+  min-height: 40px;
+  font-size: 12px;
 }
 
-.next-last {
-  // display: flex;
-  // justify-self: left;
-  font-size: 12px;
+.next-last > div {
+  display: flex;
   margin-bottom: 1px;
+  justify-self: end;
 }
 
 #card-1st{
@@ -64,24 +65,12 @@
 }
 
 // NOT VERIFIED YET
-
-.rating-h4 {
-  margin: 0;
-}
-
 .scoreboard-p {
   font-size: 12px;
   font-weight: lighter;
   text-align: right;
   margin-bottom: 0;
   // margin-bottom: 1px;
-}
-
-.first-row {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-between;
 }
 
 .player-avatar {
