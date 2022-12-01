@@ -47,7 +47,7 @@ class TournamentsController < ApplicationController
       @current_round = @tournament.players.first.win_count.to_i + @tournament.players.first.loss_count.to_i
       @current_round += 1 if @current_round.zero?
     else
-      @current_round = 0
+      @current_round = 1
     end
   end
 
