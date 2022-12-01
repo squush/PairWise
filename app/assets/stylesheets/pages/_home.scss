@@ -1,5 +1,13 @@
 .homepage-banner {
-  position: relative;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  background-image: url(homepage-banner.jpg);
+  background-size: cover;
+  background-position: center;
+
+  ;
+
   // padding: 250px 0;
   // background-image: url(homepage-banner.jpg);
   // background-repeat: no-repeat;
@@ -14,7 +22,7 @@
 
   .homepage-container {
     padding-top: 160px;
-    position: absolute;
+    // position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -23,7 +31,7 @@
 
   h1 {
     margin-left: 8vw;
-    margin-top: 22vh;
+    margin-top: 8vh;
     margin-bottom: 4vh;
     color: white;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.7);
@@ -60,4 +68,58 @@
     opacity: .7;
     text-shadow: 1px 1px 2px rgb(255, 255, 255);
   }
+}
+
+.homepage-icons {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.first-icon {
+  display: flex;
+  min-width: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5vh;
+  text-align: center;
+}
+
+.second-icon {
+  display: flex;
+  min-width: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5vh;
+  text-align: center;
+}
+
+.third-icon {
+  display: flex;
+  min-width: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5vh;
+  text-align: center;
+}
+
+.easy-icon {
+  width: 125px;
+  height: 125px;
+  font-weight: 5vh;
+  transition: 1s;
+}
+
+.powerful-icon {
+  width: 125px;
+  height: 125px;
+}
+
+.aesthetic-icon {
+  width: 125px;
+  height: 125px;
 }
