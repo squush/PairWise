@@ -1,22 +1,25 @@
 <div class="container">
   <div class="pos-rel">
     <%= link_to "Back", tournament_path(@this_tournament),
-      class: "btn btn-lg btn-primary mb-5 btn-upright back-btn" %>
+      class: "btn btn-lg btn-primary mb-5 btn-topright back-btn" %>
   </div>
-    <br><br>
-    <h4 id="pairing-h4">Pairings</h4>
-    <h1 id="pairing-h1"><%= @this_tournament.event.location %></h1>
-    <h4 id="pairing-h4"><%= @this_tournament.event.date.strftime('%B %e, %Y') %></h4>
 
-    <br><br>
-    <div class="mb-5 text-primary">
-    <% @matchups.each do |div, matchups| %>
-      <h2 class="scoreboard-division">Division <%= div %></h2>
-      <div class="d-flex flex-wrap mb-5">
-        <% matchups.each do |matchup| %>
-          <%= render 'matchup', matchup: matchup, tournament: @this_tournament  %>
-        <% end %>
-      </div>
-    <% end %>
+  <br><br>
+
+  <div class="tourn-headers mb-5">
+    <h4>Pairings</h4>
+    <h1><%= @this_tournament.event.location %></h1>
+    <h4><%= @this_tournament.event.date.strftime('%B %e, %Y') %></h4>
+  </div>
+
+  <div class="mb-5 text-primary">
+  <% @matchups.each do |div, matchups| %>
+    <h2 class="scoreboard-division">Division <%= div %></h2>
+    <div class="d-flex flex-wrap mb-5">
+      <% matchups.each do |matchup| %>
+        <%= render 'matchup', matchup: matchup, tournament: @this_tournament  %>
+      <% end %>
     </div>
+  <% end %>
+  </div>
 </div>

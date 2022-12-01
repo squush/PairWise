@@ -1,24 +1,22 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-3">
-    <% if ranking == "1st" %>
-      <div class="scoreboard-player-card" id="card-1st">
-    <% elsif ranking == "2nd" %>
-      <div class="scoreboard-player-card" id="card-2nd">
-    <% elsif ranking == "3rd" %>
-      <div class="scoreboard-player-card" id="card-3rd">
-    <% else %>
-      <div class="scoreboard-player-card">
-    <% end %>
-      <div class="first-row">
+  <% if ranking == "1st" %>
+    <div class="scoreboard-player-card" id="card-1st">
+  <% elsif ranking == "2nd" %>
+    <div class="scoreboard-player-card" id="card-2nd">
+  <% elsif ranking == "3rd" %>
+    <div class="scoreboard-player-card" id="card-3rd">
+  <% else %>
+    <div class="scoreboard-player-card card-reg">
+  <% end %>
+    <div class="first-row">
 
-      <div id="ranking">
+      <div class="ranking">
         <h4><%= ranking %></h4>
       </div>
 
-      <div id="rating">
-        <h4 class="rating-h4">
-          <%= player.rating %>
-        </h4>
-        <p class="scoreboard-p">Rating</p>
+      <div>
+        <p class="scoreboard-p">Rating:</p>
+        <h4><%= player.rating %></h4>
       </div>
     </div>
 
@@ -35,13 +33,12 @@
       <% end %>
     </div>
 
-
-    <div id="player-name">
-      <p class="player-p"><strong><%= player.name %></strong></p>
+    <div class="player-name">
+      <p><strong><%= player.name %></strong></p>
     </div>
 
     <div class="player-bottom-half-info">
-      <div id="current-ranking">
+      <div class="score-line">
       <%# Tried a cleaner logic but it didn't work, may want to refactor later %>
         <p>
           <%= player.win_count == player.win_count.to_i ? player.win_count.round : player.win_count %>
@@ -57,69 +54,71 @@
         )</p>
       </div>
 
-      <div id="last-game">
-        <p>
-        <% player_round = player.win_count + player.loss_count %>
-        <% @player_round = player_round.round.to_i %>
+      <div class="next-last">
+        <p class="d-flex gap-2">
+          <% player_round = (player.win_count + player.loss_count).round.to_i %>
 
           <%# Player's last game score %>
           <strong>Last:</strong>
           <% @tournament.matchups.each do |matchup| %>
-              <% if matchup[:round_number] == @player_round%>
-                <% if matchup[:player1_id] == player.id %>
-                  <%= matchup[:player1_score] %>
-                  -
-                <% elsif matchup[:player2_id] == player.id %>
-                  <%= matchup[:player2_score] %>
-                  -
-                <% end %>
+            <% if matchup[:round_number] == player_round%>
+              <% if matchup.player1 == player %>
+                <strong>Last:</strong>
+                <%= matchup[:player1_score] %>
+                -
+              <% elsif matchup.player2 == player %>
+                <strong>Last:</strong>
+                <%= matchup[:player2_score] %>
+                -
               <% end %>
+            <% end %>
           <% end %>
 
           <% @tournament.matchups.each do |matchup| %>
-              <% if matchup[:round_number] == @player_round %>
-                <% if matchup[:player1_id] == player.id %>
-                  <%= matchup[:player2_score] %>
-                <% elsif matchup[:player2_id] == player.id %>
-                  <%= matchup[:player1_score] %>
-                <% end %>
+            <% if matchup[:round_number] == player_round %>
+              <% if matchup.player1 == player %>
+                <%= matchup[:player2_score] %>
+              <% elsif matchup.player2 == player %>
+                <%= matchup[:player1_score] %>
               <% end %>
+            <% end %>
           <% end %>
 
           <%# Last game opponent's name%>
           <% @tournament.matchups.each do |matchup| %>
-              <% if matchup[:round_number] == @player_round %>
-                <% if matchup[:player1_id] == player.id %>
-                  <% @opponent_id = matchup[:player2_id] %>
-                vs. <%= Player.find(@opponent_id).name %>
-                <% elsif matchup[:player2_id] == player.id %>
-                  <% @opponent_id = matchup[:player1_id] %>
-                vs. <%= Player.find(@opponent_id).name %>
-                <% end %>
+            <% if matchup[:round_number] == player_round %>
+              <% if matchup.player1 == player %>
+                <% opponent = matchup.player2.id %>
+              vs. <%= Player.find(opponent).name %>
+              <% elsif matchup.player2 == player %>
+                <% opponent = matchup.player1.id %>
+              vs. <%= Player.find(opponent).name %>
               <% end %>
+            <% end %>
           <% end %>
         </p>
       </div>
 
       <%# Player's next game opponent%>
-      <div id="next-game">
-        <p><strong>Next:</strong>
-        <% @tournament.matchups.each do |matchup| %>
-              <% if matchup[:round_number] == @player_round+1 %>
-                <% if matchup[:player1_id] == player.id %>
-                  <% if matchup.player2.name != "Bye" %>
-                    <%= "1st vs." %>
-                  <% end %>
-                  <% @opponent_id = matchup[:player2_id] %>
-                  <%= Player.find(@opponent_id).name %>
-                <% elsif matchup[:player2_id] == player.id %>
-                  <% if matchup.player1.name != "Bye" %>
-                    <%= "2nd vs."  %>
-                  <% end %>
-                  <% @opponent_id = matchup[:player1_id] %>
-                  <%= Player.find(@opponent_id).name %>
+      <div class="next-last">
+        <p class="d-flex gap-2">
+          <strong>Next:</strong>
+          <% @tournament.matchups.each do |matchup| %>
+            <% if matchup[:round_number] == player_round + 1 %>
+              <% if matchup.player1 == player %>
+                <% if matchup.player2.name != "Bye" %>
+                  <%= "1st vs." %>
                 <% end %>
+                <% opponent_id = matchup.player2.id %>
+                <%= Player.find(opponent_id).name %>
+              <% elsif matchup.player2 == player %>
+                <% if matchup.player1.name != "Bye" %>
+                  <%= "2nd vs."  %>
+                <% end %>
+                <% opponent_id = matchup.player1.id %>
+                <%= Player.find(opponent_id).name %>
               <% end %>
+            <% end %>
           <% end %>
         </p>
       </div>

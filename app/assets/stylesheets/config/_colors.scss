@@ -20,6 +20,11 @@ $lightest_gray: #EAEEF4;
 $burgundy: #874646;
 $off_white: #F5F5F5;
 
-// faded blues are $dark_blue but lighter
+// Shade variations on $dark_blue
+// $dark_blue: hsl(213, 24%, 25%);
+
 $faded-blue: hsl(213, 24%, 50%);
 $more-faded-blue: hsl(213, 24%, 75%);
+
+$dark-blue-2: hsl(213, 24%, 40%);
+$dark-blue-3: hsl(213, 24%, 55%);
