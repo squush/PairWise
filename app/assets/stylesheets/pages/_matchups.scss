@@ -1,5 +1,5 @@
 .matchup {
-border-radius: 4px;
+border-radius: 10px;
 padding: 10px 20px;
 }
 
@@ -9,10 +9,24 @@ padding: 10px 20px;
   border-radius: 50%;
 }
 
+#score-modal-btn {
+border-radius: 5px;
+}
+
 .matchup-done {
   background-color: $faded-blue;
   color: white;
 
+  #score-modal-btn {
+    color: $dark_blue;
+    border: 1px solid white;
+  }
+
+  #score-modal-btn:hover {
+    background-color: white;
+    color: $dark_blue;
+    border: 1px solid $dark_blue;
+  }
   .border-bottom {
     border-color: white !important;
   }
@@ -20,11 +34,6 @@ padding: 10px 20px;
   #score-modal-btn {
     color: white;
     border: 1px solid white;
-  }
-  #score-modal-btn:hover {
-    background-color: white;
-    color: $dark_blue;
-    border: 1px solid $dark_blue;
   }
 
   .text-primary {

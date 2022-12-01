@@ -61,3 +61,10 @@
     text-shadow: 1px 1px 2px rgb(255, 255, 255);
   }
 }
+
+#homepage-btn {
+  border-radius: 10px;
+  font-size: 24px;
+  padding: 10px 20px;
+  box-shadow: 2px 2px 5px 1px $gray;
+}
