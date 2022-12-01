@@ -5,7 +5,7 @@ require 'date'
 
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show scoreboard]
 
   def index
     # all_crosstables_events # Commenting this out so it's not called every page load
