@@ -1,12 +1,20 @@
-<div class="container justify-content-center">
-  <h2>Contact Us</h2>
-  <form id="bottom-page">
-    <input name="name" type="text" class="feedback-input" placeholder="Name" />
+<div div class="container col-3">
+  <h2 class="text-primary">Contact us</h2>
+  <form class="contact-us">
+
+    <label for="fname" class="text-primary" >First Name</label>
     <br>
-    <input name="email" type="text" class="feedback-input" placeholder="Email" />
+    <input class="border-primary text-primary form-rnd-corners input-white" type="text" id="fname" name="firstname" style="width:400px">
     <br>
-    <textarea name="text" class="feedback-input" placeholder="<Message>"></textarea>
+    <label for="lname" class="text-primary">Last Name</label>
     <br>
-    <input type="submit" value="SUBMIT"/>
+    <input class="border-primary text-primary form-rnd-corners input-white" type="text" id="lname" name="lastname" style="width:400px">
+    <br>
+    <label for="subject" class="text-primary">Your question</label>
+    <br>
+    <textarea class="border-primary text-primary form-rnd-corners input-white" id="subject" name="subject" style="width:400px"></textarea>
+    <br>
+    <input class="form-actions btn btn-primary submit-btn" type="submit" value="Submit">
+
   </form>
 </div>
