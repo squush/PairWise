@@ -245,7 +245,11 @@ class TournamentsController < ApplicationController
         if pairing.include?(Swissper::Bye)
           real_player_id = 1 - pairing.find_index(Swissper::Bye)
           bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div)
-          Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
+          Matchup.create!(
+            round_number: 1, done: true, player2: bye,
+            player1: pairing[real_player_id], player1_score: 50
+          )
+          pairing[real_player_id].increment!(:win_count)
         else
           Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
         end
@@ -259,7 +263,11 @@ class TournamentsController < ApplicationController
           real_player_id = 1 - pairing.find_index(Swissper::Bye)
           bye = Player.find_by(tournament: tournament, name: "Bye")
           # bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div, win_count: 0)
-          Matchup.create!(round_number: 2, player1: pairing[real_player_id], player2: bye)
+          Matchup.create!(
+            round_number: 2, done: true, player2: bye,
+            player1: pairing[real_player_id], player1_score: 50
+          )
+          pairing[real_player_id].increment!(:win_count)
         else
           Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
         end

@@ -46,24 +46,26 @@
     <div class="d-flex justify-content-around pb-1">
       <% if tournament.user == current_user %>
         <div class="d-flex justify-content-around gap-2" data-controller="matchups">
-          <div>
-            <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
-            data-action="click->matchups#showForm">
-              <%= matchup.done ? "Edit score" : "Set score" %>
-            </a>
-          </div>
+          <% unless matchup.player2.name == "Bye" %>
+            <div>
+              <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
+              data-action="click->matchups#showForm">
+                <%= matchup.done ? "Edit score" : "Set score" %>
+              </a>
+            </div>
 
-          <div class="modal" data-matchups-target="modal">
-            <div class="score-modal-content">
-              <div class="d-flex justify-content-right">
-                <button class="close-btn d-flex justify-content-center align-items-center"
-                  data-action="click->matchups#closeForm">&times;</button>
+            <div class="modal" data-matchups-target="modal">
+              <div class="score-modal-content">
+                <div class="d-flex justify-content-right">
+                  <button class="close-btn d-flex justify-content-center align-items-center"
+                    data-action="click->matchups#closeForm">&times;</button>
+                  </div>
+                <div class="d-flex justify-content-center">
+                  <%= render "input_score", matchup: matchup %>
                 </div>
-              <div class="d-flex justify-content-center">
-                <%= render "input_score", matchup: matchup %>
               </div>
             </div>
-          </div>
+          <% end %>
 
           <% unless matchup.done || 1 == 1 %>
             <%= link_to "Edit pairing", "#", class: "btn btn-sm btn-outline-danger" %>
