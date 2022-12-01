@@ -8,6 +8,6 @@ class Tournament < ApplicationRecord
 
   enum pairing_system: {
     "Swiss" => 10,
-    "round-robin" => 20
+    "Round Robin" => 20
   }
 end
