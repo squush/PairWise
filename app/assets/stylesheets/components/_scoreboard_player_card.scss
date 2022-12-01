@@ -26,7 +26,6 @@
 .scoreboard {
   display: flex;
   flex-wrap: wrap;
-  // justify-content: space-around;
   padding-bottom: 40px;
   color: $dark_blue;
 }
@@ -39,10 +38,6 @@
   border-radius: 14px;
   padding: 25px;
   margin-bottom: 20px;
-  // margin-left: 8px;
-  // margin-right: 8px;
-  // width: 270px;
-  // max-height: 353px;
   padding-bottom: 8px;
   font-size: 18px;
   background-color: white;
@@ -67,13 +62,6 @@
   box-shadow: 8px 8px $blue;
   color: white;
 }
-// TODO: Please don't overwrite existing classes. Write a new class instead if
-//       you have custom CSS.
-// .text-center {
-  //   color: $royal_blue;
-  //   font-size: 24px;
-  //   margin-bottom: 15px;
-  // }
 
 // NOT VERIFIED YET
   #ranking {
@@ -144,27 +132,6 @@
   color: $royal_blue;
 }
 
-// #scoreboard-back-button {
-//   display: flex;
-//   justify-content: center;
-//   padding-right: 25px;
-// }
-
 .spread {
   font-size: 14px;
-}
-
-#scoreboard-btn {
-  margin-top: 60px;
-  margin-bottom: 1px;
-  margin-left: 40px;
-  padding-left: 25px;
-  padding-right: 25px;
-  height: 38px;
-  border-radius: 8px;
-  font-size: 1rem;
-  // color: $off_white;
-  // border-color: $dark_blue;
-  // background-color: $dark_blue;
-  box-shadow: 2px 2px 1px 1px $gray;
 }
