@@ -1,16 +1,15 @@
-#scoreboard-title {
+// scoreboard.html.erb && index.html.erb
+#scoreboard-title,  #pairing-h4 {
   color: $royal_blue;
   text-align: center;
-  padding-top: 40px;
 }
 
-#scoreboard-location {
+#scoreboard-location, #pairing-h1  {
   color: $royal_blue;
   text-align: center;
   text-shadow: 0 0 white;
   font-size: 48px;
   font-weight: 600;
-  padding-bottom: 50px;
 }
 
 .scoreboard-division {
