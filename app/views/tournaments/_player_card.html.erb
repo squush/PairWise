@@ -16,9 +16,7 @@
 
       <div>
         <p class="scoreboard-p">Rating:</p>
-        <h5>
-          <%= player.rating %>
-        </h5>
+        <h4><%= player.rating %></h4>
       </div>
     </div>
 
@@ -34,7 +32,6 @@
         <%= image_tag "user-astronaut-solid.svg", class: "player-avatar" %>
       <% end %>
     </div>
-
 
     <div class="player-name">
       <p><strong><%= player.name %></strong></p>
@@ -62,13 +59,14 @@
           <% player_round = (player.win_count + player.loss_count).round.to_i %>
 
           <%# Player's last game score %>
+          <strong>Last:</strong>
           <% @tournament.matchups.each do |matchup| %>
             <% if matchup[:round_number] == player_round%>
-              <% if matchup[:player1_id] == player.id %>
+              <% if matchup.player1 == player %>
                 <strong>Last:</strong>
                 <%= matchup[:player1_score] %>
                 -
-              <% elsif matchup[:player2_id] == player.id %>
+              <% elsif matchup.player2 == player %>
                 <strong>Last:</strong>
                 <%= matchup[:player2_score] %>
                 -
@@ -78,9 +76,9 @@
 
           <% @tournament.matchups.each do |matchup| %>
             <% if matchup[:round_number] == player_round %>
-              <% if matchup[:player1_id] == player.id %>
+              <% if matchup.player1 == player %>
                 <%= matchup[:player2_score] %>
-              <% elsif matchup[:player2_id] == player.id %>
+              <% elsif matchup.player2 == player %>
                 <%= matchup[:player1_score] %>
               <% end %>
             <% end %>
@@ -89,12 +87,12 @@
           <%# Last game opponent's name%>
           <% @tournament.matchups.each do |matchup| %>
             <% if matchup[:round_number] == player_round %>
-              <% if matchup[:player1_id] == player.id %>
-                <% @opponent_id = matchup[:player2_id] %>
-              vs. <%= Player.find(@opponent_id).name %>
-              <% elsif matchup[:player2_id] == player.id %>
-                <% @opponent_id = matchup[:player1_id] %>
-              vs. <%= Player.find(@opponent_id).name %>
+              <% if matchup.player1 == player %>
+                <% opponent = matchup.player2.id %>
+              vs. <%= Player.find(opponent).name %>
+              <% elsif matchup.player2 == player %>
+                <% opponent = matchup.player1.id %>
+              vs. <%= Player.find(opponent).name %>
               <% end %>
             <% end %>
           <% end %>
@@ -111,14 +109,14 @@
                 <% if matchup.player2.name != "Bye" %>
                   <%= "1st vs." %>
                 <% end %>
-                <% @opponent_id = matchup[:player2_id] %>
-                <%= Player.find(@opponent_id).name %>
+                <% opponent_id = matchup.player2.id %>
+                <%= Player.find(opponent_id).name %>
               <% elsif matchup.player2 == player %>
                 <% if matchup.player1.name != "Bye" %>
                   <%= "2nd vs."  %>
                 <% end %>
-                <% @opponent_id = matchup[:player1_id] %>
-                <%= Player.find(@opponent_id).name %>
+                <% opponent_id = matchup.player1.id %>
+                <%= Player.find(opponent_id).name %>
               <% end %>
             <% end %>
           <% end %>

@@ -65,9 +65,16 @@
 
 // NOT VERIFIED YET
 
+.rating-h4 {
+  margin: 0;
+}
+
 .scoreboard-p {
   font-size: 12px;
-  margin-bottom: 1px;
+  font-weight: lighter;
+  text-align: right;
+  margin-bottom: 0;
+  // margin-bottom: 1px;
 }
 
 .first-row {
@@ -87,8 +94,14 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  line-height: 100%;
   font-size: 24px;
-  min-height: 88px;
+  min-height: 80px;
+}
+
+.player-p {
+  align-self: center;
+  margin-bottom: 0;
 }
 
 .score-line {
