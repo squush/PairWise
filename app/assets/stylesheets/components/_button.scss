@@ -1,3 +1,8 @@
+// .pos-rel is used to position the back button in the top right
+.pos-rel {
+  position: relative;
+}
+
 .back-btn {
   padding: 8px 25px;
   border-radius: 8px;
@@ -5,11 +10,7 @@
   box-shadow: 2px 2px 1px 1px $gray;
 }
 
-.pos-rel {
-  position: relative;
-}
-
-.btn-upright {
+.btn-topright {
   position: absolute;
   right: 40px;
   top: 50px;
