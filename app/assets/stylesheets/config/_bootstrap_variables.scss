@@ -27,18 +27,18 @@ $border-radius-sm: 2px;
 /* Colors-map - ... */
 $danger: $burgundy;
 $warning: $burgundy;
-$primary: $dark_blue;
+$primary: $dark-blue;
 $secondary: $faded-blue;
-$info: $off_white;
+$info: $off-white;
 
 $custom-colors: (
-  "royal-blue": $royal_blue,
-  "dark-blue": $dark_blue,
+  "royal-blue": $royal-blue,
+  "dark-blue": $dark-blue,
   "gray": $gray,
   "light-gray": $light-gray,
-  "lightest-gray": $lightest_gray,
+  "lightest-gray": $lightest-gray,
   "burgundy": $burgundy,
-  "off-white": $off_white
+  "off-white": $off-white
 );
 
 $theme-colors: (

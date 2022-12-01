@@ -16,7 +16,7 @@
 .event-card {
   padding: 20px;
   font-size: 14px;
-  color: $dark_blue;
+  color: $dark-blue;
 
   h3 {
     font-size: 16px;
@@ -27,16 +27,16 @@
   a {
     text-decoration: none;
     text-transform: uppercase;
-    background-color: $royal_blue;
+    background-color: $royal-blue;
     padding: 6px 12px;
     border-radius: 5px;
     color: white;
   }
 
   a:hover {
-    box-shadow: 0 0 3px 0 $dark_blue;
+    box-shadow: 0 0 3px 0 $dark-blue;
     color: $light-gray;
-    background-color: $dark_blue;
+    background-color: $dark-blue;
     // Cursor was defaulting to the text cursor
     cursor: pointer;
   }
@@ -72,7 +72,7 @@
 }
 
 .tournament-location {
-  color: $dark_blue;
+  color: $dark-blue;
   font-size: 44px;
   font-weight: 800;
   margin-bottom: 30px;
@@ -96,6 +96,6 @@
 
 .tournament-big-num {
   font-size: 75px;
-  color: $dark_blue;
+  color: $dark-blue;
   text-align: center;
 }

@@ -1,6 +1,6 @@
 // SHOW.html.erb
 .tourney-main {
-  color: $royal_blue;
+  color: $royal-blue;
   text-align: center;
   text-shadow: 0 0 white;
   padding: 15px;
@@ -9,7 +9,7 @@
 }
 
 .tourney-secondary {
-  color: $royal_blue;
+  color: $royal-blue;
   text-align: center;
 }
 
@@ -27,14 +27,14 @@
   justify-content: space-around;
 }
 .tourney-btn {
-  background-color: $dark_blue;
+  background-color: $dark-blue;
   color: white;
   text-transform: uppercase;
   box-shadow: 3px 3px 2px 2px $gray;
 
   &:hover {
-    background-color: $royal_blue;
-    box-shadow: 0 0 2px 0 $dark_blue;
+    background-color: $royal-blue;
+    box-shadow: 0 0 2px 0 $dark-blue;
   }
 }
 .tourney-btn-lg {
@@ -58,13 +58,13 @@
   }
 }
 .tourney-info {
-  background-color: $off_white;
+  background-color: $off-white;
   // display: flex;
   // justify-content: space-around;
   margin: 30px auto;
   padding: 20px;
   border-radius: 8px;
-  color: $royal_blue;
+  color: $royal-blue;
   width: 60%;
 
   p {
@@ -87,7 +87,7 @@
 }
 
 .tourney-manage-2 {
-  color: $royal_blue;
+  color: $royal-blue;
   text-align: center;
   padding-top: 80px;
   padding-bottom: 20px;
@@ -125,7 +125,7 @@ th {
   text-align: center;
   font-weight: 500;
   font-size: 12px;
-  color: $off_white;
+  color: $off-white;
   text-transform: uppercase;
 }
 
@@ -135,7 +135,7 @@ td {
   vertical-align: middle;
   font-weight: 400;
   font-size: 14px;
-  // color: $dark_blue;
+  // color: $dark-blue;
   border-bottom: solid 1px #d7dee2;
 }
 
@@ -147,7 +147,7 @@ td {
 }
 
 .contact-dir:hover {
-  color: $off_white;
+  color: $off-white;
   box-shadow: 0 0 4px 1px hsl(213, 24%, 75%);
 }
 

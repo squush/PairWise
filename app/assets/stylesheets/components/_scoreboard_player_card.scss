@@ -1,6 +1,6 @@
 // scoreboard.html.erb
 .scoreboard-division {
-  color: $dark_blue;
+  color: $dark-blue;
   text-align: center;
   padding-bottom: 20px;
 }
@@ -13,7 +13,7 @@
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 40px;
-  color: $dark_blue;
+  color: $dark-blue;
 }
 
 .scoreboard-player-card {
@@ -42,7 +42,7 @@
 }
 
 #card-1st{
-  background-color: $dark_blue;
+  background-color: $dark-blue;
   color: white;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .card-reg {
-  color: $royal_blue;
+  color: $royal-blue;
 }
 
 .player-bottom-half-info {
