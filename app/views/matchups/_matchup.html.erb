@@ -46,7 +46,9 @@
     <div class="d-flex justify-content-around pb-1">
       <% if tournament.user == current_user %>
         <div class="d-flex justify-content-around gap-2" data-controller="matchups">
-          <% unless matchup.player2.name == "Bye" %>
+          <% if matchup.player2.name == "Bye" %>
+            <div class="hidden-btn">&nbsp;</div>
+          <% else %>
             <div>
               <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
               data-action="click->matchups#showForm">
