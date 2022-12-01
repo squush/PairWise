@@ -1,5 +1,9 @@
-<div class="container" id="bottom-page">
-  <h1>User id <%= current_user.id %></h1>
-  <br>
-  <h3>Email: <%= current_user.email %></h3>
+<div class="container col-3">
+  <div class="user-profile-avatar">
+    <% if current_user %>
+      <%= image_tag "user-astronaut-solid.svg" %>
+    <% end %>
+  </div>
+  <h2 class="text-primary">User Id: <%= current_user.id %></h2>
+  <h3 class="text-primary">Email: <%= current_user.email %></h3>
 </div>
