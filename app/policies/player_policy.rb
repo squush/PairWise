@@ -10,6 +10,10 @@ class PlayerPolicy < ApplicationPolicy
     user_is_owner?
   end
 
+  def deactivate?
+    user_is_owner?
+  end
+
   private
 
   def user_is_owner?

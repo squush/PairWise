@@ -40,6 +40,7 @@
           <th>Seed</th>
           <th>Ranking</th>
           <th class="th-right-round">Cross-tables ID</th>
+          <th>Deactivate</th>
         </tr>
       </thead>
 
@@ -62,13 +63,27 @@
                   <% else %>
                     <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
                   <% end %>
+                  <% if player.active %>
+                    <div class="fw-bold">
+                  <% else %>
+                    <div class="fst-italic text-danger">
+                  <% end %>
                   <%= player.name %>
+                  </div>
                 </td>
                 <td class="text-center"><%= player.rating %></td>
                 <td class="text-center"><%= player.division %></td>
                 <td class="text-center"><%= player.seed %></td>
                 <td class="text-center"><%= player.ranking %></td>
                 <td class="text-center"><%= player.crosstables_id %></td>
+                <td class="text-center">
+                  <%= link_to deactivate_player_path(player),
+                    data: { turbo_method: :get, turbo_confirm: "Are you sure?" },
+                    class: "text-decoration-none fs-6" do
+                  %>
+                  <i class="fa-regular fa-circle-xmark"></i>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           <% end %>

@@ -35,6 +35,18 @@ class PlayersController < ApplicationController
     authorize @player
   end
 
+  def deactivate
+    @player = Player.find(params[:id])
+    @player.active = false
+    if @player.save
+      redirect_to edit_tournament_path(@player.tournament)
+    else
+      render 'tournaments/edit', status: :unprocessable_entity
+    end
+
+    authorize @player
+  end
+
   private
 
   def set_tournament
