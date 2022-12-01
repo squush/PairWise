@@ -10,10 +10,14 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="form-inputs">
-      <%= f.input :player1_score, label: "#{matchup.player1.name}:" %>
-      <%= f.input :player2_score, label: "#{matchup.player2.name}:" %>
+    <div class="form-inputs" id="pairings-form">
+    <%= f.input :player1_score, label: "#{matchup.player1.name}:",
+                required: false %>
+    <%= f.input :player2_score, label: "#{matchup.player2.name}:",
+                required: false %>
     </div>
+
+    <%# b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
 
     <div class="text-center">
       <%= f.submit "Submit score", class: "btn btn-info modal-button" %>
