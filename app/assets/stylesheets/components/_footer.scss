@@ -57,7 +57,7 @@ ul{
 .footer-col ul li a{
 	font-size: 16px;
 	text-transform: capitalize;
-	color: $dark_blue;
+	color: $dark-blue;
 	text-decoration: none;
 	font-weight: 300;
 	color: #ffffff;
@@ -65,7 +65,7 @@ ul{
 	transition: all 0.3s ease;
 }
 .footer-col ul li a:hover{
-	color: $dark_blue;
+	color: $dark-blue;
 	padding-left: 8px;
 }
 .footer-col .social-links a{
