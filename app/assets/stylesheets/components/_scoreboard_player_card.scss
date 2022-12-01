@@ -68,7 +68,7 @@
 }
 
   #ranking {
-    margin-top: 6px;
+    // margin-top: 6px;
   color: $royal_blue;
 
 }
@@ -77,9 +77,15 @@
   color: $royal_blue;
 }
 
+.rating-h4 {
+  margin: 0;
+}
+
 .scoreboard-p {
   font-size: 12px;
-  margin-bottom: 1px;
+  font-weight: lighter;
+  text-align: right;
+  // margin-bottom: 1px;
 }
 
 .first-row {
@@ -111,6 +117,10 @@
   font-size: 24px;
   min-height: 88px;
 }
+.player-p {
+  align-self: center;
+  margin-bottom: 0;
+}
 
 #current-ranking {
   display: flex;
@@ -124,7 +134,7 @@
 #last-game {
   display: flex;
   justify-content: left;
-  font-size: 12px;
+  font-size: 14px;
   color: $royal_blue;
   margin-bottom: 1px;
 }
@@ -132,7 +142,7 @@
 #next-game {
   display: flex;
   justify-content: left;
-  font-size: 12px;
+  font-size: 14px;
   color: $royal_blue;
 }
 
