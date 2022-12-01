@@ -9,7 +9,7 @@ class TournamentsController < ApplicationController
 
   def index
     # all_crosstables_events # Commenting this out so it's not called every page load
-    @events = Event.order(:date)
+    @events = Event.where('date >= ?', Date.today).order(:date)
     @tournament = Tournament.new
 
     # TODO: Resolve this naming issue. The @tournaments is being taken for the Pundit
