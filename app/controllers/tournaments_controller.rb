@@ -250,6 +250,7 @@ class TournamentsController < ApplicationController
             player1: pairing[real_player_id], player1_score: 50
           )
           pairing[real_player_id].increment!(:win_count)
+          pairing[real_player_id].increment!(:spread, by = 50)
         else
           Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
         end
@@ -268,6 +269,7 @@ class TournamentsController < ApplicationController
             player1: pairing[real_player_id], player1_score: 50
           )
           pairing[real_player_id].increment!(:win_count)
+          pairing[real_player_id].increment!(:spread, by = 50)
         else
           Matchup.create!(round_number: 2, player1: pairing[0], player2: pairing[1])
         end
