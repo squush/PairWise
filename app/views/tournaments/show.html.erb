@@ -14,7 +14,7 @@
       <%= @tournament.event.date.strftime'%A, %B %e, %Y' || @tournament.date.strftime('%A, %B %e, %Y') %>
     </p>
   </div>
-  <%# <% if @tournament.players.any? %>
+  <% if @tournament.players.any? %>
   <div class="tourney-links">
     <%= link_to scoreboard_path(@tournament), class: "text-decoration-none" do %>
       <div class="tourney-btn tourney-btn-lg text-center">
@@ -30,6 +30,7 @@
       </div>
     <% end %>
   </div>
+  <% end %>
 
   <% if @tournament.user == current_user %>
     <div class="d-flex justify-content-center">
