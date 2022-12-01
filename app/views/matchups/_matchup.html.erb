@@ -48,7 +48,9 @@
         <div class="d-flex justify-content-around gap-2" data-controller="matchups">
           <div>
             <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
-            data-action="click->matchups#showForm"> Set score </a>
+            data-action="click->matchups#showForm">
+              <%= matchup.done ? "Edit score" : "Set score" %>
+            </a>
           </div>
 
           <div class="modal" data-matchups-target="modal">
