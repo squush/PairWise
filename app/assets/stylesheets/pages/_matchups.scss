@@ -1,6 +1,11 @@
 .matchup {
 border-radius: 10px;
-padding: 10px 20px;
+padding: 20px 20px;
+min-height: 280px;
+}
+
+#matchup-player {
+  min-height: 70px;
 }
 
 .matchup-avatar {
@@ -42,6 +47,10 @@ border-radius: 5px;
 
   .text-secondary {
     color: white !important;
+  }
+
+  .text-span {
+    line-height: 60%;
   }
 
   // Prevents the previous lines from affecting the input form if we need to

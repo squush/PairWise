@@ -9,7 +9,7 @@
     </p>
 
     <div class="mb-3">
-      <div class="mb-1 d-flex align-items-center gap-2">
+      <div class="mb-1 d-flex align-items-center gap-2" id="matchup-player">
         <% if matchup.player1.photo.attached? %>
           <%= cl_image_tag matchup.player1.photo.key, class: "matchup-avatar",
             transformation: [
@@ -21,8 +21,8 @@
           <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
         <% end %>
         <div class="text-secondary">
-          <span><%= matchup.player1.name %></span>
-          <span>(<%= matchup.player1_score || 0 %>)</span>
+          <span class="text-span"><%= matchup.player1.name %></span>
+          <span class="text-span">(<%= matchup.player1_score || 0 %>)</span>
         </div>
       </div>
       <div class="mb-1 d-flex align-items-center gap-2">
