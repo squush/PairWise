@@ -10,7 +10,7 @@
       <div class="col-sm flex-fill">
         <h4 class="tournament-head-cat"># PLAYERS</h4>
         <p class="tournament-big-num"><%=
-          tournament.players.count ||
+          tournament.players.where.not(name: "Bye").count ||
           tournament.event.number_of_players ||
           "0"
         %></p>
