@@ -1,37 +1,63 @@
 .homepage-banner {
-  background-size: cover;
-  padding: 250px 0;
-  background-image: url(homepage-banner.png);
-  background-repeat: no-repeat;
-  height: auto;
-  flex-grow: 1;
-}
+  position: relative;
+  // padding: 250px 0;
+  // background-image: url(homepage-banner.jpg);
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // // object-fit: cover;
+  // background-position: center;
+  // width: 100%;
+  // flex-grow: 1;
+  .home-banner-img {
+    width: 100%;
+  }
 
-.homepage-container {
-  padding-top: 160px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
+  .homepage-container {
+    padding-top: 160px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 
-.homepage-banner h1 {
-  margin-left: 130px;
-  padding-top: 250px;
-  padding-bottom: 10px;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 60px;
-  font-weight: bold;
-}
+  h1 {
+    margin-left: 8vw;
+    margin-top: 22vh;
+    margin-bottom: 4vh;
+    color: white;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.7);
+    font-size: 9vh;
+    font-weight: bold;
+  }
 
-.homepage-banner .homepage-text {
-  margin-left: 130px;
-  font-size: 40px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgb(255, 255, 255);
-  bottom: 25px;
-  left: 80px;
+  .start-now-btn {
+    font-size: 2vh;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    margin-left: 14vw;
+    font-weight: lighter;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 20px;
+
+    &:hover {
+      transition: 0.25s;
+      background-color: $burgundy;
+      box-shadow: 0 0 2px 0 $dark_blue;
+      border: 1px solid $burgundy;
+    }
+  }
+
+  .homepage-text {
+    margin-left: 8vw;
+    padding-top: 22vh;
+    font-size: 3vh;
+    color: white;
+    opacity: .7;
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+  }
 }
