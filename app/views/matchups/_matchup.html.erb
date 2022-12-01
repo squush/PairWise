@@ -8,7 +8,7 @@
       Round <%= matchup.round_number %>
     </p>
 
-    <div class="mb-3">
+    <div class="mb-1">
       <div class="mb-1 d-flex align-items-center gap-2" id="matchup-player">
         <% if matchup.player1.photo.attached? %>
           <%= cl_image_tag matchup.player1.photo.key, class: "matchup-avatar",
@@ -25,7 +25,7 @@
           <span class="text-span">(<%= matchup.player1_score || 0 %>)</span>
         </div>
       </div>
-      <div class="mb-1 d-flex align-items-center gap-2">
+      <div class="mb-2 d-flex align-items-center gap-2">
         <% if matchup.player2.photo.attached? %>
           <%= cl_image_tag matchup.player2.photo.key, class: "matchup-avatar",
             transformation: [

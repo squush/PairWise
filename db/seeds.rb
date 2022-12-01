@@ -1,12 +1,12 @@
 require "open-uri"
 
-print "Destroying all tournaments..."
-Tournament.destroy_all
+# print "Destroying all tournaments..."
+# Tournament.destroy_all
 
 # This just destroy the specific test users, not the whole DB
 print "Destroying test users: "
 User.find_by(email: "test@test.test").try(:destroy)
-print "... #{"test"}"
+print "... #{"test@test.test"}"
 User.find_by(email: "demo@demo.demo").try(:destroy)
 print "... demo@demo.demo"
 puts ""
@@ -15,7 +15,6 @@ puts ""
 puts "Destroying test events"
 Event.find_by(location: "Scarborough").try(:destroy)
 Event.find_by(location: "Hochelaga").try(:destroy)
-# Event.find_by(location: "Ottawa",             date: "2022-12-10").try(:destroy)
 
 puts "Creating users"
 user_random = User.create!(email: "test@test.test", password: "testtest")
@@ -24,12 +23,10 @@ user_us = User.create!(email: "demo@demo.demo", password: "demodemo")
 puts "Creating events"
 event_1 = Event.create!(location: "Scarborough", date: "2022-12-02", rounds: 3)
 event_2 = Event.create!(location: "Hochelaga", date: "2022-12-02", rounds: 3)
-# event_3 = Event.create!(location: "San Francisco", date: "2022-12-10", rounds: 5)
 
 puts "Creating tournaments"
 tourney_1 = Tournament.create!(user: user_random, event: event_1, pairing_system: 10)
 tourney_2 = Tournament.create!(user: user_us, event: event_2, pairing_system: 10)
-# tourney_3 = Tournament.create!(user: user_b, event: event_3, pairing_system: 10)
 
 
 puts "Plus some scrubs."
