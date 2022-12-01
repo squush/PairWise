@@ -37,8 +37,6 @@
           <th class="th-left-round" style="width: 300px;">Name</th>
           <th>Rating</th>
           <th>Division</th>
-          <th>Seed</th>
-          <th>Ranking</th>
           <th class="th-right-round">Cross-tables ID</th>
           <th>Deactivate</th>
         </tr>
@@ -73,8 +71,6 @@
                 </td>
                 <td class="text-center"><%= player.rating %></td>
                 <td class="text-center"><%= player.division %></td>
-                <td class="text-center"><%= player.seed %></td>
-                <td class="text-center"><%= player.ranking %></td>
                 <td class="text-center"><%= player.crosstables_id %></td>
                 <td class="text-center">
                   <%= link_to deactivate_player_path(player),
