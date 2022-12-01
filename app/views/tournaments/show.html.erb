@@ -45,7 +45,7 @@
     <div class="d-flex justify-content-around mb-3">
       <div>
         <p class="tourney-headings">Players</p>
-        <p><%= @tournament.players.count %></p>
+        <p><%= @tournament.players.where.not(name: "Bye").count %></p>
       </div>
       <div>
         <p class="tourney-headings">Winners</p>
