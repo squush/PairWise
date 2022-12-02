@@ -9,7 +9,7 @@ class TournamentsController < ApplicationController
 
   def index
     # all_crosstables_events # Commenting this out so it's not called every page load
-    @events = Event.order(:date)
+    @events = Event.where('date >= ?', Date.today).order(:date)
     @tournament = Tournament.new
 
     # TODO: Resolve this naming issue. The @tournaments is being taken for the Pundit
@@ -79,7 +79,13 @@ class TournamentsController < ApplicationController
     # each value is an array of the players in that division
     @players = {}
     divisions.each do |div|
-      @players[div] = Player.where(tournament: @tournament, division: div).where.not(name: "Bye").order(win_count: :desc, loss_count: :asc, spread: :desc).to_a
+      @players[div] = Player.where(
+        tournament: @tournament, division: div
+      ).where.not(
+        name: "Bye"
+      ).order(
+        win_count: :desc, loss_count: :asc, spread: :desc, rating: :desc
+      ).to_a
     end
 
     # @event = Event.find(params[:tournament][:event])c

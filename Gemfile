@@ -37,6 +37,7 @@ gem "pundit"
 
 gem 'whenever', require: false
 
+# https://github.com/muyjohno/swissper
 gem 'swissper'
 
 gem "dotenv-rails", groups: [:development, :test]

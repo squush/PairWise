@@ -95,16 +95,17 @@
 
         <%# Player's next game opponent%>
         <div class="gap-2 mt-auto">
-          <strong>Next:</strong>
           <% @tournament.matchups.each do |matchup| %>
             <% if matchup[:round_number] == player_round + 1 %>
               <% if matchup.player1 == player %>
+                <strong>Next:</strong>
                 <% if matchup.player2.name != "Bye" %>
                   <%= "1st vs." %>
                 <% end %>
                 <% opponent_id = matchup.player2.id %>
                 <%= Player.find(opponent_id).name %>
               <% elsif matchup.player2 == player %>
+                <strong>Next:</strong>
                 <% if matchup.player1.name != "Bye" %>
                   <%= "2nd vs."  %>
                 <% end %>
