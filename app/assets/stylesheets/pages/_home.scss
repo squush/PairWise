@@ -8,8 +8,6 @@
   height: calc(100vh - 66px);
   flex-grow: 1;
 
-  ;
-
   // padding: 250px 0;
   // background-image: url(homepage-banner.jpg);
   // background-repeat: no-repeat;
@@ -65,47 +63,13 @@
 
 .homepage-text {
   position: absolute;
-  padding-left: 38vh;
-  padding-right: 38vh;
+  padding-left: 35vh;
+  padding-right: 35vh;
   bottom: 8vh;
   font-size: 3vh;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 2px rgb(255, 255, 255);
-}
-
-// .homepage-icons {
-//   width: 100vw;
-//   padding-right: 20vw;
-//   padding-left: 20vw;
-//   display: flex;
-//   position: absolute;
-//   bottom: 0px;
-//   align-items: center;
-//   justify-content: center;
-//   justify-content: space-around;
-//   gap: 20px;
-// }
-
-
-// .three-icons {
-//   display: flex;
-//   min-width: 300px;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: 1.5vh;
-//   text-align: center;
-// }
-
-// .small-icons {
-//   width: 125px;
-//   height: 125px;
-// }
-
-
-.homepage-text {
-  color: #fff;
   text-align: center;
   -webkit-animation: glow 1.5s ease-in-out infinite alternate;
   -moz-animation: glow 1.5s ease-in-out infinite alternate;
