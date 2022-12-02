@@ -3,12 +3,17 @@
     <br><br><br>
     <div class="mb-5">
       <h1 class="mb-2 text-center border-2 text-white">ONGOING TOURNAMENTS</h1>
-      <br>
-      <div class="d-flex flex-wrap">
-        <% @pw_tournaments.each do |tournament| %>
-          <%= render "tournament", tournament: tournament %>
-        <% end %>
-      </div>
+      <% if @pw_tournaments.any? %>
+        <div class="d-flex flex-wrap">
+          <% @pw_tournaments.each do |tournament| %>
+            <%= render "tournament", tournament: tournament %>
+          <% end %>
+        <br>
+        </div>
+      <% else %>
+        <h2 class="tournament-message">No PairWise tournaments currently</h2>
+        br>
+      <% end %>
     </div>
 
     <div class="mb-5" id="bottom-page">
