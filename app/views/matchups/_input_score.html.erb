@@ -12,9 +12,11 @@
 
     <div class="form-inputs" id="pairings-form">
     <%= f.input :player1_score, label: "#{matchup.player1.name}:",
-                required: false %>
+                required: false,
+                wrapper_html: { class: "d-flex align-items-end" } %>
     <%= f.input :player2_score, label: "#{matchup.player2.name}:",
-                required: false %>
+                required: false,
+                wrapper_html: { class: "d-flex align-items-end" } %>
     </div>
 
     <%# b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
