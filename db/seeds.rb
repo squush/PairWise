@@ -1,7 +1,7 @@
 require "open-uri"
 
 print "Destroying all tournaments..."
-# Tournament.destroy_all
+Tournament.destroy_all
 
 # This just destroy the specific test users, not the whole DB
 print "Destroying test users: "
