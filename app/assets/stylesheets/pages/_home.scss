@@ -1,10 +1,12 @@
 .homepage-banner {
-  // position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   background-image: url(homepage-banner.jpg);
   background-size: cover;
   background-position: center;
+  height: 90vh;
+  flex-grow: 1;
 
   ;
 
@@ -27,6 +29,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+
   }
 
   h1 {
@@ -60,20 +63,31 @@
     }
   }
 
-  .homepage-text {
-    margin-left: 8vw;
-    padding-top: 28vh;
-    font-size: 3vh;
-    color: white;
-    opacity: .7;
-    text-shadow: 1px 1px 2px rgb(255, 255, 255);
-  }
+}
+
+.homepage-text {
+  // padding-top: 4vh;
+  position: absolute;
+  top: 3vh;
+  margin-left: 8vw;
+  // padding-top: 28vh;
+  font-size: 3vh;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 2px rgb(255, 255, 255);
 }
 
 .homepage-icons {
   width: 100vw;
+  padding-right: 20vw;
+  padding-left: 20vw;
   display: flex;
+  position: absolute;
+  bottom: 0px;
+  align-items: center;
+  justify-content: center;
   justify-content: space-around;
+  gap: 20px;
 }
 
 
