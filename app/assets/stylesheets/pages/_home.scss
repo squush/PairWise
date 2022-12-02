@@ -105,3 +105,22 @@
   width: 125px;
   height: 125px;
 }
+
+
+.homepage-text {
+  // font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1.5s ease-in-out infinite alternate;
+  -moz-animation: glow 1.5s ease-in-out infinite alternate;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #22223b, 0 0 40px #22223b, 0 0 50px #22223b, 0 0 60px #22223b, 0 0 70px #22223b;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #c9ada7, 0 0 40px #c9ada7, 0 0 50px #c9ada7, 0 0 60px #c9ada7, 0 0 70px #c9ada7, 0 0 80px #c9ada7;
+  }
+}
