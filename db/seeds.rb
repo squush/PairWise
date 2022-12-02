@@ -6,7 +6,7 @@ print "Destroying all tournaments..."
 # This just destroy the specific test users, not the whole DB
 print "Destroying test users: "
 User.find_by(email: "test@test.test").try(:destroy)
-print "... #{"test"}"
+print "... #{"test@test.test"}"
 User.find_by(email: "demo@demo.demo").try(:destroy)
 print "... demo@demo.demo"
 puts ""
@@ -15,7 +15,6 @@ puts ""
 puts "Destroying test events"
 Event.find_by(location: "Scarborough").try(:destroy)
 Event.find_by(location: "Hochelaga").try(:destroy)
-# Event.find_by(location: "Ottawa",             date: "2022-12-10").try(:destroy)
 
 puts "Creating users"
 user_random = User.create!(email: "test@test.test", password: "testtest")
@@ -24,18 +23,16 @@ user_us = User.create!(email: "demo@demo.demo", password: "demodemo")
 puts "Creating events"
 event_1 = Event.create!(location: "Scarborough", date: "2022-12-02", rounds: 6, number_of_players: 4)
 event_2 = Event.create!(location: "Hochelaga", date: "2022-12-02", rounds: 8, number_of_players: 4)
-# event_3 = Event.create!(location: "San Francisco", date: "2022-12-10", rounds: 5)
 
 puts "Creating tournaments"
 tourney_1 = Tournament.create!(user: user_random, event: event_1, pairing_system: 10)
 tourney_2 = Tournament.create!(user: user_us, event: event_2, pairing_system: 10)
-# tourney_3 = Tournament.create!(user: user_b, event: event_3, pairing_system: 10)
 
 
 puts "Plus some scrubs."
-player_1a = Player.create!(name: "Jackson Smylie", rating: 2006, division: 1, crosstables_id: 20032, tournament: tourney_1, win_count: 1, loss_count: 1, spread: 39)
-player_1a_pic = URI.open("https://www.cross-tables.com/pix/IMG_1335.jpg")
-player_1a.photo.attach(io: player_1a_pic, filename: "jack1.jpg", content_type: "image/jpg")
+player_1a = Player.create!(name: "Chris Cree", rating: 1965, division: 1, crosstables_id: 435, tournament: tourney_1, win_count: 1, loss_count: 1, spread: 39)
+player_1a_pic = URI.open("https://www.scrabbleplayers.org/players/c/cree_chris_CM000002.jpg")
+player_1a.photo.attach(io: player_1a_pic, filename: "1a.jpg", content_type: "image/jpg")
 player_1a.save
 
 player_1b = Player.create!(name: "Michael Early", rating: 1759, division: 1, tournament: tourney_1, crosstables_id: 437, win_count: 1, loss_count: 1, spread: 60)
@@ -100,8 +97,8 @@ Matchup.create!(round_number: 5, player1: player_2b, player2: player_2d, player1
 Matchup.create!(round_number: 5, player1: player_2c, player2: player_2a, player1_score: 344, player2_score: 390, done: true)
 Matchup.create!(round_number: 6, player1: player_2d, player2: player_2a, player1_score: 388, player2_score: 390, done: true)
 Matchup.create!(round_number: 6, player1: player_2c, player2: player_2b, player1_score: 402, player2_score: 390, done: true)
-Matchup.create!(round_number: 7, player1: player_2c, player2: player_2b, player1_score: 491, player2_score: 390, done: true)
-Matchup.create!(round_number: 7, player1: player_2d, player2: player_2a, player1_score: 431, player2_score: 390, done: true)
+Matchup.create!(round_number: 7, player1: player_2c, player2: player_2a, player1_score: 491, player2_score: 390, done: true)
+Matchup.create!(round_number: 7, player1: player_2d, player2: player_2b, player1_score: 431, player2_score: 390, done: true)
 Matchup.create!(round_number: 8, player1: player_2d, player2: player_2a)
 Matchup.create!(round_number: 8, player1: player_2c, player2: player_2b)
 
