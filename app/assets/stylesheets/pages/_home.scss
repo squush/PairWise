@@ -1,72 +1,76 @@
 .homepage-banner {
   position: relative;
-  display: flex;
-  flex-direction: column;
   background-image: url(homepage-banner.jpg);
   background-size: cover;
   background-position: center;
   height: calc(100vh - 66px);
-  flex-grow: 1;
-
-  // padding: 250px 0;
-  // background-image: url(homepage-banner.jpg);
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // // object-fit: cover;
-  // background-position: center;
-  // width: 100%;
-  // flex-grow: 1;
-  .home-banner-img {
-    width: 100%;
-  }
-
-  .homepage-container {
-    padding-top: 160px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
 
   h1 {
-    margin-left: 8vw;
-    margin-top: 1vh;
-    // margin-bottom: 4vh;
     color: white;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.7);
-    font-size: 9vh;
+    font-size: 70px;
     font-weight: bold;
+    margin-bottom: 15px;
   }
+}
 
-  .start-now-btn {
-    font-size: 2vh;
-    padding: 1vh;
-    padding-left: 2vh;
-    padding-right: 2vh;
-    margin-left: 14vw;
-    font-weight: lighter;
-    color: white;
-    border: 1px solid white;
-    background-color: transparent;
-    text-decoration: none;
-    border-radius: 20px;
+.homepage-container {
+  padding-top: 160px;
+}
 
-    &:hover {
-      transition: 0.25s;
-      background-color: $burgundy;
-      box-shadow: 0 0 2px 0 $dark-blue;
-      border: 1px solid $burgundy;
-    }
+// Bigger screens show the title + button off-center to the left
+@media only screen and (min-width: 451px) {
+  .pair-wise {
+    position: absolute;
+    top: 130px;
+    left: 160px;
   }
+}
 
+// Small screens show the title + button centered
+@media only (max-width: 450px) {
+  .pair-wise {
+    position: absolute;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 10vh;
+    text-align: center;
+  }
+}
+
+.start-now-btn {
+  font-size: 20 px;
+  padding: 9px 18px;
+  font-weight: lighter;
+  color: white;
+  border: 1px solid white;
+  background-color: transparent;
+  text-decoration: none;
+  border-radius: 20px;
+
+  &:hover {
+    color: $off-white;
+    transition: 0.15s;
+    background-color: $burgundy;
+    box-shadow: 0 0 2px 0 $dark-blue;
+    border: 1px solid $burgundy;
+  }
 }
 
 .homepage-text {
   position: absolute;
-  padding-left: 35vh;
-  padding-right: 35vh;
-  bottom: 8vh;
-  font-size: 3vh;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 4vh;
+  font-size: 22px;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 2px rgb(255, 255, 255);
@@ -78,9 +82,23 @@
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #22223b, 0 0 40px #22223b, 0 0 50px #22223b, 0 0 60px #22223b, 0 0 70px #22223b;
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #22223b,
+      0 0 40px #22223b,
+      0 0 50px #22223b,
+      0 0 60px #22223b,
+      0 0 70px #22223b;
   }
   to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #c9ada7, 0 0 40px #c9ada7, 0 0 50px #c9ada7, 0 0 60px #c9ada7, 0 0 70px #c9ada7, 0 0 80px #c9ada7;
+    text-shadow:
+    0 0 20px #fff,
+    0 0 30px #c9ada7,
+    0 0 40px #c9ada7,
+    0 0 50px #c9ada7,
+    0 0 60px #c9ada7,
+    0 0 70px #c9ada7,
+    0 0 80px #c9ada7;
   }
 }
