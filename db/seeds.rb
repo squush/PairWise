@@ -14,6 +14,7 @@ puts ""
 # This just destroy the specific test events, not the whole DB
 puts "Destroying test events"
 Event.find_by(location: "Scarborough").try(:destroy)
+Event.find_by(location: "Vancouver").try(:destroy)
 Event.find_by(location: "Hochelaga").try(:destroy)
 
 puts "Creating users"
@@ -21,7 +22,7 @@ user_random = User.create!(email: "test@test.test", password: "testtest")
 user_us = User.create!(email: "demo@demo.demo", password: "demodemo")
 
 puts "Creating events"
-event_1 = Event.create!(location: "Scarborough", date: "2022-12-02", rounds: 6, number_of_players: 4)
+event_1 = Event.create!(location: "Vancouver", date: "2022-12-02", rounds: 6, number_of_players: 4)
 event_2 = Event.create!(location: "Hochelaga", date: "2022-12-02", rounds: 8, number_of_players: 4)
 
 puts "Creating tournaments"
