@@ -8,26 +8,40 @@
   height: calc(100vh - 66px);
   flex-grow: 1;
 
-  // padding: 250px 0;
-  // background-image: url(homepage-banner.jpg);
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // // object-fit: cover;
-  // background-position: center;
-  // width: 100%;
-  // flex-grow: 1;
-  .home-banner-img {
-    width: 100%;
+  h1 {
+    color: white;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.7);
+    font-size: 76px;
+    font-weight: bold;
+    margin-bottom: 15px;
   }
 
-  .homepage-container {
-    padding-top: 160px;
-    top: 0;
-    bottom: 0;
+.homepage-container {
+  padding-top: 160px;
+}
+
+// Bigger screens show the title + button off-center to the left
+@media only screen and (min-width: 451px) {
+  .pair-wise {
+    position: absolute;
+    top: 140px;
+    left: 170px;
+  }
+}
+
+// Small screens show the title + button centered
+@media only (max-width: 450px) {
+  .pair-wise {
+    position: absolute;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: auto;
+    margin-right: auto;
     left: 0;
     right: 0;
   }
 
+<<<<<<< HEAD
   h1 {
     margin-left: 8vw;
     margin-top: 1vh;
@@ -36,6 +50,24 @@
     text-shadow: 2px 2px 3px rgba(0,0,0,0.7);
     font-size: 9vh;
     font-weight: bold;
+=======
+.start-now-btn {
+  font-size: 22px;
+  padding: 9px 18px;
+  font-weight: lighter;
+  color: white;
+  border: 1px solid white;
+  background-color: transparent;
+  text-decoration: none;
+  border-radius: 20px;
+
+  &:hover {
+    color: $off-white;
+    transition: 0.15s;
+    background-color: $burgundy;
+    box-shadow: 0 0 2px 0 $dark-blue;
+    border: 1px solid $burgundy;
+>>>>>>> 7fb665e3bae4899953ded850397e09988162c307
   }
 
   .start-now-btn {
@@ -63,10 +95,21 @@
 
 .homepage-text {
   position: absolute;
+<<<<<<< HEAD
   padding-left: 35vh;
   padding-right: 35vh;
   bottom: 8vh;
   font-size: 3vh;
+=======
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 4vh;
+  font-size: 24px;
+>>>>>>> 7fb665e3bae4899953ded850397e09988162c307
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 2px rgb(255, 255, 255);
