@@ -12,9 +12,10 @@ def create_event(event)
   xtables_id = event.attribute('href').value[/\d+$/].to_i
   number_of_players = doc.css('p').children[8].text.to_i
   rounds = doc.css('td').children.text[/games:.\d*/][/\d+/]
+  divisions = 1
   doc.css('td').children.each do |line|
     if line.text[/^Division \d/]
-      divisions = line.text[/ [123456789] /].chomp.to_i
+      divisions = line.text[/ [123456789] /].to_i
     end
   end
 

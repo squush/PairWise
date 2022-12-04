@@ -229,8 +229,6 @@ class TournamentsController < ApplicationController
     # Check how many divisions there are
     all_players = Player.where(tournament: tournament)
     divisions = all_players.map { |player| player.division }.uniq.sort
-    tournament.event.divisions = divisions[-1]
-    raise
 
     # Create players hash where each key is a division and
     # each value is an array of the players in that division

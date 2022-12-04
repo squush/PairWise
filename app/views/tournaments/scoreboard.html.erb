@@ -8,9 +8,11 @@
 
   <div class="tourn-headers mb-1">
     <%# <h4>Scoreboard</h4> %>
-    <% @tournament.event.divisions.each do |division| %>
-      <span><h3>Division <%= division %></h3></span>
-    <% end %>
+    <span><h4>
+      <% (1..@tournament.event.divisions).each do |division| %>
+        Division <%= division %>
+      <% end %>
+    </h4></span>
     <%# <h1><%= @tournament.event.location></h1> %>
     <%# <h4><%= @tournament.event.date.strftime('%B %e, %Y')></h4>> %>
   </div>
