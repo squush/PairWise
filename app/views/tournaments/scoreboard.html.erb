@@ -1,19 +1,22 @@
 <div class="container scoreboard-main">
-  <div class="pos-rel">
+  <%# <div class="pos-rel">
     <%= link_to "Back", tournament_path(@tournament),
       class: "btn btn-lg btn-primary mb-5 btn-topright back-btn" %>
-  </div>
+  <%# </div> %>
 
-  <br><br>
+  <%# <br><br> %>
 
-  <div class="tourn-headers mb-5">
-    <h4>Scoreboard</h4>
-    <h1><%= @tournament.event.location %></h1>
-    <h4><%= @tournament.event.date.strftime('%B %e, %Y') %></h4>
+  <div class="tourn-headers mb-1">
+    <%# <h4>Scoreboard</h4> %>
+    <% @tournament.event.divisions.each do |division| %>
+      <span><h3>Division <%= division %></h3></span>
+    <% end %>
+    <%# <h1><%= @tournament.event.location></h1> %>
+    <%# <h4><%= @tournament.event.date.strftime('%B %e, %Y')></h4>> %>
   </div>
 
   <% @players.each do |div, players| %>
-    <h2 class="scoreboard-division">Division <%= div %></h2>
+    <%# <h2 class="scoreboard-division">Division <%= div %></h2> %>
     <div class="scoreboard">
       <% players.each_with_index do |player, index| %>
         <%= render 'player_card', player: player, ranking: (index + 1).ordinalize %>

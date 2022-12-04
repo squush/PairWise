@@ -210,19 +210,27 @@ class TournamentsController < ApplicationController
     xtables_id = event.attribute('href').value[/\d+$/].to_i
     number_of_players = doc.css('p').children[8].text.to_i
     rounds = doc.css('td').children.text[/games:.\d*/][/\d+/]
+    doc.css('td').children.each do |line|
+      if line.text[/^Division \d/]
+        divisions = line.text[/ [123456789] /].chomp.to_i
+      end
+    end
 
     Event.create!(
       location: @location,
       rounds: rounds,
       number_of_players: number_of_players,
       date: @sortable_date,
-      xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
+      xtables_id: xtables_id,
+      divisions: divisions) unless Event.find_by(xtables_id: xtables_id)
   end
 
   def generate_two_rounds_matchups(tournament)
     # Check how many divisions there are
     all_players = Player.where(tournament: tournament)
-    divisions = all_players.map { |player| player.division }.uniq
+    divisions = all_players.map { |player| player.division }.uniq.sort
+    tournament.event.divisions = divisions[-1]
+    raise
 
     # Create players hash where each key is a division and
     # each value is an array of the players in that division
