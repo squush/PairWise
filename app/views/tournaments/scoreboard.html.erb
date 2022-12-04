@@ -11,8 +11,8 @@
     <span>
       <h4><% (1..@tournament.event.divisions).each do |division| %>
         Division <%= division %>
-      <% end %></h4>
-      <h4>Round 1</h4>
+      <% end %>
+      Round 1</h4>
     </span>
     <%# <h1><%= @tournament.event.location></h1> %>
     <%# <h4><%= @tournament.event.date.strftime('%B %e, %Y')></h4>> %>
@@ -22,7 +22,7 @@
     <%# <h2 class="scoreboard-division">Division <%= div %></h2> %>
     <div class="scoreboard">
       <% players.each_with_index do |player, index| %>
-        <%= render 'player_card', player: player, ranking: (index + 1).ordinalize %>
+        <%= render 'player_card', player: player, ranking: index + 1 %>
       <% end %>
     </div>
   <% end %>

@@ -1,13 +1,10 @@
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 p-3">
-  <% if ranking == "1st" %>
-    <div class="scoreboard-player-card" id="card-1st">
-  <% elsif ranking == "2nd" %>
-    <div class="scoreboard-player-card" id="card-2nd">
-  <% elsif ranking == "3rd" %>
-    <div class="scoreboard-player-card" id="card-3rd">
+<div class="col-12 col-sm-6 col-md-4 col-lg-2 p-1">
+  <% if ranking <= player.tournament.number_of_winners %>
+    <div class="scoreboard-player-card money">
   <% else %>
-    <div class="scoreboard-player-card card-reg">
+    <div class="scoreboard-player-card">
   <% end %>
+  <% ranking = ranking.ordinalize %>
     <div class="first-row">
       <div><h4><%= ranking %></h4></div>
       <div>
@@ -20,7 +17,7 @@
         <%= cl_image_tag player.photo.key, class: "player-avatar",
           transformation: [
             {gravity: "face", height: 128, width: 128, crop: "crop"},
-            {radius: "max"},
+            # {radius: "max"},
             {width: 128, crop: "scale"}
           ] %>
       <% else %>
@@ -88,8 +85,8 @@
                   <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
                     transformation: [
                       {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      {radius: "max"},
-                      {width: 128, crop: "scale"}
+                      # {radius: "max"},
+                      {width: 48, crop: "scale"}
                     ] %>
                 <% else %>
                   <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
@@ -101,8 +98,8 @@
                   <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
                     transformation: [
                       {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      {radius: "max"},
-                      {width: 128, crop: "scale"}
+                      # {radius: "max"},
+                      {width: 48, crop: "scale"}
                     ] %>
                 <% else %>
                   <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
@@ -130,8 +127,8 @@
                   <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
                     transformation: [
                       {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      {radius: "max"},
-                      {width: 128, crop: "scale"}
+                      # {radius: "max"},
+                      {width: 48, crop: "scale"}
                     ] %>
                 <% else %>
                   <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
@@ -147,8 +144,8 @@
                   <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
                     transformation: [
                       {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      {radius: "max"},
-                      {width: 128, crop: "scale"}
+                      # {radius: "max"},
+                      {width: 48, crop: "scale"}
                     ] %>
                 <% else %>
                   <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
