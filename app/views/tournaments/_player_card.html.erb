@@ -47,7 +47,7 @@
       </div>
 
       <div class="flex-column next-last">
-        <div class="gap-2">
+        <div class="gap-2 last-game-info">
           <% player_round = (player.win_count + player.loss_count).round.to_i %>
 
           <%# Player's last game score %>
@@ -113,46 +113,51 @@
         </div>
 
         <%# Player's next game opponent%>
-        <div class="gap-2 mt-auto">
-          <% @tournament.matchups.each do |matchup| %>
-            <% if matchup[:round_number] == player_round + 1 %>
-              <% if matchup.player1 == player %>
-                <strong>Next:</strong>
-                <% if matchup.player2.name != "Bye" %>
-                  <%= "1st vs." %>
-                <% end %>
-                <% opponent = Player.find(matchup.player2.id) %>
-                <%= opponent.name %>
-                <% if opponent.photo.attached? %>
-                  <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
-                    transformation: [
-                      {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      # {radius: "max"},
-                      {width: 48, crop: "scale"}
-                    ] %>
-                <% else %>
-                  <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
-                <% end %>
-              <% elsif matchup.player2 == player %>
-                <strong>Next:</strong>
-                <% if matchup.player1.name != "Bye" %>
-                  <%= "2nd vs."  %>
-                <% end %>
-                <% opponent = Player.find(matchup.player1.id) %>
-                <%= opponent.name %>
-                <% if opponent.photo.attached? %>
-                  <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
-                    transformation: [
-                      {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      # {radius: "max"},
-                      {width: 48, crop: "scale"}
-                    ] %>
-                <% else %>
-                  <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
+        <div class="next-game-info mt-auto">
+            <% @tournament.matchups.each do |matchup| %>
+              <% if matchup[:round_number] == player_round + 1 %>
+                <% if matchup.player1 == player %>
+                  <div class="next-game-text">
+                    <strong>Next: </strong>
+                    <% if matchup.player2.name != "Bye" %>
+                      <%= "1st vs." %>
+                    <% end %>
+                    <% opponent = Player.find(matchup.player2.id) %>
+                    <%= opponent.name %>
+                  </div>
+                  <% if opponent.photo.attached? %>
+                    <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
+                      transformation: [
+                        {gravity: "face", height: 128, width: 128, crop: "crop"},
+                        # {radius: "max"},
+                        {width: 48, crop: "scale"}
+                      ] %>
+                  <% else %>
+                    <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
+                  <% end %>
+                <% elsif matchup.player2 == player %>
+                  <div class="next-game-text">
+                    <strong>Next: </strong>
+                    <% if matchup.player1.name != "Bye" %>
+                      <%= "2nd vs."  %>
+                    <% end %>
+                    <% opponent = Player.find(matchup.player1.id) %>
+                    <%= opponent.name %>
+                  </div>
+                  <% if opponent.photo.attached? %>
+                    <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
+                      transformation: [
+                        {gravity: "face", height: 128, width: 128, crop: "crop"},
+                        # {radius: "max"},
+                        {width: 48, crop: "scale"}
+                      ] %>
+                  <% else %>
+                    <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
+
         </div>
       </div>
     </div>

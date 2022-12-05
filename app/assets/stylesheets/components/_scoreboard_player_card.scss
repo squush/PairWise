@@ -17,12 +17,12 @@
 }
 
 .scoreboard-player-card {
-  display: flex;
-  flex-wrap: wrap;
-  display: grid;
-  grid-template: none;
-  grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
-  grid-template-rows: auto;
+  // display: flex;
+  // flex-wrap: wrap;
+  // display: grid;
+  // grid-template: none;
+  // grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
+  // grid-template-rows: auto;
   // grid-auto-columns: minmax(20vw, auto);
   max-width: 25vw;
   box-shadow: 2px 2px 5px $gray;
@@ -34,6 +34,22 @@
   color: white;
   border: 1px solid rgb(0, 0, 39);
   text-size-adjust: auto;
+}
+
+.next-game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.next-game-text {
+  display: flex;
+}
+
+.last-game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .next-last {
@@ -79,8 +95,12 @@
 }
 
 .opponent-avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  justify-content: right;
+  position: relative;
+  float: right;
+  align-self: right;
 }
 
 .player-name {
