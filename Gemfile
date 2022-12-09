@@ -93,3 +93,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# Custom gems
+gem 'nokogiri' # tournaments controller
+gem 'open-uri' # tournaments controller
+gem 'json' # tournaments controller
+gem 'date' # tournaments controller

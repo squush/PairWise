@@ -1,8 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'json'
-require 'date'
-
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show scoreboard]
