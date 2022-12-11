@@ -123,6 +123,7 @@ class TournamentsController < ApplicationController
         player = Player.create!(
           name: name,
           rating: rating,
+          new_rating: rating,
           division: division,
           seed: seed,
           ranking: seed,

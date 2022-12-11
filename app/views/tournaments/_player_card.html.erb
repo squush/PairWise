@@ -8,7 +8,8 @@
     <div class="first-row">
       <div><h4><%= ranking %></h4></div>
       <div>
-        <h4><%= player.rating %></h4>
+        <h4><%= player.new_rating %></h4>
+        <%= player.rating %><%= "+" if player.new_rating - player.rating >= 0 %><%= player.new_rating - player.rating %>
       </div>
     </div>
 
@@ -120,7 +121,7 @@
                   <div class="next-game-text">
                     <strong>Next: </strong>
                     <% if matchup.player2.name != "Bye" %>
-                      <%= "1st vs." %>
+                      <%= " 1st vs." %>
                     <% end %>
                     <% opponent = Player.find(matchup.player2.id) %>
                     <%= opponent.name %>
@@ -139,7 +140,7 @@
                   <div class="next-game-text">
                     <strong>Next: </strong>
                     <% if matchup.player1.name != "Bye" %>
-                      <%= "2nd vs."  %>
+                      <%= " 2nd vs."  %>
                     <% end %>
                     <% opponent = Player.find(matchup.player1.id) %>
                     <%= opponent.name %>

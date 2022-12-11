@@ -55,7 +55,7 @@ class PlayersController < ApplicationController
 
   def player_params
     params.require(:player).permit(
-      :name, :rating, :division, :seed, :ranking, :crosstables_id
+      :name, :rating, :division, :seed, :ranking, :crosstables_id, :new_rating
     )
   end
 
