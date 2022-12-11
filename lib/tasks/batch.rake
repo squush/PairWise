@@ -12,19 +12,25 @@ def create_event(event)
   xtables_id = event.attribute('href').value[/\d+$/].to_i
   number_of_players = doc.css('p').children[8].text.to_i
   rounds = doc.css('td').children.text[/games:.\d*/][/\d+/]
+  divisions = 1
+  doc.css('td').children.each do |line|
+    if line.text[/^Division \d/]
+      divisions = line.text[/ [123456789] /].to_i
+    end
+  end
 
   Event.create!(
     location: @location,
     rounds: rounds,
     number_of_players: number_of_players,
     date: @sortable_date,
-    xtables_id: xtables_id) unless Event.find_by(xtables_id: xtables_id)
+    xtables_id: xtables_id,
+    divisions: divisions) unless Event.find_by(xtables_id: xtables_id)
 end
 
 namespace :batch do
   desc "Scrape cross-tables.com for upcoming tournaments"
   task scrape_xtables: :environment do
-
     p "starting scrape"
     url = 'https://www.cross-tables.com'
     html = URI.open(url)

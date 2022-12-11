@@ -6,27 +6,50 @@
 }
 
 .scoreboard-main {
-  max-width: 1300px;
+  max-width: 1600px;
 }
 
 .scoreboard {
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
   color: $dark-blue;
 }
 
 .scoreboard-player-card {
-  box-shadow: 8px 8px $gray;
-  display: flex;
-  flex-wrap: wrap;
-  display: grid;
-  border-radius: 14px;
-  padding: 25px;
-  margin-bottom: 20px;
+  // display: flex;
+  // flex-wrap: wrap;
+  // display: grid;
+  // grid-template: none;
+  // grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
+  // grid-template-rows: auto;
+  // grid-auto-columns: minmax(20vw, auto);
+  max-width: 25vw;
+  box-shadow: 2px 2px 5px $gray;
+  padding: 20px;
+  margin-bottom: 10px;
   padding-bottom: 8px;
   font-size: 18px;
-  background-color: white;
+  background-color: rgb(80, 0, 0);
+  color: white;
+  border: 1px solid rgb(0, 0, 39);
+  text-size-adjust: auto;
+}
+
+.next-game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.next-game-text {
+  display: flex;
+}
+
+.last-game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .next-last {
@@ -41,23 +64,9 @@
   justify-self: end;
 }
 
-#card-1st{
-  background-color: $dark-blue;
+.money {
+  background-color: green;
   color: white;
-}
-
-#card-2nd {
-  background-color: $dark-blue-2;
-  color: white;
-}
-
-#card-3rd {
-  background-color: $dark-blue-3;
-  color: white;
-}
-
-.card-reg {
-  color: $royal-blue;
 }
 
 .player-bottom-half-info {
@@ -80,9 +89,18 @@
 }
 
 .player-avatar {
-  max-width: 128px;
-  height: 128px;
+  max-width: 100%;
+  height: 100%;
+  // border-radius: 5px;
+}
+
+.opponent-avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
+  position: relative;
+  float: right;
+  align-self: right;
 }
 
 .player-name {
