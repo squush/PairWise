@@ -64,11 +64,31 @@
               </div>
             </div>
           </div>
-
-          <% unless matchup.done || 1 == 1 %>
-            <%= link_to "Edit pairing", "#", class: "btn btn-sm btn-outline-danger" %>
-          <% end %>
         </div>
+
+        <% unless matchup.done || tournament.user != current_user %>
+          <%# <%= link_to "Edit pairing", "#", class: "btn btn-sm btn-outline-danger" %>
+          <div class="d-flex justify-content-around gap-2" data-controller="edit-matchups">
+            <div>
+              <a class="btn btn-sm btn-outline-danger" id="edit-modal-btn"
+              data-action="click->edit-matchups#showForm">
+                <%= "Edit pairing" %>
+              </a>
+            </div>
+
+            <div class="modal" data-edit-matchups-target="modal">
+              <div class="edit-modal-content">
+                <div class="d-flex justify-content-right">
+                  <button class="close-btn d-flex justify-content-center align-items-center"
+                    data-action="click->edit-matchups#closeForm">&times;</button>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <%= render "edit_matchup", matchup: matchup %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

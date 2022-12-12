@@ -7,6 +7,9 @@ import { application } from "./application"
 import AlertFadeoutController from "./alert_fadeout_controller"
 application.register("alert-fadeout", AlertFadeoutController)
 
+import EditMatchupsController from "./edit_matchups_controller"
+application.register("edit-matchups", EditMatchupsController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

@@ -1,16 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="matchups"
+// Connects to data-controller="edit-matchups"
 export default class extends Controller {
   static targets = [ "modal" ];
 
   connect() {
-    console.log("connecteeeed");
   }
 
   showForm() {
     this.modalTarget.style.display = "block";
-    console.log(this);
   }
 
   closeForm() {

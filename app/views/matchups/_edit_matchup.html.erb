@@ -1,0 +1,30 @@
+<div class="container justify-content-center col-12">
+  <p class="text-center text-info border-bottom border-info py-1">
+    Round <%= matchup.round_number %>
+  </p>
+  <%= simple_form_for matchup, defaults: {
+      label_html: { class: "col-8 text-info" },
+      input_html: { class: "text-primary form-rnd-corners input-white" },
+      wrapper_html: { class: "d-flex" },
+    } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs" id="pairings-form">
+    <%= f.input :player2, :collection => Player.where(tournament: matchup.player1.tournament, division: matchup.player1.division).excluding(matchup.player1, matchup.player2).order(rating: :desc).to_a,
+                label: "#{matchup.player1.name} now plays:",
+                required: false,
+                wrapper_html: { class: "d-flex align-items-end" } %>
+    <%# <%= f.input :player1, :collection => Player.where(tournament: matchup.player1.tournament, division: matchup.player1.division).excluding(matchup.player1, matchup.player2).order(rating: :desc).to_a,
+                label: "#{matchup.player2.name} now plays:",
+                required: false,
+                wrapper_html: { class: "d-flex align-items-end" } %>
+    </div>
+
+    <%# b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
+
+    <div class="text-center">
+      <%= f.submit "Submit change", class: "btn btn-info modal-button" %>
+    </div>
+  <% end %>
+</div>
