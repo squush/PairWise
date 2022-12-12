@@ -16,6 +16,8 @@ class MatchupsController < ApplicationController
   end
 
   def update
+
+    raise
     @matchup.done = true
     if @matchup.update(matchup_params)
       player1 = @matchup.player1
