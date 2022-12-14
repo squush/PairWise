@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
       current_round = @tournament.players.first.win_count.to_i + @tournament.players.first.loss_count.to_i + 1
       division_size = @tournament.players.count { |player| player.division == @player.division && player.name != "Bye" }
       if division_size.odd?
-        bye = Player.create!(name: "Bye", tournament: @tournament, rating: 0, division: @player.division, win_count: 0)
+        bye = Player.create!(name: "Bye", tournament: @tournament, rating: 0, division: @player.division, win_count: 0, seed: 0)
         Matchup.create!(round_number: current_round, player1: @player, player2: bye)
         Matchup.create!(round_number: current_round + 1, player1: @player, player2: bye)
       else
