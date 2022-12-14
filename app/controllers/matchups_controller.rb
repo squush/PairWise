@@ -187,7 +187,7 @@ class MatchupsController < ApplicationController
 
         real_player_id = 1 - pairing.find_index(Swissper::Bye)
         if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
-          bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, division: div, win_count: 0, seed: 0)
+          bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, new_rating: 0, division: div, win_count: 0, seed: 0)
         else
           bye = Player.find_by(tournament: pairing[real_player_id].tournament, name: "Bye")
         end
