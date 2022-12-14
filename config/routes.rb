@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get "/profile", to: "pages#my_profile", as: :my_profile
   get "/tournaments/:id/scoreboard", to: "tournaments#scoreboard", as: :scoreboard
   get "/my_tournaments", to: "tournaments#my_tournaments"
+  get "/tournaments/:id/report", to: "tournaments#tournament_report", as: :final_report
+
 end

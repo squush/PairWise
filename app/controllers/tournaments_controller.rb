@@ -92,6 +92,12 @@ class TournamentsController < ApplicationController
     authorize @tournaments
   end
 
+  def tournament_report
+    File.new "report.txt", "w"
+    @tournament = Tournament.find(params[:id])
+    authorize @tournament
+  end
+
   private
 
   def tournament_params

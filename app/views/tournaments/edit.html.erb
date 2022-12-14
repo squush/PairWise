@@ -13,20 +13,8 @@
   </div>
 
   <div class="d-flex justify-content-center">
-    <%= simple_form_for @tournament, html: {class: "col-4"},
-      defaults: {
-        label_html: {class: "text-primary border"},
-        input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
-      } do |f| %>
-      <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
-      <div class="d-flex justify-content-center">
-        <%= f.input :number_of_winners,
-          wrapper_html: {class: "d-flex flex-column align-items-center"},
-          input_html: {class: "num-input input-white"}
-        %>
-      </div>
-      <%= f.button :submit, class: "btn btn-primary w-100 btn-rnd-corners", input_html: { data: { controller: 'start-tournament' } } %>
-    <% end %>
+    <%= link_to "Final Report", final_report_path(@tournament),
+    class: "btn btn-danger mb-3 btn-rnd-corners" %>
   </div>
 
   <h4 class="tourney-manage-2">Current players</h4>
@@ -88,35 +76,58 @@
     </table>
   </div>
 
-  <h4 class="text-center text-primary">Add new player</h4>
-  <div class="text-center">
-    <%# TODO: Stimulus controller to reveal form %>
-    <%# "unless 1 == 1" hides the Add Player button for now, until there's a modal form for it %>
-    <%= link_to "Add new player", "#", class: "btn btn-primary btn-rnd-corners" unless 1 == 1 %>
-  </div>
-  <div class="mb-5">
-    <%# TODO: When making the Add Players route, replace this link %>
-    <%# <p class="tourney-player">Add a player:</p> %>
-    <div class="d-flex justify-content-center">
-      <%= simple_form_for [@tournament, @player],
-        html: {class: "col-6 p-2"},
-        defaults: {
-          label_html: { class: "text-primary border" },
-          input_html: { class: "text-secondary border border-secondary form-rnd-corners input-white" }
-        } do |f|
-        %>
-        <div class="d-flex justify-content-center ">
-          <div class="w-100 justify-content-center"><%= f.input :name %></div>
+  <div class="d-flex justify-content-evenly">
+    <div class="quarter-screen-width">
+      <h4 class="text-center text-primary">Add new player</h4>
+      <div class="text-center">
+        <%# TODO: Stimulus controller to reveal form %>
+        <%# "unless 1 == 1" hides the Add Player button for now, until there's a modal form for it %>
+        <%= link_to "Add new player", "#", class: "btn btn-primary btn-rnd-corners" unless 1 == 1 %>
+      </div>
+      <div class="mb-5">
+        <%# TODO: When making the Add Players route, replace this link %>
+        <%# <p class="tourney-player">Add a player:</p> %>
+        <div class="d-flex justify-content-center">
+          <%= simple_form_for [@tournament, @player],
+            html: {class: "col-9 p-2"},
+            defaults: {
+              label_html: { class: "text-primary border" },
+              input_html: { class: "text-secondary border border-secondary form-rnd-corners input-white" }
+            } do |f|
+            %>
+            <div class="d-flex justify-content-center ">
+              <div class="w-100 justify-content-center"><%= f.input :name %></div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div class="col-3"><%= f.input :rating %></div>
+              <div class="col-3"><%= f.input :division %></div>
+              <div class="col-4"><%= f.input :crosstables_id, label: "Cross-tables ID" %></div>
+            </div>
+            <div class="text-center">
+              <%= f.submit "Save player", class: "btn btn-primary btn-rnd-corners" %>
+            </div>
+          <% end %>
         </div>
-        <div class="d-flex justify-content-between">
-          <div class="col-3"><%= f.input :rating %></div>
-          <div class="col-3"><%= f.input :division %></div>
-          <div class="col-3"><%= f.input :crosstables_id, label: "Crosstables ID" %></div>
-        </div>
-        <div class="text-center">
-          <%= f.submit "Save player", class: "btn btn-primary btn-rnd-corners" %>
-        </div>
-      <% end %>
+      </div>
+    </div>
+    <div class="quarter-screen-width">
+      <h4 class="text-center text-primary mb-3">Update tournament</h4>
+      <div class="d-flex justify-content-center mb-5">
+        <%= simple_form_for @tournament, html: {class: "col-6"},
+          defaults: {
+            label_html: {class: "text-primary border"},
+            input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
+          } do |f| %>
+          <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
+          <div class="d-flex justify-content-center">
+            <%= f.input :number_of_winners,
+              wrapper_html: {class: "d-flex flex-column align-items-center"},
+              input_html: {class: "num-input input-white"}
+            %>
+          </div>
+          <%= f.button :submit, class: "btn btn-primary w-100 text-center btn-rnd-corners", input_html: { data: { controller: 'start-tournament' } } %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="d-flex justify-content-center">
