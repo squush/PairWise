@@ -280,7 +280,7 @@ class TournamentsController < ApplicationController
       pairings.each do |pairing|
         if pairing.include?(Swissper::Bye)
           real_player_id = 1 - pairing.find_index(Swissper::Bye)
-          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div, seed: 0)
+          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, new_rating: 0, division: div, seed: 0)
           Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
         else
           Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
