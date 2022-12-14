@@ -4,7 +4,7 @@ class Tournament < ApplicationRecord
   has_many :players, dependent: :destroy
   has_many :matchups, through: :players, source: :matchups_as_player1
 
-  # TODO: Possibly need a validation for number_of_winners, but low priority
+  validates :number_of_winners, presence: true
 
   enum pairing_system: {
     "Swiss" => 10,
