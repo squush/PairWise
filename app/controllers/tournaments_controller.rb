@@ -93,7 +93,7 @@ class TournamentsController < ApplicationController
   end
 
   def tournament_report
-    # File.new "report.txt", "w"
+    File.new "report.txt", "w"
     @tournament = Tournament.find(params[:id])
     all_players = Player.where(tournament: @tournament)
     divisions = all_players.map { |player| player.division }.uniq.sort
@@ -101,7 +101,7 @@ class TournamentsController < ApplicationController
     @report = ""
 
     divisions.each do |div|
-      div == 1 ? @report += "#division #{div} \n #ratingcheck off \n" : @report += "#division #{div} \n"
+      div == 1 ? @report += "#division #{div} \n#ratingcheck off \n" : @report += "#division #{div} \n"
       division_players = all_players.where(division: div)
       division_players.each do |player|
         unless player.name == "Bye"
@@ -117,6 +117,12 @@ class TournamentsController < ApplicationController
         end
       end
     end
+
+    File.open("report.txt", "w") {
+      |f| f.write "#{@report}"
+    }
+
+    send_data "#{@report}", :filename => 'report.txt'
     authorize @tournament
   end
 
