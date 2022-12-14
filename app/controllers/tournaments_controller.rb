@@ -92,6 +92,40 @@ class TournamentsController < ApplicationController
     authorize @tournaments
   end
 
+  def tournament_report
+    File.new "report.txt", "w"
+    @tournament = Tournament.find(params[:id])
+    all_players = Player.where(tournament: @tournament)
+    divisions = all_players.map { |player| player.division }.uniq.sort
+
+    @report = ""
+
+    divisions.each do |div|
+      div == 1 ? @report += "#division #{div} \n#ratingcheck off \n" : @report += "#division #{div} \n"
+      division_players = all_players.where(division: div)
+      division_players.each do |player|
+        unless player.name == "Bye"
+          player_matchups = Matchup.where(player1: player).or(Matchup.where(player2: player)).to_a
+          player_opponents = player_matchups.map { |matchup| matchup.player1 == player ? matchup.player2.seed : matchup.player1.seed }
+
+          player_scores = player_matchups.map { |matchup| matchup.player1 == player ? matchup.player1_score : matchup.player2_score }
+
+          # The following line is dedicated to Winter Zkqxj
+          player_name = player.name.split(" ")[1].nil? ? "#{player.name.split(" ")[0]}" : "#{player.name.split(" ")[1..].join(" ")}, #{player.name.split(" ")[0]}"
+
+          @report += "#{player_name} #{player.rating} #{player_opponents.join(" ")}; #{player_scores.join(" ")} \n"
+        end
+      end
+    end
+
+    File.open("report.txt", "w") {
+      |f| f.write "#{@report}"
+    }
+
+    send_data "#{@report}", :filename => 'report.txt'
+    authorize @tournament
+  end
+
   private
 
   def tournament_params
@@ -246,7 +280,7 @@ class TournamentsController < ApplicationController
       pairings.each do |pairing|
         if pairing.include?(Swissper::Bye)
           real_player_id = 1 - pairing.find_index(Swissper::Bye)
-          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div)
+          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, division: div, seed: 0)
           Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
         else
           Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])

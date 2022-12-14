@@ -1,0 +1,35 @@
+#division 1 
+#ratingcheck off 
+Roth, Edwin 1694 9 5; 0 0 
+Julian, Rick 1787 8 4; 0 300 
+Petree, Joe 1619 2 3; 0 400 
+Zicherman, Joanne 1523 6 3; 500 300 
+Creed, Connie 1520 2 ; 0 0 
+Cole, Judy 1522 1 ; 0 50 
+Mendoza, Froilan 1529 4 7; 0 400 
+Brook, Mitchell 1630 6 1; 0 350 
+Piro, Sal 1638 5 7; 650 640 
+#division 2 
+Engelhardt, David 1467 9 2; 0 0 
+McClanahan, Brendan 1424 11 1; 0 0 
+Oliva, Linda 1406 5 8; 0 0 
+Denton, Carole 1389 8 11; 0 0 
+Filzer, Glenn 1384 3 ; 0 0 
+Kuno, Margo 1293 7 10; 0 0 
+Durbin, Harry 1278 6 9; 0 0 
+Abriano, Gerianne 1203 4 3; 0 0 
+Geibler, Joe 1174 1 7; 0 0 
+Lindsay, Kia 1102  6; 0 0 
+Leech ^, Beth 1016 2 4; 0 0 
+#division 3 
+Hanley, Nancy 1087 7 ; 0 0 
+Wood, Betsey 1044 9 4; 0 0 
+Filandro, Peter 1037 10 5; 0 0 
+Iannetti, Linda 1027 11 2; 0 0 
+Schlauch, Robin 1014  3; 0 0 
+Filandro, Marie 992 8 9; 0 0 
+Brower, Ruth 883 1 8; 0 0 
+Reeser, Sally 843 6 7; 0 0 
+Lapierre, Jan 693 2 6; 0 0 
+Cox-Barnett, Victoria 606 3 11; 0 0 
+Dayrit Thompson, Celia 516 4 10; 0 0 
