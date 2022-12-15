@@ -138,9 +138,6 @@ class TournamentsController < ApplicationController
     players = CrosstablesFetcher.get_players(tournament.event.xtables_id)
     for p in players do
       player = Player.create!(**p)
-      # The path by default can be either a full path to a photo, for example
-      # on scrabbleplayers.org, or a relative path if it's stored directly on
-      # cross-tables.
       user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
       player.photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
       player.save
