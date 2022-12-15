@@ -15,16 +15,20 @@ class MatchupPolicy < ApplicationPolicy
   end
 
   def update?
-    user_is_owner?
+    user_is_owner_or_competitor?
   end
 
   def set_score?
-    update?
+    user_is_owner_or_competitor?
   end
 
   private
 
   def user_is_owner?
     user == record.player1.tournament.user
+  end
+
+  def user_is_owner_or_competitor?
+    user == record.player1.tournament.user || user.crosstables_id == record.player1.crosstables_id || user.crosstables_id == record.player2.crosstables_id
   end
 end

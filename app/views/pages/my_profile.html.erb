@@ -10,4 +10,8 @@
   <div class="text-center text-primary fs-4">
     Tournaments run: <%= current_user.tournaments.count %>
   </div>
+  <div class="text-center text-primary fs-4">
+    <%= link_to "Cross-tables profile", "https://www.cross-tables.com/results.php?p=#{current_user.crosstables_id}" %>
+  </div>
+
 </div>
