@@ -49,24 +49,41 @@
                   <% else %>
                     <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
                   <% end %>
+
                   <% if player.active %>
-                    <div class="fw-bold">
+                      <div class="fw-bold">
+                        <%= player.name %>
+                      </div>
+                    </td>
+                    <td class="text-center"><%= player.rating %></td>
+                    <td class="text-center"><%= player.division %></td>
+                    <td class="text-center"><%= player.crosstables_id %></td>
                   <% else %>
                     <div class="fst-italic text-danger">
+                      <%= player.name %>
+                    </div>
+                    </td>
+                    <td class="text-center fst-italic text-danger"><%= player.rating %></td>
+                    <td class="text-center fst-italic text-danger"><%= player.division %></td>
+                    <td class="text-center fst-italic text-danger"><%= player.crosstables_id %></td>
                   <% end %>
-                  <%= player.name %>
-                  </div>
-                </td>
-                <td class="text-center"><%= player.rating %></td>
-                <td class="text-center"><%= player.division %></td>
-                <td class="text-center"><%= player.crosstables_id %></td>
+
                 <td class="text-center">
+                <% if player.active == true %>
                   <%= link_to deactivate_player_path(player),
-                    data: { turbo_method: :get, turbo_confirm: "Are you sure?" },
+                    data: { turbo_method: :get, turbo_confirm: "Are you sure you want to deactivate #{player.name}?" },
                     class: "text-decoration-none fs-6" do
                   %>
                   <i class="fa-regular fa-circle-xmark"></i>
                   <% end %>
+                <% else %>
+                  <%= link_to reactivate_player_path(player),
+                    data: { turbo_method: :get, turbo_confirm: "Are you sure you want to reactivate #{player.name}?" },
+                    class: "text-decoration-none fs-6" do
+                  %>
+                  <i class="fa-regular fa-circle-xmark"></i>
+                  <% end %>
+                <% end %>
                 </td>
               </tr>
             <% end %>
