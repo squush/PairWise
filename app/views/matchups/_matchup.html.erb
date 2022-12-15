@@ -44,7 +44,7 @@
     </div>
 
     <div class="d-flex justify-content-around pb-1">
-      <% if tournament.user == current_user %>
+      <% if tournament.user == current_user || matchup.player1.crosstables_id == current_user.crosstables_id || matchup.player2.crosstables_id == current_user.crosstables_id%>
         <div class="d-flex justify-content-around gap-2" data-controller="matchups">
           <div>
             <a class="btn btn-sm btn-outline-primary" id="score-modal-btn"
