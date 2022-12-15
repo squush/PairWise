@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :matchups, only: %i[update create]
 
   get "/players/:id", to: "players#deactivate", as: :deactivate_player
+  get "/players/:id/reactivate", to: "players#reactivate", as: :reactivate_player
 
   get "/contact", to: "pages#contact_us", as: :contact_us
   get "/profile", to: "pages#my_profile", as: :my_profile

@@ -100,7 +100,7 @@ class MatchupsController < ApplicationController
         player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
 
         player1.loss_count =
-        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+        player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) && matchup.player1_score != -50 } +
         player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
         ((player1.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
         player1.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
@@ -112,7 +112,7 @@ class MatchupsController < ApplicationController
         player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
 
         player2.loss_count =
-        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) } +
+        player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score < matchup.player2_score) && matchup.player1_score != -50 } +
         player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score < matchup.player1_score) } +
         ((player2.matchups_as_player1.count { |matchup| matchup.done && (matchup.player1_score == matchup.player2_score) } +
         player2.matchups_as_player2.count { |matchup| matchup.done && (matchup.player2_score == matchup.player1_score) }) * 0.5)
@@ -179,7 +179,9 @@ class MatchupsController < ApplicationController
 
   def generate_matchups(round, players)
     # generate pairings
-    pairings = Swissper.pair(players, delta_key: :win_count)
+    active_players = players.select { |player| player.active == true }
+    inactive_players = players.select { |player| player.active == false }
+    pairings = Swissper.pair(active_players, delta_key: :win_count)
 
     # create matchups based on the pairings
     pairings.each do |pairing|
@@ -187,7 +189,7 @@ class MatchupsController < ApplicationController
 
         real_player_id = 1 - pairing.find_index(Swissper::Bye)
         if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
-          bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, new_rating: 0, division: div, win_count: 0, seed: 0)
+          bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, new_rating: 0, division: players.first.division, win_count: 0, seed: 0)
         else
           bye = Player.find_by(tournament: pairing[real_player_id].tournament, name: "Bye")
         end
@@ -196,6 +198,16 @@ class MatchupsController < ApplicationController
         Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
       end
     end
+
+    inactive_players.each do |player|
+      if Player.where(tournament: player.tournament, name: "Bye").empty?
+        bye = Player.create!(name: "Bye", tournament: player.tournament, rating: 0, new_rating: 0, division: player.division, win_count: 0, seed: 0)
+      else
+        bye = Player.find_by(tournament: player.tournament, name: "Bye")
+      end
+      Matchup.create!(round_number: round, player1: player, player2: bye, player1_score: -50, player2_score: 0, done: true)
+    end
+
   end
 
   def set_matchup
