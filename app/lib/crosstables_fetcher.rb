@@ -95,7 +95,7 @@ module CrosstablesFetcher
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
   end
-  
+
   def get_event(event, location, date)
     doc = fetch_url("#{event.attribute('href').value}")
 

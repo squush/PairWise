@@ -1,4 +1,4 @@
-require 'crosstables_fetcher'
+require_relative '../lib/crosstables_fetcher'
 
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: %i[show edit update destroy]
