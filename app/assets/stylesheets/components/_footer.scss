@@ -15,6 +15,7 @@
 	// display: flex;
 	flex-wrap: wrap;
   padding-top: 30px;
+  justify-content: space-evenly;
 }
 
 ul{
@@ -22,7 +23,7 @@ ul{
 }
 .footer{
 	background-color: $gray;
-  padding: 50px 0px 50px 200px;
+  padding: 50px 50px 50px 50px;
   flex-direction: column;
   height: 15rem;
   width: 100%;
@@ -86,6 +87,17 @@ ul{
 }
 .footer-col .logo {
   padding-bottom: 120px;
+}
+
+.contributors {
+  margin: 0 0 auto;
+  display: flex;
+  justify-content: center;
+
+  p {
+    color: rgb(59, 7, 7);
+    font-weight: 100;
+  }
 }
 
 // /*responsive*/

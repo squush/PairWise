@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <footer class="footer d-flex">
+  <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="footer-col logo">
@@ -15,29 +15,33 @@
           <%= image_tag "PairWise-logo-blue.png", height: 80 %>
         <% end %>
         </div>
-          <div class="footer-col">
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/tournaments">Tournaments</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
+        <div class="footer-col">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tournaments">Tournaments</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="social-links d-flex">
+            <%= link_to "https://github.com/squush/PairWise", target: "_blank" do %>
+              <i class="fa-brands fa-github"></i>
+            <% end %>
+            <%= link_to "https://www.facebook.com/squush", target: "_blank" do %>
+              <i class="fab fa-facebook-f"></i>
+            <% end %>
+            <%= link_to "https://www.instagram.com/jacksonsmylie/", target: "_blank" do %>
+              <i class="fab fa-instagram"></i>
+            <% end %>
+            <%= link_to "mailto:pw.pairwise@gmail.com", target: "_blank" do %>
+              <i class="fa-solid fa-envelope"></i>
+            <% end %>
           </div>
-          <div class="footer-col">
-            <div class="social-links d-flex">
-              <%= link_to "https://github.com/squush/PairWise", target: "_blank" do %>
-                <i class="fa-brands fa-github"></i>
-              <% end %>
-              <%= link_to "https://www.facebook.com/squush", target: "_blank" do %>
-                <i class="fab fa-facebook-f"></i>
-              <% end %>
-              <%= link_to "https://www.instagram.com/jacksonsmylie/", target: "_blank" do %>
-                <i class="fab fa-instagram"></i>
-              <% end %>
-              <%= link_to "mailto:pw.pairwise@gmail.com", target: "_blank" do %>
-                <i class="fa-solid fa-envelope"></i>
-              <% end %>
-            </div>
-          </div>
+        </div>
       </div>
-     </div>
+    </div>
+    <div class="contributors">
+      <p class="mb-0">Thank you to co-creators Anabelle Rogers, Andrew Wever, and Arstanbek Zholochu, as well as contributor Martin DeMello</p>
+    </div>
   </footer>
+</body>
