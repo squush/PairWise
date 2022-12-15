@@ -8,6 +8,9 @@
         <% @tournaments.each do |tournament| %>
           <%= render "tournament", tournament: tournament %>
         <% end %>
+        <% @player_tournaments.each do |tournament| %>
+          <%= render "tournament", tournament: tournament %>
+        <% end %>
       </div>
     </div>
   </div>
