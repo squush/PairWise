@@ -47,8 +47,8 @@ class TournamentTest < ActiveSupport::TestCase
 
   test "pairing system serialization" do
     t = create(:tournament)
-    rp1 = Settings::RoundPairing.new(1, 10)
-    rp2 = Settings::RoundPairing.new(2, 10)
+    rp1 = Settings::RoundPairing.new(1, 0, 10)
+    rp2 = Settings::RoundPairing.new(2, 1, 10)
     ps = Settings::PairingSystem.new([rp1, rp2])
     t.pairing_system = ps
     t.save

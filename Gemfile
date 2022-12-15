@@ -40,6 +40,9 @@ gem 'whenever', require: false
 # https://github.com/muyjohno/swissper
 gem 'swissper'
 
+# https://github.com/jaredbeck/graph_matching
+gem 'graph_matching'
+
 gem "dotenv-rails", groups: [:development, :test]
 
 gem "cloudinary"
@@ -89,6 +92,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "pry-byebug"
 end
 
 group :test do
