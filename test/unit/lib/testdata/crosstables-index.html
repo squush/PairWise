@@ -1,0 +1,1965 @@
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01//EN'  'https://www.w3.org/TR/html4/strict.dtd'> 
+		<html>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta name="resource-type" content="document"> 
+			<meta name="description" content="Scrabble statistics, results, and tournament listings"> 
+			<meta name="keywords" content="scrabble, scrabble tiles, scrabble statistics, scrabble results, stats, tournaments, upcoming, players, competitive, games "> 
+            <meta property="og:title" content="cross-tables.com" />
+    		<meta property="og:type" content='website' />
+    		<meta property="og:url" content="https://www.cross-tables.com" />
+			<title>cross-tables.com - SCRABBLE&reg; tournaments, statistics, and community</title>
+<script type='text/javascript' src=' yuibuild/yahoo-dom-event/yahoo-dom-event.js'></script>
+<link type='text/css' rel='stylesheet' href='yuibuild/reset-fonts-grids/reset-fonts-grids.css' >
+<link type='text/css' rel='stylesheet' href='yuibuild/grids/grids.css' >
+<link type='text/css' rel='stylesheet' href='yuibuild/assets/skins/sam/skin.css' >
+<link type='text/css' rel='stylesheet' href='yuibuild/assets/skins/sam/menu.css' >
+			
+				<link rel='stylesheet' type='text/css' href='xt.css'> 
+																				<script type='text/javascript' src=' yuibuild/container/container_core-min.js'></script>
+<script type='text/javascript' src=' yuibuild/menu/menu-min.js'></script>
+<script type='text/javascript' src=' yuibuild/element/element-beta-min.js'></script>
+<script type='text/javascript' src=' yuibuild/button/button-min.js'></script>
+<script type='text/javascript' src=' yuibuild/utilities/utilities.js'></script>
+<script type='text/javascript' src=' yuibuild/connection/connection-min.js'></script>
+<script type='text/javascript' src=' yuibuild/container/container-min.js'></script>
+<script type='text/javascript' src=' yuibuild/autocomplete/autocomplete-min.js'></script>
+				<script type='text/javascript' src='xt.js'></script>
+				<script type='text/javascript' src='acplayer.js'></script>
+				<script type='text/javascript' src='nifty.js'></script>
+				<script>
+				  // This is called with the results from from FB.getLoginStatus().
+				  function statusChangeCallback(response) {
+				    console.log('statusChangeCallback');
+				    console.log(response);
+				    // The response object is returned with a status field that lets the
+				    // app know the current login status of the person.
+				    // Full docs on the response object can be found in the documentation
+				    // for FB.getLoginStatus().
+				    if (response.status === 'connected') {
+				      // Logged into your app and Facebook.
+				      testAPI();
+				    } else {
+				      // The person is not logged into your app or we are unable to tell.
+				      // document.getElementById('status').innerHTML = 'Please log ' +
+				      //   'into this app.';
+				    }
+				  }
+
+				  // This function is called when someone finishes with the Login
+				  // Button.  See the onlogin handler attached to it in the sample
+				  // code below.
+				  function checkLoginState() {
+				    FB.getLoginStatus(function(response) {
+				      statusChangeCallback(response);
+				    });
+				  }
+
+				  window.fbAsyncInit = function() {
+				    FB.init({
+				      appId      : '203920133011073',
+				      cookie     : true,  // enable cookies to allow the server to access 
+				                          // the session
+				      xfbml      : true,  // parse social plugins on this page
+				      version    : 'v2.8' // use graph api version 2.8
+				    });
+
+				    // Now that we've initialized the JavaScript SDK, we call 
+				    // FB.getLoginStatus().  This function gets the state of the
+				    // person visiting this page and can return one of three states to
+				    // the callback you provide.  They can be:
+				    //
+				    // 1. Logged into your app ('connected')
+				    // 2. Logged into Facebook, but not your app ('not_authorized')
+				    // 3. Not logged into Facebook and can't tell if they are logged into
+				    //    your app or not.
+				    //
+				    // These three cases are handled in the callback function.
+
+				    FB.getLoginStatus(function(response) {
+				      statusChangeCallback(response);
+				    });
+
+				  };
+
+				  // Load the SDK asynchronously
+				  (function(d, s, id) {
+				    var js, fjs = d.getElementsByTagName(s)[0];
+				    if (d.getElementById(id)) return;
+				    js = d.createElement(s); js.id = id;
+				    js.src = "https://connect.facebook.net/en_US/sdk.js";
+				    fjs.parentNode.insertBefore(js, fjs);
+				  }(document, 'script', 'facebook-jssdk'));
+
+				  // Here we run a very simple test of the Graph API after login is
+				  // successful.  See statusChangeCallback() for when this call is made.
+				  function testAPI() {
+				    console.log('Welcome!  Fetching your information.... ');
+				    FB.api('/me', function(response) {
+				      console.log('Successful login for: ' + response.name);
+				      //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+				    });
+				  }
+				</script>
+
+	
+	       <script type='text/javascript'>
+
+	            // Initialize and render the menu bar when it is available in the DOM
+	            YAHOO.util.Event.onContentReady('xtmenus', function () {
+
+	                // Instantiate and render the menu bar
+	                var oMenuBar = new YAHOO.widget.MenuBar('xtmenus', { autosubmenudisplay: true, showdelay: 0, hidedelay: 750, lazyload: true });
+
+	                /*
+	                     Call the "render" method with no arguments since the markup for 
+	                     this menu already exists in the DOM.
+	                */
+
+	                oMenuBar.render();
+
+	            });
+				
+				function loadcomplete()
+				{
+					initfindplayerdialog();
+					//focusfirst($selectfirst);
+				}
+
+			</script>
+				
+				<script type='text/javascript' src=' yuibuild/utilities/utilities.js'></script>
+<script type='text/javascript' src=' yuibuild/container/container-min.js'></script>
+	
+	<style type='text/css'>
+		.section { margin: 0 10px; }
+		.section .title { background-color: #446; color: #fff; }
+	</style>
+	<script type="text/javascript">
+
+		YAHOO.util.Event.onDOMReady(inityui);
+		//YAHOO.util.Event.on(window, "load", niftycorners, { id: '', outside: '#fff', frame: '#f90' }); 
+		
+		function toggle(el, o)
+		{
+			if (YAHOO.util.Dom.getStyle(o.blockid, 'display')=='none')
+			{
+				setcookie(o.cookieid,1,36500);
+				YAHOO.util.Dom.setStyle(o.blockid, 'display', 'block');
+				YAHOO.util.Dom.replaceClass(this, 'expanderclosed', 'expanderopen');
+			}
+			else
+			{
+				setcookie(o.cookieid,0,36500);
+				YAHOO.util.Dom.setStyle(o.blockid, 'display', 'none');
+				YAHOO.util.Dom.replaceClass(this, 'expanderopen', 'expanderclosed');
+			}
+		}
+
+	//--------------------------------------------------
+	function showcountdialog(anchor, ofwhat, cookiename, howmany)
+	{
+		YAHOO.countdialog.cfg.setProperty("context", [anchor, 'tl', 'bl']);
+
+		document.getElementById('ofwhatname').innerHTML = ofwhat;
+		document.getElementById('howmany').name = cookiename;
+		document.countform.howmany.value = howmany;
+		YAHOO.countdialog.show();
+		document.countform.howmany.focus();
+		document.countform.howmany.select();
+	}
+	
+	//--------------------------------------------------
+	function showupcomingdialog(anchor)
+	{
+		YAHOO.upcomingdialog.cfg.setProperty("context", [anchor, 'tl', 'bl']);
+
+		YAHOO.upcomingdialog.show();
+	}
+	
+	//--------------------------------------------------
+	function inityui()
+	{
+
+		initcountdialog();
+		initupcomingdialog();
+	}
+
+	//--------------------------------------------------
+	function initcountdialog() 
+	{
+		// Define various event handlers for Dialog
+		var handleCountSubmit = function() {
+			this.submit();
+		};
+		var handleCountCancel = function() {
+			this.cancel();
+
+		};
+		
+		// Instantiate the Dialog
+		YAHOO.util.Dom.setStyle('countdialog', 'display', 'block');
+		YAHOO.countdialog = new YAHOO.widget.Dialog("countdialog", 
+																	{ width : "350px",
+																	  visible : false, 
+																	  constraintoviewport : true,
+																	  buttons : [ { text:"Submit", handler:handleCountSubmit, isDefault:true },
+																				  { text:"Cancel", handler:handleCountCancel } ],
+																	  //effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25},
+																	  postmethod: 'form'
+																	 } );
+		
+		var kl = new YAHOO.util.KeyListener(document, { keys: [27] },                               
+                                              { fn:YAHOO.countdialog.hide, 
+                                                scope:YAHOO.countdialog,
+                                                correctScope:true } ); 
+		YAHOO.countdialog.cfg.queueProperty("keylisteners", [ kl ]); 		
+		
+		YAHOO.countdialog.validate = function() {
+			var data = this.getData();
+			if (data.howmany < 0) {
+				alert("Please choose a number");
+				return false;
+			} else {
+				return true;
+			}
+		};
+
+		// Render the Dialog
+		YAHOO.countdialog.render();
+	}
+	//--------------------------------------------------
+	function initupcomingdialog() 
+	{
+		// Define various event handlers for Dialog
+		var handleupcomingSubmit = function() {
+			YAHOO.widget.Button.addHiddenFieldsToForm( document.upcomingform );
+			
+			// Calculate the useful tsel value here so that the controller doesn't have to interpret
+				var sel = this.getData().sel;
+				if (sel.toLowerCase() == "all") tsel = 0;
+				else if (sel.toLowerCase().indexOf('one')>=0) tsel=1;
+				else tsel = 2;
+				document.upcomingform.tsel.value = tsel;
+
+			this.submit();
+		};
+		var handleupcomingCancel = function() {
+			this.cancel();
+
+		};
+
+		// Set up the radio buttons
+		upcomingbuttons = new YAHOO.widget.ButtonGroup("upcomingbuttons");
+
+		// Instantiate the Dialog
+		YAHOO.util.Dom.setStyle('upcomingdialog', 'display', 'block');
+		YAHOO.upcomingdialog = new YAHOO.widget.Dialog("upcomingdialog", 
+																	{ width : "350px",
+																	  visible : false, 
+																	  constraintoviewport : true,
+																	  buttons : [ { text:"Submit", handler:handleupcomingSubmit, isDefault:true },
+																				  { text:"Cancel", handler:handleupcomingCancel } ],
+																	  //effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25},
+																	  postmethod: 'form'
+																	 } );
+		
+		var kl = new YAHOO.util.KeyListener(document, { keys: [27] },                               
+                                              { fn:YAHOO.upcomingdialog.hide, 
+                                                scope:YAHOO.upcomingdialog,
+                                                correctScope:true } ); 
+		YAHOO.upcomingdialog.cfg.queueProperty("keylisteners", [ kl ]); 		
+		
+		// Render the Dialog
+		YAHOO.upcomingdialog.render();
+	}
+	</script>
+
+	
+	
+
+				       <script type='text/javascript'>
+			function openfinddialog()
+			{
+				YAHOO.findplayerdialog.show();
+			}
+			
+			function initfindplayerdialog() 
+			{
+				// Define various event handlers for Dialog
+				var handlefindplayerCancel = function() {
+					this.cancel();
+
+				};
+				
+				// Make the dialog visible
+				YAHOO.util.Dom.setStyle('findplayerdialog', 'display', 'block');
+				
+				// Instantiate the Dialog
+				YAHOO.findplayerdialog = new YAHOO.widget.Dialog("findplayerdialog", 
+																			{ width : "350px",
+																			  visible : false, 
+																			  context: ['xtmenus', 'tl', 'bl'],
+																			  constraintoviewport : true,
+																			  buttons : [ { text:"Cancel", handler:handlefindplayerCancel } ],
+																			  effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25},
+																			  postmethod: 'form'
+																			 } );
+				
+				var kl = new YAHOO.util.KeyListener(document, { keys: [27] },                               
+		                                              { fn:YAHOO.findplayerdialog.hide, 
+		                                                scope:YAHOO.findplayerdialog,
+		                                                correctScope:true } ); 
+				YAHOO.findplayerdialog.cfg.queueProperty("keylisteners", [ kl ]); 		
+				
+				YAHOO.findplayerdialog.validate = function() {
+					var data = this.getData();
+					
+					if (data.p==0) {
+						document.location = "players.php?query="+document.getElementById('findplayername').value
+						//alert("Please type a player name to search for "+document.getElementById('findplayername').value);
+						return false;
+					} else {
+						return true;
+					}
+				};
+
+				// Hook up the auto-completion behavior
+				var selectionevent = new YAHOO.util.CustomEvent("playerautoselected"); 
+				addplayerautocomplete("findplayername", "findplayernameContainer", "findplayerid", selectionevent, false);
+				
+				selectionevent.subscribe(gotplayer);
+				
+				// Render the Dialog
+				YAHOO.findplayerdialog.render();
+			}
+			
+			function gotplayer()
+			{
+//				document.title = '**'+(document.getElementById('findplayerid').value)+'**';
+//				return;
+				if (document.getElementById('findplayerid').value != 0)
+				{
+					document.getElementById('foundplayer').innerHTML = document.getElementById('findplayername').value;
+					YAHOO.util.Dom.setStyle('newplayerloading', 'display', 'block');
+					document.findplayerform.submit();
+				}
+			}
+		</script>
+
+				
+			<link rel="search" type="application/opensearchdescription+xml" href="searchbar.xml" title="cross-tables">
+		</head>
+		<body class='yui-skin-sam' 
+			id='yahoo-com' 
+			onload='loadcomplete();'>
+		
+		<!-- the id on the containing div determines the page width. -->
+		<!-- #doc = 750px; #doc2 = 950px; #doc3 = 100%; #doc4 = 974px -->
+		<div id='custom-doc850'>					
+			<div id='hd'>
+
+					<div class='siteheader' id='siteheader'>
+							<span>
+					<a href='/'>
+											SCRABBLE&reg; tournaments, statistics, and community
+															</a>
+				</span>
+				<div class='logo'>
+					<a href='/'>
+													<img src="/i/logo-tile.png" height='40' align='top'>
+					    					</a>
+					<a href='/'>
+																		cross-tables.com
+																</a>
+				</div>
+					</div>
+	   <div id='xtmenus' class='yuimenubar yuimenubarnav'>
+			<div class='bd'>
+				<ul class='first-of-type'>
+					<li class='yuimenubaritem first-of-type'><a class='yuimenubaritemlabel' href='/'>
+													Home
+												</a>
+					</li>
+				
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							Find						</a>
+						<div id='find' class='yuimenu'>
+							<div class='bd'>
+								<ul class='first-of-type'>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='javascript:openfinddialog();'>Find a Player...</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='tourneys.php'>Find a Past Tournament...</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='bystate.php'>Find Top Players by State</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='bycountry.php'>Find Top Players by Country</a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							History						</a>
+						<div id='history' class='yuimenu'>
+							<div class='bd'>
+								<ul class='first-of-type'>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='annolistself.php'>Recent Annotated Games</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='annoupload.php'>Upload an Annotated Game</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='leaders.php'>All-time Leaders</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='club700.php'>The 700 Club</a></li>
+								</ul>
+							</div>
+						</div>      
+					
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							Play						</a>
+						<div id='maps' class='yuimenu'>
+							<div class='bd'>
+								<ul>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='map.php'>Map of Upcoming Tournaments</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='mapclubs.php'>Map of SCRABBLE Clubs</a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							Learn						</a>
+						<div id='words' class='yuimenu'>
+							<div class='bd'>
+								<ul>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='study.php'>Study Tools</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='leaves.php'>Leave Evaluator</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='http://www.breakingthegame.net/handbook' target='_blank'>Scrabble Player's Handbook</a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							About						</a>
+						<div id='about' class='yuimenu'>
+							<div class='bd'>
+								<ul>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='credits.php'>About cross-tables.com</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='donate.php'><b>Donate to cross-tables.com</b></a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+					<li class='yuimenubaritem' style="width: 22%">
+													<a class='yuimenubaritemlabel' href="https://www.facebook.com/v2.8/dialog/oauth?client_id=203920133011073&state=86e5f488027f19f8b5cbb4846e19ed01&response_type=code&sdk=php-sdk-5.5.0&redirect_uri=https%3A%2F%2Fwww.cross-tables.com%2Ffb-callback.php&scope=email">
+								<span style='color: #3b5998'>Sign in with Facebook</span>
+							</a>
+
+ 											</li>
+
+ 				</ul>            
+			</div>
+		</div>
+
+
+	
+			</div>
+			<div id='bd'>
+			
+						<table style='width: 100%'>
+				<tr>
+					<td colspan='2'>
+			<div class='collapsiblesection' id='wlcontain'>
+				<div>
+					<div class='header'>
+												<span id='wlexpander' class='expanderopen'>&nbsp;</span>
+						Welcome to cross-tables.com					</div>
+					
+					<div id='wlblock' style='display: block'>
+						<table class='xtdatatable'>
+																<tr><td style='padding-right: 0px;'>	
+			<div style='float: right; text-align: center; width: 240px; height: 129px; border-left: 1px solid #3B5998;'>
+				<p>
+											<!-- <div class="fb-like" data-href="http://www.cross-tables.com" data-send="false" data-width="225" data-show-faces="false" data-font="trebuchet ms"></div> -->
+						Cross-tables.com is a volunteer effort.
+										<br><b style='font-size: 1.1em;'>
+													Donations appreciated!
+											</b>
+				<div>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" style=''>
+					<p>
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="image" src="/i/x-click-but21.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+					<!-- <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"> -->
+					<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHRwYJKoZIhvcNAQcEoIIHODCCBzQCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYBGnUiO88T1ZU/qR7axsDyntnLLg5ycB/QE4PKlxdm7mDxD4W80VWjeu5GMY+z5LX+tL2cYGe2pzMSZKfkG4MJe0doRgABBiweexJ0gVHYfoDqYo3e3ycDYnwwWQhQExr/3FBnFpDjMw2L5Q29dKBB4y1v+rmpnfizNhEpkYFOH2TELMAkGBSsOAwIaBQAwgcQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIfLqLpofX32CAgaCJeH4rjwvSmD8Trm5QTTGCWpYyHnZxPw8zwknUF24HwKw6zTnkvrdDTOldFw0onfe3Bgte8r+funo2bYkM5YUoYfLta+bPXucPfmTv4rc+ZTmDnxt75jyTX4ByHmjAPwjm4uf9YFxIXQMWfpuG5UyJSGJyZ3ZI2dFn35sFFIkS0OzVf2gE/09ZByBc0WkY4WSaxfb9XVjRRg2Y3jh9tlLnoIIDhzCCA4MwggLsoAMCAQICAQAwDQYJKoZIhvcNAQEFBQAwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMB4XDTA0MDIxMzEwMTMxNVoXDTM1MDIxMzEwMTMxNVowgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBR07d/ETMS1ycjtkpkvjXZe9k+6CieLuLsPumsJ7QC1odNz3sJiCbs2wC0nLE0uLGaEtXynIgRqIddYCHx88pb5HTXv4SZeuv0Rqq4+axW9PLAAATU8w04qqjaSXgbGLP3NmohqM6bV9kZZwZLR/klDaQGo1u9uDb9lr4Yn+rBQIDAQABo4HuMIHrMB0GA1UdDgQWBBSWn3y7xm8XvVk/UtcKG+wQ1mSUazCBuwYDVR0jBIGzMIGwgBSWn3y7xm8XvVk/UtcKG+wQ1mSUa6GBlKSBkTCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb22CAQAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQCBXzpWmoBa5e9fo6ujionW1hUhPkOBakTr3YCDjbYfvJEiv/2P+IobhOGJr85+XHhN0v4gUkEDI8r2/rNk1m0GA8HKddvTjyGw/XqXa+LSTlDYkqI8OwR8GEYj4efEtcRpRYBxV8KxAW93YDWzFGvruKnnLbDAF6VR5w/cCMn5hzGCAZowggGWAgEBMIGUMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbQIBADAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMDcwNDA0MjE1MzU3WjAjBgkqhkiG9w0BCQQxFgQUU7EtN0wJpSa7VWNiY84S9DMP1JIwDQYJKoZIhvcNAQEBBQAEgYCt2PM0tsACLIYQPssiN/B7A/VWaKHVflq9fq5LpyRErPvF4jnphCN1/gcaEpgZKT1PbkO11JoxcJmc/PBOcqv4+WxakmJ9Oj5tB1bGzWGp2SgPgyy9RPD7byjPvhVhgxxciRSbygdOHqE1ej2ZiNXxJw5PowLPmwYB/ymzmWoqPw==-----END PKCS7-----
+					">
+					</form>
+				</div>
+			</div>
+
+		<!-- <p>
+							Welcome to cross-tables.com, a site devoted to the world of competitive SCRABBLE&reg;.
+					</p>
+		 -->
+		<p><b>Note:</b>
+			<a href='https://www.scrabbleplayers.org/w/Membership'>
+			Sign up for or renew your NASPA membership			</a>
+		</p>
+
+		
+		<form method='GET' onsubmit='var p = document.getElementById("addplayerid").value; if (p==0) { alert("Choose a player by typing in box to the left and choosing a name from the pop-up menu."); } return (p!=0);' action='results.php'>
+			<fieldset>
+				<input type='submit' value='Find Player' style='float: right; margin-right: 10px;'>
+				<div style='width: 65%; margin-left: 5px;'>		<div id='autocompleteaddplayer' style='list-style: none;'>		    <input id='addplayername' type='text' value=''>		    <div id='addplayernameContainer'></div>		</div></div><input type='hidden' id='addplayerid' name='playerid' value='0'><script type='text/javascript'>	var selectionevent = new YAHOO.util.CustomEvent('playerautoselected'); 	addplayerautocomplete('addplayername', 'addplayernameContainer', 'addplayerid', selectionevent, true);</script>			</fieldset>
+		</form>
+
+		<br>
+
+
+
+
+<p style='background-color: lightyellow; width: 375px;'>
+<!-- 	<b>Try out the new </b>: <a href='https://itunes.apple.com/us/app/cross-tables/id845382258?mt=8'><img src='/i/logo-.png' height='30' align='middle' style='margin-top: -8px;'> cross-tables iPhone app</a>
+ -->	
+ <b>Try out ULU</b>: <a href='https://itunes.apple.com/us/app/ulu-ultimate-lookup-utility/id1281832323?mt=8'><img src='/i/logo-ulu.png' height='30' align='middle' style='margin-top: -8px;'> the Ultimate Lookup Utility.</a>
+
+		</td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'wlblock' }); 
+				YAHOO.util.Event.on('wlexpander', 'click', toggle, { blockid: 'wlblock', 
+																					cookieid: 'togglewl'});
+				new YAHOO.widget.Tooltip('ttwlexpander', 
+						{ context:'wlexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (0)
+					new YAHOO.widget.Tooltip('ttwloptionsctl', 
+							{ context:'wloptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+						<p>
+					</td>
+				</tr>
+
+
+
+
+				<tr>
+					<td style='width: 45%; padding-right: 15px;'>
+									<div class='collapsiblesection' id='utcontain'>
+				<div>
+					<div class='header'>
+													<div style='float: right;'>
+								<div id='utoptionsctl' class='optionsdlg' 		onclick='showupcomingdialog(this);'
+>
+								
+								</div>
+							</div>
+												<span id='utexpander' class='expanderopen'>&nbsp;</span>
+						Upcoming Tournaments					</div>
+					
+					<div id='utblock' style='display: block'>
+						<table class='xtdatatable'>
+																<tr>
+			<td><b>Location</b></td>
+			<td><b>Date(s)</b></td>
+			<td align='right' colspan='2'><b><div style='float: right'>#</div></b></td></tr>
+<tr class='row1' id='rowupcoming1'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2022/12/conshohocken.pdf' target='_blank'>Conshohocken, PA</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15744'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+12/17
+</td>
+<td align='right'>
+14
+</td>
+</tr>
+<tr class='row0' id='rowupcoming2'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://drive.google.com/file/d/13G1FJGA7_yrqQ-E4VmA5OttU0Ng74Nal/view?usp=sharing' target='_blank'>Redwood City CA</a> <span style='position: relative; display:inline;'><a href='https://drive.google.com/file/d/13G1FJGA7_yrqQ-E4VmA5OttU0Ng74Nal/view?usp=sharing'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+12/18
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row1' id='rowupcoming3'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://docs.google.com/document/d/1oeOofk0pwMW1f6dNxOTPILDTsOkt-rUWETZzz3gOnb0/edit?usp=sharing' target='_blank'>2022 Winter Classic, Cary, NC</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15755'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15756'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15757'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15758'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15759'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15760'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='LATE BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15761'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+12/21-31
+</td>
+<td align='right'>
+12
+</td>
+</tr>
+<tr class='row0' id='rowupcoming4'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.scrabbleplayers.org/tourneys/listings.html#2022122720221228toron' target='_blank'>Toronto, ON</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15738'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+12/27-28
+</td>
+<td align='right'>
+4
+</td>
+</tr>
+<tr class='row1' id='rowupcoming5'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://drive.google.com/file/d/1EE5_sqTW4pBVJx_1c35KLZCdEBEf9Tup/view?usp=sharing' target='_blank'>Palm Springs CA</a> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=808'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=809'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=810'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+12/28-30
+</td>
+<td align='right'>
+17
+</td>
+</tr>
+<tr class='row0' id='rowupcoming6'>
+<td style='white-space: nowrap;'><img src='https://scrabbleplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.scrabbleplayers.org/tourneys/listings.html#2022122820221228leban' target='_blank'>Lebanon, NJ</a></td>
+<td style='white-space: nowrap;' colspan='2'>
+12/28
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row1' id='rowupcoming7'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://www.letsplayscrabble.com/new-years-2023' target='_blank'>Albany, NY</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15655'><img src='/i/cswbird.png' alt='' width='14' height='14' title='CSW EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15654'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15657'><img src='/i/cswbird.png' alt='' width='14' height='14' title='CSW EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15656'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15658'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15659'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+12/29-1/2, 2023
+</td>
+<td align='right'>
+69
+</td>
+</tr>
+<tr class='row0' id='rowupcoming8'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2023/01/richmond.pdf' target='_blank'>Richmond, KY</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15754'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/7, 2023
+</td>
+<td align='right'>
+5
+</td>
+</tr>
+<tr class='row1' id='rowupcoming9'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2023/01/caledon.pdf' target='_blank'>Caledon, ON</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15695'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/14, 2023
+</td>
+<td align='right'>
+10
+</td>
+</tr>
+<tr class='row0' id='rowupcoming10'>
+<td style='white-space: nowrap;'><img src='i/coco.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://www.cocoscrabble.org/tournaments/nola-2023' target='_blank'>Crescent City Cup</a> <span style='position: relative; display:inline;'><a href='http://cocoscrabble.org/tournaments/nola-2023'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/14-16, 2023
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row1' id='rowupcoming11'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://docs.google.com/document/d/168P7QlC43EGQ4hVZj_uN_VhccSffc7rlvoTFp0K5P38/edit?usp=sharing' target='_blank'>Crescent City Cup</a> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=802'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/14-16, 2023
+</td>
+<td align='right'>
+54
+</td>
+</tr>
+<tr class='row0' id='rowupcoming12'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://tinyurl.com/Princeton20231' target='_blank'>Princeton, NJ</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15726'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15727'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/21, 2023
+</td>
+<td align='right'>
+14
+</td>
+</tr>
+<tr class='row1' id='rowupcoming13'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://pdxscrabble.neocities.org/2023%2001%2028%20Scrabble%20Players%20Tournament.pdf' target='_blank'>Oregon City, OR (near Portland)</a> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=820'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/28, 2023
+</td>
+<td align='right'>
+8
+</td>
+</tr>
+<tr class='row0' id='rowupcoming14'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://sites.google.com/site/trianglescrabble/ptct-2023' target='_blank'>13th Annual PTCT Charity Tournament, NC</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15750'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15751'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15752'><img src='/i/newcomers.gif' alt='' width='14' height='11' title='NEWCOMERS entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/28-29, 2023
+</td>
+<td align='right'>
+12
+</td>
+</tr>
+<tr class='row1' id='rowupcoming15'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://docs.google.com/document/d/1wjP0LOGqqFE9W742FoMsp7T3iparglmX/edit?usp=sharing&amp;ouid=101655829950603265595&amp;rtpof=true&amp;sd=true' target='_blank'>Fort Lauderdale FL</a> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=789'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+1/28-29, 2023
+</td>
+<td align='right'>
+2
+</td>
+</tr>
+<tr class='row0' id='rowupcoming16'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2023/02/atlanticcity.docx' target='_blank'>Atlantic City, NJ</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15705'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15686'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15687'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+2/3-6, 2023
+</td>
+<td align='right'>
+36
+</td>
+</tr>
+<tr class='row1' id='rowupcoming17'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2023/02/winchester.pdf' target='_blank'>Winchester, VA</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15762'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15763'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+2/11, 2023
+</td>
+<td align='right'>
+11
+</td>
+</tr>
+<tr class='row0' id='rowupcoming18'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.scrabbleplayers.org/tourneys/listings.html#2023021120230212riora' target='_blank'>Albuquerque, NM</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15741'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15745'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+2/11-12, 2023
+</td>
+<td align='right'>
+16
+</td>
+</tr>
+<tr class='row1' id='rowupcoming19'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://www.letsplayscrabble.com/csc-2023' target='_blank'>Kingston, ON</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15672'><img src='/i/cswbird.png' alt='' width='14' height='14' title='CSW EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15671'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15674'><img src='/i/cswbird.png' alt='' width='14' height='14' title='CSW EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15673'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15675'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15676'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+2/16-20, 2023
+</td>
+<td align='right'>
+45
+</td>
+</tr>
+<tr class='row0' id='rowupcoming20'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.calgary374.org/files/Phoenix_20230218.pdf' target='_blank'>Phoenix AZ</a> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=795'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=796'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+2/18-20, 2023
+</td>
+<td align='right'>
+45
+</td>
+</tr>
+<tr class='row1' id='rowupcoming21'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://tinyurl.com/Princeton20231' target='_blank'>Princeton, NJ</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15728'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15729'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+2/25, 2023
+</td>
+<td align='right'>
+9
+</td>
+</tr>
+<tr class='row0' id='rowupcoming22'>
+<td style='white-space: nowrap;'><img src='https://scrabbleplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.scrabbleplayers.org/tourneys/listings.html#2023031120230312thepu' target='_blank'>The Purple And Green, Medina, OH</a></td>
+<td style='white-space: nowrap;' colspan='2'>
+3/11-12, 2023
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row1' id='rowupcoming23'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://tinyurl.com/Princeton20231' target='_blank'>Princeton, NJ</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15730'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15731'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+3/18, 2023
+</td>
+<td align='right'>
+4
+</td>
+</tr>
+<tr class='row0' id='rowupcoming24'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2023/03/eastlansing.pdf' target='_blank'>East Lansing, MI</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15718'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+3/18, 2023
+</td>
+<td align='right'>
+1
+</td>
+</tr>
+<tr class='row1' id='rowupcoming25'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://docs.google.com/document/d/1WLsYtYKrsszKbYW_VvQ739-020J_TvPQgvjr_KkCoDg/edit?usp=sharing' target='_blank'>Minneapolis, MN</a> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=818'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=819'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+3/18-19, 2023
+</td>
+<td align='right'>
+7
+</td>
+</tr>
+<tr class='row0' id='rowupcoming26'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2023/03/poughkeepsie.pdf' target='_blank'>Poughkeepsie, NY</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15722'><img src='/i/cswbird.png' alt='' width='14' height='14' title='CSW EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15721'><img src='/i/ebird.jpg' alt='' width='13' height='11' title='EARLY BIRD entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15725'><img src='/i/newcomers.gif' alt='' width='14' height='11' title='NEWCOMERS entrants list'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15723'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15724'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+3/24-26, 2023
+</td>
+<td align='right'>
+3
+</td>
+</tr>
+<tr class='row1' id='rowupcoming27'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://tinyurl.com/Princeton20231' target='_blank'>Princeton, NJ</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15732'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15733'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+4/15, 2023
+</td>
+<td align='right'>
+5
+</td>
+</tr>
+<tr class='row0' id='rowupcoming28'>
+<td style='white-space: nowrap;'><img src='https://scrabbleplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.scrabbleplayers.org/tourneys/listings.html#2023042920230429south' target='_blank'>South Lyon, MI</a></td>
+<td style='white-space: nowrap;' colspan='2'>
+4/29, 2023
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row1' id='rowupcoming29'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://drive.google.com/file/d/14lWSz-hRsTCF-KDWqLJLM_0GnuDcT9bC/view?usp=sharing' target='_blank'>Sioux Falls, South Dakota</a> <span style='position: relative; display:inline;'><a href='https://drive.google.com/file/d/14lWSz-hRsTCF-KDWqLJLM_0GnuDcT9bC/view?usp=sharing'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+4/29-30, 2023
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row0' id='rowupcoming30'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://tinyurl.com/Princeton20231' target='_blank'>Princeton, NJ</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15734'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15735'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+5/13, 2023
+</td>
+<td align='right'>
+5
+</td>
+</tr>
+<tr class='row1' id='rowupcoming31'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='/download/2023/05/niagarafallsinternationalopen.pdf' target='_blank'>Niagara Falls International Open, ON</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15753'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15714'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+5/20-22, 2023
+</td>
+<td align='right'>
+32
+</td>
+</tr>
+<tr class='row0' id='rowupcoming32'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://drive.google.com/file/d/1EZQdIfObMFsPyLLQ-Zqclr-kkJiYOuji/view?usp=sharing' target='_blank'>Columbia SC</a> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=797'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://drive.google.com/file/d/1EZQdIfObMFsPyLLQ-Zqclr-kkJiYOuji/view?usp=sharing'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+5/27-29, 2023
+</td>
+<td align='right'>
+1
+</td>
+</tr>
+<tr class='row1' id='rowupcoming33'>
+<td style='white-space: nowrap;'><img src='i/naspa.png' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://tinyurl.com/Princeton20231' target='_blank'>Princeton, NJ</a> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15736'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='/entrants.php?u=15737'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+6/17, 2023
+</td>
+<td align='right'>
+7
+</td>
+</tr>
+<tr class='row0' id='rowupcoming34'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;Kailua-Kona <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=821'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+6/19-21, 2023
+</td>
+<td align='right'>
+17
+</td>
+</tr>
+<tr class='row1' id='rowupcoming35'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;Naalehu, HI <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=822'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=824'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=823'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://wordgameplayers.org/ratings/index.php?c=pu&amp;a=el&amp;tid=825'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+6/24-25, 2023
+</td>
+<td align='right'>
+32
+</td>
+</tr>
+<tr class='row0' id='rowupcoming36'>
+<td style='white-space: nowrap;'><img src='https://wordgameplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='https://www.letsplayscrabble.com/wordcup2023' target='_blank'>Word Cup 2023, Albany, NY</a> <span style='position: relative; display:inline;'><a href='https://www.letsplayscrabble.com/wordcup2023'><img src='/i/people.png' alt='' width='16' height='14' title='Entrants list for this tournament'></a></span> <span style='position: relative; display:inline;'><a href='https://www.letsplayscrabble.com/wordcup2023'><img src='/i/csw.png' alt='' width='14' height='14' title='CSW entrants list'></a></span></td>
+<td style='white-space: nowrap;' colspan='2'>
+6/30-7/4, 2023
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row1' id='rowupcoming37'>
+<td style='white-space: nowrap;'><img src='https://scrabbleplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.scrabbleplayers.org/tourneys/listings.html#2024020320240205atlan' target='_blank'>Atlantic City, NJ</a></td>
+<td style='white-space: nowrap;' colspan='2'>
+2/3-5, 2024
+</td>
+<td align='right'>
+
+</td>
+</tr>
+<tr class='row0' id='rowupcoming38'>
+<td style='white-space: nowrap;'><img src='https://scrabbleplayers.org/favicon.ico' style='vertical-align: text-top; height: 14px;'>&nbsp;<a href='http://www.scrabbleplayers.org/tourneys/listings.html#2024032220240324pough' target='_blank'>Poughkeepsie, NY</a></td>
+<td style='white-space: nowrap;' colspan='2'>
+3/22-24, 2024
+</td>
+<td align='right'>
+
+</td>
+</tr>
+		<tr><td colspan='2'><b><br>Directors</b>: <a href='listtourney.php'>Get your tournament listed here</a>.</td></tr>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		
+	    						</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'utblock' }); 
+				YAHOO.util.Event.on('utexpander', 'click', toggle, { blockid: 'utblock', 
+																					cookieid: 'toggleut'});
+				new YAHOO.widget.Tooltip('ttutexpander', 
+						{ context:'utexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (1)
+					new YAHOO.widget.Tooltip('ttutoptionsctl', 
+							{ context:'utoptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+					</td>
+					<td style='width: 55%;'>
+			<div class='collapsiblesection' id='rccontain'>
+				<div>
+					<div class='header'>
+												<span id='rcexpander' class='expanderopen'>&nbsp;</span>
+						Yearly Leaders (starts with Nationals)					</div>
+					
+					<div id='rcblock' style='display: block'>
+						<table class='xtdatatable'>
+									<tr>
+			<td colspan='2'>
+			<b>Showing TWL leaders</b>
+													<span style='font-size: 0.8em; margin-left: 8px;'>
+					<a href='/?setleaderslexicon=1'>
+					show CSW</a>
+					</span>
+													<span style='font-size: 0.8em; margin-left: 8px;'>
+					<a href='/?setleaderslexicon=-1'>
+					show overall</a>
+					</span>
+								<br>&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<th><b>&nbsp;Category</b></th>
+			<th><b>Leader</b></th>
+			<th></th>
+		</tr>
+							
+														
+													<tr class='row1' id='rowpoy0'>
+					<td>
+													Player of the Year							<br>																	</td>
+					<td>
+						<a href='results.php?p=20243'>
+							Andy Hoang</a> 
+								(1876.830)
+					</td>
+					<td><a href='poycategory.php?type=total'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row0' id='rowpoy1'>
+					<td>
+													Highest Win %, Division 1							<br>																	</td>
+					<td>
+						<a href='results.php?p=17589'>
+							Joey Krafchick</a> 
+								(0.804)
+					</td>
+					<td><a href='poycategory.php?type=pct_one'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row1' id='rowpoy2'>
+					<td>
+													Highest Win %, lower divisions							<br>																	</td>
+					<td>
+						<a href='results.php?p=17710'>
+							Katya Lezin</a> 
+								(0.582)
+					</td>
+					<td><a href='poycategory.php?type=pct_any'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row0' id='rowpoy3'>
+					<td>
+													Highest Spread							<br>																	</td>
+					<td>
+						<a href='results.php?p=20243'>
+							Andy Hoang</a> 
+								(+6037)
+					</td>
+					<td><a href='poycategory.php?type=spread'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row1' id='rowpoy4'>
+					<td>
+													Most Division 1 wins																								</td>
+					<td>
+						<a href='results.php?p=17589'>
+							Joey Krafchick</a> 
+								(1)
+					</td>
+					<td><a href='poycategory.php?type=firsts_onemulti'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+											<tr class='row1' id='rowpoy5'>
+					<td>
+																			(multi-day)											</td>
+					<td>
+						<a href='results.php?p=451'>
+							Orry Swift</a> 
+								(1)
+					</td>
+					<td><a href='poycategory.php?type=firsts_onemulti'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+											<tr class='row1' id='rowpoy6'>
+					<td>
+																	</td>
+					<td>
+						<a href='results.php?p=13509'>
+							Cesar Del Solar</a> 
+								(1)
+					</td>
+					<td><a href='poycategory.php?type=firsts_onemulti'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+																	<tr class='row1'>
+					<td></td>
+					<td colspan='2'><a href='poycategory.php?type=firsts_onemulti'>3 more</a> tied at 1</td>
+				</tr>
+			
+								
+													<tr class='row0' id='rowpoy7'>
+					<td>
+													Most lower-division wins																								</td>
+					<td>
+						<a href='results.php?p=18737'>
+							Menachem Rosenberg</a> 
+								(1)
+					</td>
+					<td><a href='poycategory.php?type=firsts_anymulti'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+											<tr class='row0' id='rowpoy8'>
+					<td>
+																			(multi-day)											</td>
+					<td>
+						<a href='results.php?p=243'>
+							Michael Ecsedy</a> 
+								(1)
+					</td>
+					<td><a href='poycategory.php?type=firsts_anymulti'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+											<tr class='row0' id='rowpoy9'>
+					<td>
+																	</td>
+					<td>
+						<a href='results.php?p=25182'>
+							Joe Horowitz</a> 
+								(1)
+					</td>
+					<td><a href='poycategory.php?type=firsts_anymulti'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+																	<tr class='row0'>
+					<td></td>
+					<td colspan='2'><a href='poycategory.php?type=firsts_anymulti'>5 more</a> tied at 1</td>
+				</tr>
+			
+								
+													<tr class='row1' id='rowpoy10'>
+					<td>
+													Most Division 1 wins							<br>																	</td>
+					<td>
+						<a href='results.php?p=20243'>
+							Andy Hoang</a> 
+								(6)
+					</td>
+					<td><a href='poycategory.php?type=firsts_oneany'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row0' id='rowpoy11'>
+					<td>
+													Most lower-division wins																								</td>
+					<td>
+						<a href='results.php?p=20161'>
+							Harry Chan</a> 
+								(2)
+					</td>
+					<td><a href='poycategory.php?type=firsts_anyany'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+											<tr class='row0' id='rowpoy12'>
+					<td>
+																														</td>
+					<td>
+						<a href='results.php?p=20966'>
+							Brian Summers</a> 
+								(2)
+					</td>
+					<td><a href='poycategory.php?type=firsts_anyany'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row1' id='rowpoy13'>
+					<td>
+													Most games							<br>																	</td>
+					<td>
+						<a href='results.php?p=1966'>
+							Susan Bertoni</a> 
+								(113)
+					</td>
+					<td><a href='poycategory.php?type=games'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row0' id='rowpoy14'>
+					<td>
+													Most different states																								</td>
+					<td>
+						<a href='results.php?p=8716'>
+							John Bulten</a> 
+								(5)
+					</td>
+					<td><a href='poycategory.php?type=states'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+											<tr class='row0' id='rowpoy15'>
+					<td>
+																														</td>
+					<td>
+						<a href='results.php?p=658'>
+							Betsey Wood</a> 
+								(5)
+					</td>
+					<td><a href='poycategory.php?type=states'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+											<tr class='row0' id='rowpoy16'>
+					<td>
+																	</td>
+					<td>
+						<a href='results.php?p=11424'>
+							Deb Mulrooney</a> 
+								(5)
+					</td>
+					<td><a href='poycategory.php?type=states'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row1' id='rowpoy17'>
+					<td>
+													Longest winning streak							<br>																	</td>
+					<td>
+						<a href='results.php?p=17589'>
+							Joey Krafchick</a> 
+								(20)
+					</td>
+					<td><a href='poycategory.php?type=streak'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								
+													<tr class='row0' id='rowpoy18'>
+					<td>
+													High single-tourney spread							<br>																	</td>
+					<td>
+						<a href='results.php?p=27661'>
+							Nolan Miranda</a> 
+								(+2256)
+					</td>
+					<td><a href='poycategory.php?type=spread_single'><img src='i/toggle-plus.png'></a></td>
+				</tr>
+													
+								</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'rcblock' }); 
+				YAHOO.util.Event.on('rcexpander', 'click', toggle, { blockid: 'rcblock', 
+																					cookieid: 'togglerc'});
+				new YAHOO.widget.Tooltip('ttrcexpander', 
+						{ context:'rcexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (0)
+					new YAHOO.widget.Tooltip('ttrcoptionsctl', 
+							{ context:'rcoptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+			<div class='collapsiblesection' id='rtcontain'>
+				<div>
+					<div class='header'>
+													<div style='float: right;'>
+								<div id='rtoptionsctl' class='optionsdlg' 		onclick='showcountdialog(this, "recent tournaments", "recentcount", 10);'
+>
+								
+								</div>
+							</div>
+												<span id='rtexpander' class='expanderopen'>&nbsp;</span>
+						Recent Tournaments					</div>
+					
+					<div id='rtblock' style='display: block'>
+						<table class='xtdatatable'>
+																			<tr class='row1 ' id='rowrecent1'>
+						<td style='width: 40px;'>12/13</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11332'>Fort Myers, FL</a></td>
+					</tr>
+					<tr class='row0 csw-tourney' id='rowrecent2'>
+						<td style='width: 40px;'>12/10</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11331'>Montreal, QC (CSW)</a></td>
+					</tr>
+					<tr class='row1 ' id='rowrecent3'>
+						<td style='width: 40px;'>12/10</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11330'>Montreal, QC</a></td>
+					</tr>
+					<tr class='row0 ' id='rowrecent4'>
+						<td style='width: 40px;'>12/04</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11328'>Charlottesville, VA Late Bird</a></td>
+					</tr>
+					<tr class='row1 ' id='rowrecent5'>
+						<td style='width: 40px;'>12/03</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11329'>Lorena, TX</a></td>
+					</tr>
+					<tr class='row0 ' id='rowrecent6'>
+						<td style='width: 40px;'>12/03</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11327'>Princeton, NJ</a></td>
+					</tr>
+					<tr class='row1 ' id='rowrecent7'>
+						<td style='width: 40px;'>12/03</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11326'>Charlottesville, VA Main Event</a></td>
+					</tr>
+					<tr class='row0 ' id='rowrecent8'>
+						<td style='width: 40px;'>12/03</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11325'>Charlottesville, VA Early Bird #2</a></td>
+					</tr>
+					<tr class='row1 ' id='rowrecent9'>
+						<td style='width: 40px;'>12/02</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11324'>Charlottesville, VA Early Bird #1</a></td>
+					</tr>
+					<tr class='row0 csw-tourney' id='rowrecent10'>
+						<td style='width: 40px;'>11/26</td>
+						<td class='tourney-name'><a href='tourney.php?tourneyid=11322'>Caledon, ON (CSW) Late Bird</a></td>
+					</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'rtblock' }); 
+				YAHOO.util.Event.on('rtexpander', 'click', toggle, { blockid: 'rtblock', 
+																					cookieid: 'togglert'});
+				new YAHOO.widget.Tooltip('ttrtexpander', 
+						{ context:'rtexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (1)
+					new YAHOO.widget.Tooltip('ttrtoptionsctl', 
+							{ context:'rtoptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+<p>			<div class='collapsiblesection' id='tpcontain'>
+				<div>
+					<div class='header'>
+													<div style='float: right;'>
+								<div id='tpoptionsctl' class='optionsdlg' 		onclick='showcountdialog(this, "top players", "rankcount", 20);'
+>
+								
+								</div>
+							</div>
+												<span id='tpexpander' class='expanderopen'>&nbsp;</span>
+						Top Players in North America					</div>
+					
+					<div id='tpblock' style='display: block'>
+						<table class='xtdatatable'>
+									<tr>
+			<td class='tdr'>Rank</td>
+			<td class='tdr'>Rating</td>
+			<td>Name</td>
+		</tr>
+											<tr class='row1' id='rowtopplayers1'>
+					<td class='tdr' style='width: 25px;'>1</td>
+					<td class='tdr ' style='width: 25px;'>2111</td>
+					<td>
+						<a href='results.php?p=20383'>Mack Meller													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers2'>
+					<td class='tdr' style='width: 25px;'>2</td>
+					<td class='tdr ' style='width: 25px;'>2107</td>
+					<td>
+						<a href='results.php?p=17589'>Joey Krafchick													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers3'>
+					<td class='tdr' style='width: 25px;'>3</td>
+					<td class='tdr ' style='width: 25px;'>2078</td>
+					<td>
+						<a href='results.php?p=19535'>Will Anderson													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers4'>
+					<td class='tdr' style='width: 25px;'>4</td>
+					<td class='tdr ' style='width: 25px;'>2072</td>
+					<td>
+						<a href='results.php?p=451'>Orry Swift													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers5'>
+					<td class='tdr' style='width: 25px;'>5</td>
+					<td class='tdr ' style='width: 25px;'>2068</td>
+					<td>
+						<a href='results.php?p=18474'>Noah Walton													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers6'>
+					<td class='tdr' style='width: 25px;'>6</td>
+					<td class='tdr ' style='width: 25px;'>2014</td>
+					<td>
+						<a href='results.php?p=729'>Brian Cappelletto													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers7'>
+					<td class='tdr' style='width: 25px;'>7</td>
+					<td class='tdr ' style='width: 25px;'>2010</td>
+					<td>
+						<a href='results.php?p=1847'>Ian Weinstein													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers8'>
+					<td class='tdr' style='width: 25px;'>8</td>
+					<td class='tdr ' style='width: 25px;'>2008</td>
+					<td>
+						<a href='results.php?p=20032'>Jackson Smylie													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers9'>
+					<td class='tdr' style='width: 25px;'>8</td>
+					<td class='tdr ' style='width: 25px;'>2008</td>
+					<td>
+						<a href='results.php?p=1'>Kevin Fraley													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers10'>
+					<td class='tdr' style='width: 25px;'>10</td>
+					<td class='tdr ' style='width: 25px;'>2002</td>
+					<td>
+						<a href='results.php?p=13509'>Cesar Del Solar													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers11'>
+					<td class='tdr' style='width: 25px;'>11</td>
+					<td class='tdr ' style='width: 25px;'>1998</td>
+					<td>
+						<a href='results.php?p=583'>Kenji Matsumoto													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers12'>
+					<td class='tdr' style='width: 25px;'>12</td>
+					<td class='tdr ' style='width: 25px;'>1997</td>
+					<td>
+						<a href='results.php?p=23762'>Jared Cappel													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers13'>
+					<td class='tdr' style='width: 25px;'>13</td>
+					<td class='tdr ' style='width: 25px;'>1983</td>
+					<td>
+						<a href='results.php?p=578'>Joe Edley													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers14'>
+					<td class='tdr' style='width: 25px;'>14</td>
+					<td class='tdr ' style='width: 25px;'>1973</td>
+					<td>
+						<a href='results.php?p=498'>Matt Canik													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers15'>
+					<td class='tdr' style='width: 25px;'>15</td>
+					<td class='tdr ' style='width: 25px;'>1964</td>
+					<td>
+						<a href='results.php?p=55'>Scott Appel													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers16'>
+					<td class='tdr' style='width: 25px;'>16</td>
+					<td class='tdr ' style='width: 25px;'>1959</td>
+					<td>
+						<a href='results.php?p=20531'>Michael Fagen													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers17'>
+					<td class='tdr' style='width: 25px;'>17</td>
+					<td class='tdr ' style='width: 25px;'>1955</td>
+					<td>
+						<a href='results.php?p=11774'>Arie Sinke													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers18'>
+					<td class='tdr' style='width: 25px;'>18</td>
+					<td class='tdr ' style='width: 25px;'>1943</td>
+					<td>
+						<a href='results.php?p=342'>Doug Brockmeier													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers19'>
+					<td class='tdr' style='width: 25px;'>19</td>
+					<td class='tdr ' style='width: 25px;'>1931</td>
+					<td>
+						<a href='results.php?p=33'>Joey Mallick													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers20'>
+					<td class='tdr' style='width: 25px;'>20</td>
+					<td class='tdr ' style='width: 25px;'>1923</td>
+					<td>
+						<a href='results.php?p=21134'>Sid Murali													
+						</a>
+					</td>
+				</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'tpblock' }); 
+				YAHOO.util.Event.on('tpexpander', 'click', toggle, { blockid: 'tpblock', 
+																					cookieid: 'toggletp'});
+				new YAHOO.widget.Tooltip('tttpexpander', 
+						{ context:'tpexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (1)
+					new YAHOO.widget.Tooltip('tttpoptionsctl', 
+							{ context:'tpoptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+			<div class='collapsiblesection' id='tccontain'>
+				<div>
+					<div class='header'>
+													<div style='float: right;'>
+								<div id='tcoptionsctl' class='optionsdlg' 		onclick='showcountdialog(this, "top players", "rankcountcsw", 20);'
+>
+								
+								</div>
+							</div>
+												<span id='tcexpander' class='expanderopen'>&nbsp;</span>
+						Top CSW Players as rated by NASPA					</div>
+					
+					<div id='tcblock' style='display: block'>
+						<table class='xtdatatable'>
+									<tr>
+			<td class='tdr'>Rank</td>
+			<td class='tdr'>Rating</td>
+			<td>Name</td>
+		</tr>
+											<tr class='row1' id='rowtopplayers1'>
+					<td class='tdr' style='width: 25px;'>1</td>
+					<td class='tdr cswrating' style='width: 25px;'>2182</td>
+					<td>
+						<a href='results.php?p=3522'>Adam Logan													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers2'>
+					<td class='tdr' style='width: 25px;'>2</td>
+					<td class='tdr cswrating' style='width: 25px;'>2144</td>
+					<td>
+						<a href='results.php?p=19535'>Will Anderson													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers3'>
+					<td class='tdr' style='width: 25px;'>3</td>
+					<td class='tdr cswrating' style='width: 25px;'>2142</td>
+					<td>
+						<a href='results.php?p=13649'>Austin Shin													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers4'>
+					<td class='tdr' style='width: 25px;'>4</td>
+					<td class='tdr cswrating' style='width: 25px;'>2124</td>
+					<td>
+						<a href='results.php?p=728'>Dave Wiegand													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers5'>
+					<td class='tdr' style='width: 25px;'>5</td>
+					<td class='tdr cswrating' style='width: 25px;'>2120</td>
+					<td>
+						<a href='results.php?p=10'>Conrad Bassett-Bouchard													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers6'>
+					<td class='tdr' style='width: 25px;'>6</td>
+					<td class='tdr cswrating' style='width: 25px;'>2113</td>
+					<td>
+						<a href='results.php?p=13656'>David Eldar													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers7'>
+					<td class='tdr' style='width: 25px;'>7</td>
+					<td class='tdr cswrating' style='width: 25px;'>2088</td>
+					<td>
+						<a href='results.php?p=20978'>Alec Sjoholm													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers8'>
+					<td class='tdr' style='width: 25px;'>8</td>
+					<td class='tdr cswrating' style='width: 25px;'>2087</td>
+					<td>
+						<a href='results.php?p=20411'>Joshua Castellano													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers9'>
+					<td class='tdr' style='width: 25px;'>9</td>
+					<td class='tdr cswrating' style='width: 25px;'>2065</td>
+					<td>
+						<a href='results.php?p=18544'>Jason Keller													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers10'>
+					<td class='tdr' style='width: 25px;'>10</td>
+					<td class='tdr cswrating' style='width: 25px;'>2042</td>
+					<td>
+						<a href='results.php?p=10153'>Chris Lipe													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers11'>
+					<td class='tdr' style='width: 25px;'>11</td>
+					<td class='tdr cswrating' style='width: 25px;'>2037</td>
+					<td>
+						<a href='results.php?p=17175'>Matthew Tunnicliffe													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers12'>
+					<td class='tdr' style='width: 25px;'>12</td>
+					<td class='tdr cswrating' style='width: 25px;'>2031</td>
+					<td>
+						<a href='results.php?p=60'>David Koenig													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers13'>
+					<td class='tdr' style='width: 25px;'>13</td>
+					<td class='tdr cswrating' style='width: 25px;'>2018</td>
+					<td>
+						<a href='results.php?p=1'>Kevin Fraley													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers14'>
+					<td class='tdr' style='width: 25px;'>14</td>
+					<td class='tdr cswrating' style='width: 25px;'>2015</td>
+					<td>
+						<a href='results.php?p=18086'>Matthew O'Connor													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers15'>
+					<td class='tdr' style='width: 25px;'>15</td>
+					<td class='tdr cswrating' style='width: 25px;'>1997</td>
+					<td>
+						<a href='results.php?p=27660'>Napat Vatjaranurathorn													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers16'>
+					<td class='tdr' style='width: 25px;'>16</td>
+					<td class='tdr cswrating' style='width: 25px;'>1968</td>
+					<td>
+						<a href='results.php?p=18578'>David Whitley													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers17'>
+					<td class='tdr' style='width: 25px;'>17</td>
+					<td class='tdr cswrating' style='width: 25px;'>1959</td>
+					<td>
+						<a href='results.php?p=17950'>Ben Schoenbrun													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers18'>
+					<td class='tdr' style='width: 25px;'>18</td>
+					<td class='tdr cswrating' style='width: 25px;'>1958</td>
+					<td>
+						<a href='results.php?p=20737'>Waseem Khatri													
+						</a>
+					</td>
+				</tr>
+				<tr class='row1' id='rowtopplayers19'>
+					<td class='tdr' style='width: 25px;'>19</td>
+					<td class='tdr cswrating' style='width: 25px;'>1929</td>
+					<td>
+						<a href='results.php?p=6707'>Rasheed Balogun													
+						</a>
+					</td>
+				</tr>
+				<tr class='row0' id='rowtopplayers20'>
+					<td class='tdr' style='width: 25px;'>20</td>
+					<td class='tdr cswrating' style='width: 25px;'>1923</td>
+					<td>
+						<a href='results.php?p=11774'>Arie Sinke													
+						</a>
+					</td>
+				</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'tcblock' }); 
+				YAHOO.util.Event.on('tcexpander', 'click', toggle, { blockid: 'tcblock', 
+																					cookieid: 'toggletc'});
+				new YAHOO.widget.Tooltip('tttcexpander', 
+						{ context:'tcexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (1)
+					new YAHOO.widget.Tooltip('tttcoptionsctl', 
+							{ context:'tcoptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+			<div class='collapsiblesection' id='micontain'>
+				<div>
+					<div class='header'>
+													<div style='float: right;'>
+								<div id='mioptionsctl' class='optionsdlg' 		onclick='showcountdialog(this, "milestones", "milestonecount", 20);'
+>
+								
+								</div>
+							</div>
+												<span id='miexpander' class='expanderopen'>&nbsp;</span>
+						Milestones in the Past Three Months					</div>
+					
+					<div id='miblock' style='display: block'>
+						<table class='xtdatatable'>
+																		
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #080; color: #fff;'>
+				    	
+				    	Reached				    	2100				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone0'><td><a href='results.php?playerid=17589' class='nobr'>Joey Krafchick</a></td><td colspan='2'><a href='tourney.php?t=11311&amp;div=1' class='nobr'>Austin, TX</a></td><td class='tdr'><a href='tourney.php?t=11311&amp;div=1'>10/29</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #800080; color: #fff;'>
+				    	
+				    	Reached				    	2000				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone1'><td><a href='results.php?playerid=23762' class='nobr'>Jared Cappel</a></td><td colspan='2'><a href='tourney.php?t=11300&amp;div=1' class='nobr'>Lake George, NY</a></td><td class='tdr'><a href='tourney.php?t=11300&amp;div=1'>10/14</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #c00; color: #fff;'>
+				    	
+				    	Reached				    	1900				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone2'><td><a href='results.php?playerid=18705' class='nobr'>Doug Lundquist</a></td><td colspan='2'><a href='tourney.php?t=11323&amp;div=1' class='nobr'>Elmhurst, IL</a></td><td class='tdr'><a href='tourney.php?t=11323&amp;div=1'>11/26</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #700; color: #fff;'>
+				    	
+				    	Reached				    	1700				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone3'><td><a href='results.php?playerid=17529' class='nobr'>Billy Nakamura</a></td><td colspan='2'><a href='tourney.php?t=11313&amp;div=1' class='nobr'>San Francisco, CA</a></td><td class='tdr'><a href='tourney.php?t=11313&amp;div=1'>11/11</a></td></tr><tr class='row1' id='rowmilestone4'><td><a href='results.php?playerid=27727' class='nobr'>James Fields</a></td><td colspan='2'><a href='tourney.php?t=11311&amp;div=1' class='nobr'>Austin, TX</a></td><td class='tdr'><a href='tourney.php?t=11311&amp;div=1'>10/29</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #500; color: #fff;'>
+				    	
+				    	Reached				    	1600				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone5'><td><a href='results.php?playerid=26567' class='nobr'>David Spargo</a></td><td colspan='2'><a href='tourney.php?t=11330&amp;div=1' class='nobr'>Montreal, QC</a></td><td class='tdr'><a href='tourney.php?t=11330&amp;div=1'>12/10</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #300; color: #fff;'>
+				    	
+				    	Reached				    	1500				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone6'><td><a href='results.php?playerid=26561' class='nobr'>Brian McCarthy</a></td><td colspan='2'><a href='tourney.php?t=11302&amp;div=2' class='nobr'>Lake George, NY</a></td><td class='tdr'><a href='tourney.php?t=11302&amp;div=2'>10/14</a></td></tr><tr class='row1' id='rowmilestone7'><td><a href='results.php?playerid=26567' class='nobr'>David Spargo</a></td><td colspan='2'><a href='tourney.php?t=11294&amp;div=1' class='nobr'>Brattleboro, VT</a></td><td class='tdr'><a href='tourney.php?t=11294&amp;div=1'>09/25</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #100; color: #fff;'>
+				    	
+				    	Reached				    	1400				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone8'><td><a href='results.php?playerid=26724' class='nobr'>Chauncey Patton</a></td><td colspan='2'><a href='tourney.php?t=11332&amp;div=1' class='nobr'>Fort Myers, FL</a></td><td class='tdr'><a href='tourney.php?t=11332&amp;div=1'>12/13</a></td></tr><tr class='row1' id='rowmilestone9'><td><a href='results.php?playerid=25879' class='nobr'>Brendan McClanahan</a></td><td colspan='2'><a href='tourney.php?t=11327&amp;div=2' class='nobr'>Princeton, NJ</a></td><td class='tdr'><a href='tourney.php?t=11327&amp;div=2'>12/03</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #000; color: #fff;'>
+				    	
+				    	Reached				    	1300				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone10'><td><a href='results.php?playerid=23400' class='nobr'>Chan Fonseka</a></td><td colspan='2'><a href='tourney.php?t=11313&amp;div=1' class='nobr'>San Francisco, CA</a></td><td class='tdr'><a href='tourney.php?t=11313&amp;div=1'>11/11</a></td></tr><tr class='row1' id='rowmilestone11'><td><a href='results.php?playerid=4959' class='nobr'>Greg Harper</a></td><td colspan='2'><a href='tourney.php?t=11313&amp;div=1' class='nobr'>San Francisco, CA</a></td><td class='tdr'><a href='tourney.php?t=11313&amp;div=1'>11/11</a></td></tr><tr class='row0' id='rowmilestone12'><td><a href='results.php?playerid=27710' class='nobr'>Conor Hoekstra</a></td><td colspan='2'><a href='tourney.php?t=11288&amp;div=4' class='nobr'>Toronto, ON</a></td><td class='tdr'><a href='tourney.php?t=11288&amp;div=4'>09/24</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #000; color: #fff;'>
+				    	
+				    	Reached				    	1200				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone13'><td><a href='results.php?playerid=27733' class='nobr'>Sridhar Paidikondala</a></td><td colspan='2'><a href='tourney.php?t=11314&amp;div=1' class='nobr'>San Francisco, CA</a></td><td class='tdr'><a href='tourney.php?t=11314&amp;div=1'>11/11</a></td></tr><tr class='row1' id='rowmilestone14'><td><a href='results.php?playerid=26788' class='nobr'>Jay Chan</a></td><td colspan='2'><a href='tourney.php?t=11313&amp;div=1' class='nobr'>San Francisco, CA</a></td><td class='tdr'><a href='tourney.php?t=11313&amp;div=1'>11/11</a></td></tr><tr class='row0' id='rowmilestone15'><td><a href='results.php?playerid=27726' class='nobr'>Alexander Dossen</a></td><td colspan='2'><a href='tourney.php?t=11308&amp;div=3' class='nobr'>Catonsville, MD</a></td><td class='tdr'><a href='tourney.php?t=11308&amp;div=3'>10/29</a></td></tr><tr class='row1' id='rowmilestone16'><td><a href='results.php?playerid=20117' class='nobr'>Mary Logullo</a></td><td colspan='2'><a href='tourney.php?t=11307&amp;div=2' class='nobr'>Chehalis, WA</a></td><td class='tdr'><a href='tourney.php?t=11307&amp;div=2'>10/23</a></td></tr><tr class='row0' id='rowmilestone17'><td><a href='results.php?playerid=17663' class='nobr'>Joanne Manson</a></td><td colspan='2'><a href='tourney.php?t=11307&amp;div=2' class='nobr'>Chehalis, WA</a></td><td class='tdr'><a href='tourney.php?t=11307&amp;div=2'>10/23</a></td></tr>				
+				    <tr><td colspan='4'>&nbsp;</td></tr>
+				    <tr><td colspan='4' style='background: #000; color: #fff;'>
+				    	
+				    	Reached				    	1100				    	for first time				    </td></tr>
+<tr class='row0' id='rowmilestone18'><td><a href='results.php?playerid=27724' class='nobr'>Noah Goldstein</a></td><td colspan='2'><a href='tourney.php?t=11327&amp;div=5' class='nobr'>Princeton, NJ</a></td><td class='tdr'><a href='tourney.php?t=11327&amp;div=5'>12/03</a></td></tr><tr class='row1' id='rowmilestone19'><td><a href='results.php?playerid=27665' class='nobr'>Lisa Perry</a></td><td colspan='2'><a href='tourney.php?t=11324&amp;div=1' class='nobr'>Charlottesville, VA</a></td><td class='tdr'><a href='tourney.php?t=11324&amp;div=1'>12/02</a></td></tr><tr class='row0' id='rowmilestone20'><td><a href='results.php?playerid=21832' class='nobr'>Gary Emanuel</a></td><td colspan='2'><a href='tourney.php?t=11308&amp;div=2' class='nobr'>Catonsville, MD</a></td><td class='tdr'><a href='tourney.php?t=11308&amp;div=2'>10/29</a></td></tr>						</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'miblock' }); 
+				YAHOO.util.Event.on('miexpander', 'click', toggle, { blockid: 'miblock', 
+																					cookieid: 'togglemi'});
+				new YAHOO.widget.Tooltip('ttmiexpander', 
+						{ context:'miexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (1)
+					new YAHOO.widget.Tooltip('ttmioptionsctl', 
+							{ context:'mioptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+<p>			<div class='collapsiblesection' id='rgcontain'>
+				<div>
+					<div class='header'>
+													<div style='float: right;'>
+								<div id='rgoptionsctl' class='optionsdlg' 		onclick='showcountdialog(this, "gainers", "gaincount", 20);'
+>
+								
+								</div>
+							</div>
+												<span id='rgexpander' class='expanderopen'>&nbsp;</span>
+						Top Ratings Gains in Last 12 Months <a href='topgainsexplain.php'><img src='i/question2.png' height='13' width='13' border='0'></a>					</div>
+					
+					<div id='rgblock' style='display: block'>
+						<table class='xtdatatable'>
+									 <tr>
+			 <td>Name</td>
+			 <td class='tdr'>Rating</td>
+			 <td class='tdr'>Rating Change</td>
+			 <td class='tdr'>Rank</td>
+		 </tr>
+											<tr class='row1' id='rowgains1'>
+					<td><a href='results.php?playerid=18812'>Hannah Lieberman</a></td>
+					<td class='tdr'>1666</td>
+					<td class='tdr'><b>+393</b></td>
+					<td class='tdr'>1</td>
+				</tr>				<tr class='row0' id='rowgains2'>
+					<td><a href='results.php?playerid=26567'>David Spargo</a></td>
+					<td class='tdr'>1607</td>
+					<td class='tdr'><b>+302</b></td>
+					<td class='tdr'>2</td>
+				</tr>				<tr class='row1' id='rowgains3'>
+					<td><a href='results.php?playerid=17529'>Billy Nakamura</a></td>
+					<td class='tdr'>1731</td>
+					<td class='tdr'><b>+296</b></td>
+					<td class='tdr'>3</td>
+				</tr>				<tr class='row0' id='rowgains4'>
+					<td><a href='results.php?playerid=27101'>Christine Cardinal</a></td>
+					<td class='tdr'>913</td>
+					<td class='tdr'><b>+282</b></td>
+					<td class='tdr'>4</td>
+				</tr>				<tr class='row1' id='rowgains5'>
+					<td><a href='results.php?playerid=27183'>Kyle Fellahi</a></td>
+					<td class='tdr'>1209</td>
+					<td class='tdr'><b>+281</b></td>
+					<td class='tdr'>5</td>
+				</tr>				<tr class='row0' id='rowgains6'>
+					<td><a href='results.php?playerid=20689'>Chloe Fatsis</a></td>
+					<td class='tdr'>1755</td>
+					<td class='tdr'><b>+256</b></td>
+					<td class='tdr'>6</td>
+				</tr>				<tr class='row1' id='rowgains7'>
+					<td><a href='results.php?playerid=27555'>Aaron Dyreson</a></td>
+					<td class='tdr'>1321</td>
+					<td class='tdr'><b>+254</b></td>
+					<td class='tdr'>7</td>
+				</tr>				<tr class='row0' id='rowgains8'>
+					<td><a href='results.php?playerid=27248'>Arthur Berger</a></td>
+					<td class='tdr'>842</td>
+					<td class='tdr'><b>+247</b></td>
+					<td class='tdr'>8</td>
+				</tr>				<tr class='row1' id='rowgains9'>
+					<td><a href='results.php?playerid=26241'>Jeffrey Pogue</a></td>
+					<td class='tdr'>1246</td>
+					<td class='tdr'><b>+246</b></td>
+					<td class='tdr'>9</td>
+				</tr>				<tr class='row0' id='rowgains10'>
+					<td><a href='results.php?playerid=3577'>Beth Mix</a></td>
+					<td class='tdr'>1439</td>
+					<td class='tdr'><b>+233</b></td>
+					<td class='tdr'>10</td>
+				</tr>				<tr class='row1' id='rowgains11'>
+					<td><a href='results.php?playerid=26724'>Chauncey Patton</a></td>
+					<td class='tdr'>1453</td>
+					<td class='tdr'><b>+232</b></td>
+					<td class='tdr'>11</td>
+				</tr>				<tr class='row0' id='rowgains12'>
+					<td><a href='results.php?playerid=22853'>Rishabh Murali</a></td>
+					<td class='tdr'>1325</td>
+					<td class='tdr'><b>+212</b></td>
+					<td class='tdr'>12</td>
+				</tr>				<tr class='row1' id='rowgains13'>
+					<td><a href='results.php?playerid=26561'>Brian McCarthy</a></td>
+					<td class='tdr'>1519</td>
+					<td class='tdr'><b>+195</b></td>
+					<td class='tdr'>13</td>
+				</tr>				<tr class='row0' id='rowgains14'>
+					<td><a href='results.php?playerid=17811'>Judy Cole</a></td>
+					<td class='tdr'>1522</td>
+					<td class='tdr'><b>+188</b></td>
+					<td class='tdr'>14</td>
+				</tr>				<tr class='row1' id='rowgains15'>
+					<td><a href='results.php?playerid=27665'>Lisa Perry</a></td>
+					<td class='tdr'>1166</td>
+					<td class='tdr'><b>+187</b></td>
+					<td class='tdr'>15</td>
+				</tr>				<tr class='row0' id='rowgains16'>
+					<td><a href='results.php?playerid=27509'>James Donnelly</a></td>
+					<td class='tdr'>1670</td>
+					<td class='tdr'><b>+169</b></td>
+					<td class='tdr'>16</td>
+				</tr>				<tr class='row1' id='rowgains17'>
+					<td><a href='results.php?playerid=27242'>Jeffrey Moore</a></td>
+					<td class='tdr'>1280</td>
+					<td class='tdr'><b>+166</b></td>
+					<td class='tdr'>17</td>
+				</tr>				<tr class='row0' id='rowgains18'>
+					<td><a href='results.php?playerid=20243'>Andy Hoang</a></td>
+					<td class='tdr'>1879</td>
+					<td class='tdr'><b>+163</b></td>
+					<td class='tdr'>18</td>
+				</tr>				<tr class='row1' id='rowgains19'>
+					<td><a href='results.php?playerid=441'>Caesar Jaramillo</a></td>
+					<td class='tdr'>1700</td>
+					<td class='tdr'><b>+160</b></td>
+					<td class='tdr'>19</td>
+				</tr>				<tr class='row0' id='rowgains20'>
+					<td><a href='results.php?playerid=19013'>Harry Durbin</a></td>
+					<td class='tdr'>1278</td>
+					<td class='tdr'><b>+159</b></td>
+					<td class='tdr'>20</td>
+				</tr>						</table>
+					</div>
+				</div>
+			</div>
+			
+			<script type='text/javascript'>
+				YAHOO.util.Event.on(window, "load", startglowhandlers, { id: 'rgblock' }); 
+				YAHOO.util.Event.on('rgexpander', 'click', toggle, { blockid: 'rgblock', 
+																					cookieid: 'togglerg'});
+				new YAHOO.widget.Tooltip('ttrgexpander', 
+						{ context:'rgexpander',
+				 			text: 'Expand or collapse this section' } 
+						); 
+				if (1)
+					new YAHOO.widget.Tooltip('ttrgoptionsctl', 
+							{ context:'rgoptionsctl', 
+								text: 'Change the options for this section' }
+						); 
+			</script>
+			
+<p>					</td>
+				</tr>
+			</table>
+		<!--dialog that specifies how many of something to show-->
+		<div id='countdialog' style='display: none;'>
+		<div class='hd'>Setting</div>
+		<div class='bd'>
+			<form name='countform' method='GET' action=''><p>
+			<label for='howmany'>Number of <span id='ofwhatname'></span> to show: </label>
+				<input type='text' size='5' name='' id='howmany'>
+		</form>
+		</div>
+		</div>	
+
+		<!--dialog that specifies which tourneys to show-->
+		<div id='upcomingdialog' style='display: none;'>
+		<div class='hd'>Show which upcoming tournaments?</div>
+		<div class='bd'>
+			<form name='upcomingform' method='GET' action=''><p>
+				<input type='hidden' name='tsel'>
+				<div id="upcomingbuttons" class="yui-buttongroup"> 
+					<input id="upcomingb" type="radio" name="sel" value="All" CHECKED> 
+					<input id="upcomingm" type="radio" name="sel" value="Just Multi-Days" > 
+					<input id="upcoming1" type="radio" name="sel" value="Just One-Days" > 
+				</div> 					
+		</form>
+		</div>
+		</div>	
+						<!--dialog that allows searching for a player. -->
+		<div id='findplayerdialog' style='display: none;'>
+			<div class='hd'>Find A Player</div>
+			<div class='bd'>
+				<form name='findplayerform' method='GET' action='results.php'><p>
+				<input type='hidden' id='findplayerid' name='p' value='0'>
+				<label for='autocompleteplayer'>Player name:</label>
+					<div id='autocompleteplayer' style='list-style: none;'> 
+					    <input id='findplayername' type='text'> 
+					    <div id='findplayernameContainer'></div> 
+					</div> 
+					<p>&nbsp;
+				<div id='newplayerloading'>Loading results for <span id='foundplayer'></span>...</div>
+				</form>
+			</div>
+		</div>	
+
+
+		
+			</div>
+				<div id='ft'>
+				
+					Copyright &copy; 2005-2022 Seth Lipkin and Keith Smith<br>Some data copyright &copy; 1999-2009 National Scrabble Association and &copy; 2009-2022 NASPA<br>SCRABBLE&reg; is a registered trademark of Hasbro, Inc. in the USA and Canada.<br>Current time: 2022-12-16 01:23:44 Server IP: 162.144.19.21			
+				</div>
+		</div>
+
+    </body>
+		</html>
+		

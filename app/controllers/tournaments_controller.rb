@@ -98,36 +98,13 @@ class TournamentsController < ApplicationController
   end
 
   def tournament_report
-    File.new "report.txt", "w"
     @tournament = Tournament.find(params[:id])
-    all_players = Player.where(tournament: @tournament)
-    divisions = all_players.map { |player| player.division }.uniq.sort
-
-    @report = ""
-
-    divisions.each do |div|
-      div == 1 ? @report += "#division #{div} \n#ratingcheck off \n" : @report += "#division #{div} \n"
-      division_players = all_players.where(division: div)
-      division_players.each do |player|
-        unless player.name == "Bye"
-          player_matchups = Matchup.where(player1: player).or(Matchup.where(player2: player)).to_a
-          player_opponents = player_matchups.map { |matchup| matchup.player1 == player ? matchup.player2.seed : matchup.player1.seed }
-
-          player_scores = player_matchups.map { |matchup| matchup.player1 == player ? matchup.player1_score : matchup.player2_score }
-
-          # The following line is dedicated to Winter Zkqxj
-          player_name = player.name.split(" ")[1].nil? ? "#{player.name.split(" ")[0]}" : "#{player.name.split(" ")[1..].join(" ")}, #{player.name.split(" ")[0]}"
-
-          @report += "#{player_name} #{player.rating} #{player_opponents.join(" ")}; #{player_scores.join(" ")} \n"
-        end
-      end
+    @report = TournamentReport.new(@tournament).report
+    File.open("report.txt", "w") do |f|
+      f.write @report
     end
 
-    File.open("report.txt", "w") {
-      |f| f.write "#{@report}"
-    }
-
-    send_data "#{@report}", :filename => 'report.txt'
+    send_data @report, :filename => 'report.txt'
     authorize @tournament
   end
 
@@ -140,7 +117,7 @@ class TournamentsController < ApplicationController
   def get_players(tournament)
     players = CrosstablesFetcher.get_players(tournament.event.xtables_id)
     for p in players do
-      player = Player.create!(**p)
+      player = Player.create!(tournament: tournament, **p)
       user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
       player.photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
       player.save

@@ -1,0 +1,633 @@
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01//EN'  'https://www.w3.org/TR/html4/strict.dtd'> 
+		<html>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta name="resource-type" content="document"> 
+			<meta name="description" content="Scrabble statistics, results, and tournament listings"> 
+			<meta name="keywords" content="scrabble, scrabble tiles, scrabble statistics, scrabble results, stats, tournaments, upcoming, players, competitive, games "> 
+            <meta property="og:title" content="cross-tables.com" />
+    		<meta property="og:type" content='website' />
+    		<meta property="og:url" content="https://www.cross-tables.com" />
+			<title>Mark Miller - Recent Tourneys - cross-tables.com</title>
+<script type='text/javascript' src=' yuibuild/yahoo-dom-event/yahoo-dom-event.js'></script>
+<link type='text/css' rel='stylesheet' href='yuibuild/reset-fonts-grids/reset-fonts-grids.css' >
+<link type='text/css' rel='stylesheet' href='yuibuild/grids/grids.css' >
+<link type='text/css' rel='stylesheet' href='yuibuild/assets/skins/sam/skin.css' >
+<link type='text/css' rel='stylesheet' href='yuibuild/assets/skins/sam/menu.css' >
+			
+				<link rel='stylesheet' type='text/css' href='xt.css'> 
+																				<script type='text/javascript' src=' yuibuild/container/container_core-min.js'></script>
+<script type='text/javascript' src=' yuibuild/menu/menu-min.js'></script>
+<script type='text/javascript' src=' yuibuild/element/element-beta-min.js'></script>
+<script type='text/javascript' src=' yuibuild/button/button-min.js'></script>
+<script type='text/javascript' src=' yuibuild/utilities/utilities.js'></script>
+<script type='text/javascript' src=' yuibuild/connection/connection-min.js'></script>
+<script type='text/javascript' src=' yuibuild/container/container-min.js'></script>
+<script type='text/javascript' src=' yuibuild/autocomplete/autocomplete-min.js'></script>
+				<script type='text/javascript' src='xt.js'></script>
+				<script type='text/javascript' src='acplayer.js'></script>
+				<script type='text/javascript' src='nifty.js'></script>
+				<script>
+				  // This is called with the results from from FB.getLoginStatus().
+				  function statusChangeCallback(response) {
+				    console.log('statusChangeCallback');
+				    console.log(response);
+				    // The response object is returned with a status field that lets the
+				    // app know the current login status of the person.
+				    // Full docs on the response object can be found in the documentation
+				    // for FB.getLoginStatus().
+				    if (response.status === 'connected') {
+				      // Logged into your app and Facebook.
+				      testAPI();
+				    } else {
+				      // The person is not logged into your app or we are unable to tell.
+				      // document.getElementById('status').innerHTML = 'Please log ' +
+				      //   'into this app.';
+				    }
+				  }
+
+				  // This function is called when someone finishes with the Login
+				  // Button.  See the onlogin handler attached to it in the sample
+				  // code below.
+				  function checkLoginState() {
+				    FB.getLoginStatus(function(response) {
+				      statusChangeCallback(response);
+				    });
+				  }
+
+				  window.fbAsyncInit = function() {
+				    FB.init({
+				      appId      : '203920133011073',
+				      cookie     : true,  // enable cookies to allow the server to access 
+				                          // the session
+				      xfbml      : true,  // parse social plugins on this page
+				      version    : 'v2.8' // use graph api version 2.8
+				    });
+
+				    // Now that we've initialized the JavaScript SDK, we call 
+				    // FB.getLoginStatus().  This function gets the state of the
+				    // person visiting this page and can return one of three states to
+				    // the callback you provide.  They can be:
+				    //
+				    // 1. Logged into your app ('connected')
+				    // 2. Logged into Facebook, but not your app ('not_authorized')
+				    // 3. Not logged into Facebook and can't tell if they are logged into
+				    //    your app or not.
+				    //
+				    // These three cases are handled in the callback function.
+
+				    FB.getLoginStatus(function(response) {
+				      statusChangeCallback(response);
+				    });
+
+				  };
+
+				  // Load the SDK asynchronously
+				  (function(d, s, id) {
+				    var js, fjs = d.getElementsByTagName(s)[0];
+				    if (d.getElementById(id)) return;
+				    js = d.createElement(s); js.id = id;
+				    js.src = "https://connect.facebook.net/en_US/sdk.js";
+				    fjs.parentNode.insertBefore(js, fjs);
+				  }(document, 'script', 'facebook-jssdk'));
+
+				  // Here we run a very simple test of the Graph API after login is
+				  // successful.  See statusChangeCallback() for when this call is made.
+				  function testAPI() {
+				    console.log('Welcome!  Fetching your information.... ');
+				    FB.api('/me', function(response) {
+				      console.log('Successful login for: ' + response.name);
+				      //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+				    });
+				  }
+				</script>
+
+	
+	       <script type='text/javascript'>
+
+	            // Initialize and render the menu bar when it is available in the DOM
+	            YAHOO.util.Event.onContentReady('xtmenus', function () {
+
+	                // Instantiate and render the menu bar
+	                var oMenuBar = new YAHOO.widget.MenuBar('xtmenus', { autosubmenudisplay: true, showdelay: 0, hidedelay: 750, lazyload: true });
+
+	                /*
+	                     Call the "render" method with no arguments since the markup for 
+	                     this menu already exists in the DOM.
+	                */
+
+	                oMenuBar.render();
+
+	            });
+				
+				function loadcomplete()
+				{
+					initfindplayerdialog();
+					//focusfirst($selectfirst);
+				}
+
+			</script>
+				
+				<script type='text/javascript' src=' yuibuild/connection/connection-min.js'></script>
+
+	<script type="text/javascript">
+
+			YAHOO.util.Event.on(window, "load", startglowhandlers, { id: "xtdatatable", infotype: "tournament summary", urlbase: "tourneyinfo" }); 
+
+			function noresults()
+			{
+				alert('No game-by-game results are available');
+			}
+			
+		</script>				       <script type='text/javascript'>
+			function openfinddialog()
+			{
+				YAHOO.findplayerdialog.show();
+			}
+			
+			function initfindplayerdialog() 
+			{
+				// Define various event handlers for Dialog
+				var handlefindplayerCancel = function() {
+					this.cancel();
+
+				};
+				
+				// Make the dialog visible
+				YAHOO.util.Dom.setStyle('findplayerdialog', 'display', 'block');
+				
+				// Instantiate the Dialog
+				YAHOO.findplayerdialog = new YAHOO.widget.Dialog("findplayerdialog", 
+																			{ width : "350px",
+																			  visible : false, 
+																			  context: ['xtmenus', 'tl', 'bl'],
+																			  constraintoviewport : true,
+																			  buttons : [ { text:"Cancel", handler:handlefindplayerCancel } ],
+																			  effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25},
+																			  postmethod: 'form'
+																			 } );
+				
+				var kl = new YAHOO.util.KeyListener(document, { keys: [27] },                               
+		                                              { fn:YAHOO.findplayerdialog.hide, 
+		                                                scope:YAHOO.findplayerdialog,
+		                                                correctScope:true } ); 
+				YAHOO.findplayerdialog.cfg.queueProperty("keylisteners", [ kl ]); 		
+				
+				YAHOO.findplayerdialog.validate = function() {
+					var data = this.getData();
+					
+					if (data.p==0) {
+						document.location = "players.php?query="+document.getElementById('findplayername').value
+						//alert("Please type a player name to search for "+document.getElementById('findplayername').value);
+						return false;
+					} else {
+						return true;
+					}
+				};
+
+				// Hook up the auto-completion behavior
+				var selectionevent = new YAHOO.util.CustomEvent("playerautoselected"); 
+				addplayerautocomplete("findplayername", "findplayernameContainer", "findplayerid", selectionevent, false);
+				
+				selectionevent.subscribe(gotplayer);
+				
+				// Render the Dialog
+				YAHOO.findplayerdialog.render();
+			}
+			
+			function gotplayer()
+			{
+//				document.title = '**'+(document.getElementById('findplayerid').value)+'**';
+//				return;
+				if (document.getElementById('findplayerid').value != 0)
+				{
+					document.getElementById('foundplayer').innerHTML = document.getElementById('findplayername').value;
+					YAHOO.util.Dom.setStyle('newplayerloading', 'display', 'block');
+					document.findplayerform.submit();
+				}
+			}
+		</script>
+
+				
+			<link rel="search" type="application/opensearchdescription+xml" href="searchbar.xml" title="cross-tables">
+		</head>
+		<body class='yui-skin-sam' 
+			id='yahoo-com' 
+			onload='loadcomplete();'>
+		
+		<!-- the id on the containing div determines the page width. -->
+		<!-- #doc = 750px; #doc2 = 950px; #doc3 = 100%; #doc4 = 974px -->
+		<div id='custom-doc850'>					
+			<div id='hd'>
+
+					<div class='siteheader' id='siteheader'>
+							<span>
+					<a href='/'>
+											SCRABBLE&reg; tournaments, statistics, and community
+															</a>
+				</span>
+				<div class='logo'>
+					<a href='/'>
+													<img src="/i/logo-tile.png" height='40' align='top'>
+					    					</a>
+					<a href='/'>
+																		cross-tables.com
+																</a>
+				</div>
+					</div>
+	   <div id='xtmenus' class='yuimenubar yuimenubarnav'>
+			<div class='bd'>
+				<ul class='first-of-type'>
+					<li class='yuimenubaritem first-of-type'><a class='yuimenubaritemlabel' href='/'>
+													Home
+												</a>
+					</li>
+				
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							Find						</a>
+						<div id='find' class='yuimenu'>
+							<div class='bd'>
+								<ul class='first-of-type'>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='javascript:openfinddialog();'>Find a Player...</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='tourneys.php'>Find a Past Tournament...</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='bystate.php'>Find Top Players by State</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='bycountry.php'>Find Top Players by Country</a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							History						</a>
+						<div id='history' class='yuimenu'>
+							<div class='bd'>
+								<ul class='first-of-type'>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='annolistself.php'>Recent Annotated Games</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='annoupload.php'>Upload an Annotated Game</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='leaders.php'>All-time Leaders</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='club700.php'>The 700 Club</a></li>
+								</ul>
+							</div>
+						</div>      
+					
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							Play						</a>
+						<div id='maps' class='yuimenu'>
+							<div class='bd'>
+								<ul>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='map.php'>Map of Upcoming Tournaments</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='mapclubs.php'>Map of SCRABBLE Clubs</a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							Learn						</a>
+						<div id='words' class='yuimenu'>
+							<div class='bd'>
+								<ul>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='study.php'>Study Tools</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='leaves.php'>Leave Evaluator</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='http://www.breakingthegame.net/handbook' target='_blank'>Scrabble Player's Handbook</a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+
+					<li class='yuimenubaritem'>
+						<a class='yuimenubaritemlabel' href='javascript:void(0);'>
+							About						</a>
+						<div id='about' class='yuimenu'>
+							<div class='bd'>
+								<ul>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='credits.php'>About cross-tables.com</a></li>
+									<li class='yuimenuitem'><a class='yuimenuitemlabel' href='donate.php'><b>Donate to cross-tables.com</b></a></li>
+								</ul>
+							</div>
+						</div>      
+					</li>
+					<li class='yuimenubaritem' style="width: 22%">
+													<a class='yuimenubaritemlabel' href="https://www.facebook.com/v2.8/dialog/oauth?client_id=203920133011073&state=17cb23859cf1538ea179e881e3867d23&response_type=code&sdk=php-sdk-5.5.0&redirect_uri=https%3A%2F%2Fwww.cross-tables.com%2Ffb-callback.php&scope=email">
+								<span style='color: #3b5998'>Sign in with Facebook</span>
+							</a>
+
+ 											</li>
+
+ 				</ul>            
+			</div>
+		</div>
+
+
+	<div class='playerheader'>
+		    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	    <script type='text/javascript'>
+	      google.charts.load('current', {'packages':['annotationchart']});
+	      google.charts.setOnLoadCallback(drawTopChart);
+	      function drawTopChart() {
+	        var data = new google.visualization.DataTable();
+	        data.addColumn('date', 'Date');
+	        data.addColumn('number', 'TWL Rating');
+	        data.addRows([
+			  	            [new Date(2017, 11, 23), 
+				    1638],
+			  	            [new Date(2017, 11, 25), 
+				    1641],
+			  	            [new Date(2018, 0, 7), 
+				    1585],
+			  	            [new Date(2018, 1, 18), 
+				    1580],
+			  	            [new Date(2018, 2, 18), 
+				    1585],
+			  	            [new Date(2018, 4, 12), 
+				    1607],
+			  	            [new Date(2018, 5, 24), 
+				    1643],
+			  	            [new Date(2018, 6, 15), 
+				    1651],
+			  	            [new Date(2018, 7, 4), 
+				    1591],
+			  	            [new Date(2018, 7, 19), 
+				    1566],
+			  	            [new Date(2018, 9, 21), 
+				    1558],
+			  	            [new Date(2018, 10, 18), 
+				    1541],
+			  	            [new Date(2018, 11, 22), 
+				    1628],
+			  	            [new Date(2018, 11, 23), 
+				    1627],
+			  	            [new Date(2018, 11, 24), 
+				    1564],
+			  	            [new Date(2018, 11, 25), 
+				    1561],
+			  	            [new Date(2019, 1, 10), 
+				    1558],
+			  	            [new Date(2019, 2, 10), 
+				    1549],
+			  	            [new Date(2019, 3, 6), 
+				    1601],
+			  	            [new Date(2019, 3, 14), 
+				    1609],
+			  	            [new Date(2019, 4, 5), 
+				    1612],
+			  	            [new Date(2019, 5, 8), 
+				    1602],
+			  	            [new Date(2019, 5, 23), 
+				    1574],
+			  	            [new Date(2019, 6, 14), 
+				    1532],
+			  	            [new Date(2019, 6, 20), 
+				    1536],
+			  	            [new Date(2019, 7, 4), 
+				    1557],
+			  	            [new Date(2019, 8, 28), 
+				    1554],
+			  	            [new Date(2019, 9, 13), 
+				    1556],
+			  	            [new Date(2019, 10, 17), 
+				    1534],
+			  	            [new Date(2019, 11, 8), 
+				    1556],
+			  	            [new Date(2019, 11, 21), 
+				    1537],
+			  	            [new Date(2019, 11, 22), 
+				    1469],
+			  	            [new Date(2019, 11, 23), 
+				    1474],
+			  	            [new Date(2019, 11, 24), 
+				    1483],
+			  	            [new Date(2019, 11, 25), 
+				    1479],
+			  	            [new Date(2020, 0, 5), 
+				    1501],
+			  	            [new Date(2020, 1, 8), 
+				    1525],
+			  	            [new Date(2020, 1, 16), 
+				    1579],
+			  	            [new Date(2020, 2, 8), 
+				    1565],
+			  	            [new Date(2021, 5, 12), 
+				    1584],
+			  	            [new Date(2021, 5, 13), 
+				    1563],
+			  	            [new Date(2021, 6, 10), 
+				    1544],
+			  	            [new Date(2021, 7, 14), 
+				    1551],
+			  	            [new Date(2021, 8, 25), 
+				    1570],
+			  	            [new Date(2021, 9, 17), 
+				    1594],
+			  	            [new Date(2021, 10, 13), 
+				    1578],
+			  	            [new Date(2021, 11, 11), 
+				    1564],
+			  	            [new Date(2022, 1, 19), 
+				    1586],
+			  	            [new Date(2022, 3, 9), 
+				    1596],
+			  	            [new Date(2022, 4, 28), 
+				    1611],
+			  	            [new Date(2022, 6, 23), 
+				    1674],
+			  	            [new Date(2022, 7, 27), 
+				    1676],
+			  	            [new Date(2022, 9, 29), 
+				    1699],
+			  	        ]);
+
+	        var chart = new google.visualization.AnnotationChart(document.getElementById('top_chart_div'));
+
+	        var options = {
+	          displayAnnotations: true,
+	          fill: 10,
+	          displayRangeSelector: false,
+	          displayZoomButtons: false,
+	          displayLegendValues: true,
+	          displayLegendDots: false,
+	        };
+
+	        chart.draw(data, options);
+			// if (typeof drawChart == 'function') { 
+			//   drawChart(); 
+			// }
+	      }
+	    </script>
+		<div class='playergraphblock'>
+							<div>
+					<b>TWL rating</b>
+					    <form method='POST' action='/results.php?p=70' style='display: inline'>
+					        <input type='hidden' name='newlexicon' value='1'>
+					        <input type='submit' value='Switch to CSW'>
+					    </form>
+				</div>
+								    	<div id='top_chart_div' style='width: 200px; height: 110px;'></div>
+		    		</div>
+		<div class='playerpicblock'>
+		<img class='playerpic' src='https://www.scrabbleplayers.org/players/m/miller_mark.jpg' alt='Mark Miller'>
+	</div>
+	
+<!--see bottom of file for old non-table layout -->
+
+	<table class='playercontentblock'>
+		<tr>
+			<td colspan='4'>
+				<div class='playername'>Mark Miller | 					<span class='residence'>King of Prussia, <a href='bystate.php?st=PA'>PA</a> (USA)</span> 
+					<span class='deceased'></span>
+									</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class='playerheaderinfo'>
+					<div class='header'>Rating</div>
+											<div class='stat'>1699</div>
+										<div class='comment'>(Peak: 1772)</div>
+					<div class='comment'>&nbsp;</div>
+				</div>
+			</td>
+			<td>
+				<div class='playerheaderinfo'>
+					<div class='header'>Ranking</div>
+										<div class='stat'>79th</div>
+																				<div class='comment'>&nbsp;</div>
+					<div class='comment'>&nbsp;</div>
+									</div>
+			</td>
+			<td>
+				<div class='playerheaderinfo'>
+					<div class='header'>Lifetime record</div>
+					<div class='stat'>1210-1292-7 (0.484)</div>
+					<div class='comment'>&nbsp;</div>
+					<div class='comment'>Career earnings: $1,910</div>
+				</div>
+			</td>
+			<td>
+				<div class='playerheaderinfo'>
+					<div class='header'>Avg. score</div>
+					<div class='stat'>385-397</div>
+					<div class='comment'>&nbsp;</div>
+					<div class='comment'>&nbsp;</div>
+				</div>
+			</td>
+		</tr>
+			<tr>
+				<td colspan='4'>
+		</table>
+	</div>
+
+		
+		<div id="xtplayermenus" class="yuimenubar yuimenubarnav">
+			<div class="bd">
+
+				<ul class="first-of-type">			<li class="yuimenubaritem"><a class="yuimenubaritemlabel xtmenuchecked" href="results.php?p=70">Results</a>
+			</li>			<li class="yuimenubaritem"><a class="yuimenubaritemlabel " href="upcoming.php?p=70">Upcoming</a>
+			</li>			<li class="yuimenubaritem"><a class="yuimenubaritemlabel " href="daddy.php?p=70">Head-to-Head</a>
+			</li>			<li class="yuimenubaritem"><a class="yuimenubaritemlabel " href="profile.php?p=70">Profile</a>
+			</li>			<li class="yuimenubaritem"><a class="yuimenubaritemlabel " href="histratings.php?p=70">Historical Info</a>
+			</li>			<li class="yuimenubaritem"><a class="yuimenubaritemlabel " href="graph.php?p=70">Graph</a>
+			</li>			<li class="yuimenubaritem"><a class="yuimenubaritemlabel " href="anno.php?p=70">Annotated Games</a>
+			</li>			<li class="yuimenubaritem"><a class="yuimenubaritemlabel " href="games.php?p=70">Game-by-Game</a>
+			</li>				</ul>            
+			</div>
+		</div>
+		
+       <script type="text/javascript">
+
+            // Initialize and render the menu bar when it is available in the DOM
+            YAHOO.util.Event.onContentReady("xtplayermenus", function () {
+
+                // Instantiate and render the menu bar
+                var oInfoMenuBar = new YAHOO.widget.MenuBar("xtplayermenus", { autosubmenudisplay: true, hidedelay: 0, lazyload: true });
+                oInfoMenuBar.render();
+
+            });
+
+		</script>	
+			</div>
+			<div id='bd'>
+			
+						<div id="xtresultsmenus" class="yuimenubar yuimenubarnav">
+			<div class="bd">
+
+				<ul class="first-of-type">
+<li class='yuimenuitem'><a class='yuimenuitemlabel ' href='results.php?p=70&amp;tsel=c'>All Tourneys</a></li>
+<li class='yuimenuitem'><a class='yuimenuitemlabel xtmenuchecked' href='results.php?p=70&amp;tsel=r'>Recent Tourneys</a></li>
+<li class='yuimenuitem'><a class='yuimenuitemlabel ' href='results.php?p=70&amp;tsel=m'>Major Tourneys</a></li>
+<li class='yuimenuitem'><a class='yuimenuitemlabel ' href='results.php?p=70&amp;tsel=w'>First-Place Finishes</a></li>
+				</ul>            
+			</div>
+		</div>
+
+       <script type="text/javascript">
+
+            // Initialize and render the menu bar when it is available in the DOM
+            YAHOO.util.Event.onContentReady("xtresultsmenus", function () {
+
+                // Instantiate and render the menu bar
+                var oInfoMenuBar = new YAHOO.widget.MenuBar("xtresultsmenus", { autosubmenudisplay: true, hidedelay: 0, lazyload: true });
+                oInfoMenuBar.render();
+
+            });
+
+		</script>
+<div class='datalabel'>Recent Tourneys</div>		
+		<table id='xtdatatable' class='xtdatatable'>
+		<tbody> 
+		<tr class='headerrow'>
+			<td class='tdr'>Details/</td>
+			<td colspan='8'></td><td class='tdr'><a href='results.php?p=70&amp;s=p'>Place</a></td>			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td colspan='3' class='tdc'>--RATINGS--</td>
+			<td>&nbsp;</td><td class='tdr'><a href='results.php?p=70&amp;s=pm'>Prize</a></td>		</tr>
+		<tr class='headerrow'>
+			<td class='tdr'>Zoom</td>
+			<td class='tdr'>#</td><td class='tdl'><a href='results.php?p=70&amp;s=tn'>Location</a></td><td>Date <a href='results.php?p=70&amp;rsort=1'><img src='/i/up-arrow.gif' alt='reverse sort'></a></td><td class='tdr'><a href='results.php?p=70&amp;s=w'>W</a></td><td class='tdr'><a href='results.php?p=70&amp;s=l'>L</a></td><td class='tdr'><a href='results.php?p=70&amp;s=t'>T</a></td><td class='tdr'><a href='results.php?p=70&amp;s=b'>B</a></td><td class='tdr'><a href='results.php?p=70&amp;s=sp'>Spread</a></td><td class='tdr' colspan='2'><a href='results.php?p=70&amp;s=p'>(Division)</a></td><td class='tdr'><a href='results.php?p=70&amp;s=sd'>Seed</a></td><td class='tdr'><a href='results.php?p=70&amp;s=or'>Old</a></td><td class='tdr'><a href='results.php?p=70&amp;s=pr'>Perf</a></td><td class='tdr'><a href='results.php?p=70&amp;s=nr'>New</a></td><td class='tdr'><a href='results.php?p=70&amp;s=cr'>Credits</a></td><td class='tdr'><a href='results.php?p=70&amp;s=pm'>Money</a></td>
+
+<tr class='row1 ' id='row1'><td><span id='toggle11192' class='expanderclosed' onclick='toggle("gbg", "bygame", "t", 70, 11192, 11192, "game-by-game details");' >&nbsp;</span><span class='anchorfield' id='anchor11192-div--1' style='width: 15px;'>&nbsp;</span></td><td class='tdr'>1</td><td class='tourney-name'><a href='tourney.php?t=11192&amp;div=1' title='Allentown, PA'>Allentown, PA</a></td><td>02/19/22</td><td class='tdr w'>4</td><td class='tdr l'>2</td><td class='tdr t'>&nbsp;</td><td class='tdr b'>&nbsp;</td><td class='tdr'>-9</td><td colspan=2 class='tdr'>3 of 6 (1)</td><td class='tdr'>2</td><td class='tdr rating'>1564</td><td class='tdr rating'>1814</td><td class='tdr ratingup newrating rating'>1586</td><td class='tdr'>&nbsp;</td><td class='tdr'>&nbsp;<span class='moneyknown' title='prize money is estimated'>E</span></td></tr><tr><td colspan='17'><div id='gbg11192'></div></td></tr>
+
+<tr class='row0 ' id='row2'><td><span id='toggle11211' class='expanderclosed' onclick='toggle("gbg", "bygame", "t", 70, 11211, 11211, "game-by-game details");' >&nbsp;</span><span class='anchorfield' id='anchor11211-div--1' style='width: 15px;'>&nbsp;</span></td><td class='tdr'>2</td><td class='tourney-name'><a href='tourney.php?t=11211&amp;div=1' title='Allentown, PA'>Allentown, PA</a></td><td>04/09/22</td><td class='tdr w'>4</td><td class='tdr l'>3</td><td class='tdr t'>&nbsp;</td><td class='tdr b'>&nbsp;</td><td class='tdr'>+58</td><td colspan=2 class='tdr'>3 of 8 (1)</td><td class='tdr'>4</td><td class='tdr rating'>1586</td><td class='tdr rating'>1670</td><td class='tdr ratingup newrating rating'>1596</td><td class='tdr'>&nbsp;</td><td class='tdr'>&nbsp;<span class='moneyknown' title='prize money is estimated'>E</span></td></tr><tr><td colspan='17'><div id='gbg11211'></div></td></tr>
+
+<tr class='row1 ' id='row3'><td><span id='toggle11234' class='expanderclosed' onclick='toggle("gbg", "bygame", "t", 70, 11234, 11234, "game-by-game details");' >&nbsp;</span><span class='anchorfield' id='anchor11234-div--1' style='width: 15px;'>&nbsp;</span></td><td class='tdr'>3</td><td class='tourney-name'><a href='tourney.php?t=11234&amp;div=1' title='Wilmington, DE'>Wilmington, DE</a></td><td>05/28/22</td><td class='tdr w'>8</td><td class='tdr l'>7</td><td class='tdr t'>1</td><td class='tdr b'>&nbsp;</td><td class='tdr'>+227</td><td colspan=2 class='tdr'>6 of 14 (1)</td><td class='tdr'>8</td><td class='tdr rating'>1596</td><td class='tdr rating'>1653</td><td class='tdr ratingup newrating rating'>1611</td><td class='tdr'>&nbsp;</td><td class='tdr'>&nbsp;<span class='moneyknown' title='prize money is estimated'>E</span></td></tr><tr><td colspan='17'><div id='gbg11234'></div></td></tr>
+
+<tr class='row0 ' id='row4'><td><span id='toggle11261' class='expanderclosed' onclick='toggle("gbg", "bygame", "t", 70, 11261, 11261, "game-by-game details");' >&nbsp;</span><span class='anchorfield' id='anchor11261-div--1' style='width: 15px;'>&nbsp;</span></td><td class='tdr'>4</td><td class='tourney-name'><a href='tourney.php?t=11261&amp;div=1' title='31st National Championship'>31st National Championship</a></td><td>07/23/22</td><td class='tdr w'>13</td><td class='tdr l'>17</td><td class='tdr t'>1</td><td class='tdr b'>&nbsp;</td><td class='tdr'>-1480</td><td colspan=2 class='tdr'>31 of 42 (1)</td><td class='tdr'>41</td><td class='tdr rating'>1611</td><td class='tdr rating'>1741</td><td class='tdr ratingup newrating rating'>1674</td><td class='tdr'>&nbsp;</td><td class='tdr'>&nbsp;<span class='moneyknown' title='prize money is estimated'>E</span></td></tr><tr><td colspan='17'><div id='gbg11261'></div></td></tr>
+
+<tr class='row1 ' id='row5'><td><span id='toggle11275' class='expanderclosed' onclick='toggle("gbg", "bygame", "t", 70, 11275, 11275, "game-by-game details");' >&nbsp;</span><span class='anchorfield' id='anchor11275-div--1' style='width: 15px;'>&nbsp;</span></td><td class='tdr'>5</td><td class='tourney-name'><a href='tourney.php?t=11275&amp;div=1' title='Allentown, PA'>Allentown, PA</a></td><td>08/27/22</td><td class='tdr w'>4</td><td class='tdr l'>3</td><td class='tdr t'>&nbsp;</td><td class='tdr b'>&nbsp;</td><td class='tdr'>+44</td><td colspan=2 class='tdr'>2 of 8 (1)</td><td class='tdr'>2</td><td class='tdr rating'>1674</td><td class='tdr rating'>1683</td><td class='tdr ratingup newrating rating'>1676</td><td class='tdr'>&nbsp;</td><td class='tdr'>&nbsp;<span class='moneyknown' title='prize money is estimated'>E</span></td></tr><tr><td colspan='17'><div id='gbg11275'></div></td></tr>
+
+<tr class='row0 ' id='row6'><td><span id='toggle11308' class='expanderclosed' onclick='toggle("gbg", "bygame", "t", 70, 11308, 11308, "game-by-game details");' >&nbsp;</span><span class='anchorfield' id='anchor11308-div--1' style='width: 15px;'>&nbsp;</span></td><td class='tdr'>6</td><td class='tourney-name'><a href='tourney.php?t=11308&amp;div=1' title='Catonsville, MD'>Catonsville, MD</a></td><td>10/29/22</td><td class='tdr w'>5</td><td class='tdr l'>2</td><td class='tdr t'>&nbsp;</td><td class='tdr b'>&nbsp;</td><td class='tdr'>+517</td><td colspan=2 class='tdr'>2 of 12 (1)</td><td class='tdr'>2</td><td class='tdr rating'>1676</td><td class='tdr rating'>1905</td><td class='tdr ratingup newrating rating'>1699</td><td class='tdr'>&nbsp;</td><td class='tdr'>&nbsp;<span class='moneyknown' title='prize money is estimated'>E</span></td></tr><tr><td colspan='17'><div id='gbg11308'></div></td></tr></table>			<div id='infobox'>
+			</div>						<!--dialog that allows searching for a player. -->
+		<div id='findplayerdialog' style='display: none;'>
+			<div class='hd'>Find A Player</div>
+			<div class='bd'>
+				<form name='findplayerform' method='GET' action='results.php'><p>
+				<input type='hidden' id='findplayerid' name='p' value='0'>
+				<label for='autocompleteplayer'>Player name:</label>
+					<div id='autocompleteplayer' style='list-style: none;'> 
+					    <input id='findplayername' type='text'> 
+					    <div id='findplayernameContainer'></div> 
+					</div> 
+					<p>&nbsp;
+				<div id='newplayerloading'>Loading results for <span id='foundplayer'></span>...</div>
+				</form>
+			</div>
+		</div>	
+
+
+		
+			</div>
+				<div id='ft'>
+				
+					Copyright &copy; 2005-2022 Seth Lipkin and Keith Smith<br>Some data copyright &copy; 1999-2009 National Scrabble Association and &copy; 2009-2022 NASPA<br>SCRABBLE&reg; is a registered trademark of Hasbro, Inc. in the USA and Canada.<br>Current time: 2022-12-16 01:53:52 Server IP: 162.144.19.21			
+				</div>
+		</div>
+
+    </body>
+		</html>
+		
