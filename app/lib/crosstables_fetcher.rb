@@ -2,14 +2,63 @@ module CrosstablesFetcher
 
   BASE_URL = "https://www.cross-tables.com/"
 
+  # Hold event data scraped from the main page
+  Event = Struct.new(:xtables_id, :location, :date)
+
   module_function
 
-  def get_players(xtables_id)
-    @event = Event.where(xtables_id: xtables_id)
-    @tournament = Tournament.where(event: @event)
-    doc = fetch_url("entrants.php?u=#{xtables_id}")
+  # ---------------------------------------
+  # Main entry points to download and parse data
+
+  def get_all_naspa_events
+    doc = fetch_main_page()
+    events = extract_naspa_events(doc)
+    events.map do |ev|
+      ev_doc = fetch_entrants_page(ev.xtables_id)
+      event = extract_event(ev_doc)
+      event.update(event.to_h)
+    end
+  end
+
+  def get_players(event_id)
+    doc = fetch_entrants_page(event_id)
+    extract_players(doc)
+  end
+
+  # Grabs the player's pic based on the player's xtables ID
+  def get_player_photo(player_id)
+    doc = fetch_player_page(player_id)
+    photo_path = extract_photo_path(doc)
+    URI.open(photo_path)
+  end
+
+  # ---------------------------------------
+  # Fetch pages from cross-tables.com
+
+  def fetch_url(relative_url)
+    url = "#{BASE_URL}/#{relative_url}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML(html)
+  end
+
+  def fetch_main_page
+    fetch_url("")
+  end
+
+  def fetch_entrants_page(event_id)
+    fetch_url("entrants.php?u=#{event_id}")
+  end
+
+  def fetch_player_page(player_id)
+    fetch_url("results.php?p=#{player_id}")
+  end
+
+  # ---------------------------------------
+  # Scrape data from pages
+
+  def extract_players(doc)
     data = doc.css('tr.headerrow ~ tr')
-    division = 1
+    division = 1  # Will be overwriten if there's an explicit division
     players = []
     data.each do |child|
       td = child.search('td')
@@ -35,16 +84,13 @@ module CrosstablesFetcher
           seed: seed,
           ranking: seed,
           crosstables_id: player_id,
-          tournament: @tournament
         }
       end
     end
     players
   end
 
-  # Grabs the player's pic based on the player's xtables ID
-  def get_player_photo(player_id)
-    doc = fetch_url("results.php?p=#{player_id}")
+  def extract_photo_path(doc)
     # The path by default can be either a full path to a photo, for example
     # on scrabbleplayers.org, or a relative path if it's stored directly on
     # cross-tables.
@@ -60,11 +106,10 @@ module CrosstablesFetcher
       photo_path = "#{BASE_URL}#{photo_path}"
     end
 
-    user_photo = URI.open(photo_path)
+    photo_path
   end
 
-  def get_all_naspa_events
-    doc = fetch_url('')
+  def extract_naspa_events(doc)
     # Find all tags that use the "rowupcoming#" id. This is the CSS id used for
     # each row in the upcoming events table.
     tournaments = doc.xpath('//tr[starts-with(@id, "rowupcoming")]')
@@ -85,23 +130,16 @@ module CrosstablesFetcher
         sortable_date = make_sortable_date(date)
 
         tournament.css('span').children.each do |event|
-          events << get_event(event, location, sortable_date)
+          url = event.attribute('href').value
+          xtables_id = url[/\d+$/].to_i
+          events << Event.new(xtables_id, location, sortable_date)
         end
       end
     end
     events
   end
 
-  def fetch_url(relative_url)
-    url = "#{BASE_URL}#{relative_url}"
-    html = URI.open(url)
-    doc = Nokogiri::HTML(html)
-  end
-
-  def get_event(event, location, date)
-    doc = fetch_url("#{event.attribute('href').value}")
-
-    xtables_id = event.attribute('href').value[/\d+$/].to_i
+  def extract_event(doc)
     number_of_players = doc.css('p').children[8].text.to_i
     rounds = doc.css('td').children.text[/games:.\d*/][/\d+/]
     divisions = 1
@@ -112,11 +150,8 @@ module CrosstablesFetcher
     end
 
     event = {
-      location: location,
       rounds: rounds,
       number_of_players: number_of_players,
-      date: date,
-      xtables_id: xtables_id,
       divisions: divisions
     }
   end
