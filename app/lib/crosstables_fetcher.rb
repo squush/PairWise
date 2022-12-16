@@ -46,7 +46,7 @@ module CrosstablesFetcher
   end
 
   def fetch_entrants_page(event_id)
-    fetch_url("/entrants.php?u=#{event_id}")
+    fetch_url("entrants.php?u=#{event_id}")
   end
 
   def fetch_player_page(player_id)
