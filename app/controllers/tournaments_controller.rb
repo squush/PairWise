@@ -117,7 +117,7 @@ class TournamentsController < ApplicationController
   def get_players(tournament)
     players = CrosstablesFetcher.get_players(tournament.event.xtables_id)
     for p in players do
-      player = Player.create!(**p)
+      player = Player.create!(tournament: tournament, **p)
       user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
       player.photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
       player.save

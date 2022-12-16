@@ -33,7 +33,6 @@ module CrosstablesFetcher
           seed: seed,
           ranking: seed,
           crosstables_id: player_id,
-          tournament: tournament
         }
       end
     end
