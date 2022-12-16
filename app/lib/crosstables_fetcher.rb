@@ -5,6 +5,8 @@ module CrosstablesFetcher
   module_function
 
   def get_players(xtables_id)
+    @event = Event.where(xtables_id: xtables_id)
+    @tournament = Tournament.where(event: @event)
     doc = fetch_url("entrants.php?u=#{xtables_id}")
     data = doc.css('tr.headerrow ~ tr')
     division = 1
@@ -33,7 +35,7 @@ module CrosstablesFetcher
           seed: seed,
           ranking: seed,
           crosstables_id: player_id,
-          tournament: tournament
+          tournament: @tournament
         }
       end
     end
@@ -91,7 +93,7 @@ module CrosstablesFetcher
   end
 
   def fetch_url(relative_url)
-    url = "#{BASE_URL}/#{relative_url}"
+    url = "#{BASE_URL}#{relative_url}"
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
   end

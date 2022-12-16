@@ -1,6 +1,0 @@
-#division 1 
-#ratingcheck off 
-Sinke, Arie 1955 2 1 0 0 3 0 2; 400 300 50 50 0 50 0 
-Canik, Matt 1973 2 1 2 2 4 2 0; 400 500 300 450 0 399 0 
-Smylie, Jackson 2008 4 3 3 3 0 3 4; 500 300 400 300 0 499 0 
-Krafchick, Joey 2107 4 3 0 0 0; 400 400 -50 -50 -50 

@@ -112,7 +112,6 @@ class TournamentsController < ApplicationController
         unless player.name == "Bye"
           player_matchups = Matchup.where(player1: player).or(Matchup.where(player2: player)).to_a
           player_opponents = player_matchups.map { |matchup| matchup.player1 == player ? matchup.player2.seed : matchup.player1.seed }
-
           player_scores = player_matchups.map { |matchup| matchup.player1 == player ? matchup.player1_score : matchup.player2_score }
 
           # The following line is dedicated to Winter Zkqxj
