@@ -25,6 +25,11 @@ class TournamentsController < ApplicationController
     @tournament.event = @event
     @tournament.user = current_user
 
+    # round_number_selected = @tournament.pairing_system["round"]
+    pairing_system_selected = params[:tournament][:pairing_system]["pairing"]
+    @tournament.pairing_system[1] = ["Round 1", pairing_system_selected]
+    @tournament.pairing_system.delete("pairing")
+
     get_players(@tournament)
     generate_two_rounds_matchups(@tournament)
 
@@ -53,8 +58,13 @@ class TournamentsController < ApplicationController
   end
 
   def update
-    # raise
-    if @tournament.update!(tournament_params)
+    raise
+    new_pairings = @tournament.pairing_system
+    new_key = @tournament.pairing_system.keys.sort.last
+    new_pairings[new_key] = [params[:tournament][:pairing_system]["round"], params[:tournament][:pairing_system]["pairing"]]
+    new_pairings.delete("round")
+    new_pairings.delete("pairing")
+    if @tournament.update!(pairing_system: new_pairings, number_of_winners: params[:tournament][:number_of_winners])
       redirect_to edit_tournament_path(@tournament), notice: "tournament #{@tournament.event.location} was updated."
     else
       render :edit, status: :unprocessable_entity
@@ -111,7 +121,7 @@ class TournamentsController < ApplicationController
   private
 
   def tournament_params
-    params.require(:tournament).permit(:pairing_system, :number_of_winners)
+    params.require(:tournament).permit(:number_of_winners, pairing_system: {})
   end
 
   def get_players(tournament)

@@ -51,10 +51,10 @@
         <p class="tourney-headings">Rounds</p>
         <p><%= @tournament.event.rounds %></p>
       </div>
-      <div>
+      <%# <div>
         <p class="tourney-headings">Pairing</p>
-        <p><%= @tournament.pairing_system %></p>
-      </div>
+        <p><%= @tournament.pairing_system ></p>
+      </div%>
     </div>
     <p class="text-center mb-1 text-secondary">
       <%= link_to "Contact the director", "mailto:#{@tournament.user.email}",
