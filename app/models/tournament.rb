@@ -1,4 +1,5 @@
 class Tournament < ApplicationRecord
+  serialize :pairing_system, JSON
   belongs_to :user
   belongs_to :event, optional: true
   has_many :players, dependent: :destroy
@@ -8,8 +9,9 @@ class Tournament < ApplicationRecord
   # TODO: There's still a bug if the user manually clears this field in the form
   #       when creating a new tournament
 
-  enum pairing_system: {
-    "Swiss" => 10,
-    "Round Robin" => 20
-  }
+  # enum pairing_system: {
+  #   "Swiss" => 10,
+  #   "Round Robin" => 20,
+  #   "KOTH" => 30
+  # }
 end

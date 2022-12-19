@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_14_222118) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_17_182803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_222118) do
     t.date "date"
     t.integer "rounds"
     t.integer "number_of_winners", default: 0
-    t.integer "pairing_system", default: 10
+    t.string "pairing_system", default: ""
     t.bigint "user_id", null: false
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false

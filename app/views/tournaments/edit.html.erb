@@ -135,7 +135,22 @@
             label_html: {class: "text-primary border"},
             input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
           } do |f| %>
-          <%= f.input :pairing_system, collection: Tournament.pairing_systems.keys, include_blank: false%>
+          <div class="d-flex justify-content-evenly">
+            <div class="form-label text-primary">
+              <%= f.label :pairing_system, "Starting in: " %>
+            </div>
+            <div class="form-label text-primary">
+              <%= f.label :pairing_system, "Use pairing system: " %>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-evenly">
+            <%= f.collection_select :pairing_system, @rounds_to_display, :to_s, :to_s, {}, {name: "tournament[pairing_system][round]"} %>
+            <%= f.collection_select :pairing_system, ["Swiss", "KOTH", "Round Robin"], :to_s, :to_s, {}, {name: "tournament[pairing_system][pairing]"} %>
+          </div>
+
+          <br>
+
           <div class="d-flex justify-content-center">
             <%= f.input :number_of_winners,
               wrapper_html: {class: "d-flex flex-column align-items-center"},
