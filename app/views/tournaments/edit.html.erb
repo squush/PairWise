@@ -135,7 +135,7 @@
             label_html: {class: "text-primary border"},
             input_html: {class: "text-secondary border border-secondary form-rnd-corners input-white"}
           } do |f| %>
-          <%= f.collection_select :pairing_system, ["Round 1", "Round 2", "Round 3", "Round 4", "Round 5"], :to_s, :to_s, {}, {name: "tournament[pairing_system][round]"} %>
+          <%= f.collection_select :pairing_system, @rounds_to_display, :to_s, :to_s, {}, {name: "tournament[pairing_system][round]"} %>
           <%= f.collection_select :pairing_system, ["Swiss", "KOTH", "Round Robin"], :to_s, :to_s, {}, {name: "tournament[pairing_system][pairing]"} %>
           <div class="d-flex justify-content-center">
             <%= f.input :number_of_winners,

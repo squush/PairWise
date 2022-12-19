@@ -55,12 +55,17 @@ class TournamentsController < ApplicationController
 
   def edit
     @player = Player.new
+    @rounds_to_display = []
+    (1..@tournament.event.rounds).each do |round|
+      if @tournament.matchups.where(round_number: round, done: false).exists? || @tournament.matchups.where(round_number: round).count == 0
+        @rounds_to_display << "Round #{round}"
+      end
+    end
   end
 
   def update
-    raise
     new_pairings = @tournament.pairing_system
-    new_key = @tournament.pairing_system.keys.sort.last
+    new_key = @tournament.pairing_system.keys.max.to_i + 1
     new_pairings[new_key] = [params[:tournament][:pairing_system]["round"], params[:tournament][:pairing_system]["pairing"]]
     new_pairings.delete("round")
     new_pairings.delete("pairing")
