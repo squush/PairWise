@@ -159,6 +159,7 @@ class MatchupsController < ApplicationController
     @this_tournament = Tournament.find(params[:tournament_id])
     # This order keeps the matchups in order when a score is submitted.
     @all_matchups = @this_tournament.matchups.order(:round_number, :id)
+    @all_matchups = @all_matchups.reject { |matchup| matchup.player1_score == -50 || matchup.player2_score == -50 }
 
     all_players = Player.where(tournament: @this_tournament)
     divisions = all_players.map { |player| player.division }.uniq.sort
@@ -166,13 +167,35 @@ class MatchupsController < ApplicationController
     @matchups = {}
     divisions.each do |div|
       @matchups[div] = @all_matchups.select { |matchup| matchup.player1.division == div }
-      Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc, spread: :desc).to_a
+      # Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc, spread: :desc).to_a
+    end
+
+    @rounds_to_display = []
+    (1..@this_tournament.event.rounds).each do |round|
+      if @this_tournament.matchups.where(round_number: round, done: false).exists? || @this_tournament.matchups.where(round_number: round).count == 0 || @this_tournament.matchups.where(round_number: round, player1_score: -50).count > 0
+        @rounds_to_display << "Round #{round}"
+      end
     end
 
 
     @tournament = policy_scope(Matchup)
     # authorize @tournament, policy_class: MatchupPolicy
     # authorize @matchups, policy_class: MatchupPolicy
+  end
+
+  def matchups_for_round
+    @tournament = Tournament.find(params[:id])
+    division = params[:division].to_i
+    round = params[:round][/\d+/].to_i
+    matchups = @tournament.matchups.select { |matchup| matchup.round_number == round }
+    matchups.each { |matchup| Matchup.destroy(matchup.id) }
+
+    players = @tournament.players.select { |player| player.division == division && player.name != "Bye"}
+    generate_matchups(round, players)
+
+    redirect_to tournament_matchups_path(@tournament)
+
+    authorize @tournament, policy_class: MatchupPolicy
   end
 
   private

@@ -17,6 +17,12 @@ padding: 20px;
 border-radius: 5px;
 }
 
+.division-header {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+}
+
 .matchup-done {
   background-color: $faded-blue;
   color: white;
