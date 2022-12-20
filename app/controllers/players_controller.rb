@@ -38,6 +38,17 @@ class PlayersController < ApplicationController
   def deactivate
     @player = Player.find(params[:id])
     @player.active = false
+    Matchup.where(player1: @player, done: false).or(Matchup.where(player2: @player, done: false)).each do |matchup|
+      if Player.where(tournament: @player.tournament, name: "Bye").empty?
+        bye = Player.create!(name: "Bye", tournament: @player.tournament, rating: 0, new_rating: 0, division: @player.division, win_count: 0, seed: 0)
+      else
+        bye = Player.find_by(tournament: @player.tournament, name: "Bye")
+      end
+      Matchup.create!(round_number: matchup.round_number, player1: @player, player2: bye, player1_score: -50, player2_score: 0, done: true)
+      matchup.player1 == @player ? matchup.player1 = bye : matchup.player2 = bye
+      matchup.save!
+    end
+
     if @player.save
       redirect_to edit_tournament_path(@player.tournament)
     else

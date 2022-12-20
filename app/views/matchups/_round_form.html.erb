@@ -1,0 +1,15 @@
+<div class="container justify-content-center col-12">
+  <%= simple_form_for tournament, url: generate_matchups_path(tournament), defaults: {
+        label_html: { class: "col-8 text-info" },
+        input_html: { class: "text-primary form-rnd-corners input-white" },
+        wrapper_html: { class: "d-flex" },
+      } do |f| %>
+    <div class="form-inputs">
+      <div class="d-flex justify-content-evenly">
+        <%= f.collection_select :pairing_system, @rounds_to_display, :to_s, :to_s, {}, {name: "tournament[pairing_system][round]"} %>
+      </div>
+      <br>
+      <%= f.button :submit, class: "btn btn-secondary w-100 text-center btn-rnd-corners", value: "Generate Pairings" %>
+    </div>
+  <% end %>
+</div>
