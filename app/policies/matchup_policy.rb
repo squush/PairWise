@@ -22,6 +22,10 @@ class MatchupPolicy < ApplicationPolicy
     user_is_owner_or_competitor?
   end
 
+  def matchups_for_round?
+    user == record.user
+  end
+
   private
 
   def user_is_owner?

@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   get "/tournaments/:id/scoreboard", to: "tournaments#scoreboard", as: :scoreboard
   get "/my_tournaments", to: "tournaments#my_tournaments"
   get "/tournaments/:id/report", to: "tournaments#tournament_report", as: :final_report
-  get "/tournaments/:id/generate_matchups", to: "matchups#matchups_for_round", as: :generate_matchups
+  post "/tournaments/:id/generate_matchups", to: "matchups#matchups_for_round", as: :generate_matchups
 
 end
