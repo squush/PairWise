@@ -1,7 +1,8 @@
 require "test_helper"
 
 class PlayerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "bye" do
+    p = build(:bye_player)
+    assert p.bye?
+  end
 end

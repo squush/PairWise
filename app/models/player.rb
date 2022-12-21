@@ -10,4 +10,18 @@ class Player < ApplicationRecord
   validates :spread, presence: true, numericality: { only_integer: true }
   validates :win_count, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :loss_count, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
+  scope :for_division, ->(division) { where(division: division) }
+  scope :non_bye, -> { where("name != 'Bye'") }
+
+  def bye?
+    name == "Bye"
+  end
+
+  def recalculate
+    results = PlayerResult.for_player(self)
+    self.win_count = results.map(&:wins).sum
+    self.loss_count = results.map(&:losses).sum
+    self.spread = results.map(&:spread).sum
+  end
 end
