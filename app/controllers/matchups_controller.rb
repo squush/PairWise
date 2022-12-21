@@ -46,12 +46,12 @@ class MatchupsController < ApplicationController
         matchups_without_scores = ["Don't generate matchups"] unless matchups_in_two_rounds.empty?
 
         # Only generate matchups if all the current round's scores have been submitted
+        round_to_generate = round + 2
         if this_tournament.event.rounds >= round_to_generate &&
             matchups_without_scores.empty?
           # Find all players in the division and determine which round to generate
           # pairings for
           players = this_tournament.players.for_division(player1.division).non_bye.to_a
-          round_to_generate = round + 2
           generate_matchups(round_to_generate, players)
         end
 
