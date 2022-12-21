@@ -13,6 +13,8 @@ class Player < ApplicationRecord
 
   scope :for_division, ->(division) { where(division: division) }
   scope :non_bye, -> { where("name != 'Bye'") }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 
   def bye?
     name == "Bye"

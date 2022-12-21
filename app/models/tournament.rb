@@ -14,4 +14,14 @@ class Tournament < ApplicationRecord
   #   "Round Robin" => 20,
   #   "KOTH" => 30
   # }
+
+  def rounds_to_display
+    # Rounds with matchups to display
+    (1..self.event.rounds).select do |round|
+      round_matchups = self.matchups.for_round(round)
+      round_matchups.pending.exists? ||
+        round_matchups.count == 0 ||
+        round_matchups.inactive.count > 0
+    end
+  end
 end
