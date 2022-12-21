@@ -15,8 +15,12 @@ class Matchup < ApplicationRecord
   # Matchups in (division, round) that are still waiting for scores
   scope :waiting_for_scores, ->(div, round) { for_division(div).for_round(round).pending }
 
+  def players
+    [player1, player2]
+  end
+
   def opponent(player)
-    (players - player)[0]
+    (players - [player])[0]
   end
 
   def scores

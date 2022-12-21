@@ -20,8 +20,8 @@ class Player < ApplicationRecord
 
   def recalculate
     results = PlayerResult.for_player(self)
-    win_count = results.map(&:wins).sum
-    loss_count = results.map(&:losses).sum
-    spread = results.map(&:spread).sum
+    self.win_count = results.map(&:wins).sum
+    self.loss_count = results.map(&:losses).sum
+    self.spread = results.map(&:spread).sum
   end
 end
