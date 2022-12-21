@@ -10,7 +10,7 @@
 
     <div class="mb-4 text-white">
     <%# collection: Tournament.pairing_systems.keys, include_blank: false  %>
-      <div class="form-label integer required text-info">
+      <div class="form-label required text-info">
         <%= f.label :pairing_system, "Default pairing system: " %>
       </div>
       <%= f.collection_select :pairing_system, ["Swiss", "KOTH", "Round Robin"], :to_s, :to_s, {}, {name: "tournament[pairing_system][pairing]"} %>
