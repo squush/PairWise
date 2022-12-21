@@ -24,72 +24,9 @@ class MatchupsController < ApplicationController
     else
       @matchup.done = true
       if @matchup.update(matchup_params)
-        player1 = @matchup.player1
-        player2 = @matchup.player2
-
-        # Update new rating for each player
         if @matchup.player1.name != "Bye" && @matchup.player2.name != "Bye"
-          difference = player1.rating - player2.rating
-          case player1.rating
-          when 2000..3000
-            p1_multiplier = 0.5
-          when 1800..1999
-            p1_multiplier = 0.8
-          else
-            p1_multiplier = 1
-          end
-
-          case player2.rating
-          when 2000..3000
-            p2_multiplier = 0.5
-          when 1800..1999
-            p2_multiplier = 0.8
-          else
-            p2_multiplier = 1
-          end
-          # rating_curve = {1150 => 20, 789 => 19, 611 => 18, 487 => 17, 388 => 16, 305 => 15, 230 => 14, 161 => 13, 96 => 12, 32 => 11, 0 => 10}
-          case difference.abs
-          when 1150..3000
-            change = 20
-          when 789..1149
-            change = 19
-          when 611..788
-            change = 18
-          when 487..610
-            change = 17
-          when 388..486
-            change = 16
-          when 305..387
-            change = 15
-          when 230..304
-            change = 14
-          when 161..229
-            change = 13
-          when 96..160
-            change = 12
-          when 32..95
-            change = 11
-          when 0..31
-            change = 10
-          end
-
-          if @matchup.player1_score > @matchup.player2_score
-            if difference.positive?
-              player1.new_rating += (20 - change) * p1_multiplier
-              player2.new_rating -= (20 - change) * p2_multiplier
-            else
-              player1.new_rating += change * p1_multiplier
-              player2.new_rating -= change * p2_multiplier
-            end
-          elsif @matchup.player2_score > @matchup.player1_score
-            if difference.positive?
-              player1.new_rating -= change * p1_multiplier
-              player2.new_rating += change * p2_multiplier
-            else
-              player1.new_rating -= (20 - change) * p1_multiplier
-              player2.new_rating += (20 - change) * p2_multiplier
-            end
-          end
+          # Update new rating for each player
+          RatingsCalculator.update_ratings(@matchup)
         end
 
         # Update the wins and losses of each player based on the submitted scores
