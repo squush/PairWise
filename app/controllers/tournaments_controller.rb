@@ -100,6 +100,9 @@ class TournamentsController < ApplicationController
       ).to_a
     end
 
+    @current_round = @tournament.players.first.win_count.to_i + @tournament.players.first.loss_count.to_i
+    @current_round += 1 if @current_round.zero?
+
     # @event = Event.find(params[:tournament][:event])c
     authorize @tournament
   end
