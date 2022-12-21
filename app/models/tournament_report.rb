@@ -25,7 +25,7 @@ class TournamentReport
   end
 
   def player_report(player)
-    player_matchups = Matchup.for_player(player)
+    player_matchups = Matchup.for_player(player).to_a
     player_opponents = player_matchups.map { |matchup| matchup.opponent(player).seed }
     player_scores = player_matchups.map { |matchup| matchup.score(player) }
 

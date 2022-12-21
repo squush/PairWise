@@ -7,29 +7,27 @@ class Matchup < ApplicationRecord
   validates :player1_score, presence: true, numericality: { only_integer: true }
   validates :player2_score, presence: true, numericality: { only_integer: true }
 
+  scope :for_player, ->(player) { where(player1: player).or(where(player2: player)) }
+  scope :for_round, ->(round) { where(round_number: round) }
+  scope :for_division, ->(division) { joins(:player1).where({player1: {division: division}}) }
+  scope :complete, -> { where(done: true) }
+  scope :pending, -> { where(done: false) }
+  # Matchups in (division, round) that are still waiting for scores
+  scope :waiting_for_scores, ->(div, round) { for_division(div).for_round(round).pending }
+
   def opponent(player)
-    if player1 == player
-      player2
-    elsif player2 == player
-      player1
-    else
-      nil
-    end
+    (players - player)[0]
+  end
+
+  def scores
+    {player1.id => player1_score, player2.id => player2_score}
   end
 
   def score(player)
-    if player1 == player
-      player1_score
-    elsif player2 == player
-      player2_score
-    else
-      nil
-    end
+    scores[player.id]
   end
 
-  class << self
-    def for_player(player)
-      return where(player1: player).or(where(player2: player)).to_a
-    end
+  def bye?
+    players.any? {|x| x.bye?}
   end
 end
