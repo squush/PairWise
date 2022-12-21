@@ -36,7 +36,7 @@ module RatingsCalculator
     difference = player1.rating - player2.rating
     p1_multiplier = multiplier(player1.rating)
     p2_multiplier = multiplier(player2.rating)
-    change = ratings_change(difference)
+    change = change(difference)
 
     if matchup.player1_score > matchup.player2_score
       if difference.positive?
