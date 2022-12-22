@@ -1,5 +1,5 @@
 class Tournament < ApplicationRecord
-  serialize :pairing_system, JSON
+  serialize :pairing_system, Settings::PairingSystem
   belongs_to :user
   belongs_to :event, optional: true
   has_many :players, dependent: :destroy
