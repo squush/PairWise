@@ -14,7 +14,7 @@
           <%= link_to "Tournaments", tournaments_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
-          <% if current_user.tournaments.present? %>
+          <% if current_user.tournaments.present? || !current_user.tournaments_as_player.empty? %>
             <li class="nav-item">
               <%= link_to "My Tournaments", my_tournaments_path, class: "nav-link" %>
             </li>
