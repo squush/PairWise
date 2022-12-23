@@ -109,9 +109,13 @@ class TournamentsController < ApplicationController
 
   def my_tournaments
     @tournaments = Tournament.where(user: current_user)
-    player = Player.where(crosstables_id: current_user.crosstables_id)
-    matchups = Matchup.where(player1: player).or(Matchup.where(player1: player))
-    @player_tournaments = matchups.map { |matchup| matchup.player1.tournament }.uniq
+
+    if current_user.crosstables_id
+      player = Player.where(crosstables_id: current_user.crosstables_id)
+      matchups = Matchup.where(player1: player).or(Matchup.where(player1: player))
+      @player_tournaments = matchups.map { |matchup| matchup.player1.tournament }.uniq
+    end
+
     authorize @tournaments
   end
 
