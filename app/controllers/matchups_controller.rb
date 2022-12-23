@@ -67,25 +67,16 @@ class MatchupsController < ApplicationController
   def index
     @this_tournament = Tournament.find(params[:tournament_id])
     # This order keeps the matchups in order when a score is submitted.
-    @all_matchups = @this_tournament.matchups.order(:round_number, :id)
-    @all_matchups = @all_matchups.reject { |matchup| matchup.player1_score == -50 || matchup.player2_score == -50 }
+    @all_matchups = @this_tournament.matchups.active.order(:round_number, :id)
 
-    all_players = Player.where(tournament: @this_tournament)
-    divisions = all_players.map { |player| player.division }.uniq.sort
+    divisions = @this_tournament.players.map(&:division).uniq.sort
 
     @matchups = {}
     divisions.each do |div|
-      @matchups[div] = @all_matchups.select { |matchup| matchup.player1.division == div }
-      # Player.where(tournament: @tournament, division: div).order(win_count: :desc, loss_count: :asc, spread: :desc).to_a
+      @matchups[div] = @all_matchups.for_division(div)
     end
 
-    @rounds_to_display = []
-    (1..@this_tournament.event.rounds).each do |round|
-      if @this_tournament.matchups.where(round_number: round, done: false).exists? || @this_tournament.matchups.where(round_number: round).count == 0 || @this_tournament.matchups.where(round_number: round, player1_score: -50).count > 0
-        @rounds_to_display << "Round #{round}"
-      end
-    end
-
+    @rounds_to_display = @this_tournament.rounds_to_display.map {|round| "Round #{round}"}
 
     @tournament = policy_scope(Matchup)
     # authorize @tournament, policy_class: MatchupPolicy
@@ -96,10 +87,10 @@ class MatchupsController < ApplicationController
     @tournament = Tournament.find(params[:id])
     division = params[:division].to_i
     round = params[:round][/\d+/].to_i
-    matchups = @tournament.matchups.select { |matchup| matchup.round_number == round }
+    matchups = @tournament.matchups.for_round(round)
     matchups.each { |matchup| Matchup.destroy(matchup.id) }
 
-    players = @tournament.players.select { |player| player.division == division && player.name != "Bye"}
+    players = @tournament.players.for_division(division).non_bye
     generate_matchups(round, players)
 
     redirect_to tournament_matchups_path(@tournament)
@@ -111,9 +102,7 @@ class MatchupsController < ApplicationController
 
   def generate_matchups(round, players)
     # generate pairings
-    active_players = players.select { |player| player.active == true }
-    inactive_players = players.select { |player| player.active == false }
-    pairings = Swissper.pair(active_players, delta_key: :win_count)
+    pairings = Swissper.pair(players.active, delta_key: :win_count)
 
     # create matchups based on the pairings
     pairings.each do |pairing|
@@ -131,7 +120,7 @@ class MatchupsController < ApplicationController
       end
     end
 
-    inactive_players.each do |player|
+    players.inactive.each do |player|
       if Player.where(tournament: player.tournament, name: "Bye").empty?
         bye = Player.create!(name: "Bye", tournament: player.tournament, rating: 0, new_rating: 0, division: player.division, win_count: 0, seed: 0)
       else

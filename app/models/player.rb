@@ -13,6 +13,8 @@ class Player < ApplicationRecord
 
   scope :for_division, ->(division) { where(division: division) }
   scope :non_bye, -> { where("name != 'Bye'") }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 
   def bye?
     name == "Bye"
@@ -24,4 +26,32 @@ class Player < ApplicationRecord
     self.loss_count = results.map(&:losses).sum
     self.spread = results.map(&:spread).sum
   end
+
+  def attach_photo(user_photo)
+    photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
+  end
+
+  def attach_default_photo
+    default_pic = File.open('app/assets/images/user-astronaut-solid.svg')
+    photo.attach(io: default_pic, filename: "user-astronaut-solid.svg",
+                 content_type: "image/svg+xml")
+  end
+
+  def deactivate
+    # Set the player to inactive and adjust all pending matchups
+    self.active = false
+    Matchup.for_player(self).pending.each do |matchup|
+      bye = tournament.create_or_retrieve_bye!(division)
+      Matchup.create!(round_number: matchup.round_number, player1: self,
+                      player2: bye, player1_score: -50, player2_score: 0,
+                      done: true)
+      if matchup.player1 == self
+        matchup.player1 = bye
+      else
+        matchup.player2 = bye
+      end
+      matchup.save!
+    end
+  end
+
 end

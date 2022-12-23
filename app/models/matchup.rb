@@ -14,6 +14,8 @@ class Matchup < ApplicationRecord
   scope :pending, -> { where(done: false) }
   # Matchups in (division, round) that are still waiting for scores
   scope :waiting_for_scores, ->(div, round) { for_division(div).for_round(round).pending }
+  scope :active, -> { where("player1_score != -50").and(where("player2_score != -50")) }
+  scope :inactive, -> { where(player1_score: -50).or(where(player2_score: -50)) }
 
   def players
     [player1, player2]
