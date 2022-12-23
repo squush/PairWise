@@ -102,7 +102,7 @@ class MatchupsController < ApplicationController
 
   def generate_matchups(round, players)
     # generate pairings
-    pairings = Swissper.pair(players.active, delta_key: :win_count)
+    pairings = Swissper.pair(players.active.to_a, delta_key: :win_count)
 
     # create matchups based on the pairings
     pairings.each do |pairing|
