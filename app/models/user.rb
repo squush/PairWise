@@ -13,7 +13,8 @@ class User < ApplicationRecord
   def tournaments_as_player
     if self.crosstables_id
       @player = Player.where(crosstables_id: self.crosstables_id).first
-      @tournaments = @player.tournaments
+      @matchups = Matchup.for_player(@player)
+      @tournaments = @matchups.map { |matchup| matchup.player1.tournament}.uniq
     else
       @tournaments = []
     end
