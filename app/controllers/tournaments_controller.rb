@@ -110,10 +110,10 @@ class TournamentsController < ApplicationController
   def my_tournaments
     @tournaments = Tournament.where(user: current_user)
 
-    if current_user.crosstables_id
+    if user_signed_in? && current_user.crosstables_id
       @player_tournaments = current_user.tournaments_as_player
     end
-    
+
     authorize @tournaments
   end
 

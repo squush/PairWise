@@ -12,7 +12,7 @@
     <h4><%= @this_tournament.event.date.strftime('%B %e, %Y') %></h4>
   </div>
 
-  <% if Player.where(tournament: @this_tournament, crosstables_id: current_user.crosstables_id).exists? %>
+  <% if user_signed_in? && Player.where(tournament: @this_tournament, crosstables_id: current_user.crosstables_id).exists? %>
     <div class="mb-5 text-primary">
       <h2 class="scoreboard-division border-bottom border-secondary">Your Pairings</h2>
       <% @matchups.each do |div, matchups| %>
