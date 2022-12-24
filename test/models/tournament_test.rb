@@ -44,4 +44,17 @@ class TournamentTest < ActiveSupport::TestCase
     p1_matches = t.matchups.for_player(p1)
     assert p1_matches.all? {|m| m.bye?}
   end
+
+  test "pairing system serialization" do
+    t = create(:tournament)
+    rp1 = Settings::RoundPairing.new(1, 10)
+    rp2 = Settings::RoundPairing.new(2, 10)
+    ps = Settings::PairingSystem.new([rp1, rp2])
+    t.pairing_system = ps
+    t.save
+    t2 = Tournament.find(t.id)
+    rps = t2.pairing_system.round_pairings
+    assert_equal rps[0].round, 1
+    assert_equal rps[0].strategy, 10
+  end
 end

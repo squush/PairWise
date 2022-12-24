@@ -109,7 +109,6 @@ class TournamentsController < ApplicationController
 
   def my_tournaments
     @tournaments = Tournament.where(user: current_user)
-
     if user_signed_in? && current_user.crosstables_id
       @player_tournaments = current_user.tournaments_as_player
     end
@@ -139,7 +138,7 @@ class TournamentsController < ApplicationController
     for p in players do
       player = Player.create!(tournament: tournament, **p)
       user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
-      player.photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
+      player.attach_photo(user_photo)
       player.save
     end
   end
