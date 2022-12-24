@@ -27,8 +27,8 @@ class TournamentsController < ApplicationController
 
     # round_number_selected = @tournament.pairing_system["round"]
     pairing_system_selected = params[:tournament][:pairing_system]["pairing"]
-    @tournament.pairing_system[1] = ["Round 1", pairing_system_selected]
-    @tournament.pairing_system.delete("pairing")
+    @tournament.pairing_system = Settings::PairingSystem.new([])
+    @tournament.pairing_system.add_round_pairing(1, 0, pairing_system_selected)
 
     get_players(@tournament)
     generate_two_rounds_matchups(@tournament)
@@ -130,7 +130,7 @@ class TournamentsController < ApplicationController
   private
 
   def tournament_params
-    params.require(:tournament).permit(:number_of_winners, pairing_system: {})
+    params.require(:tournament).permit(:number_of_winners)
   end
 
   def get_players(tournament)

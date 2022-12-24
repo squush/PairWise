@@ -6,6 +6,12 @@ module Settings
   RoundPairing = Struct.new(:round, :strategy)
 
   PairingSystem = Struct.new(:round_pairings) do
+
+    def add_round_pairing(round, start_round, strategy)
+      # Pair round {round} based on applying {strategy} to {start_round}
+      round_pairings[round] = RoundPairing.new(start_round, strategy)
+    end
+
     class << self
       # ActiveRecord serialization support
       
@@ -14,8 +20,8 @@ module Settings
       end
 
       def load(value)
-	# tournament.pairing_system defaults to "", so we need to check for
-	# either a null value or an empty string in the db.
+        # tournament.pairing_system defaults to "", so we need to check for
+        # either a null value or an empty string in the db.
         if value.nil? || value.empty?
           PairingSystem.new([])
         else

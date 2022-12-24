@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+  include HasUserPhoto
+
   belongs_to :tournament
   # The foreign_key in the lines below ensures the destroy works. Otherwise it's
   # looking for just "player_id" by default.
@@ -25,16 +27,6 @@ class Player < ApplicationRecord
     self.win_count = results.map(&:wins).sum
     self.loss_count = results.map(&:losses).sum
     self.spread = results.map(&:spread).sum
-  end
-
-  def attach_photo(user_photo)
-    photo.attach(io: user_photo, filename: "player_pic.jpg", content_type: "image/jpg")
-  end
-
-  def attach_default_photo
-    default_pic = File.open('app/assets/images/user-astronaut-solid.svg')
-    photo.attach(io: default_pic, filename: "user-astronaut-solid.svg",
-                 content_type: "image/svg+xml")
   end
 
   def deactivate
