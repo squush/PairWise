@@ -16,7 +16,7 @@ module CrosstablesFetcher
     events.map do |ev|
       ev_doc = fetch_entrants_page(ev.xtables_id)
       event = extract_event(ev_doc)
-      event.update(event.to_h)
+      event.update(ev.to_h)
     end
   end
 
