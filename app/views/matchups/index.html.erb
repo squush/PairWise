@@ -15,15 +15,11 @@
   <% if user_signed_in? && Player.where(tournament: @this_tournament, crosstables_id: current_user.crosstables_id).exists? %>
     <div class="mb-5 text-primary">
       <h2 class="scoreboard-division border-bottom border-secondary">Your Pairings</h2>
-      <% @matchups.each do |div, matchups| %>
         <div class="d-flex flex-wrap mb-5">
-          <% matchups.each do |matchup| %>
-            <% if matchup.player1.crosstables_id == current_user.crosstables_id || matchup.player2.crosstables_id == current_user.crosstables_id %>
+          <% @player_matchups.each do |matchup| %>
               <%= render 'matchup', matchup: matchup, tournament: @this_tournament  %>
-            <% end %>
           <% end %>
         </div>
-      <% end %>
       <h2 class="scoreboard-division border-bottom border-secondary">All Pairings</h2>
     </div>
   <% end %>

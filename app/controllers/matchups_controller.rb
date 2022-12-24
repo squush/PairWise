@@ -67,13 +67,22 @@ class MatchupsController < ApplicationController
   def index
     @this_tournament = Tournament.find(params[:tournament_id])
     # This order keeps the matchups in order when a score is submitted.
-    @all_matchups = @this_tournament.matchups.active.order(:round_number, :id)
+    if user_signed_in? && @this_tournament.user == current_user
+      @all_matchups = @this_tournament.matchups.active.order(:round_number, :id)
+    else
+      @all_matchups = @this_tournament.matchups.pending.order(:round_number, :id)
+    end
+
+    if user_signed_in? && current_user.crosstables_id
+      player = @this_tournament.players.where(crosstables_id: current_user.crosstables_id).first
+      @player_matchups = @this_tournament.matchups.for_player(player)
+    end
 
     divisions = @this_tournament.players.map(&:division).uniq.sort
 
     @matchups = {}
     divisions.each do |div|
-      @matchups[div] = @all_matchups.for_division(div)
+      @matchups[div] = @all_matchups.select { |matchup| matchup.player1.division == div }
     end
 
     @rounds_to_display = @this_tournament.rounds_to_display.map {|round| "Round #{round}"}
@@ -102,7 +111,9 @@ class MatchupsController < ApplicationController
 
   def generate_matchups(round, players)
     # generate pairings
-    pairings = Swissper.pair(players.active.to_a, delta_key: :win_count)
+    active_players = players.select { |player| player.active }
+    inactive_players = players.select { |player| player.active == false }
+    pairings = Swissper.pair(active_players, delta_key: :win_count)
 
     # create matchups based on the pairings
     pairings.each do |pairing|
@@ -116,11 +127,22 @@ class MatchupsController < ApplicationController
         end
         Matchup.create!(round_number: round, player1: pairing[real_player_id], player2: bye)
       else
-        Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
+        if pairing[0].firsts > pairing[1].firsts
+          Matchup.create!(round_number: round, player1: pairing[1], player2: pairing[0])
+        elsif pairing[0].firsts < pairing[1].firsts
+          Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
+        else
+          if rand(1..2) == 1
+            Matchup.create!(round_number: round, player1: pairing[1], player2: pairing[0])
+          else
+            Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
+          end
+        end
+        Matchup.last.player1.firsts += 1
       end
     end
 
-    players.inactive.each do |player|
+    inactive_players.each do |player|
       if Player.where(tournament: player.tournament, name: "Bye").empty?
         bye = Player.create!(name: "Bye", tournament: player.tournament, rating: 0, new_rating: 0, division: player.division, win_count: 0, seed: 0)
       else
