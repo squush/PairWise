@@ -9,7 +9,10 @@
       <div><h4><%= ranking %></h4></div>
       <div>
         <h4><%= player.new_rating %></h4>
-        <%= player.rating %><%= "+" if player.new_rating - player.rating >= 0 %><%= player.new_rating - player.rating %>
+        <%= player.rating %>
+        <% if player.new_rating %>
+          <%= "+" if player.new_rating - player.rating >= 0 %><%= player.new_rating - player.rating %>
+        <% end %>
       </div>
     </div>
 
