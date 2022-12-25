@@ -108,9 +108,9 @@ class TournamentsController < ApplicationController
   end
 
   def my_tournaments
-    @tournaments = Tournament.where(user: current_user)
+    @tournaments = Tournament.where(user: current_user).to_a
     if user_signed_in? && current_user.crosstables_id
-      @player_tournaments = current_user.tournaments_as_player
+      @player_tournaments = (current_user.tournaments_as_player.to_a + @tournaments).uniq
     end
 
     authorize @tournaments
