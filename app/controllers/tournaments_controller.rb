@@ -64,12 +64,17 @@ class TournamentsController < ApplicationController
   end
 
   def update
+    param = params[:tournament][:pairing_system]
+    start_round = param["round"]
+    strategy = param["pairing"]
+    start_round = parse_round(start_round)
+    # TODO: For now we assume that if we start from round n we are pairing round n+1
+    round = start_round + 1
     new_pairings = @tournament.pairing_system
-    new_key = @tournament.pairing_system.keys.max.to_i + 1
-    new_pairings[new_key] = [params[:tournament][:pairing_system]["round"], params[:tournament][:pairing_system]["pairing"]]
-    new_pairings.delete("round")
-    new_pairings.delete("pairing")
-    if @tournament.update!(pairing_system: new_pairings, number_of_winners: params[:tournament][:number_of_winners])
+    new_pairings.add_round_pairing(round, start_round, strategy)
+    if @tournament.update!(
+        pairing_system: new_pairings,
+        number_of_winners: params[:tournament][:number_of_winners])
       redirect_to edit_tournament_path(@tournament), notice: "tournament #{@tournament.event.location} was updated."
     else
       render :edit, status: :unprocessable_entity
@@ -131,6 +136,15 @@ class TournamentsController < ApplicationController
 
   def tournament_params
     params.require(:tournament).permit(:number_of_winners)
+  end
+
+  def parse_round(round)
+    match = /Round (\d+)/.match(round)
+    if match
+      match.captures[0].to_i
+    else
+      nil
+    end
   end
 
   def get_players(tournament)
