@@ -42,7 +42,12 @@ class Player < ApplicationRecord
       else
         matchup.player2 = bye
       end
-      matchup.save!
+
+      if matchup.player1 == bye && matchup.player2 == bye
+        matchup.destroy
+      else
+        matchup.save!
+      end
     end
   end
 
