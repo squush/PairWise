@@ -36,7 +36,7 @@ module CrosstablesFetcher
   # Fetch pages from cross-tables.com
 
   def fetch_url(relative_url)
-    url = "#{BASE_URL}/#{relative_url}"
+    url = "#{BASE_URL}#{relative_url}"
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
   end
