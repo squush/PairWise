@@ -27,9 +27,13 @@ module CrosstablesFetcher
 
   # Grabs the player's pic based on the player's xtables ID
   def get_player_photo(player_id)
-    doc = fetch_player_page(player_id)
-    photo_path = extract_photo_path(doc)
-    URI.open(photo_path)
+    if player_id == 0
+      get_placeholder_photo
+    else
+      doc = fetch_player_page(player_id)
+      photo_path = extract_photo_path(doc)
+      URI.open(photo_path)
+    end
   end
 
   # ---------------------------------------
@@ -107,6 +111,15 @@ module CrosstablesFetcher
     end
 
     photo_path
+  end
+
+  def get_placeholder_photo
+    # Crosstables placeholder for players without photos
+    # TODO: We should download this and serve it as a local file, not hit
+    # crosstables every time. Also, this should be merged with
+    # HasUserPhoto.attach_default_photo
+    photo_path = "#{BASE_URL}pix/anon.gif"
+    URI.open(photo_path)
   end
 
   def extract_naspa_events(doc)
