@@ -10,6 +10,9 @@ application.register("alert-fadeout", AlertFadeoutController)
 import EditMatchupsController from "./edit_matchups_controller"
 application.register("edit-matchups", EditMatchupsController)
 
+import GenerateMatchupController from "./generate_matchup_controller"
+application.register("generate-matchup", GenerateMatchupController)
+
 import GeneratePairingsController from "./generate_pairings_controller"
 application.register("generate-pairings", GeneratePairingsController)
 

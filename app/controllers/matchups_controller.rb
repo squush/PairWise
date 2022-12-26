@@ -110,6 +110,18 @@ class MatchupsController < ApplicationController
     authorize @tournament, policy_class: MatchupPolicy
   end
 
+  def create_one_matchup
+    @tournament = Tournament.find(params[:id])
+    division = params[:division].to_i
+    round = params[:round][/\d+/].to_i
+    players = [Player.where(name: params[:player1], tournament: @tournament).first, Player.where(name: params[:player2], tournament: @tournament).first]
+    MatchupsGenerator.generate_matchups(round, players)
+
+    redirect_to tournament_matchups_path(@tournament)
+
+    authorize @tournament, policy_class: MatchupPolicy
+  end
+
   private
 
   def set_matchup

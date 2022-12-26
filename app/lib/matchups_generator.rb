@@ -29,7 +29,7 @@ module MatchupsGenerator
             Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
           end
         end
-        Matchup.last.player1.firsts += 1
+        Matchup.last.player1.firsts += 1 unless Matchup.last.player2.name == "Bye"
       end
     end
 

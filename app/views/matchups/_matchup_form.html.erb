@@ -1,0 +1,31 @@
+<div class="container justify-content-center col-12">
+  <%= form_tag generate_matchup_path(tournament), method: :post, defaults: {
+        label_html: { class: "col-8 text-info" },
+        input_html: { class: "text-primary form-rnd-corners input-white" },
+        wrapper_html: { class: "d-flex" },
+      } do %>
+    <%= hidden_field_tag :id, tournament.id %>
+    <%= hidden_field_tag :division, division %>
+    <div class="form-inputs">
+      <div class="d-flex justify-content-evenly">
+        <%= select_tag :round, options_for_select(@rounds_to_display) %>
+      </div>
+      <br>
+      <div class="d-flex justify-content-evenly">
+        <%= select_tag :player1, options_for_select(tournament.players.for_division(division).active.order(rating: :desc).pluck(:name).to_a),
+              label: "Player A:",
+              required: true,
+              wrapper_html: { class: "d-flex align-items-end" } %>
+      </div>
+      <br>
+      <div class="d-flex justify-content-evenly">
+        <%= select_tag :player2, options_for_select(Player.where(tournament: tournament, division: division).active.order(rating: :desc).pluck(:name).to_a),
+              label: "Player B:",
+              required: true,
+              wrapper_html: { class: "d-flex align-items-end" } %>
+      </div>
+      <br>
+      <%= submit_tag "Create Matchup", class: "btn btn-secondary w-100 text-center btn-rnd-corners" %>
+    </div>
+  <% end %>
+</div>
