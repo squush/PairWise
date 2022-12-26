@@ -3,7 +3,7 @@ module Settings
   #
   # A Tournament has a PairingSystem serialized into a json field
 
-  RoundPairing = Struct.new(:round, :strategy)
+   = Struct.new(:round, :strategy)
 
   PairingSystem = Struct.new(:round_pairings) do
 
