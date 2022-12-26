@@ -16,6 +16,11 @@ class Tournament < ApplicationRecord
   # }
 
   def current_round
+    (1..self.rounds).each do |round|
+      if self.matchups.for_round(round).pending.count > 0
+        return round
+      end
+    end
     p = players.first
     p.win_count.to_i + p.loss_count.to_i + 1
   end
@@ -30,6 +35,7 @@ class Tournament < ApplicationRecord
       round_matchups = self.matchups.for_round(round)
       round_matchups.pending.exists? ||
         round_matchups.count == 0 ||
+        # May want to remove this later
         round_matchups.inactive.count > 0
     end
   end
