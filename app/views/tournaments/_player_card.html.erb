@@ -55,117 +55,102 @@
           <% player_round = (player.win_count + player.loss_count).round.to_i %>
 
           <%# Player's last game score %>
-          <% @tournament.matchups.each do |matchup| %>
-            <% if matchup[:round_number] == player_round%>
-              <% if matchup.player1 == player %>
-                <strong>Last:</strong>
-                <%= matchup[:player1_score] %>
-                -
-              <% elsif matchup.player2 == player %>
-                <strong>Last:</strong>
-                <%= matchup[:player2_score] %>
-                -
+          <% matchup = Matchup.for_player(player).complete.order(:round_number).last %>
+          <% if matchup %>
+            <% if matchup.player1 == player %>
+              <strong>Last:</strong>
+              <%= matchup[:player1_score] %>
+              -
+            <% elsif matchup.player2 == player %>
+              <strong>Last:</strong>
+              <%= matchup[:player2_score] %>
+              -
+            <% end %>
+
+            <% if matchup.player1 == player %>
+              <%= matchup[:player2_score] %>
+            <% elsif matchup.player2 == player %>
+              <%= matchup[:player1_score] %>
+            <% end %>
+
+            <% if matchup.player1 == player %>
+              <% opponent = Player.find(matchup.player2.id) %>
+              vs. <%= opponent.name %>
+              <% if opponent.photo.attached? %>
+                <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
+                  transformation: [
+                    {gravity: "face", height: 128, width: 128, crop: "crop"},
+                    # {radius: "max"},
+                    {width: 48, crop: "scale"}
+                  ] %>
+              <% else %>
+                <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
+              <% end %>
+            <% elsif matchup.player2 == player %>
+              <% opponent = Player.find(matchup.player1.id) %>
+              vs. <%= opponent.name %>
+              <% if opponent.photo.attached? %>
+                <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
+                  transformation: [
+                    {gravity: "face", height: 128, width: 128, crop: "crop"},
+                    # {radius: "max"},
+                    {width: 48, crop: "scale"}
+                  ] %>
+              <% else %>
+                <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
               <% end %>
             <% end %>
           <% end %>
-
-          <% @tournament.matchups.each do |matchup| %>
-            <% if matchup[:round_number] == player_round %>
-              <% if matchup.player1 == player %>
-                <%= matchup[:player2_score] %>
-              <% elsif matchup.player2 == player %>
-                <%= matchup[:player1_score] %>
-              <% end %>
-            <% end %>
-          <% end %>
-
-          <%# Last game opponent's name%>
-          <% @tournament.matchups.each do |matchup| %>
-            <% if matchup[:round_number] == player_round %>
-              <% if matchup.player1 == player %>
-                <% opponent = Player.find(matchup.player2.id) %>
-                vs. <%= opponent.name %>
-                <% if opponent.photo.attached? %>
-                  <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
-                    transformation: [
-                      {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      # {radius: "max"},
-                      {width: 48, crop: "scale"}
-                    ] %>
-                <% else %>
-                  <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
-                <% end %>
-              <% elsif matchup.player2 == player %>
-                <% opponent = Player.find(matchup.player1.id) %>
-                vs. <%= opponent.name %>
-                <% if opponent.photo.attached? %>
-                  <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
-                    transformation: [
-                      {gravity: "face", height: 128, width: 128, crop: "crop"},
-                      # {radius: "max"},
-                      {width: 48, crop: "scale"}
-                    ] %>
-                <% else %>
-                  <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-
-
-
         </div>
 
-        <%# Player's next game opponent%>
+        <%# Player's next game %>
         <div class="next-game-info mt-auto">
-            <% @tournament.matchups.each do |matchup| %>
-              <% if matchup[:round_number] == player_round + 1 %>
-                <% if matchup.player1 == player %>
-                  <div class="next-game-text">
-                    <strong>Next: </strong>
-                    <div class="first-second-opponent">
-                      <% if matchup.player2.name != "Bye" %>
-                        <%= " 1st vs." %>
-                      <% end %>
-                      <% opponent = Player.find(matchup.player2.id) %>
-                      <%= opponent.name %>
-                    </div>
-                  </div>
-                  <% if opponent.photo.attached? %>
-                    <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
-                      transformation: [
-                        {gravity: "face", height: 128, width: 128, crop: "crop"},
-                        # {radius: "max"},
-                        {width: 48, crop: "scale"}
-                      ] %>
-                  <% else %>
-                    <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
+          <% matchup = Matchup.for_player(player).pending.order(:round_number).first %>
+          <% if matchup %>
+            <% if matchup.player1 == player %>
+              <div class="next-game-text">
+                <strong>Next: </strong>
+                <div class="first-second-opponent">
+                  <% if matchup.player2.name != "Bye" %>
+                    <%= " 1st vs." %>
                   <% end %>
-                <% elsif matchup.player2 == player %>
-                  <div class="next-game-text">
-                    <strong>Next: </strong>
-                    <div class="first-second-opponent">
-                      <% if matchup.player1.name != "Bye" %>
-                        <%= " 2nd vs."  %>
-                      <% end %>
-                      <% opponent = Player.find(matchup.player1.id) %>
-                      <%= opponent.name %>
-                    </div>
-                  </div>
-                  <% if opponent.photo.attached? %>
-                    <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
-                      transformation: [
-                        {gravity: "face", height: 128, width: 128, crop: "crop"},
-                        # {radius: "max"},
-                        {width: 48, crop: "scale"}
-                      ] %>
-                  <% else %>
-                    <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
+                  <% opponent = Player.find(matchup.player2.id) %>
+                  <%= opponent.name %>
+                </div>
+              </div>
+              <% if opponent.photo.attached? %>
+                <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
+                  transformation: [
+                    {gravity: "face", height: 128, width: 128, crop: "crop"},
+                    # {radius: "max"},
+                    {width: 48, crop: "scale"}
+                  ] %>
+              <% else %>
+                <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
+              <% end %>
+            <% elsif matchup.player2 == player %>
+              <div class="next-game-text">
+                <strong>Next: </strong>
+                <div class="first-second-opponent">
+                  <% if matchup.player1.name != "Bye" %>
+                    <%= " 2nd vs."  %>
                   <% end %>
-                <% end %>
+                  <% opponent = Player.find(matchup.player1.id) %>
+                  <%= opponent.name %>
+                </div>
+              </div>
+              <% if opponent.photo.attached? %>
+                <%= cl_image_tag opponent.photo.key, class: "opponent-avatar",
+                  transformation: [
+                    {gravity: "face", height: 128, width: 128, crop: "crop"},
+                    # {radius: "max"},
+                    {width: 48, crop: "scale"}
+                  ] %>
+              <% else %>
+                <%= image_tag "user-astronaut-solid.svg", class: "opponent-avatar" %>
               <% end %>
             <% end %>
-
+          <% end %>
         </div>
       </div>
     </div>

@@ -24,5 +24,8 @@ Rails.application.routes.draw do
   get "/my_tournaments", to: "tournaments#my_tournaments"
   get "/tournaments/:id/report", to: "tournaments#tournament_report", as: :final_report
   post "/tournaments/:id/generate_matchups", to: "matchups#matchups_for_round", as: :generate_matchups
+  post "/tournaments/:id/generate_matchup", to: "matchups#create_one_matchup", as: :generate_matchup
+
+
 
 end

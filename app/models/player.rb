@@ -1,5 +1,8 @@
+require_relative '../lib/matchups_generator'
+
 class Player < ApplicationRecord
   include HasUserPhoto
+  include MatchupsGenerator
 
   belongs_to :tournament
   # The foreign_key in the lines below ensures the destroy works. Otherwise it's
@@ -32,6 +35,7 @@ class Player < ApplicationRecord
   def deactivate
     # Set the player to inactive and adjust all pending matchups
     self.active = false
+
     Matchup.for_player(self).pending.each do |matchup|
       bye = tournament.create_or_retrieve_bye!(division)
       Matchup.create!(round_number: matchup.round_number, player1: self,
@@ -42,7 +46,27 @@ class Player < ApplicationRecord
       else
         matchup.player2 = bye
       end
-      matchup.save!
+
+      if matchup.player1 == bye && matchup.player2 == bye
+        matchup.destroy
+      else
+        matchup.save
+      end
+    end
+  end
+
+  def reactivate
+    self.active = true
+    self.save
+
+    Matchup.for_player(self).inactive.each do |matchup|
+      round = matchup.round_number
+      if self.tournament.matchups.for_round(round).active.complete.count == 0
+        # Destroy all existing matchups of future rounds and regenerate that round's pairings
+        self.tournament.matchups.for_round(round).destroy_all
+        players = self.tournament.players.for_division(self.division).active.non_bye.to_a
+        MatchupsGenerator.generate_matchups(round, players)
+      end
     end
   end
 

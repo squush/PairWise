@@ -5,12 +5,15 @@
       <h1 class="mb-4 text-center border-2 text-white">MY TOURNAMENTS</h1>
 
       <div class="d-flex flex-wrap">
-        <% @tournaments.each do |tournament| %>
-          <%= render "tournament", tournament: tournament %>
-        <% end %>
+      <% if user_signed_in? && current_user.crosstables_id %>
         <% @player_tournaments.each do |tournament| %>
           <%= render "tournament", tournament: tournament %>
         <% end %>
+      <% else %>
+        <% @tournaments.each do |tournament| %>
+          <%= render "tournament", tournament: tournament %>
+        <% end %>
+      <% end %>
       </div>
     </div>
   </div>

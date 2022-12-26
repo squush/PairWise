@@ -4,6 +4,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     @player.tournament = @tournament
+    @player.new_rating = @player.rating
 
     unless @player.crosstables_id.nil?
       user_photo = CrosstablesFetcher.get_player_photo(@player.crosstables_id)
@@ -33,7 +34,8 @@ class PlayersController < ApplicationController
 
   def reactivate
     @player = Player.find(params[:id])
-    @player.active = true
+    @player.reactivate
+    # @player.active = true
     if @player.save
       redirect_to edit_tournament_path(@player.tournament)
     else

@@ -26,12 +26,16 @@
 
   <div class="mb-5 text-primary">
     <% @matchups.each do |div, matchups| %>
-      <div data-controller="generate-pairings">
+      <div data-controller="generate-pairings generate-matchup">
         <div class="division-header">
-          <div class="mr-auto align-self-center"><h2 class="scoreboard-division">Division <%= div %></h2></div>
           <% if @this_tournament.user == current_user %>
             <div><a class="btn btn-danger mb-3 btn-rnd-corners" id="pairings-modal-btn"
                 data-action="click->generate-pairings#showForm">Generate Pairings</a></div>
+          <% end %>
+          <div class="mr-auto align-self-center"><h2 class="scoreboard-division">Division <%= div %></h2></div>
+          <% if @this_tournament.user == current_user %>
+            <div><a class="btn btn-danger mb-3 btn-rnd-corners" id="matchup-modal-btn"
+                data-action="click->generate-matchup#showForm">Create Matchup</a></div>
           <% end %>
         </div>
 
@@ -39,6 +43,13 @@
           <div class="pairings-modal-content">
             <div class="d-flex justify-content-right"><button class="close-btn d-flex justify-content-center align-items-center" data-action="click->generate-pairings#closeForm">&times;</button></div>
             <div class="d-flex justify-content-center"><%= render "round_form", tournament: @this_tournament, division: div %></div>
+          </div>
+        </div>
+
+        <div class="modal" data-generate-matchup-target="modal">
+          <div class="matchup-modal-content">
+            <div class="d-flex justify-content-right"><button class="close-btn d-flex justify-content-center align-items-center" data-action="click->generate-matchup#closeForm">&times;</button></div>
+            <div class="d-flex justify-content-center"><%= render "matchup_form", tournament: @this_tournament, division: div %></div>
           </div>
         </div>
       </div>

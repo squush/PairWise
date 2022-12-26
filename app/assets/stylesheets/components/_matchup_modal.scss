@@ -1,0 +1,23 @@
+.matchup-modal-content {
+  position: relative;
+  background-color: $primary;
+  padding: 20px 20px 40px 20px;
+  margin: auto;
+  width: 25%;
+  min-width: 325px;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 3px 3px 0 0 $secondary;
+  border-radius: 9px;
+}
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}

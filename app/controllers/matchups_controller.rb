@@ -1,4 +1,7 @@
+require_relative '../lib/matchups_generator'
+
 class MatchupsController < ApplicationController
+  include MatchupsGenerator
   before_action :set_matchup, only: %i[update]
   skip_before_action :authenticate_user!, only: %i[index]
 
@@ -51,8 +54,8 @@ class MatchupsController < ApplicationController
             matchups_without_scores.empty?
           # Find all players in the division and determine which round to generate
           # pairings for
-          players = this_tournament.players.for_division(player1.division).non_bye.to_a
-          generate_matchups(round_to_generate, players)
+          players = this_tournament.players.for_division(player1.division).active.non_bye.to_a
+          MatchupsGenerator.generate_matchups(round_to_generate, players)
         end
 
         redirect_to tournament_matchups_path(this_tournament),
@@ -75,7 +78,7 @@ class MatchupsController < ApplicationController
 
     if user_signed_in? && current_user.crosstables_id
       player = @this_tournament.players.where(crosstables_id: current_user.crosstables_id).first
-      @player_matchups = @this_tournament.matchups.for_player(player)
+      @player_matchups = @this_tournament.matchups.for_player(player).order(:round_number)
     end
 
     divisions = @this_tournament.players.map(&:division).uniq.sort
@@ -100,7 +103,19 @@ class MatchupsController < ApplicationController
     matchups.each { |matchup| Matchup.destroy(matchup.id) }
 
     players = @tournament.players.for_division(division).non_bye
-    generate_matchups(round, players)
+    MatchupsGenerator.generate_matchups(round, players)
+
+    redirect_to tournament_matchups_path(@tournament)
+
+    authorize @tournament, policy_class: MatchupPolicy
+  end
+
+  def create_one_matchup
+    @tournament = Tournament.find(params[:id])
+    division = params[:division].to_i
+    round = params[:round][/\d+/].to_i
+    players = [Player.where(name: params[:player1], tournament: @tournament).first, Player.where(name: params[:player2], tournament: @tournament).first]
+    MatchupsGenerator.generate_matchups(round, players)
 
     redirect_to tournament_matchups_path(@tournament)
 
@@ -108,50 +123,6 @@ class MatchupsController < ApplicationController
   end
 
   private
-
-  def generate_matchups(round, players)
-    # generate pairings
-    active_players = players.select { |player| player.active }
-    inactive_players = players.select { |player| player.active == false }
-    pairings = Swissper.pair(active_players, delta_key: :win_count)
-
-    # create matchups based on the pairings
-    pairings.each do |pairing|
-      if pairing.include?(Swissper::Bye)
-
-        real_player_id = 1 - pairing.find_index(Swissper::Bye)
-        if Player.where(tournament: pairing[real_player_id].tournament, name: "Bye").empty?
-          bye = Player.create!(name: "Bye", tournament: pairing[real_player_id].tournament, rating: 0, new_rating: 0, division: players.first.division, win_count: 0, seed: 0)
-        else
-          bye = Player.find_by(tournament: pairing[real_player_id].tournament, name: "Bye")
-        end
-        Matchup.create!(round_number: round, player1: pairing[real_player_id], player2: bye)
-      else
-        if pairing[0].firsts > pairing[1].firsts
-          Matchup.create!(round_number: round, player1: pairing[1], player2: pairing[0])
-        elsif pairing[0].firsts < pairing[1].firsts
-          Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
-        else
-          if rand(1..2) == 1
-            Matchup.create!(round_number: round, player1: pairing[1], player2: pairing[0])
-          else
-            Matchup.create!(round_number: round, player1: pairing[0], player2: pairing[1])
-          end
-        end
-        Matchup.last.player1.firsts += 1
-      end
-    end
-
-    inactive_players.each do |player|
-      if Player.where(tournament: player.tournament, name: "Bye").empty?
-        bye = Player.create!(name: "Bye", tournament: player.tournament, rating: 0, new_rating: 0, division: player.division, win_count: 0, seed: 0)
-      else
-        bye = Player.find_by(tournament: player.tournament, name: "Bye")
-      end
-      Matchup.create!(round_number: round, player1: player, player2: bye, player1_score: -50, player2_score: 0, done: true)
-    end
-
-  end
 
   def set_matchup
     @matchup = Matchup.find(params[:id])

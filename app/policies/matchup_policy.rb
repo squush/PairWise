@@ -26,6 +26,10 @@ class MatchupPolicy < ApplicationPolicy
     user == record.user
   end
 
+  def create_one_matchup?
+    user == record.user
+  end
+
   private
 
   def user_is_owner?

@@ -108,9 +108,9 @@ class TournamentsController < ApplicationController
   end
 
   def my_tournaments
-    @tournaments = Tournament.where(user: current_user)
+    @tournaments = Tournament.where(user: current_user).to_a
     if user_signed_in? && current_user.crosstables_id
-      @player_tournaments = current_user.tournaments_as_player
+      @player_tournaments = (current_user.tournaments_as_player.to_a + @tournaments).uniq
     end
 
     authorize @tournaments
@@ -136,10 +136,18 @@ class TournamentsController < ApplicationController
   def get_players(tournament)
     players = CrosstablesFetcher.get_players(tournament.event.xtables_id)
     for p in players do
-      player = Player.create!(tournament: tournament, **p)
-      user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
-      player.attach_photo(user_photo)
-      player.save
+      if p[:crosstables_id] == "0"
+        player = Player.create!(tournament: tournament, **p)
+        user_photo = CrosstablesFetcher.get_player_photo(25584)
+        player.attach_photo(user_photo)
+        player.save
+      else
+        player = Player.create!(tournament: tournament, **p)
+        user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
+        player.attach_photo(user_photo)
+        player.save
+      end
+
     end
   end
 
@@ -173,12 +181,14 @@ class TournamentsController < ApplicationController
       pairings[:round_2][div] = Swissper.pair(players[div], delta_key: :win_count)
     end
 
+
     # Generate matchups for round 1 based on pairings
     pairings[:round_1].each do |div, pairings|
+      # Create a bye automatically, in case director wants to assign someone a bye at any point
+      bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, new_rating: 0, division: div, seed: 0)
       pairings.each do |pairing|
         if pairing.include?(Swissper::Bye)
           real_player_id = 1 - pairing.find_index(Swissper::Bye)
-          bye = Player.create!(name: "Bye", tournament: tournament, rating: 0, new_rating: 0, division: div, seed: 0)
           Matchup.create!(round_number: 1, player1: pairing[real_player_id], player2: bye)
         else
           Matchup.create!(round_number: 1, player1: pairing[0], player2: pairing[1])
