@@ -14,7 +14,7 @@ module Settings
 
     class << self
       # ActiveRecord serialization support
-      
+
       def dump(value)
         PairingSystemMapper.to_json(value)
       end
@@ -40,7 +40,7 @@ module Settings
     attribute :round, Shale::Type::Integer
     attribute :strategy, Shale::Type::Integer
   end
-  
+
   class PairingSystemMapper < Shale::Mapper
     model PairingSystem
 
