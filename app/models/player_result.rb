@@ -36,7 +36,7 @@ class PlayerResult
     def for_player(p)
       results = p.matchups_as_player1.map {|m| PlayerResult.new(m, 1)} +
         p.matchups_as_player2.map {|m| PlayerResult.new(m, 2)}
-      results.select {|r| r.done && r.score != -50 }
+      results.select {|r| r.done && r.score != -50 && r.opponent.name != "Bye" }
     end
   end
 
