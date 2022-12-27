@@ -36,4 +36,9 @@ class Matchup < ApplicationRecord
   def bye?
     players.any? {|x| x.bye?}
   end
+
+  def result_for_player(player)
+    position = players.index(player)
+    position ? PlayerResult.new(self, position + 1) : nil
+  end
 end
