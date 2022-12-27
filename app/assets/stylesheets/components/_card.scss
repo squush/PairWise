@@ -12,6 +12,52 @@
   }
 }
 
+.tournament-card {
+  padding-top: 40px;
+  padding-left: 40px;
+  min-height: 260px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 450px) {
+  .tournament-card {
+    padding-top: 40px;
+    padding-left: 40px;
+    min-height: 260px;
+    margin-bottom: 10px;
+    width: 90vw;
+
+    h4, h3 {
+      font-size: 14px;
+    }
+
+    h2 {
+      font-size: 32px;
+    }
+
+    .tournament-big-num {
+      font-size: 40px;
+      color: $dark-blue;
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  .tournament-card {
+    padding-top: 40px;
+    padding-left: 40px;
+    min-height: 260px;
+    margin-bottom: 10px;
+  }
+
+  .tournament-big-num {
+    font-size: 75px;
+    color: $dark-blue;
+    text-align: center;
+  }
+}
+
 // Custom styling for event cards
 .event-card {
   padding: 20px;
@@ -40,13 +86,6 @@
     // Cursor was defaulting to the text cursor
     cursor: pointer;
   }
-}
-
-.tournament-card {
-  padding-top: 40px;
-  padding-left: 40px;
-  min-height: 260px;
-  margin-bottom: 10px;
 }
 
 
@@ -92,10 +131,4 @@
 
 .col-sm {
   margin-top: 25px;
-}
-
-.tournament-big-num {
-  font-size: 75px;
-  color: $dark-blue;
-  text-align: center;
 }
