@@ -10,8 +10,18 @@
   box-shadow: 2px 2px 1px 1px $gray;
 }
 
-.btn-topright {
-  position: absolute;
-  right: 40px;
-  top: 50px;
+@media only screen and (max-width: 450px) {
+  .btn-topright {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  .btn-topright {
+    position: absolute;
+    right: 40px;
+    top: 50px;
+  }
 }

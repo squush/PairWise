@@ -9,38 +9,142 @@
   max-width: 1600px;
 }
 
-.scoreboard {
-  display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 10px;
-  color: $dark-blue;
+@media only screen and (max-width: 450px) {
+  .scoreboard-player-card {
+    // display: flex;
+    // flex-wrap: wrap;
+    // display: grid;
+    // grid-template: none;
+    // grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
+    // grid-template-rows: auto;
+    // grid-auto-columns: minmax(20vw, auto);
+    max-width: 43vw;
+    box-shadow: 2px 2px 5px $gray;
+    padding: 8px;
+    margin-bottom: 4px;
+    padding-bottom: 2px;
+    font-size: 12px;
+    background-color: rgb(80, 0, 0);
+    color: white;
+    border: 1px solid rgb(0, 0, 39);
+    text-size-adjust: auto;
+    width: 100%
+  }
+
+  .scoreboard {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    color: $dark-blue;
+  }
+
+  .col-12 {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .player-name {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    line-height: 100%;
+    font-size: 18px;
+    min-height: 20px;
+  }
+
+  .score-line {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    align-items: center;
+    // Gap between W-L record and spread
+    gap: 5px;
+  }
+
+  .last-game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+  }
+
+  .next-game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+  }
+
 }
 
-.scoreboard-player-card {
-  // display: flex;
-  // flex-wrap: wrap;
-  // display: grid;
-  // grid-template: none;
-  // grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
-  // grid-template-rows: auto;
-  // grid-auto-columns: minmax(20vw, auto);
-  max-width: 25vw;
-  box-shadow: 2px 2px 5px $gray;
-  padding: 20px;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  font-size: 18px;
-  background-color: rgb(80, 0, 0);
-  color: white;
-  border: 1px solid rgb(0, 0, 39);
-  text-size-adjust: auto;
+@media only screen and (min-width: 451px) {
+  .scoreboard-player-card {
+    // display: flex;
+    // flex-wrap: wrap;
+    // display: grid;
+    // grid-template: none;
+    // grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
+    // grid-template-rows: auto;
+    // grid-auto-columns: minmax(20vw, auto);
+    max-width: 25vw;
+    box-shadow: 2px 2px 5px $gray;
+    padding: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    font-size: 18px;
+    background-color: rgb(80, 0, 0);
+    color: white;
+    border: 1px solid rgb(0, 0, 39);
+    text-size-adjust: auto;
+  }
+
+  .scoreboard {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    color: $dark-blue;
+  }
+
+  .player-name {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    line-height: 100%;
+    font-size: 24px;
+    min-height: 80px;
+  }
+
+
+  .score-line {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    align-items: center;
+    // Gap between W-L record and spread
+    gap: 8px;
+  }
+
+  .last-game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .next-game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 }
 
-.next-game-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
+
+
+
+
 
 .next-game-text {
   display: flex;
@@ -48,12 +152,6 @@
 
 .first-second-opponent {
   margin-left: 3px;
-}
-
-.last-game-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .next-last {
@@ -107,28 +205,9 @@
   align-self: right;
 }
 
-.player-name {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  line-height: 100%;
-  font-size: 24px;
-  min-height: 80px;
-}
-
 .player-p {
   align-self: center;
   margin-bottom: 0;
-}
-
-.score-line {
-  display: flex;
-  justify-content: center;
-  font-size: 18px;
-  align-items: center;
-  // Gap between W-L record and spread
-  gap: 8px;
 }
 
 .spread {
