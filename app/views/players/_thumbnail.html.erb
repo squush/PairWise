@@ -1,0 +1,11 @@
+<% if player.photo.attached? %>
+  <%= cl_image_tag player.photo.key, class: css_class,
+    transformation: [
+      {gravity: "face", height: 48, width: 48, crop: "thumb"},
+      {radius: "max"},
+    ]
+  %>
+<% else %>
+  <%= image_tag "user-astronaut-solid.svg", class: css_class, width: 48 %>
+<% end %>
+

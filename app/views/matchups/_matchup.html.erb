@@ -10,32 +10,14 @@
 
     <div class="mb-1">
       <div class="mb-1 d-flex align-items-center gap-2" id="matchup-player">
-        <% if matchup.player1.photo.attached? %>
-          <%= cl_image_tag matchup.player1.photo.key, class: "matchup-avatar",
-            transformation: [
-              {gravity: "face", height: 48, width: 48, crop: "thumb"},
-              {radius: "max"},
-            ]
-          %>
-        <% else %>
-          <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
-        <% end %>
+        <%= render '/players/thumbnail', player: matchup.player1, css_class: "matchup-avatar" %>
         <div class="text-secondary">
           <span class="text-span"><%= matchup.player1.name %></span>
           <span class="text-span">(<%= matchup.player1_score || 0 %>)</span>
         </div>
       </div>
       <div class="mb-2 d-flex align-items-center gap-2">
-        <% if matchup.player2.photo.attached? %>
-          <%= cl_image_tag matchup.player2.photo.key, class: "matchup-avatar",
-            transformation: [
-              {gravity: "face", height: 48, width: 48, crop: "thumb"},
-              {radius: "max"},
-            ]
-          %>
-        <% else %>
-          <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
-        <% end %>
+        <%= render '/players/thumbnail', player: matchup.player2, css_class: "matchup-avatar" %>
         <div class="text-secondary">
           <span><%= matchup.player2.name %></span>
           <span>(<%= matchup.player2_score || 0 %>)</span>

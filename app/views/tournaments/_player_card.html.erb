@@ -14,7 +14,7 @@
     </div>
 
     <div class="text-center mb-2">
-      <%= render 'player_photo', player: player, size: 128 %>
+      <%= render '/players/photo', player: player, size: 128, css_class: "player-avatar" %>
     </div>
 
     <div class="player-name">
@@ -42,7 +42,7 @@
             <strong>Last:</strong>
             <% result = matchup.result_for_player(player) %>
             <%= display_score(result) %>
-            <%= render 'player_photo', player: result.opponent, size: 48 %>
+            <%= render '/players/thumbnail', player: result.opponent, css_class: "opponent-avatar" %>
           <% end %>
         </div>
 
@@ -57,7 +57,7 @@
                 <%= display_matchup(result) %>
               </div>
             </div>
-            <%= render 'player_photo', player: result.opponent, size: 48 %>
+            <%= render '/players/thumbnail', player: result.opponent, css_class: "opponent-avatar" %>
           <% end %>
         </div>
       </div>

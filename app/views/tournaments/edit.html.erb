@@ -38,18 +38,7 @@
             <% unless player.name == "Bye" %>
               <tr class="text-primary table-text">
                 <td class="d-flex gap-2 align-items-center text-left">
-                  <% if player.photo.attached? %>
-                    <%= cl_image_tag player.photo.key,
-                      transformation: [
-                        {gravity: "face", height: 48, width: 48, crop: "thumb"},
-                        {radius: "max"},
-                        {background: "#e6e9ef"}
-                      ]
-                    %>
-                  <% else %>
-                    <%= image_tag "user-astronaut-solid.svg", class: "matchup-avatar" %>
-                  <% end %>
-
+                  <%= render '/players/thumbnail', player: player, css_class: "matchup-avatar" %>
                   <% if player.active %>
                       <div class="fw-bold">
                         <%= player.name %>

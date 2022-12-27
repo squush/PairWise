@@ -1,11 +1,11 @@
 <% if player.photo.attached? %>
-  <%= cl_image_tag player.photo.key, class: "player-avatar",
+  <%= cl_image_tag player.photo.key, class: css_class,
     transformation: [
       {gravity: "face", height: 128, width: 128, crop: "crop"},
       # {radius: "max"},
       {width: size, crop: "scale"}
     ] %>
 <% else %>
-  <%= image_tag "user-astronaut-solid.svg", class: "player-avatar", width: size %>
+  <%= image_tag "user-astronaut-solid.svg", class: css_class, width: size %>
 <% end %>
 
