@@ -1,0 +1,5 @@
+<%= render '/players/thumbnail', player: player, css_class: "matchup-avatar" %>
+<div class="text-secondary">
+  <span class="text-span"><%= player.name %></span>
+  <span class="text-span">(<%= matchup.score(player) || 0 %>)</span>
+</div>
