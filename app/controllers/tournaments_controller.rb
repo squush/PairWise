@@ -150,18 +150,10 @@ class TournamentsController < ApplicationController
   def get_players(tournament)
     players = CrosstablesFetcher.get_players(tournament.event.xtables_id)
     for p in players do
-      if p[:crosstables_id] == "0"
-        player = Player.create!(tournament: tournament, **p)
-        user_photo = CrosstablesFetcher.get_player_photo(25584)
-        player.attach_photo(user_photo)
-        player.save
-      else
-        player = Player.create!(tournament: tournament, **p)
-        user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
-        player.attach_photo(user_photo)
-        player.save
-      end
-
+      player = Player.create!(tournament: tournament, **p)
+      user_photo = CrosstablesFetcher.get_player_photo(player.crosstables_id)
+      player.attach_photo(user_photo)
+      player.save
     end
   end
 

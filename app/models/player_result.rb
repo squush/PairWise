@@ -32,6 +32,14 @@ class PlayerResult
     1 - wins
   end
 
+  def bye?
+    opponent.name == "Bye"
+  end
+
+  def started?
+    started
+  end
+
   class << self
     def for_player(p)
       results = p.matchups_as_player1.map {|m| PlayerResult.new(m, 1)} +

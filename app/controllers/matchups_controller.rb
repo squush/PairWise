@@ -79,6 +79,8 @@ class MatchupsController < ApplicationController
     if user_signed_in? && current_user.crosstables_id
       player = @this_tournament.players.where(crosstables_id: current_user.crosstables_id).first
       @player_matchups = @this_tournament.matchups.for_player(player).order(:round_number)
+    else
+      @player_matchups = []
     end
 
     divisions = @this_tournament.players.map(&:division).uniq.sort
