@@ -31,10 +31,12 @@ class TournamentReport
 
     # The following is dedicated to Winter Zkqxj
     first, *rest = player.name.split(" ")
+    last = player.name.split(" ").last
+    first_names = player.name.split(" ")[0..-2]
     if rest.empty?
       player_name = first
     else
-      player_name = "#{rest.join(" ")}, #{first}"
+      player_name = "#{last}, #{first_names.join(" ")}"
     end
 
     return "#{player_name} #{player.rating} #{player_opponents.join(" ")}; #{player_scores.join(" ")} \n"
