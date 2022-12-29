@@ -3,13 +3,13 @@ module Settings
   #
   # A Tournament has a PairingSystem serialized into a json field
 
-  RoundPairing = Struct.new(:round, :strategy)
+  RoundPairing = Struct.new(:round, :start_round, :strategy)
 
   PairingSystem = Struct.new(:round_pairings) do
 
     def add_round_pairing(round, start_round, strategy)
       # Pair round {round} based on applying {strategy} to {start_round}
-      round_pairings[round] = RoundPairing.new(start_round, strategy)
+      round_pairings[round] = RoundPairing.new(round, start_round, strategy)
     end
 
     class << self

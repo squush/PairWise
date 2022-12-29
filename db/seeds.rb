@@ -26,9 +26,8 @@ event_1 = Event.create!(location: "Vancouver", date: "2022-12-02", rounds: 6, nu
 event_2 = Event.create!(location: "Hochelaga", date: "2022-12-02", rounds: 8, number_of_players: 4)
 
 puts "Creating tournaments"
-tourney_1 = Tournament.create!(user: user_random, event: event_1, pairing_system: 10)
-tourney_2 = Tournament.create!(user: user_us, event: event_2, pairing_system: 10)
-
+tourney_1 = Tournament.create!(user: user_random, event: event_1, pairing_system: Settings::PairingSystem.new([]))
+tourney_2 = Tournament.create!(user: user_us, event: event_2, pairing_system: Settings::PairingSystem.new([]))
 
 puts "Plus some scrubs."
 player_1a = Player.create!(name: "Chris Cree", rating: 1965, division: 1, crosstables_id: 435, tournament: tourney_1, win_count: 1, loss_count: 1, spread: 39)
