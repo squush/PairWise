@@ -9,7 +9,7 @@ class TournamentReport
 
     divisions.each do |div|
       @report += division_header(div)
-      division_players = all_players.where(division: div)
+      division_players = all_players.where(division: div).order(rating: :desc)
       division_players.each do |player|
         unless player.name == "Bye"
           @report += player_report(player)
@@ -25,7 +25,7 @@ class TournamentReport
   end
 
   def player_report(player)
-    player_matchups = Matchup.for_player(player).to_a
+    player_matchups = Matchup.for_player(player).order(:round_number).to_a
     player_opponents = player_matchups.map { |matchup| matchup.opponent(player).seed }
     player_scores = player_matchups.map { |matchup| matchup.score(player) }
 
@@ -33,7 +33,7 @@ class TournamentReport
     first, *rest = player.name.split(" ")
     if rest.empty?
       player_name = first
-    else 
+    else
       player_name = "#{rest.join(" ")}, #{first}"
     end
 
